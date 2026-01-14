@@ -1,0 +1,16 @@
+ID,Name,Category,Cuisine,Level,Lat,Lng
+LPS-01,Tong Yang Plus,Buffet,Japanese/Chinese,Ground,14.437,121.0018
+LPS-02,Sambo Kojin,Buffet,Japanese/Korean,Upper Ground,14.4378,121.0028
+LPS-03,Din Tai Fung,Casual,Taiwanese,Ground,14.4373,121.0022
+LPS-04,Tim Ho Wan,Casual,HK Dimsum,Ground,14.4374,121.0023
+LPS-05,Marugame Udon,Fast Casual,Japanese,Ground,14.4371,121.002
+LPS-06,Conti’s Bakeshop,Casual,Filipino/Western,Ground,14.4372,121.0021
+LPS-07,Yabu: House of Katsu,Casual,Japanese,Ground,14.4375,121.0024
+LPS-08,RACKS,Casual,American BBQ,Ground,14.4369,121.0017
+LPS-09,Burgoo,Casual,American,Ground,14.4376,121.0026
+LPS-10,Gerry’s Grill,Casual,Filipino,Ground,14.4377,121.0027
+LPS-11,Romantic Baboy,Buffet,Korean BBQ,Lower Ground,14.4368,121.0015
+LPS-12,Panda Express,Fast Casual,Chinese-American,Ground,14.4372,121.0022
+LPS-13,Mary Grace Cafe,Cafe,Filipino,Upper Ground,14.4375,121.0025
+LPS-14,Modern Shanghai,Casual,Chinese,Ground,14.4373,121.0021
+LPS-15,Sumo Niku,Buffet,Japanese BBQ,Upper Ground,14.4379,121.0029
