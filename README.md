@@ -27,23 +27,23 @@ The project is built using Kotlin and follows a modern MVVM-like architecture (V
 ## Features
 JRKGBites provides the following features:
 
-&emsp; **🛡️ Authentication:** Secure sign-up and login with email/password and biometric (fingerprint) options.  
+- **🛡️ Authentication:** Secure sign-up and login with email/password and biometric (fingerprint) options.  
 
-&emsp; **🫳 Gesture-Based Interface:** An intuitive Tinder-style swipe system to manage your restaurant choices:  
-&emsp;&emsp;&emsp; - ⬆️ Swipe Up: Save a restaurant to your Favorites.  
-&emsp;&emsp;&emsp; - ⬇️ Swipe Down: Add a restaurant to your "Never Again" list.  
-&emsp;&emsp;&emsp; - ⬅️ Swipe Left: Discard for now.  
-&emsp;&emsp;&emsp; - ➡️ Swipe Right: View restaurant details.  
+- **🫳 Gesture-Based Interface:** An intuitive Tinder-style swipe system to manage your restaurant choices:  
+&emsp;&emsp;&emsp;  ⬆️ Swipe Up: Save a restaurant to your Favorites.  
+&emsp;&emsp;&emsp;  ⬇️ Swipe Down: Add a restaurant to your "Never Again" list.  
+&emsp;&emsp;&emsp;  ⬅️ Swipe Left: Discard for now.  
+&emsp;&emsp;&emsp;  ➡️ Swipe Right: View restaurant details.  
 
-&emsp; **🔀 Shake to Decide:** A "roulette" feature that randomly picks a restaurant for you when you shake your device.  
+- **🔀 Shake to Decide:** A "roulette" feature that randomly picks a restaurant for you when you shake your device.  
 
-&emsp; **📍 Location-Aware:** Filters restaurants based on your proximity, with options to see details and get directions via Google Maps.  
+- **📍 Location-Aware:** Filters restaurants based on your proximity, with options to see details and get directions via Google Maps.  
 
-&emsp; **🔍 Comprehensive Search:** Easily search the entire restaurant database, including those you've previously dismissed.  
+- **🔍 Comprehensive Search:** Easily search the entire restaurant database, including those you've previously dismissed.  
 
-&emsp; **👤 User Profile:** View your stats, manage preferences, and access app settings.  
+- **👤 User Profile:** View your stats, manage preferences, and access app settings.  
 
-&emsp; **📂 Offline Capability:** Works with a local `JRKGBites.json` file, ensuring the app is functional even without an internet connection.  
+- **📂 Offline Capability:** Works with a local `JRKGBites.json` file, ensuring the app is functional even without an internet connection.  
 
 </br>
 
@@ -98,19 +98,19 @@ The project is organized into four main layers, promoting a separation of concer
       <b>Ralph(<a href="https://github.com/rdashnox">rdashnox</a>)</b><br />
        <p> Product Owner </p>
     </td>
+     <td align="center">
+      <img src="https://avatars.githubusercontent.com/u/158192154?v=4" width="100px" alt="GitHub profile picture"/><br />
+      <b>J.R(<a href="https://github.com/Gyabu">Gyabu</a>)</b><br />
+      <p> Scrum Master </p>
+    </td>
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/158242680?v=4" width="100px" alt="GitHub profile picture"/><br />
       <b>Gracielle(<a href="https://github.com/Gracielleee">Gracielleee</a>)</b><br />
-      <p> Scrum Master </p>
+      <p> Developer </p>
     </td>   
     <td align="center">
       <img src="https://avatars.githubusercontent.com/u/162974622?v=4" width="100px" alt="GitHub profile picture"/><br />
       <b>Krizia(<a href="https://github.com/k358k">k358k</a>)</b><br />
-      <p> Developer </p>
-    </td>
-    <td align="center">
-      <img src="https://avatars.githubusercontent.com/u/158192154?v=4" width="100px" alt="GitHub profile picture"/><br />
-      <b>J.R(<a href="https://github.com/Gyabu">Gyabu</a>)</b><br />
       <p> Developer </p>
     </td>
   </tr>
