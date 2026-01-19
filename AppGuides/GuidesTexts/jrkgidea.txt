@@ -1,0 +1,249 @@
+Mobile Development App
+
+JRKG Bites Project
+
+Kotlin:
+
+Development Phases
+Phase 1: Setup & Authentication
+
+ Project setup (Kotlin + Gradle)
+ Firebase configuration
+ Sign up/Login UI
+ Biometric authentication implementation
+ User session management
+
+Phase 2: Core UI & Navigation
+
+ Bottom navigation bar with animation
+ Home screen (RecyclerView with cards)
+ Favorites screen
+ Profile/Settings screen
+ Shared ViewModel setup
+
+Phase 3: Picker & Gestures
+
+ Tinder-style swipe interface (ViewPager2 or custom)
+ Swipe gesture detection
+ Shake detection service
+ Roulette animation/logic
+
+Phase 4: Maps & Location
+
+ Google Maps integration
+ Location permission handling
+ Proximity calculation
+ Restaurant filtering by distance
+
+Phase 5: Backend & CRUD
+
+ REST API endpoints (GET, POST, PUT, DELETE)
+ Firebase Firestore integration
+ CRUD operations for restaurants
+ Favorites management
+
+Phase 6: Search & Filters
+
+ Search functionality
+ Filter by cuisine/category/type
+ Sort options (distance, rating, name)
+
+Phase 7: Testing & Polish
+
+ Unit tests
+ UI/UX refinements
+ Performance optimization
+ Demo preparation
+
+
+Tech Stack Overview
+Frontend: Kotlin (Android)
+Backend: REST API (Node.js/Express or Spring Boot recommended)
+Database: Firebase Firestore + Firebase Authentication
+APIs: Google Maps API, Places API
+Features: Biometric Auth, Gesture Detection, CRUD Operations
+
+Core Features Breakdown
+1. Authentication Module
+
+Sign up (Email/Password)
+Login (Email/Password + Biometric)
+Firebase Authentication
+Biometric integration using BiometricPrompt API
+
+2. Navigation Structure
+Bottom navigation with animated selection (enlarges on tap):
+
+Home - Card list view of nearby restaurants
+Favorites - Saved restaurants
+Picker - Tinder-style swipe interface
+Search - Filter by name/cuisine/category
+Profile/Settings - User management
+
+3. Gesture Features
+
+Swipe gestures (Picker screen): Up/Down/Left/Right
+Shake detection (Home, Picker, Favorites): Triggers roulette picker
+Disabled in Profile/Settings
+
+
+
+Technical Implementation Notes
+
+Recommended Dependencies
+gradle// Firebase
+implementation 'com.google.firebase:firebase-auth'
+implementation 'com.google.firebase:firebase-firestore'
+
+// Maps
+implementation 'com.google.android.gms:play-services-maps'
+implementation 'com.google.android.gms:play-services-location'
+
+// Biometric
+implementation 'androidx.biometric:biometric'
+
+// Networking
+implementation 'com.squareup.retrofit2:retrofit'
+implementation 'com.squareup.retrofit2:converter-gson'
+
+// Image Loading
+implementation 'com.github.bumptech.glide:glide'
+
+UI/UX Considerations
+
+Card Design: Material Design cards with elevation, restaurant image, name, rating, distance
+Swipe Feedback: Visual indicators (icons) during swipe direction
+Roulette Animation: Slot machine-style or wheel spinner
+Loading States: Shimmer effect while fetching data
+Empty States: Friendly messages when no restaurants found
+
+
+JRKG Bites - Project Documentation
+Project Overview
+Application Name: JRKG Bites
+
+ Tagline: "Just the Right Kind of Grub"
+ Platform: Android (Kotlin, Android Studio)
+ Development Methodology: Agile
+
+Team Members
+J.R
+Ralph
+Krizia
+Gracielle
+
+Application Description
+JRKG Bites is a mobile application that will help a user find a perfect match for their dining desires, whether it be based on craving, mood, or preference. The app solves the very common problem of decision fatigue when it comes to where and what to eat through an interactive, personalized experience that caters to a single user's preferences.
+
+Problem Statement
+The application aims to ease the decision-making process for users who struggle with choosing dining options. By offering personalized recommendations based on everyday experiences and user interactions, JRKG Bites streamlines the process of finding satisfying meal options.
+
+Core Features
+Authentication System
+Login Function
+Display application logo
+Input fields for username/email and password
+Biometric authentication option
+Links to sign-up page and password recovery
+Sign-in button
+Sign-Up Function
+Required fields:
+Username/Email
+Password
+Confirm Password
+Nickname/Preferred Name
+Biometric Authentication
+Utilizes saved biometric data from device
+Available only when fingerprint is registered on device
+Provides quick access alternative to password entry
+
+Home Page
+The Home page features a card-based interface displaying restaurants from the JSON database, filtered by user location.
+
+Key Features:
+Automatic filtering based on user's proximity/radius
+Card interaction: Single tap flips card to reveal details including restaurant ID, name, available locations, category, tags, and cuisine
+Zoom-in animation for enhanced user experience
+
+Location Services
+Google Maps API Integration: Determines user's exact or nearest estimated location
+Proximity Filter: Displays restaurants within user-defined radius
+Navigation Support: Provides walking directions for restaurants within 2-kilometer limit
+
+Gesture-Based Selection System
+The application employs an intuitive gesture-based interface similar to popular swipe-based apps, allowing users to make quick decisions about dining options.
+
+Gesture Actions:
+Swipe Up: Save restaurant to Favorites (personalized per user account)
+Swipe Down: Move to "Never Again" list (soft deletion; removed from future selections unless re-added via Search)
+Swipe Left: Temporarily discard from current selection (reappears on app restart)
+Swipe Right: Select restaurant and view complete information including ID, name, location details (mall/market/city), cuisine type, floor level, and coordinates with optional Google Maps navigation
+Single Tap: Flip card to view details; tap again to return to logo view
+Shake Device: Activate roulette function
+Gamification - Roulette Feature
+Activation: Shake device on specific pages (Home or Favorites)
+Functionality: Randomly selects a restaurant from the current page's list
+Dynamic Lists: Automatically includes restaurants based on current page context
+
+Search Function
+Comprehensive search across all restaurants in database
+Includes restaurants in "Never Again" list
+Re-listing capability: Users can restore "Never Again" restaurants by tapping the restaurant name and selecting "Add Back to List"
+Accessible via bottom navigation bar
+
+Navigation Bar
+The bottom navigation bar features animated transitions and includes five main sections:
+Home
+Favorites
+Add
+Search
+Profile
+Profile Page
+
+Display Elements:
+User's preferred nickname (from sign-up)
+Masked email address showing first and last initials with asterisks (e.g., r******x@jrkg.com for ralphnox@jrkg.com)
+
+Statistics row displaying:
+Total like swipes
+Favorites count
+Reviews submitted
+Privacy Policy link
+Submit Rating option (in-app rating system for user feedback)
+If option rating is below 3 stars, selection automatically goes to “Never Again” list (soft deleted from database)
+Logout button (highlighted in red at bottom of page)
+Settings
+
+Configuration Options:
+Dark mode/Light mode toggle
+Change password
+Home Bites: Set preferred location for prioritized restaurant listings
+Login preferences toggle: Email & password or biometric authentication
+Save button for preference confirmation
+All settings saved per user account
+
+Logout Function
+Saves all user preferences and favorites to account
+Redirects user to login page
+Preserves data for next session
+Force Close Handling
+When application is force closed via phone's app manager:
+Automatically saves all user preferences and favorites
+Logs out user securely
+Ensures data persistence
+
+Technical Implementation
+Data Structure
+JRKGBites.json: Central database containing all restaurant information
+Personalized user data stored per login account
+Soft deletion implementation for "Never Again" feature
+Future Development
+"About" page with application information
+"Credits" page acknowledging logo creators and image sources
+Enhanced re-listing options for "Never Again" restaurants
+Expanded customization features
+
+Development Approach
+The project follows Agile methodology, allowing for iterative development and continuous improvement based on user feedback and testing results.
+
+MVVM architecture (enhanced) - View, ViewModel, Domain, and Data (Model) - Separation of concerns
