@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.google.gson)
     implementation(libs.androidx.activity.ktx)
     implementation(libs.androidx.fragment.ktx)
+    implementation(libs.androidx.swiperefreshlayout)
 
     // Test Dependencies
     testImplementation(libs.junit)
