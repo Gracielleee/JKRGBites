@@ -13,20 +13,19 @@
         android:theme="@style/Theme.JRKGBites">
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.JRKGBites">
-
-        </activity>
-
-        <activity
-            android:name=".MainActivity2"
             android:exported="true"
-            android:label="JRKGBites"
             android:theme="@style/Theme.JRKGBites">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity2"
+            android:exported="false"
+            android:label="JRKGBites"
+            android:theme="@style/Theme.JRKGBites">
 
         </activity>
 

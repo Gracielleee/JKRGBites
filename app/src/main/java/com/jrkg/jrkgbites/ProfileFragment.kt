@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavOptions
+import androidx.navigation.fragment.findNavController // ADD THIS IMPORT
 import com.jrkg.jrkgbites.databinding.FragmentProfileBinding
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 
@@ -50,8 +52,21 @@ class ProfileFragment : Fragment() {
 
         // 4. Logout Logic
         binding.logoutButton.setOnClickListener {
-            // Keep this as a Toast until your teammates finish the LoginActivity
-            Toast.makeText(requireContext(), "Logging out...", Toast.LENGTH_SHORT).show()
+            // Log out the user (e.g., clear session data)
+            viewModel.logout()
+
+            // Navigate to the LoginFragment and clear the back stack
+            findNavController().navigate(
+                R.id.loginFragment,
+                null,
+                NavOptions.Builder()
+                    .setPopUpTo(R.id.nav_graph,
+                        true)
+                    .build()
+            )
+            Toast.makeText(requireContext(),
+                "Logging out...",
+                Toast.LENGTH_SHORT).show()
         }
     }
 
