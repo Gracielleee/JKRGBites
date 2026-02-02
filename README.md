@@ -73,6 +73,11 @@ To get a local copy up and running, follow these simple steps.
 2.  Open the project in Android Studio.
 3.  Let Gradle sync and download the required dependencies.
 4.  Run the app on your selected device or emulator.
+5.  Input the following credentials on the login screen:
+   - **Email:**  
+     `test@jrkg.com`
+   - **Password:**  
+     `password123`
 
 </br>
 
