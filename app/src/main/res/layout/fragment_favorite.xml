@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <View
+    android:id="@+id/appNameBG2"
+    android:layout_width="match_parent"
+    android:layout_height="56dp"
+    android:background="#FCD07D"
+    app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="JRKG"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/appNameBG2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/appNameBG2" />
+
+    <RelativeLayout
+        android:id="@+id/recent_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appNameBG2">
+
+        <TextView
+            android:id="@+id/see_all_favorites"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="See All"
+            android:textColor="#E67E22" />
+
+        <TextView
+            android:id="@+id/recently_added_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="Recently Added"
+            android:textColor="#000000"
+            android:textSize="19dp" />
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recently_added_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/recent_header" />
+
+    <RelativeLayout
+        android:id="@+id/category_header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recently_added_recycler">
+
+        <TextView
+            android:id="@+id/see_all_category"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="See All"
+            android:textColor="#E67E22" />
+
+        <TextView
+            android:id="@+id/by_category_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="By Category"
+            android:textColor="#000000"
+            android:textSize="19dp" />
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollViewCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_header">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp">
+
+            <Button
+                android:id="@+id/btn_all"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/pill_button"
+                android:text="All"
+                android:textAllCaps="false"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp" />
+
+            <Button
+                android:id="@+id/btn_fineCasual"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/pill_button"
+                android:text="Fine Casual"
+                android:textAllCaps="false"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_fineDining"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Fine Dining"
+                android:background="@drawable/pill_button"
+                android:textAllCaps="false"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_casual"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Casual"
+                android:background="@drawable/pill_button"
+                android:textAllCaps="false"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_restoBar"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Restobar"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_cafe"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Cafe"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_bakery"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Bakery"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_buffet"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Buffet"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_fastCasual"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Fast Casual"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_fastFood"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Fast Food"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_dessert"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Dessert"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_stall"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Stall"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_snack"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Snack"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_healthy"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Healthy"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_foodHall"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Foodhall"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+            <Button
+                android:id="@+id/btn_grill"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:text="Grill"
+                android:textAllCaps="false"
+                android:background="@drawable/pill_button"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"/>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/category_recycler_id"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        android:paddingBottom="75dp"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollViewCategory"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

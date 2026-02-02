@@ -1,0 +1,23 @@
+ID,Name,Category,Cuisine,Level,Lat,Lng
+STA-01,Buffalo's Wings N' Things,Casual,American,Upper Ground,14.6582,121.031
+STA-02,Everything But Cheese,Fast Casual,American/Fusion,Upper Ground,14.6585,121.0313
+STA-03,Mangan,Casual,Kapampangan,Level 2,14.6581,121.0308
+STA-04,Magure Japanese Izakaya,Casual,Japanese,Level 2,14.6583,121.0312
+STA-05,Feast & Fire,Buffet,Asian Fusion,Level 2,14.6584,121.0315
+STA-06,Kenny Rogers Roasters,Casual,American,Level 3,14.6586,121.0318
+STA-07,Popeyes,Fast Food,American,Level 3,14.6588,121.0311
+STA-08,Lan Hot Pot Buffet,Buffet,Chinese,Level 3,14.6587,121.0314
+STA-09,Yabu: House of Katsu,Casual,Japanese,Level 2,14.6582,121.0309
+STA-10,Yakimix,Buffet,Japanese/Asian,Level 4,14.659,121.0316
+STA-11,Kuya J Restaurant,Casual,Filipino,Level 3,14.6586,121.0307
+STA-12,Classic Savory,Casual,Filipino-Chinese,Level 2,14.6581,121.0311
+STA-13,Tres,Casual,Filipino,Level 2,14.6584,121.031
+STA-14,Wendy's,Fast Food,American,Upper Ground,14.6585,121.0305
+STA-15,Banh Mi Kitchen,Fast Casual,Vietnamese,Upper Ground,14.6583,121.0308
+STA-16,Starbucks Coffee,Cafe,International,Upper Ground,14.6582,121.0304
+STA-17,BonChon Chicken,Fast Food,Korean-American,Level 3,14.6587,121.0312
+STA-18,Auntie Anne's,Bakery,American,Level 3,14.6589,121.0313
+STA-19,Vizco's Bakeshop,Bakery,Filipino/Cake,Level 2,14.6582,121.0314
+STA-20,Taho Story,Stall,Filipino,Level 2,14.6583,121.0311
+STA-21,24 Chicken,Fast Casual,Korean Fried Chicken,Upper Ground,14.6583,121.0311
+STA-22,Mang Inasal,Fast Food,Filipino Grill,Upper Ground,14.6584,121.0312

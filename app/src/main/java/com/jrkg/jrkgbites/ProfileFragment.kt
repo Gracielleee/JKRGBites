@@ -1,0 +1,62 @@
+package com.jrkg.jrkgbites
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.jrkg.jrkgbites.databinding.FragmentProfileBinding
+import com.jrkg.jrkgbites.viewmodel.MainViewModel
+
+class ProfileFragment : Fragment() {
+
+    private var _binding: FragmentProfileBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var viewModel: MainViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        // 1. Initialize ViewModel (Sharing data with MainActivity)
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
+        // 2. Set the Stats (Favorites Count)
+        // We filter the list from the ViewModel to see how many are favorites
+        val favoriteCount = viewModel.deck.value?.count { it.isFavorite } ?: 0
+        binding.favCountText.text = favoriteCount.toString()
+        binding.neverAgainCountText.text = "0" // Placeholder for future logic
+
+        // 3. Setup Location Switch logic
+        binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                binding.locationStatusText.text = "Location Enabled"
+                Toast.makeText(requireContext(), "Near-me suggestions active", Toast.LENGTH_SHORT).show()
+            } else {
+                binding.locationStatusText.text = "Location Disabled"
+                Toast.makeText(requireContext(), "Showing all restaurants", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        // 4. Logout Logic
+        binding.logoutButton.setOnClickListener {
+            // Keep this as a Toast until your teammates finish the LoginActivity
+            Toast.makeText(requireContext(), "Logging out...", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+}

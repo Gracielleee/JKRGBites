@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="txt_display">32sp</dimen>
+    <dimen name="txt_headline">20sp</dimen>
+    <dimen name="txt_subheading">16sp</dimen>
+    <dimen name="txt_body">14sp</dimen>
+    <dimen name="txt_label">12sp</dimen>
+
+    <dimen name="spacing_huge">64dp</dimen>
+    <dimen name="spacing_large">32dp</dimen>
+    <dimen name="spacing_standard">16dp</dimen>
+
+    <dimen name="logo_height">120dp</dimen>
+    <dimen name="button_height">56dp</dimen>
+
+    <dimen name="touchtarget_min">48dp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fragment_horizontal_margin">16dp</dimen>
+    <dimen name="fragment_vertical_margin">16dp</dimen>
+</resources>
