@@ -1,6 +1,7 @@
 package com.jrkg.jrkgbites
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
@@ -56,6 +57,19 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.navController
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setupWithNavController(navController)
+
+        // Hide BottomNavigationView on specific fragments
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.loginFragment, R.id.registerFragment, R.id.forgotPasswordDialog -> {
+                    bottomNavigationView.visibility = View.GONE
+                }
+                else -> {
+                    bottomNavigationView.visibility = View.VISIBLE
+                }
+            }
+        }
+
 
         // No more direct UI handling or observers in MainActivity for authentication/swipe
         // These functionalities will now be handled within their respective fragments

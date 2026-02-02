@@ -11,15 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.JRKGBites">
+
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:theme="@style/Theme.JRKGBites">
-
-        </activity>
-
-        <activity
-            android:name=".MainActivity2"
             android:exported="true"
             android:label="JRKGBites"
             android:theme="@style/Theme.JRKGBites">

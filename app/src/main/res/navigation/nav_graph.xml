@@ -11,17 +11,6 @@
         android:name="com.jrkg.jrkgbites.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/to_registerFragment"
-            app:destination="@id/registerFragment" />
-        <action
-            android:id="@+id/to_forgotPasswordDialog"
-            app:destination="@id/forgotPasswordDialog" />
-        <action
-            android:id="@+id/action_loginFragment_to_nav_home"
-            app:destination="@id/nav_home"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
@@ -39,11 +28,6 @@
         android:name="com.jrkg.jrkgbites.ForgotPasswordDialog"
         android:label="ForgotPasswordDialog"
         tools:layout="@layout/dialog_forgot_password">
-        <action
-            android:id="@+id/to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/loginFragment"
-            app:popUpToInclusive="true" />
     </dialog>
 
     <!-- Main Application Fragments (existing) -->
@@ -75,7 +59,8 @@
         android:id="@+id/nav_profile"
         android:name="com.jrkg.jrkgbites.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+    </fragment>
 
     <fragment
         android:id="@+id/see_all_favorites"
@@ -88,5 +73,25 @@
         android:name="com.jrkg.jrkgbites.SeeAllRestaurantsFragment"
         android:label="All Restaurants"
         tools:layout="@layout/fragment_see_all_restaurants" />
+
+    <!--    Actions     -->
+    <action
+        android:id="@+id/action_loginFragment_to_nav_home"
+        app:destination="@id/nav_home"
+        app:popUpTo="@id/nav_home"
+        app:popUpToInclusive="true" />
+    <action
+        android:id="@+id/to_loginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/loginFragment"
+        app:popUpToInclusive="true" />
+
+    <action
+        android:id="@+id/to_registerFragment"
+        app:destination="@id/registerFragment" />
+
+    <action
+        android:id="@+id/to_forgotPasswordDialog"
+        app:destination="@id/forgotPasswordDialog" />
 
 </navigation>

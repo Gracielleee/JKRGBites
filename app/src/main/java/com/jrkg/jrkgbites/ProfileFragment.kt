@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.jrkg.jrkgbites.databinding.FragmentProfileBinding
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 
@@ -52,6 +53,7 @@ class ProfileFragment : Fragment() {
         binding.logoutButton.setOnClickListener {
             // Keep this as a Toast until your teammates finish the LoginActivity
             Toast.makeText(requireContext(), "Logging out...", Toast.LENGTH_SHORT).show()
+            findNavController().navigate(R.id.to_loginFragment)
         }
     }
 
