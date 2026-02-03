@@ -43,6 +43,7 @@ class RestaurantCardAdapter(private val restaurants: List<Restaurant>) :
         "cyma greek taverna" to "cyma_greek",
         "salad stop" to "salad_stop",
         "bigoli" to "big_oli",
+        "100 gadz parathas" to "img_100_gadz", // Specific mapping for this logo
         // New entries for recently reported missing logos
         "panublion" to "panublion",
         "lantawan" to "lantawan",

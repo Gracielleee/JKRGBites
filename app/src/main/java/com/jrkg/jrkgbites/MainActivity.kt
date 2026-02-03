@@ -1,13 +1,13 @@
 package com.jrkg.jrkgbites
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.view.View
 import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.data.source.FakeAuthService
@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
 
         // No more direct UI handling or observers in MainActivity for authentication/swipe
         // These functionalities will now be handled within their respective fragments
