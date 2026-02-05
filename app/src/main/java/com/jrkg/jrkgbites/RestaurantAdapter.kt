@@ -9,6 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.jrkg.jrkgbites.model.Restaurant
 
@@ -19,8 +20,8 @@ class RestaurantAdapter(
 
     class RestaurantViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val container: FrameLayout = view.findViewById(R.id.card_flip_container)
-        val cardFront: LinearLayout = view.findViewById(R.id.card_front)
-        val cardBack: LinearLayout = view.findViewById(R.id.card_back)
+        val cardFront: CardView = view.findViewById(R.id.card_front)
+        val cardBack: CardView = view.findViewById(R.id.card_back)
         val frontName: TextView = view.findViewById(R.id.front_name)
         val frontLogo: ImageView = view.findViewById(R.id.front_logo)
         val backName: TextView = view.findViewById(R.id.back_name)

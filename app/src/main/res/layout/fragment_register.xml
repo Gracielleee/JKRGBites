@@ -35,7 +35,7 @@
     <ImageButton
         android:contentDescription="@string/imgDesc_ic_back_chevron"
         android:id="@+id/btnBack"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/touchtarget_min"
         android:layout_height="@dimen/touchtarget_min"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_arrow_back"
@@ -150,9 +150,9 @@
         app:layout_constraintTop_toBottomOf="@id/tilConfirmPassword"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
-        style="@style/CheckBoxPrimary"
         android:layout_marginTop="@dimen/spacing_standard"
         android:textSize="@dimen/txt_body"
+
         android:text="@string/checkboxLabel_TermsAgreement">
 
     </com.google.android.material.checkbox.MaterialCheckBox>
@@ -187,7 +187,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/lbl_GoToLogin"
-        android:textColor="@color/primary"
+        style="@style/SpecialLinkText"
         android:gravity="center_vertical"
         android:layout_marginBottom="@dimen/spacing_huge"
         android:layout_marginEnd="-150dp"

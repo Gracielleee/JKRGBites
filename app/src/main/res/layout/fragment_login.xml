@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:style="http://schemas.android.com/tools">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -118,7 +118,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tilPassword"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"
-        style="@style/CheckBoxPrimary"
         android:layout_marginTop="@dimen/spacing_standard"
         android:textSize="@dimen/txt_label"
         android:text="@string/checkboxLabel_AutoLogin">
@@ -157,11 +156,11 @@
         app:layout_constraintTop_toBottomOf="@+id/btnLogin"
         android:textSize="@dimen/txt_label"/>
 
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnBioAuth"
         style="@style/ButtonOutlined"
         app:icon="@drawable/fingerprint_dialog_fp_icon"
-        app:iconTint="@color/dark"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"
         android:layout_marginTop="@dimen/spacing_standard"
@@ -189,7 +188,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/linkLabel_GoToRegister"
-        android:textColor="@color/primary"
+        style="@style/SpecialLinkText"
         android:gravity="center_vertical"
         android:layout_marginBottom="@dimen/spacing_large"
         android:layout_marginEnd="-150dp"

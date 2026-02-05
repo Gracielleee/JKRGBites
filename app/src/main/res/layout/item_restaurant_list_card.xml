@@ -37,7 +37,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 tools:text="Restaurant Name" />
@@ -47,7 +46,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@android:color/darker_gray"
                 android:textSize="14sp"
                 tools:text="A brief description of the restaurant." />
 
@@ -70,7 +68,6 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="18sp"
-                android:textColor="@android:color/white"
                 tools:text="Restaurant Name (Back)" />
 
             <TextView
@@ -78,7 +75,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:textColor="@android:color/white"
                 tools:text="Category: Italian, Seafood" />
 
             <TextView
@@ -86,7 +82,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@android:color/white"
                 tools:text="Cuisine: Pizza, Pasta" />
 
             <TextView
@@ -94,7 +89,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@android:color/white"
                 tools:text="Level: Ground Floor" />
 
             <TextView
@@ -102,7 +96,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:textColor="@android:color/white"
                 tools:text="Tags: Vegetarian, Halal, Outdoor Seating" />
 
         </LinearLayout>
