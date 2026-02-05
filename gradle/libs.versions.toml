@@ -7,6 +7,8 @@ junitVersion = "1.1.5" # Updated from 1.3.0 to 1.1.5 for consistency with androi
 espressoCore = "3.5.1" # Updated from 3.7.0 to 3.5.1 for consistency
 lifecycleRuntimeKtx = "2.9.4"
 
+coreSplashScreen = "1.2.0"
+
 # New versions for XML-based Android development
 appcompat = "1.6.1"
 material = "1.11.0"
@@ -33,6 +35,8 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExtJunit" } # Reference new version
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
+
+core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashScreen" }
 
 # New libraries for XML-based Android development
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }

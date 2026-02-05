@@ -15,6 +15,7 @@ import com.jrkg.jrkgbites.domain.*
 import com.jrkg.jrkgbites.services.BiometricService
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,6 +23,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 

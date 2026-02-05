@@ -59,6 +59,9 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
     implementation(libs.multidex)
 
+    // Splashscreen
+    implementation(libs.core.splashscreen)
+
     // Test Dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
