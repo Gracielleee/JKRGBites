@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground">
+
+    <View
+        android:id="@+id/action_bar_bg"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:background="?attr/colorSurfaceContainerHigh"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="@dimen/touchtarget_min"
+        android:layout_height="@dimen/touchtarget_min"
+        android:contentDescription="@string/back_button_description"
+        android:padding="@dimen/spacing_standard"
+        app:srcCompat="@drawable/ic_arrow_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/action_bar_bg"
+        app:layout_constraintBottom_toBottomOf="@id/action_bar_bg"
+        app:tint="?attr/colorOnSurface" />
+
+    <TextView
+        android:id="@+id/screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Restaurant Details"
+        android:textSize="@dimen/txt_headline"
+        android:textColor="?attr/colorOnSurface"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/back_button"
+        app:layout_constraintTop_toTopOf="@id/action_bar_bg"
+        app:layout_constraintBottom_toBottomOf="@id/action_bar_bg"
+        android:layout_marginStart="@dimen/spacing_medium" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/action_bar_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_standard">
+
+            <ImageView
+                android:id="@+id/restaurant_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:background="@color/md_theme_surface"
+                android:contentDescription="@null"
+                tools:src="@drawable/ic_launcher_background"
+                android:layout_marginBottom="@dimen/spacing_standard"/>
+
+            <TextView
+                android:id="@+id/restaurant_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_display"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                tools:text="The Grand Eatery"
+                android:layout_marginBottom="@dimen/spacing_medium"/>
+
+            <TextView
+                android:id="@+id/restaurant_category_cuisine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_body"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="American • Casual Dining"
+                android:layout_marginBottom="@dimen/spacing_small"/>
+
+            <TextView
+                android:id="@+id/restaurant_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_body"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="Level: Upper Ground"
+                android:layout_marginBottom="@dimen/spacing_small"/>
+
+            <TextView
+                android:id="@+id/restaurant_tags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/txt_body"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                tools:text="Tags: Family-friendly, Wifi, Outdoor Seating"
+                android:layout_marginBottom="@dimen/spacing_standard"/>
+
+            <TextView
+                android:id="@+id/map_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Location on Map"
+                android:textSize="@dimen/txt_subheading"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginTop="@dimen/spacing_standard"
+                android:layout_marginBottom="@dimen/spacing_medium"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:background="@color/md_theme_surfaceContainerHigh"
+                android:layout_marginBottom="@dimen/spacing_standard">
+                <!-- Placeholder for Map View -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Map Placeholder"
+                    android:layout_gravity="center"
+                    android:textColor="?attr/colorOnSurfaceVariant"
+                    android:textSize="@dimen/txt_headline"/>
+            </FrameLayout>
+
+            <!-- Rating and Comment Input Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Rating"
+                android:textSize="@dimen/txt_subheading"
+                android:textStyle="bold"
+                android:textColor="?attr/colorOnSurface"
+                android:layout_marginTop="@dimen/spacing_standard"
+                android:layout_marginBottom="@dimen/spacing_medium"/>
+
+            <RatingBar
+                android:id="@+id/restaurant_rating_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="1.0"
+                android:rating="0.0"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="@dimen/spacing_medium" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Your comments (optional)"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_marginBottom="@dimen/spacing_medium">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/rating_comment_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:lines="3"
+                    android:gravity="top" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cancel_rating_button"
+                    style="?attr/materialButtonOutlinedStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="@dimen/spacing_small"
+                    android:text="Cancel" />
+
+                <Button
+                    android:id="@+id/submit_rating_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/spacing_small"
+                    android:text="Submit Rating" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

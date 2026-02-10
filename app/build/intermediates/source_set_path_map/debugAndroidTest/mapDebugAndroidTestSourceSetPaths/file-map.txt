@@ -1,0 +1,7 @@
+com.jrkg.jrkgbites.test.app-androidTest-0 C:\MMDC\MDA\Development Phases\Sprint_2.2\app\build\generated\res\resValues\androidTest\debug
+com.jrkg.jrkgbites.test.app-updated_navigation_xml-1 C:\MMDC\MDA\Development Phases\Sprint_2.2\app\build\generated\updated_navigation_xml\debugAndroidTest
+com.jrkg.jrkgbites.test.app-mergeDebugAndroidTestResources-2 C:\MMDC\MDA\Development Phases\Sprint_2.2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.jrkg.jrkgbites.test.app-mergeDebugAndroidTestResources-3 C:\MMDC\MDA\Development Phases\Sprint_2.2\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.jrkg.jrkgbites.test.app-debugAndroidTest-4 C:\MMDC\MDA\Development Phases\Sprint_2.2\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
+com.jrkg.jrkgbites.test.app-core-1.5.0-5 C:\Users\Ralph\.gradle\caches\8.13\transforms\6081d806cb016880c2a1687882748bee\transformed\core-1.5.0\res
+com.jrkg.jrkgbites.test.app-annotation-experimental-1.3.0-6 C:\Users\Ralph\.gradle\caches\8.13\transforms\c24869a85ce0cca1f94cac9779179185\transformed\annotation-experimental-1.3.0\res

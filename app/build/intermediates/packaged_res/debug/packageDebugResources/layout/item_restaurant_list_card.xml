@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <FrameLayout
+        android:id="@+id/card_flip_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- Front of the card -->
+        <LinearLayout
+            android:id="@+id/card_front"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/restaurantImage"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/restaurantName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                tools:text="Restaurant Name" />
+
+            <TextView
+                android:id="@+id/restaurantDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14sp"
+                tools:text="A brief description of the restaurant." />
+
+        </LinearLayout>
+
+        <!-- Back of the card -->
+        <LinearLayout
+            android:id="@+id/card_back"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:background="#2196F3"
+            android:gravity="center_vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/back_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                tools:text="Restaurant Name (Back)" />
+
+            <TextView
+                android:id="@+id/back_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                tools:text="Category: Italian, Seafood" />
+
+            <TextView
+                android:id="@+id/back_cuisine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                tools:text="Cuisine: Pizza, Pasta" />
+
+            <TextView
+                android:id="@+id/back_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                tools:text="Level: Ground Floor" />
+
+            <TextView
+                android:id="@+id/back_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                tools:text="Tags: Vegetarian, Halal, Outdoor Seating" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

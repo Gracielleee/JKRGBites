@@ -1,0 +1,197 @@
+Project Code Explanation
+
+JRKG Bites application logic.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/model/Restaurant.kt
+
+- Defines the data structure for a 'Restaurant' and its 'Location'.
+- These are Kotlin data classes, which are simple containers for data.
+- The structure matches the 'JRKGBites.json' file, allowing for easy parsing.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/data/RestaurantRepository.kt
+
+- This class is responsible for all data operations.
+- Its main job is to read the 'JRKGBites.json' file from the assets folder.
+- It uses the Gson library to parse the JSON text into a list of 'Restaurant' objects.
+- It acts as the single source of truth for all restaurant data in the app.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/services/ShakeDetector.kt
+
+- This class handles the device's shake gesture detection.
+- It uses the phone's accelerometer sensor to listen for motion.
+- It contains logic to calculate the force of acceleration to determine if a shake has occurred.
+- It provides 'start()' and 'stop()' methods to save battery by only listening when needed.
+- When a shake is detected, it calls a listener function that the main app can react to which is the roulette function.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/RestaurantPicker.kt
+
+- This class contains the business logic for the 'roulette' or 'shake-to-pick' feature.
+- It uses the 'RestaurantRepository' to get the list of all restaurants.
+- Its main method, 'pickRandom', selects a random item (a restaurant name, cuisine, or category) based on the filters provided.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/SwipeManager.kt
+
+- This class manages the logic for the Tinder-style swipe feature.
+- It maintains the 'deck' of restaurants to be swiped.
+- It also keeps track of the user's 'Favorites' and 'Never Again' lists.
+- The 'swipe' method updates these lists based on the direction of the swipe (Up for favorite, Down for never again).
+- It has a public 'addToNeverAgain' method so other parts of the app (like the rating system) can add to this list.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/SearchManager.kt
+
+- This class handles the logic for searching and sorting restaurants.
+- Its 'searchAndSort' method filters the full list of restaurants based on a search query (checking name, cuisine, and category).
+- It can also sort the results by name or rating.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/RatingManager.kt
+
+- This class contains the logic for submitting a user rating.
+- Its 'submitRating' method enforces the rule from the project plan.
+- If a rating is below 3 stars, it uses the 'SwipeManager' to automatically add the restaurant to the 'Never Again' list.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/viewmodel/MainViewModel.kt
+
+- This is the central hub or 'brain' of the application's logic.
+- It holds instances of all the manager classes (Picker, Swipe, Search, Rating, Auth).
+- It exposes all the application's state (like the current deck of cards, required auth method, etc.) for the UI to display.
+- It provides functions that the UI can call (e.g., 'swipe()', 'search()', 'setBiometricPreference()').
+- The 'MainViewModelFactory' is a helper class required to create the ViewModel with all its manager dependencies.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/MainActivity.kt
+
+- This is the main entry point of the app.
+- It is responsible for setting up the application's view.
+- In the 'JRKGBitesApp' function, it initializes all the logic classes we've created (Repository, Managers, ViewModel).
+- It connects the 'ShakeDetector' to the device's lifecycle and to the ViewModel.
+- It displays the current state of the app, such as the top restaurant on the swipe deck and the required auth method.
+- It includes test controls (buttons and a switch) to verify the logic.
+
+
+---
+- The following items were added for the Biometric Authentication feature or FingerPrint Scanning for login
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/services/BiometricService.kt
+
+- This is a new service dedicated to handling fingerprint authentication.
+- It uses Android's BiometricPrompt API.
+- The 'getAuthStatus' method checks if the device has the necessary hardware and if a fingerprint is enrolled.
+- The 'authenticate' method is responsible for showing the actual fingerprint prompt to the user.
+
+--- 
+
+File: app/src/main/java/com/jrkg/jrkgbites/data/UserPreferencesManager.kt
+
+- This new class is responsible for saving and loading the user's personal settings.
+- It uses Android's SharedPreferences to persistently store data on the device.
+- Currently, it manages one setting: whether the user wants to use biometric authentication or not.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/AuthManager.kt
+
+- This new domain class holds the business logic for deciding which login method to use.
+- It uses both the 'BiometricService' and 'UserPreferencesManager' to make a decision.
+- Its 'getRequiredAuthMethod' method returns 'BIOMETRIC' only if the user has enabled the preference AND the device is capable. Otherwise, it returns 'PASSWORD'.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/viewmodel/MainViewModel.kt 
+
+- The ViewModel was updated to orchestrate the new authentication logic.
+- It now includes the 'AuthManager' and 'UserPreferencesManager'.
+- It exposes the 'requiredAuthMethod' so the UI knows which login flow to show.
+- It also exposes the user's preference for biometrics to be used by the toggle switch.
+- A new function, 'setBiometricPreference', was added to allow the UI to change this setting.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/MainActivity.kt (Modification)
+
+- The main activity was updated to initialize the new authentication-related classes ('BiometricService', 'UserPreferencesManager', 'AuthManager').
+- It now passes these new managers to the 'MainViewModel'.
+- A 'Switch' (toggle button) was added to the UI for testing purposes. This switch allows you to turn the biometric preference on and off to see the 'Required Auth' status change in real-time.
+
+---
+- The following items were added for the User Authentication and Session Management features.
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/model/User.kt
+
+- This file defines the blueprint for a 'User' in the app.
+- It lists all the pieces of information the app can store about a person, like their user ID, email, name, and a list of their favorite restaurants.
+- It also includes a blueprint for 'User Preferences' to store settings like their favorite types of food.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/service/AuthService.kt
+
+- This file is like a rulebook for how logging in and signing up should work.
+- It doesn't do the work itself, but it sets the rules that any part of the app handling user accounts must follow.
+- It defines what's required: a way to log in, a way to sign up, a way to log out, and a way to check if someone is currently logged in.
+- It also defines the possible results of a login attempt: Success, Error, or still Loading.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/data/source/FakeAuthService.kt
+
+- This file is a 'fake' login system used for testing. It follows the rules set in the AuthService file.
+- Instead of connecting to a real online database, it uses a simple, hardcoded list of users.
+- This allows developers to test the login and signup features without needing an internet connection or a real user account.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/domain/SessionManager.kt
+
+- This class is the 'gatekeeper' that manages the user's login status.
+- It determines if a user is currently logged in or logged out.
+- It uses the login system (like the FakeAuthService) to perform the actual sign-in and sign-out actions and keeps track of the result for the rest of the app to see.
+
+---
+- The following are utility and theme files.
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/utils/LocationUtils.kt
+
+- A utility file containing helper functions related to geographical locations.
+- The 'calculateDistance' function provides a straightforward way to calculate the distance in meters between two latitude/longitude points.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/ui/theme/Color.kt
+
+- A standard file that defines the application's color palette.
+- It specifies the exact color codes for the app's light and dark themes (e.g., which blue to use for the primary color).
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/ui/theme/Type.kt
+
+- A standard file that defines the application's typography (the style of the text).
+- It sets up the different font styles, sizes, and weights (e.g., 'body text', 'large headline') to be used consistently throughout the app.
+
+---
+
+File: app/src/main/java/com/jrkg/jrkgbites/ui/theme/Theme.kt
+
+- This is the main theme file that brings the app's design together.
+- It combines the color schemes (from Color.kt) and text styles (from Type.kt) to create a cohesive look and feel.
+- It also contains the logic to correctly apply either the light or dark theme based on the phone's system settings.

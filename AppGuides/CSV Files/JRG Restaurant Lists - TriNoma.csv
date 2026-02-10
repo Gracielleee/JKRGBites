@@ -1,0 +1,31 @@
+ID,Name,Category,Cuisine,Level,Lat,Lng
+TRI-G01,Manam,Casual,Modern Filipino,Ground,14.6548,121.0325
+TRI-G02,Romantic Baboy,Buffet,Korean BBQ,Ground,14.6548,121.0322
+TRI-G03,J.CO Donuts & Coffee,Cafe,International,Ground,14.6545,121.0323
+TRI-G04,Kenny Rogers Roasters,Casual,American,Level M1,14.655,121.0324
+TRI-G05,Chowking,Fast Food,Filipino-Chinese,Level 1,14.6551,121.0326
+TRI-L11,Ramen Nagi,Casual,Japanese,Level 1,14.6552,121.0328
+TRI-L12,Botejyu,Casual,Japanese,Level 1,14.6554,121.0327
+TRI-L13,Mary Grace Cafe,Cafe,Filipino,Level 1,14.6553,121.0329
+TRI-L14,Mesa,Casual,Filipino,Level 1,14.6555,121.0331
+TRI-L15,Popeyes,Fast Food,American,Level 1,14.6551,121.0332
+TRI-L21,Gerry’s Grill,Casual,Filipino,Level 2 (Garden),14.6558,121.0334
+TRI-L22,Racks,Casual,American BBQ,Level 2 (Garden),14.6557,121.033
+TRI-L23,Hanamaruken Ramen,Casual,Japanese,Level 2,14.6556,121.0331
+TRI-L24,Recipes,Casual,Filipino,Level 2,14.6554,121.0328
+TRI-L25,Tiong Bahru,Casual,Singaporean,Level 2,14.6555,121.0329
+TRI-L26,Khao Khai,Fast Casual,Thai,Level 2,14.6554,121.0328
+TRI-L27,Mesa Steak Sizzlers,Casual,Filipino/Western,Level 2,14.6555,121.0329
+TRI-L28,Conti's,Bakery/Resto,Filipino/Western,Level 2,14.6556,121.0332
+TRI-L31,Abe,Casual,Kapampangan,Level 3,14.6558,121.0334
+TRI-L32,Kimpura,Casual,Japanese,Level 3,14.656,121.0336
+TRI-L33,Mango Tree,Casual,Thai,Level 3,14.6559,121.0335
+TRI-L41,Texas Roadhouse,Casual,American Steak,Level 4,14.6559,121.0335
+TRI-L42,Cyma Greek Taverna,Casual,Greek,Level 4,14.6557,121.0333
+TRI-L43,Shi Lin,Casual,Chinese/Dimsum,Level 4,14.6559,121.0335
+TRI-L44,TGI Friday's,Casual,American,Level 4,14.656,121.0337
+TRI-L45,El Pollo Loco,Casual,Mexican,Level 4,14.6561,121.0338
+TRI-L46,SaladStop!,Healthy,International,Level 4,14.6562,121.0339
+TRI-L47,Bigoli,Fast Casual,Italian,Level 4,14.656,121.0333
+TRI-L48,Shakey's Pizza,Casual,American/Pizza,Level 4,14.6561,121.0336
+TRI-L49,Krispy Kreme,Cafe/Snack,American,Level 4,14.655,121.0326

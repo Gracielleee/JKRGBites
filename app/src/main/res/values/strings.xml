@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--    Login Screen-->
+    <string name="etHint_Email">Email</string>
+    <string name="etHint_Password">Password</string>
+    <string name="checkboxLabel_AutoLogin">Keep me logged in</string>
+    <string name="linkLabel_ForgotPassword">Forgot Password?</string>
+    <string name="btnLabel_Login">Login</string>
+    <string name="lbl_AltLogin">Or Login with:</string>
+    <string name="btnLabel_BioAuth">"   Biometric Authentication"</string>
+    <string name="lbl_BeforeGoToRegister">Don\'t have an account?</string>
+    <string name="linkLabel_GoToRegister">" Register Now"</string>
+    <string name="header_Login">Please Login to your Account</string>
+    <string name="display_Login">Welcome back!</string>
+    <string name="imgDesc_Jrkgbites_logo">JRKGbites logo</string>
+
+    <!--    Login Sreen (sw720dp-land)-->
+    <string name="imgDesc_LoginLandBg">holographic image background</string>
+
+    <!--    Register Screen-->
+    <string name="imgDesc_ic_back_chevron">back button</string>
+    <string name="back_button_description">Back button</string>
+    <string name="display_Register">Hello! Register to get started</string>
+    <string name="etHint_Username">Nickname</string>
+    <string name="etHint_ConfirmPassword">Confirm password</string>
+    <string name="checkboxLabel_TermsAgreement">I agree to the Terms and Conditions and Privacy Policy</string>
+    <string name="btnLabel_Register">Register</string>
+    <string name="lbl_BeforeGoToLogin">Already have an account?</string>
+    <string name="lbl_GoToLogin">"  Login Now"</string>
+
+    <!--    Forgot Password Dialog-->
+    <string name="display_ForgotPasswordDialog">Forgot Your Password?</string>
+    <string name="header_ForgotPasswordDialog">No worries, we\'ll help you.</string>
+    <string name="instructions_ForgotPasswordDialog">Enter your email and we\'ll send you a link to reset your password.</string>
+    <string name="btnLabel_Submit">Submit</string>
+    <string name="lbl_BackToLogin">Back to Login</string>
+
+
+</resources>

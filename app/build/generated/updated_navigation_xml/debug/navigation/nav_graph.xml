@@ -1,0 +1,120 @@
+<navigation
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:id="@+id/nav_graph"
+app:startDestination="@id/loginFragment" > <!-- Changed start destination to loginFragment -->
+
+
+<!-- Authentication Fragments -->
+<fragment
+    android:id="@+id/loginFragment"
+    android:name="com.jrkg.jrkgbites.LoginFragment"
+    android:label="Login"
+    tools:layout="@layout/fragment_login" >
+
+</fragment>
+<fragment
+    android:id="@+id/registerFragment"
+    android:name="com.jrkg.jrkgbites.RegisterFragment"
+    android:label="Register"
+    tools:layout="@layout/fragment_register" >
+
+    <action
+        android:id="@+id/to_loginFragment"
+        app:destination="@id/loginFragment"
+        app:popUpTo="@id/loginFragment"
+        app:popUpToInclusive="true" />
+
+</fragment>
+<dialog
+    android:id="@+id/forgotPasswordDialog"
+    android:name="com.jrkg.jrkgbites.ForgotPasswordDialog"
+    android:label="ForgotPasswordDialog"
+    tools:layout="@layout/dialog_forgot_password" >
+
+</dialog>
+
+<!-- Main Application Fragments (existing) -->
+<fragment
+    android:id="@+id/nav_home"
+    android:name="com.jrkg.jrkgbites.HomeFragment"
+    android:label="Home"
+    tools:layout="@layout/fragment_home" />
+<fragment
+    android:id="@+id/nav_favorite"
+    android:name="com.jrkg.jrkgbites.FavoriteFragment"
+    android:label="Favorites"
+    tools:layout="@layout/fragment_favorite" />
+<fragment
+    android:id="@+id/nav_search"
+    android:name="com.jrkg.jrkgbites.SearchFragment"
+    android:label="Search"
+    tools:layout="@layout/fragment_search" />
+<fragment
+    android:id="@+id/nav_picker"
+    android:name="com.jrkg.jrkgbites.PickerFragment"
+    android:label="Picker"
+    tools:layout="@layout/fragment_picker" >
+
+    <action
+        android:id="@+id/action_nav_picker_to_restaurantDetailsFragment"
+        app:destination="@id/restaurantDetailsFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/restaurantDetailsFragment"
+    android:name="com.jrkg.jrkgbites.RestaurantDetailsFragment"
+    android:label="Restaurant Details"
+    tools:layout="@layout/fragment_restaurant_details" >
+
+    <argument
+        android:name="restaurantId"
+        app:argType="integer" />
+
+</fragment>
+<fragment
+    android:id="@+id/nav_profile"
+    android:name="com.jrkg.jrkgbites.ProfileFragment"
+    android:label="Profile"
+    tools:layout="@layout/fragment_profile" >
+
+    <action
+        android:id="@+id/action_nav_profile_to_restaurantRatingFragment"
+        app:destination="@id/restaurantRatingFragment" />
+
+</fragment>
+<fragment
+    android:id="@+id/restaurantRatingFragment"
+    android:name="com.jrkg.jrkgbites.RestaurantRatingFragment"
+    android:label="Restaurant Ratings"
+    tools:layout="@layout/fragment_restaurant_rating" />
+<fragment
+    android:id="@+id/see_all_favorites"
+    android:name="com.jrkg.jrkgbites.RecentlyAddedFavoriteFragment"
+    android:label="Recently Added"
+    tools:layout="@layout/fragment_see_recently_added" />
+<fragment
+    android:id="@+id/see_all_category"
+    android:name="com.jrkg.jrkgbites.SeeAllRestaurantsFragment"
+    android:label="All Restaurants"
+    tools:layout="@layout/fragment_see_all_restaurants" />
+
+<!-- Actions -->
+<action
+    android:id="@+id/action_loginFragment_to_nav_home"
+    app:destination="@id/nav_home"
+    app:popUpTo="@id/nav_home"
+    app:popUpToInclusive="true" />
+<action
+    android:id="@+id/to_loginFragment"
+    app:destination="@id/loginFragment"
+    app:popUpTo="@id/loginFragment"
+    app:popUpToInclusive="true" />
+<action
+    android:id="@+id/to_registerFragment"
+    app:destination="@id/registerFragment" />
+<action
+    android:id="@+id/to_forgotPasswordDialog"
+    app:destination="@id/forgotPasswordDialog" />
+</navigation>
