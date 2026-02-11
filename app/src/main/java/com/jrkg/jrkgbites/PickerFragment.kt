@@ -273,22 +273,9 @@ class PickerFragment : Fragment() {
         binding.pickerCardLocation.text = restaurant.level.orEmpty()
         binding.pickerCardDetails.text = restaurant.tags?.joinToString(", ").orEmpty() // Assuming picker_card_details
 
-        // Load image - similar logic to RestaurantAdapter, but for a single card
-        val resourceName = restaurant.name?.lowercase()
-            ?.replace(" ", "")
-            ?.replace("-", "")
-            ?.replace(".", "")
-            ?.replace("&", "")
-            ?.replace("'", "")
-            ?.replace("’", "")
-            ?.replace(",", "") // Added for robustness
-            ?.replace("!", "") // Added for robustness
-            ?.replace("?", "") // Added for robustness
-            ?.replace("/", "") // Added for robustness
-            ?: ""
-
-        val resId = if (resourceName.isNotEmpty()) {
-            context?.resources?.getIdentifier(resourceName, "drawable", context?.packageName) ?: 0
+        // Load image using the explicit logoResourceName
+        val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
+            context?.resources?.getIdentifier(restaurant.logoResourceName, "drawable", context?.packageName) ?: 0
         } else {
             0
         }

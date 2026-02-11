@@ -1,6 +1,6 @@
 package com.jrkg.jrkgbites
 
-import android.app.Application // Ensure this import is present
+import android.app.Application
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider

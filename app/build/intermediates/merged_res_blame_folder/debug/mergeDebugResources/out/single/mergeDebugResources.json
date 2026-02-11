@@ -120,12 +120,12 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/mipmap-hdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_armynavy.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/armynavy.jpg"
-    },
-    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_gerrysgrill.jpg.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/gerrysgrill.jpg"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_armynavy.jpg.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/armynavy.jpg"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_bashcafe.jpg.flat",
@@ -194,6 +194,10 @@
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_lantawan.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/lantawan.png"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_islandbistro.jpg.flat",
@@ -340,6 +344,10 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/mantraindiankitchen.jpg"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_bigchefpizza.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/bigchefpizza.png"
+    },
+    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/animator_card_flip_back.xml.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/animator/card_flip_back.xml"
     },
@@ -480,6 +488,10 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/manilacreamery.jpg"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_botejyu.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/botejyu.png"
+    },
+    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_fatfook.png.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/fatfook.png"
     },
@@ -544,6 +556,10 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/mrchops.jpg"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_seaportbar.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/seaportbar.png"
+    },
+    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/layout_fragment_login.xml.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/layout/fragment_login.xml"
     },
@@ -558,6 +574,10 @@
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_saladstop.jpg.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/saladstop.jpg"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_kawayancafe.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/kawayancafe.png"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_crisostomo.jpg.flat",
@@ -592,12 +612,20 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/rectangle_1.xml"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_sunbirdridge.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/sunbirdridge.png"
+    },
+    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_hapchan.jpg.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/hapchan.jpg"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_kyukyuramen.png.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/kyukyuramen.png"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_seabeancoffeehouse.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/seabeancoffeehouse.png"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_resto_general_card.xml.flat",
@@ -624,8 +652,16 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/layout/dialog_email_verification.xml"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_gangnamgrill.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/gangnamgrill.png"
+    },
+    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_holographic.webp.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/drawable/holographic.webp"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_panublion.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/panublion.png"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_inihawexpress.jpg.flat",
@@ -728,6 +764,10 @@
         "source": "com.jrkg.jrkgbites.app-main-6:/mipmap-hdpi/ic_launcher.webp"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_chloeslechon.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/chloeslechon.png"
+    },
+    {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
     },
@@ -742,6 +782,10 @@
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "com.jrkg.jrkgbites.app-main-6:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_hillbrewscoffee.png.flat",
+        "source": "com.jrkg.jrkgbites.app-main-6:/drawable/hillbrewscoffee.png"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-4:/drawable_burgoo.jpg.flat",

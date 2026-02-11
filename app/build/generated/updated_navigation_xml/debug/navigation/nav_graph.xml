@@ -70,7 +70,7 @@ app:startDestination="@id/loginFragment" > <!-- Changed start destination to log
 
     <argument
         android:name="restaurantId"
-        app:argType="integer" />
+        app:argType="string" />
 
 </fragment>
 <fragment

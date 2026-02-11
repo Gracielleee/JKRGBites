@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
                 progressBarHome = binding.progressBarHome
                 textViewEmptyState = binding.textViewEmptyState
         
-                viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+                viewModel = ViewModelProvider(requireActivity(), MainViewModelFactory(requireActivity().application))[MainViewModel::class.java]
         
                 setupRecyclerView()
                 observeData() // Renamed to observe general data, including search results

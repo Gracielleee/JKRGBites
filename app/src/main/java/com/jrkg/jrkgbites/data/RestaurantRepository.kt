@@ -18,7 +18,7 @@ class RestaurantRepository(private val restaurantDao: RestaurantDao) {
     }
 
     // Get a specific restaurant by its ID
-    fun getRestaurantById(id: Int): Flow<Restaurant?> {
+    fun getRestaurantById(id: String): Flow<Restaurant?> {
         return restaurantDao.getRestaurantById(id)
     }
 
@@ -40,7 +40,8 @@ class RestaurantRepository(private val restaurantDao: RestaurantDao) {
         val inputStream = context.resources.openRawResource(R.raw.restaurants)
         val reader = InputStreamReader(inputStream)
         val restaurantListType = object : TypeToken<List<Restaurant>>() {}.type
-        return Gson().fromJson(reader, restaurantListType)
+        val restaurants: List<Restaurant> = Gson().fromJson(reader, restaurantListType)
+        return restaurants
     }
 
     // Search restaurants by name

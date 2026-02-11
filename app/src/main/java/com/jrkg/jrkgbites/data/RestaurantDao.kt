@@ -21,7 +21,7 @@ interface RestaurantDao {
     fun getAllRestaurants(): Flow<List<Restaurant>>
 
     @Query("SELECT * FROM restaurants WHERE id = :id")
-    fun getRestaurantById(id: Int): Flow<Restaurant?>
+    fun getRestaurantById(id: String): Flow<Restaurant?>
 
     @Update
     suspend fun update(restaurant: Restaurant)

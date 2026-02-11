@@ -49,13 +49,13 @@ class RestaurantRatingFragment : Fragment() {
         ratingAdapter = RestaurantRatingAdapter(
             onRatingUpdate = {
                 // Callback function for when a rating is updated from the adapter
-                viewModel.submitRating(it.restaurantId.toInt(), it.rating.toInt(), it.comment)
+                viewModel.submitRating(it.restaurantId, it.rating.toInt(), it.comment)
                 Toast.makeText(requireContext(), "Rating for ${it.restaurantId} updated!", Toast.LENGTH_SHORT).show()
             },
             onRatingDelete = { rating ->
                 // For future implementation: Add a confirmation dialog before deleting
                 // For now, we'll just set rating to 0 and remove comment
-                viewModel.submitRating(rating.restaurantId.toInt(), 0, "")
+                viewModel.submitRating(rating.restaurantId, 0, "")
                 Toast.makeText(requireContext(), "Rating for ${rating.restaurantId} removed.", Toast.LENGTH_SHORT).show()
             }
         )

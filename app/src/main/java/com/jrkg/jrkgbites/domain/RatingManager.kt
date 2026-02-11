@@ -34,14 +34,15 @@ class RatingManager(
      * @param rating The star rating given by the user (e.g., 1, 2, 3, 4, 5).
      * @param comment The user's comment for the rating.
      */
-    suspend fun submitRating(restaurantId: Int, rating: Int, comment: String) { // Made suspend
-        val existingRating = restaurantRatingDao.getLatestRatingForRestaurant(restaurantId.toString()).first()
+    suspend fun submitRating(restaurantId: String, rating: Int, comment: String) { // Made suspend
+        val existingRating = restaurantRatingDao.getLatestRatingForRestaurant(restaurantId).first()
 
         val newRating = if (existingRating != null) {
             existingRating.copy(rating = rating, comment = comment, timestamp = System.currentTimeMillis())
         } else {
-            RestaurantRating(restaurantId = restaurantId.toString(), rating = rating, comment = comment, timestamp = System.currentTimeMillis())
+            RestaurantRating(restaurantId = restaurantId, rating = rating, comment = comment, timestamp = System.currentTimeMillis())
         }
+
 
         restaurantRatingDao.insert(newRating) // Insert (or update due to REPLACE strategy)
 

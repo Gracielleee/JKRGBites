@@ -49,13 +49,17 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `restaurants` (`id`,`name`,`category`,`cuisine`,`level`,`lat`,`lng`,`tags`,`isFavorite`) VALUES (?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `restaurants` (`id`,`name`,`category`,`cuisine`,`level`,`location`,`lat`,`lng`,`logoResourceName`,`tags`,`isFavorite`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final Restaurant entity) {
-        statement.bindLong(1, entity.getId());
+        if (entity.getId() == null) {
+          statement.bindNull(1);
+        } else {
+          statement.bindString(1, entity.getId());
+        }
         if (entity.getName() == null) {
           statement.bindNull(2);
         } else {
@@ -76,24 +80,34 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         } else {
           statement.bindString(5, entity.getLevel());
         }
-        if (entity.getLat() == null) {
+        if (entity.getLocation() == null) {
           statement.bindNull(6);
         } else {
-          statement.bindString(6, entity.getLat());
+          statement.bindString(6, entity.getLocation());
         }
-        if (entity.getLng() == null) {
+        if (entity.getLat() == null) {
           statement.bindNull(7);
         } else {
-          statement.bindString(7, entity.getLng());
+          statement.bindString(7, entity.getLat());
+        }
+        if (entity.getLng() == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.getLng());
+        }
+        if (entity.getLogoResourceName() == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.getLogoResourceName());
         }
         final String _tmp = __converters.fromStringList(entity.getTags());
         if (_tmp == null) {
-          statement.bindNull(8);
+          statement.bindNull(10);
         } else {
-          statement.bindString(8, _tmp);
+          statement.bindString(10, _tmp);
         }
         final int _tmp_1 = entity.isFavorite() ? 1 : 0;
-        statement.bindLong(9, _tmp_1);
+        statement.bindLong(11, _tmp_1);
       }
     };
     this.__deletionAdapterOfRestaurant = new EntityDeletionOrUpdateAdapter<Restaurant>(__db) {
@@ -106,20 +120,28 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       @Override
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final Restaurant entity) {
-        statement.bindLong(1, entity.getId());
+        if (entity.getId() == null) {
+          statement.bindNull(1);
+        } else {
+          statement.bindString(1, entity.getId());
+        }
       }
     };
     this.__updateAdapterOfRestaurant = new EntityDeletionOrUpdateAdapter<Restaurant>(__db) {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `restaurants` SET `id` = ?,`name` = ?,`category` = ?,`cuisine` = ?,`level` = ?,`lat` = ?,`lng` = ?,`tags` = ?,`isFavorite` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `restaurants` SET `id` = ?,`name` = ?,`category` = ?,`cuisine` = ?,`level` = ?,`location` = ?,`lat` = ?,`lng` = ?,`logoResourceName` = ?,`tags` = ?,`isFavorite` = ? WHERE `id` = ?";
       }
 
       @Override
       protected void bind(@NonNull final SupportSQLiteStatement statement,
           @NonNull final Restaurant entity) {
-        statement.bindLong(1, entity.getId());
+        if (entity.getId() == null) {
+          statement.bindNull(1);
+        } else {
+          statement.bindString(1, entity.getId());
+        }
         if (entity.getName() == null) {
           statement.bindNull(2);
         } else {
@@ -140,25 +162,39 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         } else {
           statement.bindString(5, entity.getLevel());
         }
-        if (entity.getLat() == null) {
+        if (entity.getLocation() == null) {
           statement.bindNull(6);
         } else {
-          statement.bindString(6, entity.getLat());
+          statement.bindString(6, entity.getLocation());
         }
-        if (entity.getLng() == null) {
+        if (entity.getLat() == null) {
           statement.bindNull(7);
         } else {
-          statement.bindString(7, entity.getLng());
+          statement.bindString(7, entity.getLat());
+        }
+        if (entity.getLng() == null) {
+          statement.bindNull(8);
+        } else {
+          statement.bindString(8, entity.getLng());
+        }
+        if (entity.getLogoResourceName() == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.getLogoResourceName());
         }
         final String _tmp = __converters.fromStringList(entity.getTags());
         if (_tmp == null) {
-          statement.bindNull(8);
+          statement.bindNull(10);
         } else {
-          statement.bindString(8, _tmp);
+          statement.bindString(10, _tmp);
         }
         final int _tmp_1 = entity.isFavorite() ? 1 : 0;
-        statement.bindLong(9, _tmp_1);
-        statement.bindLong(10, entity.getId());
+        statement.bindLong(11, _tmp_1);
+        if (entity.getId() == null) {
+          statement.bindNull(12);
+        } else {
+          statement.bindString(12, entity.getId());
+        }
       }
     };
   }
@@ -251,15 +287,21 @@ public final class RestaurantDao_Impl implements RestaurantDao {
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
           final int _cursorIndexOfCuisine = CursorUtil.getColumnIndexOrThrow(_cursor, "cuisine");
           final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
           final int _cursorIndexOfLat = CursorUtil.getColumnIndexOrThrow(_cursor, "lat");
           final int _cursorIndexOfLng = CursorUtil.getColumnIndexOrThrow(_cursor, "lng");
+          final int _cursorIndexOfLogoResourceName = CursorUtil.getColumnIndexOrThrow(_cursor, "logoResourceName");
           final int _cursorIndexOfTags = CursorUtil.getColumnIndexOrThrow(_cursor, "tags");
           final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
           final List<Restaurant> _result = new ArrayList<Restaurant>(_cursor.getCount());
           while (_cursor.moveToNext()) {
             final Restaurant _item;
-            final int _tmpId;
-            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            final String _tmpId;
+            if (_cursor.isNull(_cursorIndexOfId)) {
+              _tmpId = null;
+            } else {
+              _tmpId = _cursor.getString(_cursorIndexOfId);
+            }
             final String _tmpName;
             if (_cursor.isNull(_cursorIndexOfName)) {
               _tmpName = null;
@@ -284,6 +326,12 @@ public final class RestaurantDao_Impl implements RestaurantDao {
             } else {
               _tmpLevel = _cursor.getString(_cursorIndexOfLevel);
             }
+            final String _tmpLocation;
+            if (_cursor.isNull(_cursorIndexOfLocation)) {
+              _tmpLocation = null;
+            } else {
+              _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
+            }
             final String _tmpLat;
             if (_cursor.isNull(_cursorIndexOfLat)) {
               _tmpLat = null;
@@ -295,6 +343,12 @@ public final class RestaurantDao_Impl implements RestaurantDao {
               _tmpLng = null;
             } else {
               _tmpLng = _cursor.getString(_cursorIndexOfLng);
+            }
+            final String _tmpLogoResourceName;
+            if (_cursor.isNull(_cursorIndexOfLogoResourceName)) {
+              _tmpLogoResourceName = null;
+            } else {
+              _tmpLogoResourceName = _cursor.getString(_cursorIndexOfLogoResourceName);
             }
             final List<String> _tmpTags;
             final String _tmp;
@@ -308,7 +362,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
             final int _tmp_1;
             _tmp_1 = _cursor.getInt(_cursorIndexOfIsFavorite);
             _tmpIsFavorite = _tmp_1 != 0;
-            _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLat,_tmpLng,_tmpTags,_tmpIsFavorite);
+            _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite);
             _result.add(_item);
           }
           return _result;
@@ -325,11 +379,15 @@ public final class RestaurantDao_Impl implements RestaurantDao {
   }
 
   @Override
-  public Flow<Restaurant> getRestaurantById(final int id) {
+  public Flow<Restaurant> getRestaurantById(final String id) {
     final String _sql = "SELECT * FROM restaurants WHERE id = ?";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
     int _argIndex = 1;
-    _statement.bindLong(_argIndex, id);
+    if (id == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, id);
+    }
     return CoroutinesRoom.createFlow(__db, false, new String[] {"restaurants"}, new Callable<Restaurant>() {
       @Override
       @Nullable
@@ -341,14 +399,20 @@ public final class RestaurantDao_Impl implements RestaurantDao {
           final int _cursorIndexOfCategory = CursorUtil.getColumnIndexOrThrow(_cursor, "category");
           final int _cursorIndexOfCuisine = CursorUtil.getColumnIndexOrThrow(_cursor, "cuisine");
           final int _cursorIndexOfLevel = CursorUtil.getColumnIndexOrThrow(_cursor, "level");
+          final int _cursorIndexOfLocation = CursorUtil.getColumnIndexOrThrow(_cursor, "location");
           final int _cursorIndexOfLat = CursorUtil.getColumnIndexOrThrow(_cursor, "lat");
           final int _cursorIndexOfLng = CursorUtil.getColumnIndexOrThrow(_cursor, "lng");
+          final int _cursorIndexOfLogoResourceName = CursorUtil.getColumnIndexOrThrow(_cursor, "logoResourceName");
           final int _cursorIndexOfTags = CursorUtil.getColumnIndexOrThrow(_cursor, "tags");
           final int _cursorIndexOfIsFavorite = CursorUtil.getColumnIndexOrThrow(_cursor, "isFavorite");
           final Restaurant _result;
           if (_cursor.moveToFirst()) {
-            final int _tmpId;
-            _tmpId = _cursor.getInt(_cursorIndexOfId);
+            final String _tmpId;
+            if (_cursor.isNull(_cursorIndexOfId)) {
+              _tmpId = null;
+            } else {
+              _tmpId = _cursor.getString(_cursorIndexOfId);
+            }
             final String _tmpName;
             if (_cursor.isNull(_cursorIndexOfName)) {
               _tmpName = null;
@@ -373,6 +437,12 @@ public final class RestaurantDao_Impl implements RestaurantDao {
             } else {
               _tmpLevel = _cursor.getString(_cursorIndexOfLevel);
             }
+            final String _tmpLocation;
+            if (_cursor.isNull(_cursorIndexOfLocation)) {
+              _tmpLocation = null;
+            } else {
+              _tmpLocation = _cursor.getString(_cursorIndexOfLocation);
+            }
             final String _tmpLat;
             if (_cursor.isNull(_cursorIndexOfLat)) {
               _tmpLat = null;
@@ -384,6 +454,12 @@ public final class RestaurantDao_Impl implements RestaurantDao {
               _tmpLng = null;
             } else {
               _tmpLng = _cursor.getString(_cursorIndexOfLng);
+            }
+            final String _tmpLogoResourceName;
+            if (_cursor.isNull(_cursorIndexOfLogoResourceName)) {
+              _tmpLogoResourceName = null;
+            } else {
+              _tmpLogoResourceName = _cursor.getString(_cursorIndexOfLogoResourceName);
             }
             final List<String> _tmpTags;
             final String _tmp;
@@ -397,7 +473,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
             final int _tmp_1;
             _tmp_1 = _cursor.getInt(_cursorIndexOfIsFavorite);
             _tmpIsFavorite = _tmp_1 != 0;
-            _result = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLat,_tmpLng,_tmpTags,_tmpIsFavorite);
+            _result = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite);
           } else {
             _result = null;
           }

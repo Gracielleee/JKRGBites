@@ -28,11 +28,11 @@
         android:label="JRKGBites"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.JKRGBites" >
+        android:testOnly="true"
+        android:theme="@style/Theme.JRKGBites" >
         <activity
             android:name="com.jrkg.jrkgbites.MainActivity"
-            android:exported="true"
-            android:theme="@style/Theme.App.Starting" >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -43,7 +43,7 @@
             android:name="com.jrkg.jrkgbites.MainActivity2"
             android:exported="false"
             android:label="JRKGBites"
-            android:theme="@style/Theme.JKRGBites" >
+            android:theme="@style/Theme.JRKGBites" >
         </activity>
 
         <provider

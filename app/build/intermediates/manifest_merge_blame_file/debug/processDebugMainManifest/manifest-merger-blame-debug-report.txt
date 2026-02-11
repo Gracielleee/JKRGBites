@@ -27,7 +27,7 @@
 18-->[androidx.core:core:1.12.0] C:\Users\Ralph\.gradle\caches\8.13\transforms\78d24f838d08e0a6a1249ce38eb25b02\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 19
 20    <application
-20-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:5:5-33:19
+20-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:5:5-32:19
 21        android:allowBackup="true"
 21-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:6:9-35
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -46,37 +46,36 @@
 29-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:11:9-54
 30        android:supportsRtl="true"
 30-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:12:9-35
-31        android:theme="@style/Theme.JKRGBites" >
-31-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:13:9-47
-32        <activity
-32-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:15:9-23:20
-33            android:name="com.jrkg.jrkgbites.MainActivity"
-33-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:16:13-41
-34            android:exported="true"
-34-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:17:13-36
-35            android:theme="@style/Theme.App.Starting" >
-35-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:18:13-54
+31        android:testOnly="true"
+32        android:theme="@style/Theme.JRKGBites" >
+32-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:13:9-47
+33        <activity
+33-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:15:9-22:20
+34            android:name="com.jrkg.jrkgbites.MainActivity"
+34-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:16:13-41
+35            android:exported="true" >
+35-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:17:13-36
 36            <intent-filter>
-36-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:19:13-22:29
+36-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:18:13-21:29
 37                <action android:name="android.intent.action.MAIN" />
-37-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:20:17-69
-37-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:20:25-66
+37-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:19:17-69
+37-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:19:25-66
 38
 39                <category android:name="android.intent.category.LAUNCHER" />
-39-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:21:17-77
-39-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:21:27-74
+39-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:20:17-77
+39-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:20:27-74
 40            </intent-filter>
 41        </activity>
 42        <activity
-42-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:25:9-31:20
+42-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:24:9-30:20
 43            android:name="com.jrkg.jrkgbites.MainActivity2"
-43-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:26:13-42
+43-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:25:13-42
 44            android:exported="false"
-44-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:27:13-37
+44-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:26:13-37
 45            android:label="JRKGBites"
-45-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:28:13-38
-46            android:theme="@style/Theme.JKRGBites" >
-46-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:29:13-51
+45-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:27:13-38
+46            android:theme="@style/Theme.JRKGBites" >
+46-->C:\MMDC\MDA\Development Phases\Sprint_2.2\app\src\main\AndroidManifest.xml:28:13-51
 47        </activity>
 48
 49        <provider

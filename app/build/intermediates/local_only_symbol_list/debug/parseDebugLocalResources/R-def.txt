@@ -184,17 +184,20 @@ drawable belgianwaffles
 drawable bg_dialog
 drawable bg_restaurant_card
 drawable bg_rounded
+drawable bigchefpizza
 drawable bigoli
 drawable blueseasseafood
 drawable bodhi
 drawable bonchon
 drawable boscoffee
+drawable botejyu
 drawable buffalowingsthings
 drawable bulaloworld
 drawable burgoo
 drawable chatime
 drawable chicken24
 drawable chillbar
+drawable chloeslechon
 drawable chowking
 drawable cibo
 drawable classicsavory
@@ -216,6 +219,7 @@ drawable filter_icon
 drawable flossomkitchen
 drawable frankiesny
 drawable gadz100
+drawable gangnamgrill
 drawable genkisushi
 drawable gerrysgrill
 drawable giligans
@@ -227,6 +231,7 @@ drawable hakatatonichi
 drawable hanamarukenramen
 drawable hapchan
 drawable henlin
+drawable hillbrewscoffee
 drawable holographic
 drawable home_button
 drawable ic_arrow_back
@@ -243,6 +248,7 @@ drawable jdgitalian
 drawable jollibee
 drawable jrkg_logo_svg
 drawable katherinescafe
+drawable kawayancafe
 drawable kenangancoffee
 drawable kennyrogers
 drawable kettlecorn
@@ -255,6 +261,7 @@ drawable kuyaj
 drawable kyukyuramen
 drawable lacreperie
 drawable lanhotpot
+drawable lantawan
 drawable lasabbq
 drawable leyskitchen
 drawable loschachos
@@ -288,6 +295,7 @@ drawable nanyang
 drawable nordspastry
 drawable official_jrkgbites_nobg
 drawable pandaexpress
+drawable panublion
 drawable paotsin
 drawable papermoon
 drawable pepperlunch
@@ -320,6 +328,8 @@ drawable sambokojin
 drawable samstew
 drawable sbarro
 drawable scorchedsmokehouse
+drawable seabeancoffeehouse
+drawable seaportbar
 drawable search_bar_bg
 drawable search_button
 drawable seasalt
@@ -333,6 +343,7 @@ drawable starbucks
 drawable storyakitchen
 drawable subway
 drawable sumoniku
+drawable sunbirdridge
 drawable tahostory
 drawable teppanya
 drawable texasroadhouse

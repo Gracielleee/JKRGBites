@@ -29,11 +29,11 @@ class SwipeManager(
     private val _deck = MutableStateFlow<List<Restaurant>>(emptyList())
     val deck: StateFlow<List<Restaurant>> = _deck.asStateFlow()
 
-    private val _favorites = MutableStateFlow<Set<Int>>(emptySet())
-    val favorites: StateFlow<Set<Int>> = _favorites.asStateFlow()
+    private val _favorites = MutableStateFlow<Set<String>>(emptySet())
+    val favorites: StateFlow<Set<String>> = _favorites.asStateFlow()
 
-    private val _neverAgain = MutableStateFlow<Set<Int>>(emptySet())
-    val neverAgain: StateFlow<Set<Int>> = _neverAgain.asStateFlow()
+    private val _neverAgain = MutableStateFlow<Set<String>>(emptySet())
+    val neverAgain: StateFlow<Set<String>> = _neverAgain.asStateFlow()
 
     private val _selectedRestaurant = MutableStateFlow<Restaurant?>(null)
     val selectedRestaurant: StateFlow<Restaurant?> = _selectedRestaurant.asStateFlow()
@@ -83,7 +83,7 @@ class SwipeManager(
      * Adds a restaurant to the "Never Again" list.
      * This can be called from a swipe-down action or after a low rating.
      */
-    fun addToNeverAgain(restaurantId: Int) {
+    fun addToNeverAgain(restaurantId: String) {
         _neverAgain.update { it + restaurantId }
     }
 
@@ -103,7 +103,7 @@ class SwipeManager(
      * Allows a restaurant to be removed from the "Never Again" list.
      * This would be used if the user re-adds a restaurant from the search page.
      */
-    fun removeFromNeverAgain(restaurantId: Int) {
+    fun removeFromNeverAgain(restaurantId: String) {
         _neverAgain.update { it - restaurantId }
     }
 

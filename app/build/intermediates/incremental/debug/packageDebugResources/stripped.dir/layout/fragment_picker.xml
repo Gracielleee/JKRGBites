@@ -104,7 +104,7 @@
             <ImageView
                 android:id="@+id/picker_card_front"
                 android:layout_width="match_parent"
-                android:layout_height="293dp"
+                android:layout_height="391dp"
                 android:layout_gravity="center"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"

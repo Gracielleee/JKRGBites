@@ -27,7 +27,7 @@ class RestaurantDetailsFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private val args: RestaurantDetailsFragmentArgs by navArgs()
 
-    private var currentRestaurantId: Int? = null
+    private var currentRestaurantId: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -50,12 +50,12 @@ class RestaurantDetailsFragment : Fragment() {
 
         viewLifecycleOwner.lifecycleScope.launch {
             // Fetch the specific restaurant from the deck (or any other source in ViewModel)
-            val restaurant = viewModel.deck.filterNotNull().first().find { it.id.toInt() == currentRestaurantId }
+            val restaurant = viewModel.deck.filterNotNull().first().find { it.id == currentRestaurantId }
 
             restaurant?.let {
                 displayRestaurantDetails(it)
                 setupRatingSection(it)
-                observeExistingRating(it.id.toInt())
+                observeExistingRating(it.id)
             } ?: run {
                 // Handle case where restaurant is not found
                 Toast.makeText(requireContext(), "Restaurant not found!", Toast.LENGTH_SHORT).show()
@@ -70,22 +70,9 @@ class RestaurantDetailsFragment : Fragment() {
         binding.restaurantLevel.text = "Level: ${restaurant.level.orEmpty()}"
         binding.restaurantTags.text = "Tags: ${restaurant.tags?.joinToString(", ").orEmpty()}"
 
-        // Load image (similar logic to adapters)
-        val resourceName = restaurant.name?.lowercase()
-            ?.replace(" ", "")
-            ?.replace("-", "")
-            ?.replace(".", "")
-            ?.replace("&", "")
-            ?.replace("'", "")
-            ?.replace("\u2019", "")
-            ?.replace(",", "")
-            ?.replace("!", "")
-            ?.replace("?", "")
-            ?.replace("/", "")
-            ?: ""
-
-        val resId = if (resourceName.isNotEmpty()) {
-            context?.resources?.getIdentifier(resourceName, "drawable", context?.packageName) ?: 0
+        // Load image using the explicit logoResourceName
+        val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
+            context?.resources?.getIdentifier(restaurant.logoResourceName, "drawable", context?.packageName) ?: 0
         } else {
             0
         }
@@ -115,7 +102,7 @@ class RestaurantDetailsFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            viewModel.submitRating(restaurant.id.toInt(), rating.toInt(), comment)
+            viewModel.submitRating(restaurant.id, rating.toInt(), comment)
             Toast.makeText(requireContext(), "Rating submitted for ${restaurant.name}!", Toast.LENGTH_SHORT).show()
             // After submission, optionally clear inputs or navigate back
             // For now, we will just update the displayed rating via the observer
@@ -126,13 +113,14 @@ class RestaurantDetailsFragment : Fragment() {
             // Clear current input without submitting
             ratingBar.rating = 0f
             commentInput.setText("")
+            findNavController().navigateUp() // Navigate back to the previous screen
         }
     }
 
-    private fun observeExistingRating(restaurantId: Int) {
+    private fun observeExistingRating(restaurantId: String) {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.allRestaurantRatings.collect { ratings ->
-                val existingRating = ratings.find { it.restaurantId.toInt() == restaurantId }
+                val existingRating = ratings.find { it.restaurantId == restaurantId }
                 existingRating?.let {
                     binding.restaurantRatingBar.rating = it.rating.toFloat()
                     binding.ratingCommentInput.setText(it.comment)

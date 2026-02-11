@@ -4,6 +4,8 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jrkg.jrkgbites.AppDatabase
+import com.jrkg.jrkgbites.data.RestaurantDao
+import com.jrkg.jrkgbites.data.RestaurantRatingDao
 import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.data.source.FakeAuthService
@@ -22,6 +24,7 @@ import com.jrkg.jrkgbites.services.BiometricService
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import android.util.Log
 
 class MainViewModel(
     private val application: Application, // ADDED: Application context for MainViewModel
@@ -104,12 +107,14 @@ class MainViewModel(
         swipeManager.clearSelectedRestaurant()
     }
 
-    fun submitRating(restaurantId: Int, rating: Int, comment: String) {
+    fun submitRating(restaurantId: String, rating: Int, comment: String) {
         viewModelScope.launch {
             ratingManager.submitRating(restaurantId, rating.toInt(), comment)
         }
     }
 }
+
+
 
 @Suppress("UNCHECKED_CAST")
 class MainViewModelFactory(
@@ -120,12 +125,13 @@ class MainViewModelFactory(
             val database = AppDatabase.getDatabase(application)
             val restaurantDao = database.restaurantDao()
             val restaurantRatingDao = database.restaurantRatingDao()
+
             val restaurantRepository = RestaurantRepository(restaurantDao)
-            val userPreferencesManager = UserPreferencesManager(application)
-            val authService = FakeAuthService()
+            val prefsManager = UserPreferencesManager(application)
+            val authService = FakeAuthService() // Assuming FakeAuthService is for testing, replace if needed
             val sessionManager = SessionManager(authService)
             val biometricService = BiometricService(application)
-            val authManager = AuthManager(biometricService, userPreferencesManager)
+            val authManager = AuthManager(biometricService, prefsManager)
             val swipeManager = SwipeManager(restaurantRepository)
             val ratingManager = RatingManager(swipeManager, restaurantRatingDao)
             val searchManager = SearchManager(restaurantRepository)
@@ -138,7 +144,7 @@ class MainViewModelFactory(
                 searchManager = searchManager,
                 ratingManager = ratingManager,
                 authManager = authManager,
-                prefsManager = userPreferencesManager,
+                prefsManager = prefsManager,
                 sessionManager = sessionManager,
                 restaurantRepository = restaurantRepository
             ) as T
