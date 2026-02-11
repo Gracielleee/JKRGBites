@@ -1,16 +1,14 @@
 package com.jrkg.jrkgbites;
 
 import androidx.annotation.NonNull;
-import androidx.room.DatabaseConfiguration;
 import androidx.room.InvalidationTracker;
-import androidx.room.RoomDatabase;
-import androidx.room.RoomOpenHelper;
+import androidx.room.RoomOpenDelegate;
 import androidx.room.migration.AutoMigrationSpec;
 import androidx.room.migration.Migration;
 import androidx.room.util.DBUtil;
 import androidx.room.util.TableInfo;
-import androidx.sqlite.db.SupportSQLiteDatabase;
-import androidx.sqlite.db.SupportSQLiteOpenHelper;
+import androidx.sqlite.SQLite;
+import androidx.sqlite.SQLiteConnection;
 import com.jrkg.jrkgbites.data.RestaurantDao;
 import com.jrkg.jrkgbites.data.RestaurantDao_Impl;
 import com.jrkg.jrkgbites.data.RestaurantRatingDao;
@@ -28,7 +26,7 @@ import java.util.Set;
 import javax.annotation.processing.Generated;
 
 @Generated("androidx.room.RoomProcessor")
-@SuppressWarnings({"unchecked", "deprecation"})
+@SuppressWarnings({"unchecked", "deprecation", "removal"})
 public final class AppDatabase_Impl extends AppDatabase {
   private volatile RestaurantDao _restaurantDao;
 
@@ -36,64 +34,45 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   @Override
   @NonNull
-  protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
+  protected RoomOpenDelegate createOpenDelegate() {
+    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(2, "0c0ed7d213dfe7ca76e0ae529b7938a2", "2121a35bec0fd423e20cfacaeafcf9fb") {
       @Override
-      public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `restaurants` (`id` TEXT NOT NULL, `name` TEXT, `category` TEXT, `cuisine` TEXT, `level` TEXT, `location` TEXT, `lat` TEXT, `lng` TEXT, `logoResourceName` TEXT, `tags` TEXT, `isFavorite` INTEGER NOT NULL, PRIMARY KEY(`id`))");
-        db.execSQL("CREATE TABLE IF NOT EXISTS `restaurant_ratings` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `restaurantId` TEXT NOT NULL, `rating` INTEGER NOT NULL, `comment` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)");
-        db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0c0ed7d213dfe7ca76e0ae529b7938a2')");
+      public void createAllTables(@NonNull final SQLiteConnection connection) {
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurants` (`id` TEXT NOT NULL, `name` TEXT, `category` TEXT, `cuisine` TEXT, `level` TEXT, `location` TEXT, `lat` TEXT, `lng` TEXT, `logoResourceName` TEXT, `tags` TEXT, `isFavorite` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurant_ratings` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `restaurantId` TEXT NOT NULL, `rating` INTEGER NOT NULL, `comment` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)");
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
+        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0c0ed7d213dfe7ca76e0ae529b7938a2')");
       }
 
       @Override
-      public void dropAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS `restaurants`");
-        db.execSQL("DROP TABLE IF EXISTS `restaurant_ratings`");
-        final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
-        if (_callbacks != null) {
-          for (RoomDatabase.Callback _callback : _callbacks) {
-            _callback.onDestructiveMigration(db);
-          }
-        }
+      public void dropAllTables(@NonNull final SQLiteConnection connection) {
+        SQLite.execSQL(connection, "DROP TABLE IF EXISTS `restaurants`");
+        SQLite.execSQL(connection, "DROP TABLE IF EXISTS `restaurant_ratings`");
       }
 
       @Override
-      public void onCreate(@NonNull final SupportSQLiteDatabase db) {
-        final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
-        if (_callbacks != null) {
-          for (RoomDatabase.Callback _callback : _callbacks) {
-            _callback.onCreate(db);
-          }
-        }
+      public void onCreate(@NonNull final SQLiteConnection connection) {
       }
 
       @Override
-      public void onOpen(@NonNull final SupportSQLiteDatabase db) {
-        mDatabase = db;
-        internalInitInvalidationTracker(db);
-        final List<? extends RoomDatabase.Callback> _callbacks = mCallbacks;
-        if (_callbacks != null) {
-          for (RoomDatabase.Callback _callback : _callbacks) {
-            _callback.onOpen(db);
-          }
-        }
+      public void onOpen(@NonNull final SQLiteConnection connection) {
+        internalInitInvalidationTracker(connection);
       }
 
       @Override
-      public void onPreMigrate(@NonNull final SupportSQLiteDatabase db) {
-        DBUtil.dropFtsSyncTriggers(db);
+      public void onPreMigrate(@NonNull final SQLiteConnection connection) {
+        DBUtil.dropFtsSyncTriggers(connection);
       }
 
       @Override
-      public void onPostMigrate(@NonNull final SupportSQLiteDatabase db) {
+      public void onPostMigrate(@NonNull final SQLiteConnection connection) {
       }
 
       @Override
       @NonNull
-      public RoomOpenHelper.ValidationResult onValidateSchema(
-          @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsRestaurants = new HashMap<String, TableInfo.Column>(11);
+      public RoomOpenDelegate.ValidationResult onValidateSchema(
+          @NonNull final SQLiteConnection connection) {
+        final Map<String, TableInfo.Column> _columnsRestaurants = new HashMap<String, TableInfo.Column>(11);
         _columnsRestaurants.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -105,68 +84,53 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsRestaurants.put("logoResourceName", new TableInfo.Column("logoResourceName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("tags", new TableInfo.Column("tags", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("isFavorite", new TableInfo.Column("isFavorite", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysRestaurants = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesRestaurants = new HashSet<TableInfo.Index>(0);
+        final Set<TableInfo.ForeignKey> _foreignKeysRestaurants = new HashSet<TableInfo.ForeignKey>(0);
+        final Set<TableInfo.Index> _indicesRestaurants = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoRestaurants = new TableInfo("restaurants", _columnsRestaurants, _foreignKeysRestaurants, _indicesRestaurants);
-        final TableInfo _existingRestaurants = TableInfo.read(db, "restaurants");
+        final TableInfo _existingRestaurants = TableInfo.read(connection, "restaurants");
         if (!_infoRestaurants.equals(_existingRestaurants)) {
-          return new RoomOpenHelper.ValidationResult(false, "restaurants(com.jrkg.jrkgbites.model.Restaurant).\n"
+          return new RoomOpenDelegate.ValidationResult(false, "restaurants(com.jrkg.jrkgbites.model.Restaurant).\n"
                   + " Expected:\n" + _infoRestaurants + "\n"
                   + " Found:\n" + _existingRestaurants);
         }
-        final HashMap<String, TableInfo.Column> _columnsRestaurantRatings = new HashMap<String, TableInfo.Column>(5);
+        final Map<String, TableInfo.Column> _columnsRestaurantRatings = new HashMap<String, TableInfo.Column>(5);
         _columnsRestaurantRatings.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurantRatings.put("restaurantId", new TableInfo.Column("restaurantId", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurantRatings.put("rating", new TableInfo.Column("rating", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurantRatings.put("comment", new TableInfo.Column("comment", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurantRatings.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        final HashSet<TableInfo.ForeignKey> _foreignKeysRestaurantRatings = new HashSet<TableInfo.ForeignKey>(0);
-        final HashSet<TableInfo.Index> _indicesRestaurantRatings = new HashSet<TableInfo.Index>(0);
+        final Set<TableInfo.ForeignKey> _foreignKeysRestaurantRatings = new HashSet<TableInfo.ForeignKey>(0);
+        final Set<TableInfo.Index> _indicesRestaurantRatings = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoRestaurantRatings = new TableInfo("restaurant_ratings", _columnsRestaurantRatings, _foreignKeysRestaurantRatings, _indicesRestaurantRatings);
-        final TableInfo _existingRestaurantRatings = TableInfo.read(db, "restaurant_ratings");
+        final TableInfo _existingRestaurantRatings = TableInfo.read(connection, "restaurant_ratings");
         if (!_infoRestaurantRatings.equals(_existingRestaurantRatings)) {
-          return new RoomOpenHelper.ValidationResult(false, "restaurant_ratings(com.jrkg.jrkgbites.model.RestaurantRating).\n"
+          return new RoomOpenDelegate.ValidationResult(false, "restaurant_ratings(com.jrkg.jrkgbites.model.RestaurantRating).\n"
                   + " Expected:\n" + _infoRestaurantRatings + "\n"
                   + " Found:\n" + _existingRestaurantRatings);
         }
-        return new RoomOpenHelper.ValidationResult(true, null);
+        return new RoomOpenDelegate.ValidationResult(true, null);
       }
-    }, "0c0ed7d213dfe7ca76e0ae529b7938a2", "2121a35bec0fd423e20cfacaeafcf9fb");
-    final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
-    final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
-    return _helper;
+    };
+    return _openDelegate;
   }
 
   @Override
   @NonNull
   protected InvalidationTracker createInvalidationTracker() {
-    final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
-    final HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "restaurants","restaurant_ratings");
+    final Map<String, String> _shadowTablesMap = new HashMap<String, String>(0);
+    final Map<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "restaurants", "restaurant_ratings");
   }
 
   @Override
   public void clearAllTables() {
-    super.assertNotMainThread();
-    final SupportSQLiteDatabase _db = super.getOpenHelper().getWritableDatabase();
-    try {
-      super.beginTransaction();
-      _db.execSQL("DELETE FROM `restaurants`");
-      _db.execSQL("DELETE FROM `restaurant_ratings`");
-      super.setTransactionSuccessful();
-    } finally {
-      super.endTransaction();
-      _db.query("PRAGMA wal_checkpoint(FULL)").close();
-      if (!_db.inTransaction()) {
-        _db.execSQL("VACUUM");
-      }
-    }
+    super.performClear(false, "restaurants", "restaurant_ratings");
   }
 
   @Override
   @NonNull
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
-    final HashMap<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
+    final Map<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(RestaurantDao.class, RestaurantDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(RestaurantRatingDao.class, RestaurantRatingDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
@@ -175,7 +139,7 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   public Set<Class<? extends AutoMigrationSpec>> getRequiredAutoMigrationSpecs() {
-    final HashSet<Class<? extends AutoMigrationSpec>> _autoMigrationSpecsSet = new HashSet<Class<? extends AutoMigrationSpec>>();
+    final Set<Class<? extends AutoMigrationSpec>> _autoMigrationSpecsSet = new HashSet<Class<? extends AutoMigrationSpec>>();
     return _autoMigrationSpecsSet;
   }
 

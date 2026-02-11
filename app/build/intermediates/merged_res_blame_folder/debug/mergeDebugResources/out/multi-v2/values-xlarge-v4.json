@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-2:/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-48:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Ralph\\.gradle\\caches\\8.13\\transforms\\05a572cd01840355ea1056281db2e3dd\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\6c608f4d03228940371b38b8717969b5\\workspace\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

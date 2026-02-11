@@ -10,5 +10,5 @@ data class RestaurantRating(
     val restaurantId: String,
     val rating: Int,
     val comment: String,
-    val timestamp: Long = System.currentTimeMillis()
+    val timestamp: Long = 0L // Will be set programmatically, not as default
 )
