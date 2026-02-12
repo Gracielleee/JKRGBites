@@ -42,7 +42,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `restaurants` (`id`,`name`,`category`,`cuisine`,`level`,`location`,`lat`,`lng`,`logoResourceName`,`tags`,`isFavorite`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `restaurants` (`id`,`name`,`category`,`cuisine`,`level`,`location`,`lat`,`lng`,`logoResourceName`,`tags`,`isFavorite`,`isNeverAgain`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -101,6 +101,8 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         }
         final int _tmp_1 = entity.isFavorite() ? 1 : 0;
         statement.bindLong(11, _tmp_1);
+        final int _tmp_2 = entity.isNeverAgain() ? 1 : 0;
+        statement.bindLong(12, _tmp_2);
       }
     };
     this.__deleteAdapterOfRestaurant = new EntityDeleteOrUpdateAdapter<Restaurant>() {
@@ -124,7 +126,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `restaurants` SET `id` = ?,`name` = ?,`category` = ?,`cuisine` = ?,`level` = ?,`location` = ?,`lat` = ?,`lng` = ?,`logoResourceName` = ?,`tags` = ?,`isFavorite` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `restaurants` SET `id` = ?,`name` = ?,`category` = ?,`cuisine` = ?,`level` = ?,`location` = ?,`lat` = ?,`lng` = ?,`logoResourceName` = ?,`tags` = ?,`isFavorite` = ?,`isNeverAgain` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -183,50 +185,52 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         }
         final int _tmp_1 = entity.isFavorite() ? 1 : 0;
         statement.bindLong(11, _tmp_1);
+        final int _tmp_2 = entity.isNeverAgain() ? 1 : 0;
+        statement.bindLong(12, _tmp_2);
         if (entity.getId() == null) {
-          statement.bindNull(12);
+          statement.bindNull(13);
         } else {
-          statement.bindText(12, entity.getId());
+          statement.bindText(13, entity.getId());
         }
       }
     };
   }
 
   @Override
-  public Object insert(final Restaurant restaurant, final Continuation<? super Unit> arg1) {
+  public Object insert(final Restaurant restaurant, final Continuation<? super Unit> $completion) {
     if (restaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurant.insert(_connection, restaurant);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object insertAll(final List<Restaurant> restaurants,
-      final Continuation<? super Unit> arg1) {
+      final Continuation<? super Unit> $completion) {
     if (restaurants == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurant.insert(_connection, restaurants);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object delete(final Restaurant restaurant, final Continuation<? super Unit> arg1) {
+  public Object delete(final Restaurant restaurant, final Continuation<? super Unit> $completion) {
     if (restaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfRestaurant.handle(_connection, restaurant);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object update(final Restaurant restaurant, final Continuation<? super Unit> arg1) {
+  public Object update(final Restaurant restaurant, final Continuation<? super Unit> $completion) {
     if (restaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __updateAdapterOfRestaurant.handle(_connection, restaurant);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
@@ -246,6 +250,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         final int _columnIndexOfLogoResourceName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "logoResourceName");
         final int _columnIndexOfTags = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "tags");
         final int _columnIndexOfIsFavorite = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isFavorite");
+        final int _columnIndexOfIsNeverAgain = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isNeverAgain");
         final List<Restaurant> _result = new ArrayList<Restaurant>();
         while (_stmt.step()) {
           final Restaurant _item;
@@ -315,7 +320,11 @@ public final class RestaurantDao_Impl implements RestaurantDao {
           final int _tmp_1;
           _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsFavorite));
           _tmpIsFavorite = _tmp_1 != 0;
-          _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite);
+          final boolean _tmpIsNeverAgain;
+          final int _tmp_2;
+          _tmp_2 = (int) (_stmt.getLong(_columnIndexOfIsNeverAgain));
+          _tmpIsNeverAgain = _tmp_2 != 0;
+          _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite,_tmpIsNeverAgain);
           _result.add(_item);
         }
         return _result;
@@ -348,6 +357,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         final int _columnIndexOfLogoResourceName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "logoResourceName");
         final int _columnIndexOfTags = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "tags");
         final int _columnIndexOfIsFavorite = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isFavorite");
+        final int _columnIndexOfIsNeverAgain = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isNeverAgain");
         final Restaurant _result;
         if (_stmt.step()) {
           final String _tmpId;
@@ -416,7 +426,11 @@ public final class RestaurantDao_Impl implements RestaurantDao {
           final int _tmp_1;
           _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsFavorite));
           _tmpIsFavorite = _tmp_1 != 0;
-          _result = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite);
+          final boolean _tmpIsNeverAgain;
+          final int _tmp_2;
+          _tmp_2 = (int) (_stmt.getLong(_columnIndexOfIsNeverAgain));
+          _tmpIsNeverAgain = _tmp_2 != 0;
+          _result = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite,_tmpIsNeverAgain);
         } else {
           _result = null;
         }
@@ -428,7 +442,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
   }
 
   @Override
-  public Object getRestaurantCount(final Continuation<? super Integer> arg0) {
+  public Object getRestaurantCount(final Continuation<? super Integer> $completion) {
     final String _sql = "SELECT COUNT(*) FROM restaurants";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -449,7 +463,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, arg0);
+    }, $completion);
   }
 
   @NonNull

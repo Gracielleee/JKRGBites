@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-48:/values-sr/values-sr.xml",
+            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-49:/values-sr/values-sr.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\df015dbcf1b6885bfd20739030ef3cef\\workspace\\transformed\\navigation-ui-2.7.7\\res\\values-sr\\values-sr.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,162",
-                        "endColumns": "106,122",
-                        "endOffsets": "157,280"
-                    },
-                    "to": {
-                        "startLines": "120,121",
-                        "startColumns": "4,4",
-                        "startOffsets": "10724,10831",
-                        "endColumns": "106,122",
-                        "endOffsets": "10826,10949"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\6c608f4d03228940371b38b8717969b5\\workspace\\transformed\\appcompat-1.6.1\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\a2407aaa9182e1d470901280c530e557\\workspace\\transformed\\appcompat-1.6.1\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -38,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\5c238b7a71e56ded1480ed116c2cf46c\\workspace\\transformed\\material-1.11.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\f17643f66b5319fdba11a4bb90290360\\workspace\\transformed\\navigation-ui-2.7.7\\res\\values-sr\\values-sr.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,162",
+                        "endColumns": "106,122",
+                        "endOffsets": "157,280"
+                    },
+                    "to": {
+                        "startLines": "120,121",
+                        "startColumns": "4,4",
+                        "startOffsets": "10724,10831",
+                        "endColumns": "106,122",
+                        "endOffsets": "10826,10949"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\28cc2c294a5d53c1ff03e066bf45a176\\workspace\\transformed\\material-1.11.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -57,7 +57,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\2c265f4edc2f2052a438079e6ecc12a4\\workspace\\transformed\\core-1.12.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\b3d7f57e2b9285f8e01dcad395ee0a17\\workspace\\transformed\\core-1.12.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -74,7 +74,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\3fc45147efe7fd8ce172d751a470b8c1\\workspace\\transformed\\biometric-1.1.0\\res\\values-sr\\values-sr.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\4e252f56b5534e4ef0f94a63d9c6a86c\\workspace\\transformed\\biometric-1.1.0\\res\\values-sr\\values-sr.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",

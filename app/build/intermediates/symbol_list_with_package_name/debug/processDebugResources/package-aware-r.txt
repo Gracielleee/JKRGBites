@@ -3307,7 +3307,10 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_reset
 drawable ic_search_black_24
+drawable ic_shuffle
+drawable ic_undo
 drawable icon_background
 drawable inihawexpress
 drawable ippudo
@@ -3646,9 +3649,12 @@ id btn_fineDining
 id btn_foodHall
 id btn_grill
 id btn_healthy
+id btn_reset
 id btn_restoBar
+id btn_shuffle
 id btn_snack
 id btn_stall
+id btn_undo
 id buttonPanel
 id by_category_text
 id cache_measures
@@ -3680,6 +3686,7 @@ id clip_horizontal
 id clip_vertical
 id clockwise
 id closest
+id coil_request_manager
 id collapseActionView
 id commentTextView
 id compress
@@ -3808,8 +3815,6 @@ id invisible
 id inward
 id italic
 id item_touch_helper_previous_elevation
-id jrkg_bar
-id jrkg_title
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3941,7 +3946,6 @@ id outline
 id outward
 id overshoot
 id packed
-id pageTitleContainer
 id parallax
 id parent
 id parentPanel
@@ -3961,8 +3965,6 @@ id picker_card_flip_container
 id picker_card_front
 id picker_card_location
 id picker_card_name
-id picker_filter_icon
-id picker_menu_icon
 id picker_title
 id pin
 id position
@@ -3986,10 +3988,8 @@ id recyclerViewRestaurants
 id register
 id registerFragment
 id report_drawn
-id restaurantDescription
 id restaurantDetailsFragment
 id restaurantIdTextView
-id restaurantImage
 id restaurantName
 id restaurantRatingFragment
 id restaurant_category_cuisine
@@ -4139,7 +4139,6 @@ id txtGotoRegister
 id txtInstructions
 id txtInstructions2
 id txtLoginHeader
-id txtPageTitle
 id txtRegisterDisplay
 id txtSubdisplay
 id txtWelcomeDisplay
@@ -5161,7 +5160,6 @@ style Theme_Design_Light
 style Theme_Design_Light_BottomSheetDialog
 style Theme_Design_Light_NoActionBar
 style Theme_Design_NoActionBar
-style Theme_JKRGBites
 style Theme_JRKGBites
 style Theme_Material3_Dark
 style Theme_Material3_Dark_BottomSheetDialog

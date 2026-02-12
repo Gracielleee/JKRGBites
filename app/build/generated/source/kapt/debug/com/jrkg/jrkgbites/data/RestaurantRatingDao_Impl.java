@@ -103,30 +103,33 @@ public final class RestaurantRatingDao_Impl implements RestaurantRatingDao {
   }
 
   @Override
-  public Object insert(final RestaurantRating rating, final Continuation<? super Unit> arg1) {
+  public Object insert(final RestaurantRating rating,
+      final Continuation<? super Unit> $completion) {
     if (rating == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurantRating.insert(_connection, rating);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object delete(final RestaurantRating rating, final Continuation<? super Unit> arg1) {
+  public Object delete(final RestaurantRating rating,
+      final Continuation<? super Unit> $completion) {
     if (rating == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfRestaurantRating.handle(_connection, rating);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object update(final RestaurantRating rating, final Continuation<? super Unit> arg1) {
+  public Object update(final RestaurantRating rating,
+      final Continuation<? super Unit> $completion) {
     if (rating == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __updateAdapterOfRestaurantRating.handle(_connection, rating);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override

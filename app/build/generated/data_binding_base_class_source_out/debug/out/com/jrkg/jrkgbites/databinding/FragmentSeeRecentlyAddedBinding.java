@@ -4,7 +4,7 @@ package com.jrkg.jrkgbites.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,21 +22,25 @@ public final class FragmentSeeRecentlyAddedBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final LinearLayout pageTitleContainer;
+  public final View actionBarBg;
+
+  @NonNull
+  public final ImageView backButton;
 
   @NonNull
   public final RecyclerView recentRecyclerView;
 
   @NonNull
-  public final TextView txtPageTitle;
+  public final TextView screenTitle;
 
   private FragmentSeeRecentlyAddedBinding(@NonNull ConstraintLayout rootView,
-      @NonNull LinearLayout pageTitleContainer, @NonNull RecyclerView recentRecyclerView,
-      @NonNull TextView txtPageTitle) {
+      @NonNull View actionBarBg, @NonNull ImageView backButton,
+      @NonNull RecyclerView recentRecyclerView, @NonNull TextView screenTitle) {
     this.rootView = rootView;
-    this.pageTitleContainer = pageTitleContainer;
+    this.actionBarBg = actionBarBg;
+    this.backButton = backButton;
     this.recentRecyclerView = recentRecyclerView;
-    this.txtPageTitle = txtPageTitle;
+    this.screenTitle = screenTitle;
   }
 
   @Override
@@ -66,9 +70,15 @@ public final class FragmentSeeRecentlyAddedBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.pageTitleContainer;
-      LinearLayout pageTitleContainer = ViewBindings.findChildViewById(rootView, id);
-      if (pageTitleContainer == null) {
+      id = R.id.action_bar_bg;
+      View actionBarBg = ViewBindings.findChildViewById(rootView, id);
+      if (actionBarBg == null) {
+        break missingId;
+      }
+
+      id = R.id.back_button;
+      ImageView backButton = ViewBindings.findChildViewById(rootView, id);
+      if (backButton == null) {
         break missingId;
       }
 
@@ -78,14 +88,14 @@ public final class FragmentSeeRecentlyAddedBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.txtPageTitle;
-      TextView txtPageTitle = ViewBindings.findChildViewById(rootView, id);
-      if (txtPageTitle == null) {
+      id = R.id.screen_title;
+      TextView screenTitle = ViewBindings.findChildViewById(rootView, id);
+      if (screenTitle == null) {
         break missingId;
       }
 
-      return new FragmentSeeRecentlyAddedBinding((ConstraintLayout) rootView, pageTitleContainer,
-          recentRecyclerView, txtPageTitle);
+      return new FragmentSeeRecentlyAddedBinding((ConstraintLayout) rootView, actionBarBg,
+          backButton, recentRecyclerView, screenTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -48,4 +48,9 @@ class RestaurantRepository(private val restaurantDao: RestaurantDao) {
     suspend fun searchRestaurantsByName(query: String): List<Restaurant> {
         return getRestaurants().first().filter { it.name?.contains(query, ignoreCase = true) == true }
     }
+
+    // For updating restaurant status (Favorite, Never Again, etc.)
+    suspend fun updateRestaurantStatus(restaurant: Restaurant) {
+        restaurantDao.update(restaurant)
+    }
 }

@@ -6,13 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.card.MaterialCardView;
 import com.jrkg.jrkgbites.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -20,7 +19,7 @@ import java.lang.String;
 
 public final class ItemRestaurantListCardBinding implements ViewBinding {
   @NonNull
-  private final CardView rootView;
+  private final FrameLayout rootView;
 
   @NonNull
   public final TextView backCategory;
@@ -38,16 +37,13 @@ public final class ItemRestaurantListCardBinding implements ViewBinding {
   public final TextView backTags;
 
   @NonNull
-  public final LinearLayout cardBack;
+  public final MaterialCardView cardBack;
 
   @NonNull
   public final FrameLayout cardFlipContainer;
 
   @NonNull
-  public final LinearLayout cardFront;
-
-  @NonNull
-  public final TextView restaurantDescription;
+  public final MaterialCardView cardFront;
 
   @NonNull
   public final ImageView restaurantImage;
@@ -55,12 +51,11 @@ public final class ItemRestaurantListCardBinding implements ViewBinding {
   @NonNull
   public final TextView restaurantName;
 
-  private ItemRestaurantListCardBinding(@NonNull CardView rootView, @NonNull TextView backCategory,
-      @NonNull TextView backCuisine, @NonNull TextView backLevel, @NonNull TextView backName,
-      @NonNull TextView backTags, @NonNull LinearLayout cardBack,
-      @NonNull FrameLayout cardFlipContainer, @NonNull LinearLayout cardFront,
-      @NonNull TextView restaurantDescription, @NonNull ImageView restaurantImage,
-      @NonNull TextView restaurantName) {
+  private ItemRestaurantListCardBinding(@NonNull FrameLayout rootView,
+      @NonNull TextView backCategory, @NonNull TextView backCuisine, @NonNull TextView backLevel,
+      @NonNull TextView backName, @NonNull TextView backTags, @NonNull MaterialCardView cardBack,
+      @NonNull FrameLayout cardFlipContainer, @NonNull MaterialCardView cardFront,
+      @NonNull ImageView restaurantImage, @NonNull TextView restaurantName) {
     this.rootView = rootView;
     this.backCategory = backCategory;
     this.backCuisine = backCuisine;
@@ -70,14 +65,13 @@ public final class ItemRestaurantListCardBinding implements ViewBinding {
     this.cardBack = cardBack;
     this.cardFlipContainer = cardFlipContainer;
     this.cardFront = cardFront;
-    this.restaurantDescription = restaurantDescription;
     this.restaurantImage = restaurantImage;
     this.restaurantName = restaurantName;
   }
 
   @Override
   @NonNull
-  public CardView getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -133,30 +127,20 @@ public final class ItemRestaurantListCardBinding implements ViewBinding {
       }
 
       id = R.id.card_back;
-      LinearLayout cardBack = ViewBindings.findChildViewById(rootView, id);
+      MaterialCardView cardBack = ViewBindings.findChildViewById(rootView, id);
       if (cardBack == null) {
         break missingId;
       }
 
-      id = R.id.card_flip_container;
-      FrameLayout cardFlipContainer = ViewBindings.findChildViewById(rootView, id);
-      if (cardFlipContainer == null) {
-        break missingId;
-      }
+      FrameLayout cardFlipContainer = (FrameLayout) rootView;
 
       id = R.id.card_front;
-      LinearLayout cardFront = ViewBindings.findChildViewById(rootView, id);
+      MaterialCardView cardFront = ViewBindings.findChildViewById(rootView, id);
       if (cardFront == null) {
         break missingId;
       }
 
-      id = R.id.restaurantDescription;
-      TextView restaurantDescription = ViewBindings.findChildViewById(rootView, id);
-      if (restaurantDescription == null) {
-        break missingId;
-      }
-
-      id = R.id.restaurantImage;
+      id = R.id.restaurant_image;
       ImageView restaurantImage = ViewBindings.findChildViewById(rootView, id);
       if (restaurantImage == null) {
         break missingId;
@@ -168,9 +152,9 @@ public final class ItemRestaurantListCardBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ItemRestaurantListCardBinding((CardView) rootView, backCategory, backCuisine,
-          backLevel, backName, backTags, cardBack, cardFlipContainer, cardFront,
-          restaurantDescription, restaurantImage, restaurantName);
+      return new ItemRestaurantListCardBinding((FrameLayout) rootView, backCategory, backCuisine,
+          backLevel, backName, backTags, cardBack, cardFlipContainer, cardFront, restaurantImage,
+          restaurantName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -35,13 +35,13 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected RoomOpenDelegate createOpenDelegate() {
-    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(2, "0c0ed7d213dfe7ca76e0ae529b7938a2", "2121a35bec0fd423e20cfacaeafcf9fb") {
+    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(3, "cfbb5dfc3e44eed81f2faa88afb02bbe", "c9d16e29e5e164ef1aff5a7d871d952c") {
       @Override
       public void createAllTables(@NonNull final SQLiteConnection connection) {
-        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurants` (`id` TEXT NOT NULL, `name` TEXT, `category` TEXT, `cuisine` TEXT, `level` TEXT, `location` TEXT, `lat` TEXT, `lng` TEXT, `logoResourceName` TEXT, `tags` TEXT, `isFavorite` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurants` (`id` TEXT NOT NULL, `name` TEXT, `category` TEXT, `cuisine` TEXT, `level` TEXT, `location` TEXT, `lat` TEXT, `lng` TEXT, `logoResourceName` TEXT, `tags` TEXT, `isFavorite` INTEGER NOT NULL, `isNeverAgain` INTEGER NOT NULL, PRIMARY KEY(`id`))");
         SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurant_ratings` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `restaurantId` TEXT NOT NULL, `rating` INTEGER NOT NULL, `comment` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)");
         SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0c0ed7d213dfe7ca76e0ae529b7938a2')");
+        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cfbb5dfc3e44eed81f2faa88afb02bbe')");
       }
 
       @Override
@@ -72,7 +72,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenDelegate.ValidationResult onValidateSchema(
           @NonNull final SQLiteConnection connection) {
-        final Map<String, TableInfo.Column> _columnsRestaurants = new HashMap<String, TableInfo.Column>(11);
+        final Map<String, TableInfo.Column> _columnsRestaurants = new HashMap<String, TableInfo.Column>(12);
         _columnsRestaurants.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("name", new TableInfo.Column("name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("category", new TableInfo.Column("category", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -84,6 +84,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsRestaurants.put("logoResourceName", new TableInfo.Column("logoResourceName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("tags", new TableInfo.Column("tags", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("isFavorite", new TableInfo.Column("isFavorite", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRestaurants.put("isNeverAgain", new TableInfo.Column("isNeverAgain", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final Set<TableInfo.ForeignKey> _foreignKeysRestaurants = new HashSet<TableInfo.ForeignKey>(0);
         final Set<TableInfo.Index> _indicesRestaurants = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoRestaurants = new TableInfo("restaurants", _columnsRestaurants, _foreignKeysRestaurants, _indicesRestaurants);

@@ -239,6 +239,9 @@ drawable ic_filter
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_menu_hamburger
+drawable ic_reset
+drawable ic_shuffle
+drawable ic_undo
 drawable inihawexpress
 drawable ippudo
 drawable islandbistro
@@ -402,9 +405,12 @@ id btn_fineDining
 id btn_foodHall
 id btn_grill
 id btn_healthy
+id btn_reset
 id btn_restoBar
+id btn_shuffle
 id btn_snack
 id btn_stall
+id btn_undo
 id by_category_text
 id cancel_rating_button
 id card_back
@@ -430,8 +436,6 @@ id guide_top
 id horizontalScrollViewCategory
 id imgBtnBack
 id imgLogo
-id jrkg_bar
-id jrkg_title
 id location_status_text
 id location_switch
 id login
@@ -448,7 +452,6 @@ id nav_profile
 id nav_search
 id never_again_count_text
 id no_ratings_message
-id pageTitleContainer
 id picker_app_bar
 id picker_card
 id picker_card_back_layout
@@ -458,8 +461,6 @@ id picker_card_flip_container
 id picker_card_front
 id picker_card_location
 id picker_card_name
-id picker_filter_icon
-id picker_menu_icon
 id picker_title
 id profile_avatar
 id progressBarHome
@@ -473,10 +474,8 @@ id recently_added_text
 id recyclerViewRestaurants
 id register
 id registerFragment
-id restaurantDescription
 id restaurantDetailsFragment
 id restaurantIdTextView
-id restaurantImage
 id restaurantName
 id restaurantRatingFragment
 id restaurant_category_cuisine
@@ -509,7 +508,6 @@ id txtGotoRegister
 id txtInstructions
 id txtInstructions2
 id txtLoginHeader
-id txtPageTitle
 id txtRegisterDisplay
 id txtSubdisplay
 id txtWelcomeDisplay
@@ -573,7 +571,6 @@ style SpecialLinkText
 style ThemeOverlay.AppTheme.HighContrast
 style ThemeOverlay.AppTheme.MediumContrast
 style Theme.App.Starting
-style Theme.JKRGBites
 style Theme.JRKGBites
 style Widget.App.CheckBox
 xml backup_rules

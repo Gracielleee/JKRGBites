@@ -9,7 +9,7 @@ import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.model.RestaurantRating
 import com.jrkg.jrkgbites.utils.Converters
 
-@Database(entities = [Restaurant::class, RestaurantRating::class], version = 2, exportSchema = false)
+@Database(entities = [Restaurant::class, RestaurantRating::class], version = 3, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
 

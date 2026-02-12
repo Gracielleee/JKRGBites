@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-48:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-49:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\2dd8ffa84ba74eacb4a28d1b34b847c1\\workspace\\transformed\\core-splashscreen-1.0.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\dbcdacd0fcc77a21b6ea9e1287257914\\workspace\\transformed\\core-splashscreen-1.0.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\gabri\\.gradle\\caches\\9.1.0\\transforms\\6c608f4d03228940371b38b8717969b5\\workspace\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\a2407aaa9182e1d470901280c530e557\\workspace\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

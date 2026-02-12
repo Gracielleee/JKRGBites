@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 import android.util.Log
 
 class MainViewModel(
-    private val application: Application, // ADDED: Application context for MainViewModel
+    private val application: Application,
     private val restaurantPicker: RestaurantPicker,
     private val swipeManager: SwipeManager,
     private val searchManager: SearchManager,
@@ -59,13 +59,9 @@ class MainViewModel(
     private val _pickedResult = MutableStateFlow<String?>(null)
     val pickedResult: StateFlow<String?> = _pickedResult.asStateFlow()
 
-    // --- Update deck to come from RestaurantRepository ---
-    val deck: StateFlow<List<Restaurant>> = restaurantRepository.getRestaurants()
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000),
-            emptyList()
-        )
+    // --- Deck comes from SwipeManager to handle session removals and persistence ---
+    val deck: StateFlow<List<Restaurant>> = swipeManager.deck
+    
     val selectedRestaurant: StateFlow<Restaurant?> = swipeManager.selectedRestaurant
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
         .stateIn(
@@ -74,8 +70,6 @@ class MainViewModel(
             emptyList()
         )
 
-    // Update searchResults to come from RestaurantRepository. (Currently SearchManager filters from an internal list)
-    // For now, keep as is, but will update SearchManager to use Room later.
     private val _searchResults = MutableStateFlow<List<Restaurant>>(emptyList())
     val searchResults: StateFlow<List<Restaurant>> = _searchResults.asStateFlow()
 
@@ -103,6 +97,14 @@ class MainViewModel(
         swipeManager.onSwipe(restaurant, direction)
     }
 
+    fun resetDeck() {
+        swipeManager.clearSessionSwipes()
+    }
+
+    fun shuffleDeck(){
+        swipeManager.shuffleDeck()
+    }
+
     fun clearSelectedRestaurant() {
         swipeManager.clearSelectedRestaurant()
     }
@@ -113,8 +115,6 @@ class MainViewModel(
         }
     }
 }
-
-
 
 @Suppress("UNCHECKED_CAST")
 class MainViewModelFactory(
@@ -128,7 +128,7 @@ class MainViewModelFactory(
 
             val restaurantRepository = RestaurantRepository(restaurantDao)
             val prefsManager = UserPreferencesManager(application)
-            val authService = FakeAuthService() // Assuming FakeAuthService is for testing, replace if needed
+            val authService = FakeAuthService()
             val sessionManager = SessionManager(authService)
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)

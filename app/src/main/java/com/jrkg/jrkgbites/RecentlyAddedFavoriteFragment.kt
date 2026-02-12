@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.jrkg.jrkgbites.adapter.RestaurantAdapter
 import com.jrkg.jrkgbites.databinding.FragmentSeeRecentlyAddedBinding
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 
@@ -41,6 +43,10 @@ class RecentlyAddedFavoriteFragment : Fragment() {
 
         // 4. Set the Adapter
         binding.recentRecyclerView.adapter = RestaurantAdapter(requireContext(), favoriteRestaurants)
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {

@@ -4,6 +4,7 @@ package com.jrkg.jrkgbites.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,16 +22,25 @@ public final class FragmentSeeAllRestaurantsBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
+  public final View actionBarBg;
+
+  @NonNull
   public final RecyclerView allRestaurantsRecycler;
 
   @NonNull
-  public final TextView txtPageTitle;
+  public final ImageView backButton;
+
+  @NonNull
+  public final TextView screenTitle;
 
   private FragmentSeeAllRestaurantsBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RecyclerView allRestaurantsRecycler, @NonNull TextView txtPageTitle) {
+      @NonNull View actionBarBg, @NonNull RecyclerView allRestaurantsRecycler,
+      @NonNull ImageView backButton, @NonNull TextView screenTitle) {
     this.rootView = rootView;
+    this.actionBarBg = actionBarBg;
     this.allRestaurantsRecycler = allRestaurantsRecycler;
-    this.txtPageTitle = txtPageTitle;
+    this.backButton = backButton;
+    this.screenTitle = screenTitle;
   }
 
   @Override
@@ -60,20 +70,32 @@ public final class FragmentSeeAllRestaurantsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.action_bar_bg;
+      View actionBarBg = ViewBindings.findChildViewById(rootView, id);
+      if (actionBarBg == null) {
+        break missingId;
+      }
+
       id = R.id.all_restaurants_recycler;
       RecyclerView allRestaurantsRecycler = ViewBindings.findChildViewById(rootView, id);
       if (allRestaurantsRecycler == null) {
         break missingId;
       }
 
-      id = R.id.txtPageTitle;
-      TextView txtPageTitle = ViewBindings.findChildViewById(rootView, id);
-      if (txtPageTitle == null) {
+      id = R.id.back_button;
+      ImageView backButton = ViewBindings.findChildViewById(rootView, id);
+      if (backButton == null) {
         break missingId;
       }
 
-      return new FragmentSeeAllRestaurantsBinding((ConstraintLayout) rootView,
-          allRestaurantsRecycler, txtPageTitle);
+      id = R.id.screen_title;
+      TextView screenTitle = ViewBindings.findChildViewById(rootView, id);
+      if (screenTitle == null) {
+        break missingId;
+      }
+
+      return new FragmentSeeAllRestaurantsBinding((ConstraintLayout) rootView, actionBarBg,
+          allRestaurantsRecycler, backButton, screenTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

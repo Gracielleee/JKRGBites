@@ -37,22 +37,20 @@ public final class RestaurantAdapter extends androidx.recyclerview.widget.Recycl
         return 0;
     }
     
-    @kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u000f\u0018\u00002\u00020\u0001B\u000f\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0004\b\u0004\u0010\u0005R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0011\u0010\u0006\u001a\u00020\u0007\u00a2\u0006\b\n\u0000\u001a\u0004\b\b\u0010\tR\u0011\u0010\n\u001a\u00020\u000b\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\rR\u0011\u0010\u000e\u001a\u00020\u000b\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\rR\u0011\u0010\u0010\u001a\u00020\u0011\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\u0013R\u0011\u0010\u0014\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0016\u0010\u0017R\u0011\u0010\u0018\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0017R\u0011\u0010\u001a\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0017R\u0011\u0010\u001c\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0017R\u0011\u0010\u001e\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001f\u0010\u0017R\u0011\u0010 \u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b!\u0010\u0017R\u0011\u0010\"\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b#\u0010\u0017\u00a8\u0006$"}, d2 = {"Lcom/jrkg/jrkgbites/adapter/RestaurantAdapter$RestaurantViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/jrkg/jrkgbites/databinding/ItemRestaurantListCardBinding;", "<init>", "(Lcom/jrkg/jrkgbites/databinding/ItemRestaurantListCardBinding;)V", "cardFlipContainer", "Landroid/widget/FrameLayout;", "getCardFlipContainer", "()Landroid/widget/FrameLayout;", "cardFront", "Landroid/widget/LinearLayout;", "getCardFront", "()Landroid/widget/LinearLayout;", "cardBack", "getCardBack", "restaurantImage", "Landroid/widget/ImageView;", "getRestaurantImage", "()Landroid/widget/ImageView;", "restaurantName", "Landroid/widget/TextView;", "getRestaurantName", "()Landroid/widget/TextView;", "restaurantDescription", "getRestaurantDescription", "backName", "getBackName", "backCategory", "getBackCategory", "backCuisine", "getBackCuisine", "backLevel", "getBackLevel", "backTags", "getBackTags", "app_debug"})
+    @kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u00002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0005\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\r\u0018\u00002\u00020\u0001B\u000f\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u00a2\u0006\u0004\b\u0004\u0010\u0005R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0011\u0010\u0006\u001a\u00020\u0007\u00a2\u0006\b\n\u0000\u001a\u0004\b\b\u0010\tR\u0011\u0010\n\u001a\u00020\u000b\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\rR\u0011\u0010\u000e\u001a\u00020\u000b\u00a2\u0006\b\n\u0000\u001a\u0004\b\u000f\u0010\rR\u0011\u0010\u0010\u001a\u00020\u0011\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0012\u0010\u0013R\u0011\u0010\u0014\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0016\u0010\u0017R\u0011\u0010\u0018\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u0019\u0010\u0017R\u0011\u0010\u001a\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001b\u0010\u0017R\u0011\u0010\u001c\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001d\u0010\u0017R\u0011\u0010\u001e\u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b\u001f\u0010\u0017R\u0011\u0010 \u001a\u00020\u0015\u00a2\u0006\b\n\u0000\u001a\u0004\b!\u0010\u0017\u00a8\u0006\""}, d2 = {"Lcom/jrkg/jrkgbites/adapter/RestaurantAdapter$RestaurantViewHolder;", "Landroidx/recyclerview/widget/RecyclerView$ViewHolder;", "binding", "Lcom/jrkg/jrkgbites/databinding/ItemRestaurantListCardBinding;", "<init>", "(Lcom/jrkg/jrkgbites/databinding/ItemRestaurantListCardBinding;)V", "cardFlipContainer", "Landroid/widget/FrameLayout;", "getCardFlipContainer", "()Landroid/widget/FrameLayout;", "cardFront", "Lcom/google/android/material/card/MaterialCardView;", "getCardFront", "()Lcom/google/android/material/card/MaterialCardView;", "cardBack", "getCardBack", "restaurantImage", "Landroid/widget/ImageView;", "getRestaurantImage", "()Landroid/widget/ImageView;", "restaurantName", "Landroid/widget/TextView;", "getRestaurantName", "()Landroid/widget/TextView;", "backName", "getBackName", "backCategory", "getBackCategory", "backCuisine", "getBackCuisine", "backLevel", "getBackLevel", "backTags", "getBackTags", "app_debug"})
     public static final class RestaurantViewHolder extends androidx.recyclerview.widget.RecyclerView.ViewHolder {
         @org.jetbrains.annotations.NotNull()
         private final com.jrkg.jrkgbites.databinding.ItemRestaurantListCardBinding binding = null;
         @org.jetbrains.annotations.NotNull()
         private final android.widget.FrameLayout cardFlipContainer = null;
         @org.jetbrains.annotations.NotNull()
-        private final android.widget.LinearLayout cardFront = null;
+        private final com.google.android.material.card.MaterialCardView cardFront = null;
         @org.jetbrains.annotations.NotNull()
-        private final android.widget.LinearLayout cardBack = null;
+        private final com.google.android.material.card.MaterialCardView cardBack = null;
         @org.jetbrains.annotations.NotNull()
         private final android.widget.ImageView restaurantImage = null;
         @org.jetbrains.annotations.NotNull()
         private final android.widget.TextView restaurantName = null;
-        @org.jetbrains.annotations.NotNull()
-        private final android.widget.TextView restaurantDescription = null;
         @org.jetbrains.annotations.NotNull()
         private final android.widget.TextView backName = null;
         @org.jetbrains.annotations.NotNull()
@@ -75,12 +73,12 @@ public final class RestaurantAdapter extends androidx.recyclerview.widget.Recycl
         }
         
         @org.jetbrains.annotations.NotNull()
-        public final android.widget.LinearLayout getCardFront() {
+        public final com.google.android.material.card.MaterialCardView getCardFront() {
             return null;
         }
         
         @org.jetbrains.annotations.NotNull()
-        public final android.widget.LinearLayout getCardBack() {
+        public final com.google.android.material.card.MaterialCardView getCardBack() {
             return null;
         }
         
@@ -91,11 +89,6 @@ public final class RestaurantAdapter extends androidx.recyclerview.widget.Recycl
         
         @org.jetbrains.annotations.NotNull()
         public final android.widget.TextView getRestaurantName() {
-            return null;
-        }
-        
-        @org.jetbrains.annotations.NotNull()
-        public final android.widget.TextView getRestaurantDescription() {
             return null;
         }
         

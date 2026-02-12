@@ -2006,6 +2006,7 @@
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="androidx_window_activity_scope" type="id"/>
+    <item name="coil_request_manager" type="id"/>
     <item name="fragment_container_view_tag" type="id"/>
     <item name="ghost_view" type="id"/>
     <item name="ghost_view_holder" type="id"/>
@@ -6621,7 +6622,7 @@
         <item name="windowSplashScreenAnimatedIcon">@drawable/avd_jrkg_spin_anim</item>
         <item name="windowSplashScreenAnimationDuration">1000</item>
         <item name="windowSplashScreenBackground">?attr/colorSurface</item>
-        <item name="postSplashScreenTheme">@style/Theme.JKRGBites</item>
+        <item name="postSplashScreenTheme">@style/Theme.JRKGBites</item>
     </style>
     <style name="Theme.AppCompat" parent="Base.Theme.AppCompat"/>
     <style name="Theme.AppCompat.CompactMenu" parent="Base.Theme.AppCompat.CompactMenu"/>
@@ -6675,7 +6676,7 @@
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
   </style>
-    <style name="Theme.JKRGBites" parent="Theme.Material3.Light.NoActionBar">
+    <style name="Theme.JRKGBites" parent="Theme.Material3.Light.NoActionBar">
         <item name="editTextStyle">@style/Widget.Material3.TextInputEditText.FilledBox</item>
         <item name="colorControlActivated">?attr/colorPrimary</item>
         <item name="colorControlNormal">?attr/colorOnSurfaceVariant</item>

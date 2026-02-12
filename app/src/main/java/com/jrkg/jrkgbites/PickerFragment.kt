@@ -51,9 +51,15 @@ class PickerFragment : Fragment() {
         observeRestaurantDeck()
         observeSelectedRestaurant() // New observer call
 
-        // Set up initial UI (Menu and Filter icons)
-        binding.pickerMenuIcon.setOnClickListener { /* TODO: Implement menu logic */ }
-        binding.pickerFilterIcon.setOnClickListener { /* TODO: Implement filter logic */ }
+        // Set up initial UI (Menu and button icons)
+        binding.btnUndo.setOnClickListener {
+        }
+        binding.btnShuffle.setOnClickListener {
+            viewModel.shuffleDeck()
+        }
+        binding.btnReset.setOnClickListener {
+            viewModel.resetDeck()
+        }
 
         // Removed single-tap card flip logic from here, it's now handled by onDoubleTap
     }
