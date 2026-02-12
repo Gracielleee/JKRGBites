@@ -109,6 +109,15 @@ class MainViewModel(
         swipeManager.clearSelectedRestaurant()
     }
 
+    /**
+     * Exposes a Flow for a single restaurant by ID so that
+     * UI layers (e.g., RestaurantDetailsFragment) don't depend
+     * on the current swipe deck contents.
+     */
+    fun getRestaurantById(id: String): Flow<Restaurant?> {
+        return restaurantRepository.getRestaurantById(id)
+    }
+
     fun submitRating(restaurantId: String, rating: Int, comment: String) {
         viewModelScope.launch {
             ratingManager.submitRating(restaurantId, rating.toInt(), comment)
