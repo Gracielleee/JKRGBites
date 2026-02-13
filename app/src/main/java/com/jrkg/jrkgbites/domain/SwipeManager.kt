@@ -27,9 +27,12 @@ class SwipeManager(
     private lateinit var scope: CoroutineScope
 
     private val _allRestaurants = MutableStateFlow<List<Restaurant>>(emptyList())
+    val allRestaurants: StateFlow<List<Restaurant>> = _allRestaurants.asStateFlow()
 
     private val _sessionSwipedRestaurants = MutableStateFlow<Set<String>>(emptySet())
 
+    private val _swipeHistory = mutableListOf<Pair<Restaurant, SwipeDirection>>()
+    private val MAX_SWIPE_HISTORY_SIZE = 8
     private val _deck = MutableStateFlow<List<Restaurant>>(emptyList())
     val deck: StateFlow<List<Restaurant>> = _deck.asStateFlow()
 
@@ -38,25 +41,26 @@ class SwipeManager(
 
     private val _neverAgain = MutableStateFlow<Set<String>>(emptySet())
     val neverAgain: StateFlow<Set<String>> = _neverAgain.asStateFlow()
+
     private val _selectedRestaurant = MutableStateFlow<Restaurant?>(null)
     val selectedRestaurant: StateFlow<Restaurant?> = _selectedRestaurant.asStateFlow()
-
-    // init block to perform initial setup that doesn't require scope
-    init {
-        // We will call resetDeck() once scope is initialized
-    }
 
     fun init(scope: CoroutineScope) {
         this.scope = scope
         scope.launch {
             restaurantRepository.getRestaurants().collect { restaurants ->
                 _allRestaurants.value = restaurants
+                // Update helper state flows for favorites and never again
+                _favorites.value = restaurants.filter { it.isFavorite }.map { it.id }.toSet()
+                _neverAgain.value = restaurants.filter { it.isNeverAgain }.map { it.id }.toSet()
                 updateDeck()
             }
         }
     }
 
-
+    /**
+     * Updates the deck by applying current filters.
+     */
     fun updateDeck() {
         _deck.update {
             filterDeck()
@@ -64,14 +68,15 @@ class SwipeManager(
     }
 
     /**
-     * Filters the deck based on the current session's swipes and never again status.
+     * Filters the deck based on flags and the current session's swipes.
      */
     fun filterDeck(): List<Restaurant> {
         return _allRestaurants.value.filterNot { restaurant ->
-            restaurant.isNeverAgain || _sessionSwipedRestaurants.value.contains(restaurant.id)
+            restaurant.isNeverAgain || 
+            restaurant.isFavorite || 
+            _sessionSwipedRestaurants.value.contains(restaurant.id)
         }
     }
-
 
     /**
      * Processes a swipe action on a restaurant.
@@ -81,9 +86,13 @@ class SwipeManager(
     fun onSwipe(restaurant: Restaurant, direction: SwipeDirection) {
         // Track swiped restaurants in session
         _sessionSwipedRestaurants.update { it + restaurant.id }
-
-        // Immediately update deck in memory for UI responsiveness
         _deck.update { currentDeck -> currentDeck.filterNot { it.id == restaurant.id } }
+
+        //To track for undo
+        if (_swipeHistory.size >= MAX_SWIPE_HISTORY_SIZE) {
+            _swipeHistory.removeAt(0) // Remove the oldest entry
+        }
+        _swipeHistory.add(Pair(restaurant, direction))
 
         scope.launch {
             when (direction) {
@@ -113,7 +122,8 @@ class SwipeManager(
         restaurant?.let {
             it.isNeverAgain = true
             restaurantRepository.updateRestaurantStatus(it)
-            // Also remove from deck if present
+            // Also ensure it is tracked in the session so it doesn't reappear in the deck
+            _sessionSwipedRestaurants.update { swiped -> swiped + restaurantId }
             _deck.update { currentDeck -> currentDeck.filterNot { d -> d.id == restaurantId } }
         }
     }
@@ -124,32 +134,54 @@ class SwipeManager(
     fun clearSessionSwipes() {
         _sessionSwipedRestaurants.value = emptySet()
         updateDeck()
+        clearSwipeHistory()
     }
 
-    fun shuffleDeck() {
-        val filteredRestaurants = _deck.value.size
-
-        val originalDeckSize = _allRestaurants.value
-
-        _deck.update {
-            filterDeck().shuffled()
-
-            Log.d("SwipeManager", """
-            Deck Shuffled:
-            - Original Deck Size: ${originalDeckSize.size}
-            - Filtered Restaurants: $filteredRestaurants
-            - Swiped Restaurant IDs: ${_sessionSwipedRestaurants.value}
-        """.trimIndent())
-
-            originalDeckSize
+    fun undoLastSwipe() {
+        if (_swipeHistory.isNotEmpty()) {
+            val (lastRestaurant, lastDirection) = _swipeHistory.removeAt(_swipeHistory.lastIndex)
+            scope.launch {
+                when (lastDirection) {
+                    SwipeDirection.UP -> {
+                        lastRestaurant.isFavorite = false
+                        restaurantRepository.updateRestaurantStatus(lastRestaurant)
+                    }
+                    SwipeDirection.DOWN -> {
+                        lastRestaurant.isNeverAgain = false
+                        restaurantRepository.updateRestaurantStatus(lastRestaurant)
+                    }
+                    SwipeDirection.LEFT, SwipeDirection.RIGHT -> {
+                        // No action
+                    }
+                }
+                // Restore the restaurant to the deck and session
+                _sessionSwipedRestaurants.update { it - lastRestaurant.id }
+                _deck.update { currentDeck -> currentDeck + lastRestaurant }
+                updateDeck() // Refresh the deck after modifications
+            }
+        } else {
+            Log.d("SwipeManager", "No swipes to undo.")
         }
     }
 
+    /**
+     * Shuffles the current filtered deck.
+     */
+    fun shuffleDeck() {
+        _deck.update {
+            val shuffled = filterDeck().shuffled()
+            shuffled
+        }
+    }
 
     /**
      * Clears the selected restaurant.
      */
     fun clearSelectedRestaurant() {
         _selectedRestaurant.update { null }
+    }
+
+    fun clearSwipeHistory() {
+        _swipeHistory.clear()
     }
 }

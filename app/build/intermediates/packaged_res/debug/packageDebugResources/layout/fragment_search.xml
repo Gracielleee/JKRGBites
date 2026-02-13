@@ -15,6 +15,7 @@
         android:background="@drawable/search_bar_bg"
         android:iconifiedByDefault="false"
         android:queryHint="Search"
+        app:hintTextColor="?attr/colorOnSurface"
         app:layout_constraintEnd_toStartOf="@+id/filter_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

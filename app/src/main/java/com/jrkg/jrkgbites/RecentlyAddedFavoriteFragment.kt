@@ -38,8 +38,8 @@ class RecentlyAddedFavoriteFragment : Fragment() {
         binding.recentRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 3. Filter data: Only show favorites
-        val allRestaurants = viewModel.deck.value ?: emptyList()
-        val favoriteRestaurants = allRestaurants.filter { it.isFavorite }
+        val allRestaurants = viewModel.allRestaurants.value ?: emptyList()
+        val favoriteRestaurants = allRestaurants.filter { it.isFavorite }.take(10)
 
         // 4. Set the Adapter
         binding.recentRecyclerView.adapter = RestaurantAdapter(requireContext(), favoriteRestaurants)

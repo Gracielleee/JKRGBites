@@ -53,6 +53,7 @@ class PickerFragment : Fragment() {
 
         // Set up initial UI (Menu and button icons)
         binding.btnUndo.setOnClickListener {
+            viewModel.undoSwipe()
         }
         binding.btnShuffle.setOnClickListener {
             viewModel.shuffleDeck()
@@ -343,7 +344,7 @@ class PickerFragment : Fragment() {
 
         }
 
-    
+
 
         private fun observeSelectedRestaurant() {
 

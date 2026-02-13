@@ -38,15 +38,16 @@ class SeeAllRestaurantsFragment : Fragment() {
         binding.allRestaurantsRecycler.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 3. Get arguments (if you passed any from FavoriteFragment)
-        val showOnlyFavorites = arguments?.getBoolean("SHOW_ONLY_FAVORITES") ?: false
+//        val showOnlyFavorites = arguments?.getBoolean("SHOW_ONLY_FAVORITES") ?: false
 
         // 4. Use data from ViewModel
-        val fullList = viewModel.deck.value ?: emptyList()
-        val displayList = if (showOnlyFavorites) {
-            fullList.filter { it.isFavorite }
-        } else {
-            fullList
-        }
+        val fullList = viewModel.allRestaurants.value ?: emptyList()
+        val displayList = fullList.filter { it.isFavorite }
+//        val displayList = if (showOnlyFavorites) {
+//            fullList.filter { it.isFavorite }
+//        } else {
+//            fullList
+//        }
 
         // 5. Set the Adapter
         binding.allRestaurantsRecycler.adapter = RestaurantAdapter(requireContext(), displayList)

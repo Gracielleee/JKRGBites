@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jrkg.jrkgbites.AppDatabase
-import com.jrkg.jrkgbites.data.RestaurantDao
-import com.jrkg.jrkgbites.data.RestaurantRatingDao
 import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.data.source.FakeAuthService
@@ -24,7 +22,6 @@ import com.jrkg.jrkgbites.services.BiometricService
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import android.util.Log
 
 class MainViewModel(
     private val application: Application,
@@ -59,8 +56,13 @@ class MainViewModel(
     private val _pickedResult = MutableStateFlow<String?>(null)
     val pickedResult: StateFlow<String?> = _pickedResult.asStateFlow()
 
-    // --- Deck comes from SwipeManager to handle session removals and persistence ---
+    // --- Swipe Manager State ---
     val deck: StateFlow<List<Restaurant>> = swipeManager.deck
+
+    val allRestaurants: StateFlow<List<Restaurant>> = swipeManager.allRestaurants
+
+    val favorites: StateFlow<Set<String>> = swipeManager.favorites
+    val neverAgain: StateFlow<Set<String>> = swipeManager.neverAgain
     
     val selectedRestaurant: StateFlow<Restaurant?> = swipeManager.selectedRestaurant
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
@@ -103,6 +105,10 @@ class MainViewModel(
 
     fun shuffleDeck(){
         swipeManager.shuffleDeck()
+    }
+
+    fun undoSwipe(){
+        swipeManager.undoLastSwipe()
     }
 
     fun clearSelectedRestaurant() {

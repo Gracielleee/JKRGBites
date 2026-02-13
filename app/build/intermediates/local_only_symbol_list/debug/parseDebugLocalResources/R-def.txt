@@ -498,6 +498,7 @@ id tilUsername
 id to_forgotPasswordDialog
 id to_loginFragment
 id to_registerFragment
+id to_restaurantDetailsFragment
 id touchBackToLogin
 id txtAltLogin
 id txtBackToLogin

@@ -4117,6 +4117,7 @@ id title_template
 id to_forgotPasswordDialog
 id to_loginFragment
 id to_registerFragment
+id to_restaurantDetailsFragment
 id toggle
 id top
 id topPanel

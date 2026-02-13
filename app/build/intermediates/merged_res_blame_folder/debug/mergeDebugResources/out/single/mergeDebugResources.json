@@ -1,1034 +1,1046 @@
 [
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_activity_main.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/activity_main.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_jcodonuts.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\jcodonuts.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_lydiaslechon.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/lydiaslechon.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_vizcos.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\vizcos.png"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_activity_main2.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\activity_main2.xml"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_gerrysgrill.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\gerrysgrill.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_lacreperie.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\lacreperie.png"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_chatime.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\chatime.png"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_cibo.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\cibo.png"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_item_restaurant_rating.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\item_restaurant_rating.xml"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_search_bar_bg.xml.flat",
         "source": "com.jrkg.jrkgbites.app-main-53:/drawable/search_bar_bg.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_paotsin.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/paotsin.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_krispykreme.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\krispykreme.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_flossomkitchen.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/flossomkitchen.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_classicsavory.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/classicsavory.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_nanyang.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\nanyang.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_restaurantfuji.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/restaurantfuji.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_asakusa.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/asakusa.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mangotree.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mangotree.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_restaurant_rating.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_restaurant_rating.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_samstew.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\samstew.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tiongbahru.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tiongbahru.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_hakatatonichi.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\hakatatonichi.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_panublion.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/panublion.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_cocoichibanya.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\cocoichibanya.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_search_button.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/search_button.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bg_rounded.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bg_rounded.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_cibo.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/cibo.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_gadz100.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\gadz100.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_belgianwaffles.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/belgianwaffles.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_reset.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_reset.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mesasteaksizzlers.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mesasteaksizzlers.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_item_restaurant_card.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\item_restaurant_card.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_abe.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/abe.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_lugangcafe.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\lugangcafe.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bg_dialog.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bg_dialog.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_sbarro.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\sbarro.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_coffeebean.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/coffeebean.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_pill_button.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/pill_button.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_romblondeli.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\romblondeli.jpg"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\animator_card_flip_left_out.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\animator\\card_flip_left_out.xml"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_botejyu.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\botejyu.png"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_filter_icon.xml.flat",
         "source": "com.jrkg.jrkgbites.app-main-53:/drawable/filter_icon.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_abovesealevel.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/abovesealevel.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_pill_button.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\pill_button.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_romblondeli.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/romblondeli.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_favorite.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_favorite.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_japanfudostreet.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/japanfudostreet.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_leyskitchen.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\leyskitchen.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_see_recently_added.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_see_recently_added.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ramenagi.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ramenagi.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_restaurant_details.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_restaurant_details.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_boscoffee.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\boscoffee.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_modernshanghai.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/modernshanghai.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_shakeyspizza.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\shakeyspizza.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_filter.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_filter.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\animator_card_flip_left_in.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\animator\\card_flip_left_in.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kingsisig.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kingsisig.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_seoulgood.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\seoulgood.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_leyskitchen.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/leyskitchen.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_home_button.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/home_button.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_thematchatokyo.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\thematchatokyo.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_wangfu.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\wangfu.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/animator_card_flip_back.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/animator/card_flip_back.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bashcafe.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bashcafe.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_katherinescafe.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/katherinescafe.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_aboysfreshlumpia.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\aboysfreshlumpia.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_official_jrkgbites_nobg.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/official_jrkgbites_nobg.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mantraindiankitchen.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mantraindiankitchen.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_rbx.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/rbx.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_jrkg_logo_svg.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\jrkg_logo_svg.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_gotoking.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/gotoking.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tinapayanfestival.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tinapayanfestival.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_manilacreamery.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/manilacreamery.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_grillily.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\grillily.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/xml_data_extraction_rules.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mistoseda.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mistoseda.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_reset.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_reset.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_manam.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\manam.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_romanticbaboy.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/romanticbaboy.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_hillbrewscoffee.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\hillbrewscoffee.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_euroresto.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/euroresto.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bulaloworld.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bulaloworld.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_sambokojin.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/sambokojin.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tuantuan.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tuantuan.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tuantuan.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tuantuan.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_gangnamgrill.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/gangnamgrill.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_register.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_register.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_genkisushi.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/genkisushi.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_pranaindian.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\pranaindian.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_sizzlingplate.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/sizzlingplate.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_puffys.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\puffys.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_pineapplehillskitchen.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/pineapplehillskitchen.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_vikings.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\vikings.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_lacreperie.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/lacreperie.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_alejorestaurant.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\alejorestaurant.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_chloeslechon.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/chloeslechon.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_worldoffries.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\worldoffries.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mrchops.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mrchops.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_menu_hamburger.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_menu_hamburger.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_scorchedsmokehouse.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/scorchedsmokehouse.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_easytiger.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\easytiger.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_picker.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_picker.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_gotoking.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\gotoking.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_lasabbq.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/lasabbq.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_manginasal.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\manginasal.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_picker_button.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/picker_button.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_turks.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\turks.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_timhowan.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\timhowan.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tres.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tres.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tres.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tres.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_grapeescape.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/grapeescape.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_banhmikitchen.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\banhmikitchen.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_login.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_login.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_pineapplehillskitchen.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\pineapplehillskitchen.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-mdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_chowking.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\chowking.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_item_restaurant_rating.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/item_restaurant_rating.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_teppanya.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\teppanya.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_racks.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/racks.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_resto_general_card.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\resto_general_card.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_teppanya.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/teppanya.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_avd_jrkg_spin_anim.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/avd_jrkg_spin_anim.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_chloeslechon.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\chloeslechon.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_grillily.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/grillily.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\animator_card_flip_right_out.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\animator\\card_flip_right_out.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_amelitossizzling.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/amelitossizzling.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_shuffle.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_shuffle.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_item_restaurant_card.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/item_restaurant_card.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_filter_icon.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\filter_icon.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/animator_card_flip_left_out.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/animator/card_flip_left_out.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_search.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_search.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_elpolloloco.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/elpolloloco.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\animator_card_flip_front.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\animator\\card_flip_front.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_manam.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/manam.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_loschachos.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\loschachos.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_hapchan.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/hapchan.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-hdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_dintaifung.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/dintaifung.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_dialog_email_verification.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\dialog_email_verification.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_starbucks.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/starbucks.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_chicken24.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\chicken24.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_salazarbakery.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/salazarbakery.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_sizzlingplate.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\sizzlingplate.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_phohoa.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/phohoa.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kingsisig.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kingsisig.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_contis.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/contis.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_restaurant_rating.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_restaurant_rating.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mujicafe.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mujicafe.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_rbx.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\rbx.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_turks.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/turks.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_fatfook.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\fatfook.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bigchefpizza.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bigchefpizza.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_scorchedsmokehouse.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\scorchedsmokehouse.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_thematchatokyo.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/thematchatokyo.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tgifridays.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tgifridays.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kennyrogers.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kennyrogers.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_maisen.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\maisen.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_papermoon.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/papermoon.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_banapple.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\banapple.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_jcodonuts.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/jcodonuts.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mesa.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mesa.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_islandbistro.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/islandbistro.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_texasroadhouse.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\texasroadhouse.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_boscoffee.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/boscoffee.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_panublion.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\panublion.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bashcafe.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bashcafe.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tiongbahru.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tiongbahru.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_sbarro.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/sbarro.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_japanfudostreet.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\japanfudostreet.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tongyang.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tongyang.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_jollibee.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/jollibee.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_profile_button.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\profile_button.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kettlecorn.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kettlecorn.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_arrow_back.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_arrow_back.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_chillbar.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/chillbar.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_sumoniku.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\sumoniku.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_amici.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/amici.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_popeyes.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\popeyes.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_seaportbar.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/seaportbar.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tahostory.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tahostory.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_razonsofguagua.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/razonsofguagua.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-hdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-hdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_krispykreme.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/krispykreme.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_feastandfire.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\feastandfire.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_yakimix.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/yakimix.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxhdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxhdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mannhann.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mannhann.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kennyrogers.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kennyrogers.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bg_rounded.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bg_rounded.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_auntieannes.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\auntieannes.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_everythingbutcheese.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\everythingbutcheese.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_auntieannes.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/auntieannes.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kettlecorn.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kettlecorn.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_dialog_email_verification.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/dialog_email_verification.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_burgoo.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\burgoo.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ramenagi.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ramenagi.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_tongyangplus.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\tongyangplus.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_undo.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_undo.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_classicsavory.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\classicsavory.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_magure.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/magure.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_restaurantfuji.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\restaurantfuji.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_henlin.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/henlin.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_search_bar_bg.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\search_bar_bg.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxxhdpi_ic_launcher_background.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxxhdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bonchon.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bonchon.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_saladstop.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/saladstop.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxxhdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxxhdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_seasalt.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/seasalt.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_cymagreek.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\cymagreek.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_menu_hamburger.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_menu_hamburger.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_seoulgood.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/seoulgood.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_belgianwaffles.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\belgianwaffles.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_pandaexpress.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/pandaexpress.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_holographic.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\holographic.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_maisen.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/maisen.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_grapeescape.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\grapeescape.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_shuffle.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_shuffle.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_gringo.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\gringo.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_jdgitalian.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/jdgitalian.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kimpura.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kimpura.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_khaokhai.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/khaokhai.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_henlin.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\henlin.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mesa.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mesa.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mosburger.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mosburger.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_resto_general_card.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/resto_general_card.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_see_all_restaurants.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_see_all_restaurants.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/xml_backup_rules.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_amelitossizzling.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\amelitossizzling.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_chatime.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/chatime.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_nabe.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\nabe.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_item_restaurant_list_card.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/item_restaurant_list_card.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_barcino.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\barcino.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-mdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-mdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_gringo.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/gringo.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bacsilog.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bacsilog.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_hillbrewscoffee.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/hillbrewscoffee.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_meatdepot.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/meatdepot.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_yellowcab.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\yellowcab.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_lantawan.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/lantawan.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_home_button.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\home_button.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mrkimbob.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mrkimbob.jpg"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_pound.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/pound.png"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_sunbirdridge.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/sunbirdridge.png"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tinapayanfestival.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tinapayanfestival.jpg"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_storyakitchen.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/storyakitchen.png"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ramenkuroda.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ramenkuroda.jpg"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_pranaindian.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/pranaindian.jpg"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_alejorestaurant.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/alejorestaurant.png"
-    },
-    {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_vizcos.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/vizcos.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_search.xml.flat",
         "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_search.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_nabe.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/nabe.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_potatocorner.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\potatocorner.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_yogorino.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/yogorino.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_picker_button.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\picker_button.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_lugangcafe.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/lugangcafe.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_modernshanghai.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\modernshanghai.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_banhmikitchen.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/banhmikitchen.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kyukyuramen.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kyukyuramen.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_burgoo.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/burgoo.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_recipes.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\recipes.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kippschicken.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kippschicken.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mesasteaksizzlers.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mesasteaksizzlers.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mapletreehouse.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mapletreehouse.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ajisenramen.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ajisenramen.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_aboysfreshlumpia.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/aboysfreshlumpia.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_katherinescafe.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\katherinescafe.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_botejyu.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/botejyu.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_romanticbaboy.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\romanticbaboy.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_afterdark.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/afterdark.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_nordspastry.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\nordspastry.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bigoli.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bigoli.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_login.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_login.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_easytiger.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/easytiger.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_asakusa.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\asakusa.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-mdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_favorites_button.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/favorites_button.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_singleorigin.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\singleorigin.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_buffalowingsthings.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/buffalowingsthings.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_hapchan.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\hapchan.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_restaurant_details.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_restaurant_details.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_samstew.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/samstew.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_phohoa.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\phohoa.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_worldoffries.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/worldoffries.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_paotsin.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\paotsin.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_profile_button.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/profile_button.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_search_button.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\search_button.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_jrkg_logo_svg.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/jrkg_logo_svg.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_blueseasseafood.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\blueseasseafood.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_periperi.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/periperi.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_see_recently_added.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_see_recently_added.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_wendys.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/wendys.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_pepperlunch.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\pepperlunch.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_armynavy.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/armynavy.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_jdgitalian.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\jdgitalian.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_activity_main2.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/activity_main2.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_crisostomo.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\crisostomo.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-hdpi_ic_launcher_background.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-hdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_papermoon.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\papermoon.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kawayancafe.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kawayancafe.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_contis.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\contis.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_smohk.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/smohk.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_saladstop.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\saladstop.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_marugameudon.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/marugameudon.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_frankiesny.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/frankiesny.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_magure.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\magure.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_favorite.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_favorite.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kuyaj.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kuyaj.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_nanyang.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/nanyang.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_shilin.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\shilin.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-hdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mamalous.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mamalous.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_meatdepot.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\meatdepot.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bonchon.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bonchon.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_avd_jrkg_spin_anim.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\avd_jrkg_spin_anim.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_cymagreek.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/cymagreek.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_coco.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\coco.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_aristocrat.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/aristocrat.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_periperi.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\periperi.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xhdpi/ic_launcher_foreground.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_starbucks.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\starbucks.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_manginasal.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/manginasal.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_storyakitchen.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\storyakitchen.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_euroresto.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\euroresto.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_nordspastry.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/nordspastry.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_seaportbar.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\seaportbar.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kuyaj.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kuyaj.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_filter.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_filter.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_loschachos.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/loschachos.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_gangnamgrill.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\gangnamgrill.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xhdpi_ic_launcher_background.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xhdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_chillbar.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\chillbar.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_cocoichibanya.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/cocoichibanya.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_puffys.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/puffys.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bodhi.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bodhi.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_coco.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/coco.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kawayancafe.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kawayancafe.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_giligans.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/giligans.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ramenkuroda.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ramenkuroda.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_wangfu.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/wangfu.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_aristocrat.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\aristocrat.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_rectangle_1.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\rectangle_1.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_hakatatonichi.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/hakatatonichi.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_sambokojin.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\sambokojin.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_subway.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/subway.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bg_dialog.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bg_dialog.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_hanamarukenramen.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/hanamarukenramen.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_amici.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\amici.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mistoseda.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mistoseda.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kenangancoffee.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kenangancoffee.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_home.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_home.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_subway.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\subway.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_gadz100.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/gadz100.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_marygrace.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\marygrace.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ajisenramen.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ajisenramen.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mannhann.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mannhann.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kyukyuramen.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kyukyuramen.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_flossomkitchen.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\flossomkitchen.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tgifridays.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tgifridays.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mrchops.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mrchops.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tongyang.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tongyang.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_lanhotpot.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\lanhotpot.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_sumoniku.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/sumoniku.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_item_restaurant_list_card.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\item_restaurant_list_card.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_inihawexpress.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/inihawexpress.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mamalous.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mamalous.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_vikings.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/vikings.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_profile.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_lanhotpot.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/lanhotpot.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_coffeebean.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\coffeebean.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_crisostomo.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/crisostomo.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_elpolloloco.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\elpolloloco.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bulaloworld.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bulaloworld.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_reyesbarbecue.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\reyesbarbecue.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tongyangplus.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tongyangplus.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_marygrace.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/marygrace.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_genkisushi.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\genkisushi.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_recipes.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/recipes.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_khaokhai.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\khaokhai.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_maxs.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\maxs.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_shakeyspizza.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/shakeyspizza.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\animator_card_flip_back.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\animator\\card_flip_back.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_blueseasseafood.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/blueseasseafood.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_racks.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\racks.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-xxhdpi_ic_launcher_background.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-xxhdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_manganrestaurant.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\manganrestaurant.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ic_arrow_back.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ic_arrow_back.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bigoli.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bigoli.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mangotree.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mangotree.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_wendys.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\wendys.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_timhowan.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/timhowan.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_manilacreamery.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\manilacreamery.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/menu_bottom_nav_menu.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/menu/bottom_nav_menu.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mapletreehouse.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mapletreehouse.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_holographic.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/holographic.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_seabeancoffeehouse.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\seabeancoffeehouse.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_barcino.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/barcino.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_pepperlunch.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/pepperlunch.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_dintaifung.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\dintaifung.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/animator_card_flip_right_in.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/animator/card_flip_right_in.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_giligans.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\giligans.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_seabeancoffeehouse.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/seabeancoffeehouse.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_yogorino.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\yogorino.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_gerrysgrill.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/gerrysgrill.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bg_restaurant_card.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bg_restaurant_card.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_shilin.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/shilin.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_afterdark.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\afterdark.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_dialog_forgot_password.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/dialog_forgot_password.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_islandbistro.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\islandbistro.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_profile.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_profile.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_pound.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\pound.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_yabu.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/yabu.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_lasabbq.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\lasabbq.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_lantawan.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\lantawan.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_fatfook.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/fatfook.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_yabu.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\yabu.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_yellowcab.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/yellowcab.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mrkimbob.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mrkimbob.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bacsilog.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bacsilog.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_favorites_button.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\favorites_button.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bodhi.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bodhi.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_abovesealevel.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\abovesealevel.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kimpura.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kimpura.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-xhdpi_ic_launcher_background.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-xhdpi\\ic_launcher_background.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_rectangle_1.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/rectangle_1.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_dialog_forgot_password.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\dialog_forgot_password.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_tahostory.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/tahostory.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_hanamarukenramen.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\hanamarukenramen.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_kenangancoffee.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/kenangancoffee.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_armynavy.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\armynavy.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_singleorigin.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/singleorigin.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\animator_card_flip_right_in.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\animator\\card_flip_right_in.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/raw_restaurants.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/raw/restaurants"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_pandaexpress.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\pandaexpress.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_popeyes.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/popeyes.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_inihawexpress.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\inihawexpress.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_manganrestaurant.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/manganrestaurant.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_abe.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\abe.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_see_all_restaurants.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_see_all_restaurants.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/animator_card_flip_front.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/animator/card_flip_front.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_sunbirdridge.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\sunbirdridge.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_potatocorner.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/potatocorner.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_mujicafe.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\mujicafe.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_everythingbutcheese.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/everythingbutcheese.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\raw_restaurants.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\raw\\restaurants"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ippudo.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ippudo.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/animator_card_flip_right_out.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/animator/card_flip_right_out.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_kippschicken.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\kippschicken.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_feastandfire.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/feastandfire.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_buffalowingsthings.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\buffalowingsthings.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_chicken24.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/chicken24.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_yakimix.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\yakimix.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_maxs.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/maxs.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/animator_card_flip_left_in.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/animator/card_flip_left_in.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_jollibee.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\jollibee.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-mdpi_ic_launcher_background.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-mdpi/ic_launcher_background.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_bg_restaurant_card.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/bg_restaurant_card.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_lydiaslechon.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\lydiaslechon.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ippudo.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ippudo.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_smohk.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\smohk.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_ucc.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/ucc.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_bigchefpizza.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\bigchefpizza.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/layout_fragment_register.xml.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_register.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_seasalt.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\seasalt.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_reyesbarbecue.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/reyesbarbecue.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_razonsofguagua.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\razonsofguagua.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_banapple.png.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/banapple.png"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_official_jrkgbites_nobg.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\official_jrkgbites_nobg.png"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_chowking.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/chowking.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_fragment_picker.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_picker.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mantraindiankitchen.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mantraindiankitchen.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_mosburger.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/mosburger.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ic_undo.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ic_undo.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/drawable_texasroadhouse.jpg.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/drawable/texasroadhouse.jpg"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_salazarbakery.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\salazarbakery.jpg"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-debug-51:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.jrkg.jrkgbites.app-main-53:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_frankiesny.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\frankiesny.png"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_marugameudon.png.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\marugameudon.png"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-debug-51:\\drawable_ucc.jpg.flat",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\drawable\\ucc.jpg"
     }
 ]

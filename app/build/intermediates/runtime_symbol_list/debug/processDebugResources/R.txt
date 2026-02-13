@@ -4116,6 +4116,7 @@ int id title_template 0x7f090256
 int id to_forgotPasswordDialog 0x7f090257
 int id to_loginFragment 0x7f090258
 int id to_registerFragment 0x7f090259
+int id to_restaurantDetailsFragment 0x7f09028b
 int id toggle 0x7f09025a
 int id top 0x7f09025b
 int id topPanel 0x7f09025c

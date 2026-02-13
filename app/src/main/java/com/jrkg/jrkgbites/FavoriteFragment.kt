@@ -36,14 +36,13 @@ class FavoriteFragment : Fragment() {
 
         // 2. Observe the data flow
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.deck.collect { restaurantList ->
+            viewModel.allRestaurants.collect { restaurantList ->
                 if (restaurantList.isNotEmpty()) {
-                    // Top Section (Old logic: take first 6)
-                    val recentlyAddedList = restaurantList.take(6)
+                    // Top Section (take first 6)
+                    val recentlyAddedList = restaurantList.filter{ it.isFavorite }.take(6)
                     binding.recentlyAddedRecycler.adapter = com.jrkg.jrkgbites.adapter.RestaurantAdapter(requireContext(), recentlyAddedList)
 
-                    // Bottom Section (Old logic: next 12)
-                    val categoryList = restaurantList.drop(6).take(12)
+                    val categoryList = restaurantList.filter{ it.isFavorite }
                     binding.categoryRecyclerId.adapter = com.jrkg.jrkgbites.adapter.RestaurantAdapter(requireContext(), categoryList)
                 }
             }

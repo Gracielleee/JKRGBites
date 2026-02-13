@@ -71,7 +71,7 @@ class HomeFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // Observe the main restaurant deck
-                viewModel.deck.collectLatest { deck ->
+                viewModel.allRestaurants.collectLatest { deck ->
                     updateRestaurantList(deck)
                 }
             }

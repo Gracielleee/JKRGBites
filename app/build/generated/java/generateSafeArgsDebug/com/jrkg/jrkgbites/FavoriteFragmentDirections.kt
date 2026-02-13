@@ -2,6 +2,7 @@ package com.jrkg.jrkgbites
 
 import androidx.`annotation`.CheckResult
 import androidx.navigation.NavDirections
+import kotlin.String
 
 public class FavoriteFragmentDirections private constructor() {
   public companion object {
@@ -16,5 +17,8 @@ public class FavoriteFragmentDirections private constructor() {
 
     @CheckResult
     public fun toForgotPasswordDialog(): NavDirections = NavGraphDirections.toForgotPasswordDialog()
+
+    @CheckResult
+    public fun toRestaurantDetailsFragment(restaurantId: String): NavDirections = NavGraphDirections.toRestaurantDetailsFragment(restaurantId)
   }
 }

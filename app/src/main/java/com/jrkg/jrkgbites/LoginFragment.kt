@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.navOptions
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
@@ -115,7 +116,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             "Test: Login Successful. Auto Login Disabled."
                         }
                         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-                        findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+//                        findNavController().navigate(R.id.action_loginFragment_to_nav_home)
+                        val action = R.id.action_loginFragment_to_nav_home
+                        val navOptions = navOptions {
+                            popUpTo(R.id.loginFragment) { inclusive = true } // Remove from backstack
+                        }
+                        findNavController().navigate(action, null, navOptions)
                     }
                     is AuthResult.Error -> {
                         Toast.makeText(requireContext(), "Test: Login Failed. ${authResult.message}", Toast.LENGTH_SHORT).show()

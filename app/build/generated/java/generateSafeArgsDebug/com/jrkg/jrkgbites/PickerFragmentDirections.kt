@@ -35,5 +35,8 @@ public class PickerFragmentDirections private constructor() {
 
     @CheckResult
     public fun toForgotPasswordDialog(): NavDirections = NavGraphDirections.toForgotPasswordDialog()
+
+    @CheckResult
+    public fun toRestaurantDetailsFragment(restaurantId: String): NavDirections = NavGraphDirections.toRestaurantDetailsFragment(restaurantId)
   }
 }

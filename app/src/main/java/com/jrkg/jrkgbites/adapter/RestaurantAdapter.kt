@@ -16,11 +16,12 @@ import android.util.Log // Keep Log import for future debugging
 import androidx.core.content.ContextCompat
 import androidx.palette.graphics.Palette
 import coil.load
-import coil.request.ImageRequest
-import coil.transform.RoundedCornersTransformation
-import android.graphics.Bitmap
 import android.graphics.Color
+import android.os.Vibrator
 import androidx.core.graphics.ColorUtils
+import androidx.core.os.bundleOf
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import coil.request.CachePolicy
 
 class RestaurantAdapter(
@@ -142,6 +143,16 @@ class RestaurantAdapter(
         holder.backCuisine.text = "Cuisine: ${restaurant.cuisine ?: "N/A"}"
         holder.backLevel.text = "Level: ${restaurant.level ?: "N/A"}"
         holder.backTags.text = "Tags: ${restaurant.tags?.joinToString(", ") ?: "N/A"}"
+
+        //See details on RestaurantDetailsFragment on hold
+        holder.cardFlipContainer.setOnLongClickListener() { view ->
+            val restaurant = restaurantList[holder.adapterPosition]
+            view.findNavController().navigate(
+                R.id.to_restaurantDetailsFragment,
+                bundleOf("restaurantId" to restaurant.id)
+            )
+            true
+        }
 
         // 4. Conditional Click Logic (Flip OR onItemClick)
         holder.cardFlipContainer.setOnClickListener {
