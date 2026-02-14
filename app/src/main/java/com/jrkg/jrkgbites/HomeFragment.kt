@@ -72,8 +72,10 @@ class HomeFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 // Observe the main restaurant deck
                 viewModel.allRestaurants.collectLatest { deck ->
-                    updateRestaurantList(deck)
+                    val filteredRestaurants = deck.filter { !it.isNeverAgain }
+                    updateRestaurantList(filteredRestaurants)
                 }
+
             }
         }
     }

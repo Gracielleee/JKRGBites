@@ -61,8 +61,8 @@ class MainViewModel(
 
     val allRestaurants: StateFlow<List<Restaurant>> = swipeManager.allRestaurants
 
-    val favorites: StateFlow<Set<String>> = swipeManager.favorites
-    val neverAgain: StateFlow<Set<String>> = swipeManager.neverAgain
+    val favoritesList: StateFlow<List<Restaurant>> = swipeManager.favoritesList
+    val neverAgainList: StateFlow<List<Restaurant>> = swipeManager.neverAgainList
     
     val selectedRestaurant: StateFlow<Restaurant?> = swipeManager.selectedRestaurant
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
@@ -110,6 +110,16 @@ class MainViewModel(
     fun undoSwipe(){
         swipeManager.undoLastSwipe()
     }
+
+    /**
+     * Re-applies current session filters to the deck. Useful when
+     * returning to the picker so that previously swiped restaurants
+     * (including RIGHT swipes) are not shown again.
+     */
+    fun refreshDeck() {
+        swipeManager.updateDeck()
+    }
+
 
     fun clearSelectedRestaurant() {
         swipeManager.clearSelectedRestaurant()

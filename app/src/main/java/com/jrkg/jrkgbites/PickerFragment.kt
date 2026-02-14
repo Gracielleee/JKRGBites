@@ -65,6 +65,13 @@ class PickerFragment : Fragment() {
         // Removed single-tap card flip logic from here, it's now handled by onDoubleTap
     }
 
+    override fun onResume() {
+        super.onResume()
+        // Ensure deck is refreshed when returning from details, so the
+        // previously selected restaurant is not shown again.
+        viewModel.refreshDeck()
+    }
+
     private fun setupGestureDetection() {
         gestureDetector = GestureDetectorCompat(requireContext(), object : GestureDetector.SimpleOnGestureListener() {
             private val SWIPE_THRESHOLD = 100
@@ -214,16 +221,13 @@ class PickerFragment : Fragment() {
             .rotation(targetRotation)
             .setDuration(300)
             .withEndAction {
+                isAnimating = false
                 currentRestaurant?.let { restaurant ->
                     viewModel.onSwipe(restaurant, direction)
                     Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
                 }
                 if (direction != SwipeDirection.RIGHT) { // Only load next if not navigating away
                     resetCardVisuals() // Just reset visuals, observeDeck handles next
-                } else {
-                    // For SwipeRight, _selectedRestaurant is updated and observer will handle navigation
-                    // Don't reset visuals yet, let the navigation hide this fragment
-                    isAnimating = false // Reset animation flag
                 }
             }
             .start()
@@ -250,19 +254,21 @@ class PickerFragment : Fragment() {
     private fun observeRestaurantDeck() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.deck.collect { deck ->
-                if (!isNavigating) { // Only update if not currently navigating
-                    if (deck.isNotEmpty()) {
-                        val nextRestaurant = deck.first()
-                        currentRestaurant = nextRestaurant
-                        updateCardUI(currentRestaurant!!)
-                        // Animate fade-in for the new card
-                        binding.pickerCard.animate().alpha(1f).setDuration(200).start()
-                        binding.pickerCard.visibility = View.VISIBLE
-                    } else {
-                        currentRestaurant = null
-                        binding.pickerCard.visibility = View.GONE
-                        Toast.makeText(requireContext(), "No more restaurants in the deck!", Toast.LENGTH_LONG).show()
-                    }
+                if (deck.isNotEmpty()) {
+                    val nextRestaurant = deck.first()
+                    currentRestaurant = nextRestaurant
+                    updateCardUI(currentRestaurant!!)
+                    // Animate fade-in for the new card
+                    binding.pickerCard.animate().alpha(1f).setDuration(200).start()
+                    binding.pickerCard.visibility = View.VISIBLE
+                } else {
+                    currentRestaurant = null
+                    binding.pickerCard.visibility = View.GONE
+                    Toast.makeText(
+                        requireContext(),
+                        "No more restaurants in the deck!",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             }
         }
@@ -354,7 +360,8 @@ class PickerFragment : Fragment() {
 
                     // This block is triggered when _selectedRestaurant is set (i.e., on SwipeDirection.RIGHT)
 
-                    if (!isNavigating && !isAnimating) { // Prevent multiple navigations/conflicts
+                    // Only guard against concurrent navigations; animation has already finished
+                    if (!isNavigating) {
 
                         isNavigating = true // Set flag to prevent deck updates
 

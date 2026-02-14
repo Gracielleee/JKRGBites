@@ -494,19 +494,6 @@
         ]
     },
     {
-        "ID": "ROM-07",
-        "Name": "Pineapple Hill Cuisine",
-        "Category": "Casual",
-        "Cuisine": "Filipino Comfort",
-        "Location": "Near Port",
-        "Lat": "12.579",
-        "Lng": "122.269",
-        "tags": [
-            "Filipino",
-            "Comfort Food"
-        ]
-    },
-    {
         "ID": "ROM-08",
         "Name": "Seaport Bar & Grill",
         "Category": "Restobar",
@@ -572,14 +559,14 @@
     },
     {
         "ID": "ROM-13",
-        "Name": "Joe-Ra Cafe",
+        "Name": "Aurange Diner",
         "Category": "Cafe/Resto",
         "Cuisine": "Filipino/Pasta",
         "Location": "Town Proper",
         "Lat": "12.5776",
         "Lng": "122.2704",
         "tags": [
-            "Cafe",
+            "Comfort Food",
             "Chicken Katsu"
         ]
     },
@@ -647,6 +634,19 @@
             "Filipino",
             "Lechon"
         ]
+    },
+    {
+      "ID": "ROM-19",
+      "Name": "Garden Bar",
+      "Category": "Casual/Grill",
+      "Cuisine": "Filipino/Western",
+      "Location": "Brgy. Agnay",
+      "Lat": "12.5278313",
+      "Lng": "122.2591143",
+      "tags": [
+        "Filipino",
+        "Wine"
+      ]
     },
     {
         "ID": "AVN-01",
@@ -720,7 +720,7 @@
     },
     {
         "ID": "AVN-06",
-        "Name": "Mantra Indian Cuisine",
+        "Name": "Mantra Indian Kitchen",
         "Category": "Casual",
         "Cuisine": "Indian",
         "Level": "Level 2",

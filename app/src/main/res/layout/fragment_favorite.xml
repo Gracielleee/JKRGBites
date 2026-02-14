@@ -86,187 +86,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/category_header">
 
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/spacing_standard">
 
-            <Button
-                android:id="@+id/btn_all"
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_categories"
                 android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/pill_button"
-                android:text="All"
-                android:textAllCaps="false"
-                android:paddingHorizontal="@dimen/spacing_standard"/>
+                android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/btn_fineCasual"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/pill_button"
-                android:text="Fine Casual"
-                android:textAllCaps="false"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_all"
+                    style="@style/CustomChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/pill_button"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="All" />
 
-            <Button
-                android:id="@+id/btn_fineDining"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Fine Dining"
-                android:background="@drawable/pill_button"
-                android:textAllCaps="false"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_casual"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Casual"
-                android:background="@drawable/pill_button"
-                android:textAllCaps="false"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_restoBar"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Restobar"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_cafe"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Cafe"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_bakery"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Bakery"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_buffet"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Buffet"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_fastCasual"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Fast Casual"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_fastFood"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Fast Food"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_dessert"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Dessert"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_stall"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Stall"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_snack"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Snack"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_healthy"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Healthy"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_foodHall"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Foodhall"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
-            <Button
-                android:id="@+id/btn_grill"
-                android:layout_width="wrap_content"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="Grill"
-                android:textAllCaps="false"
-                android:background="@drawable/pill_button"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"/>
-
+            </com.google.android.material.chip.ChipGroup>
         </LinearLayout>
     </HorizontalScrollView>
 

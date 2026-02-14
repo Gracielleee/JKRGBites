@@ -74,17 +74,14 @@
         app:srcCompat="@drawable/ic_undo"
         app:tint="?attr/colorOnPrimary" />
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/picker_card"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="500dp"
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginEnd="@dimen/spacing_large"
         android:layout_marginTop="@dimen/spacing_large"
-        app:cardBackgroundColor="?attr/colorSurfaceContainer"
-        android:layout_marginBottom="@dimen/spacing_large"
-        app:cardCornerRadius="16dp"
-        app:cardElevation="8dp"
+        android:layout_marginBottom="@dimen/spacing_huge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,10 +89,11 @@
 
         <FrameLayout
             android:id="@+id/picker_card_flip_container"
-            app:cardBackgroundColor="?attr/colorSurfaceContainer"
+            app:cardBackgroundColor="?attr/colorSecondaryContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+<!--            Front   -->
             <ImageView
                 android:id="@+id/picker_card_front"
                 android:layout_width="match_parent"
@@ -106,21 +104,22 @@
                 android:src="@drawable/ic_launcher_background"
                 tools:ignore="ContentDescription" />
 
+<!--            Back    -->
             <LinearLayout
                 android:id="@+id/picker_card_back_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_standard"
-                android:background="?attr/colorPrimary"
-                android:gravity="center_vertical"
+                android:background="?attr/colorSecondary"
+                android:gravity="center"
                 android:visibility="gone">
 
                 <TextView
                     android:id="@+id/picker_card_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textSize="@dimen/txt_headline"
                     android:textStyle="bold"
                     tools:text="Restaurant Name" />
@@ -130,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textSize="@dimen/txt_body"
                     android:maxLines="2"
                     tools:text="Cuisine • Category" />
@@ -140,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textSize="@dimen/txt_body"
                     android:maxLines="1"
                     tools:text="Tags: Vegetarian, Fast Food" />
@@ -150,11 +149,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnPrimary"
+                    android:textColor="?attr/colorOnSecondary"
                     android:textSize="@dimen/txt_body"
                     tools:text="Location: SM North EDSA" />
             </LinearLayout>
         </FrameLayout>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

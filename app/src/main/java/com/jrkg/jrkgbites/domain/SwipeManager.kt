@@ -10,6 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlin.collections.map
 
 /**
  * Defines the possible directions for a swipe action.
@@ -36,11 +37,13 @@ class SwipeManager(
     private val _deck = MutableStateFlow<List<Restaurant>>(emptyList())
     val deck: StateFlow<List<Restaurant>> = _deck.asStateFlow()
 
-    private val _favorites = MutableStateFlow<Set<String>>(emptySet())
-    val favorites: StateFlow<Set<String>> = _favorites.asStateFlow()
+    private val _favoritesList = MutableStateFlow<List<Restaurant>>(emptyList())
+    val favoritesList: StateFlow<List<Restaurant>> = _favoritesList.asStateFlow()
+//    val favoritesCount: StateFlow<Set<String>> = _favoritesList.map { it.id }.toSet()
 
-    private val _neverAgain = MutableStateFlow<Set<String>>(emptySet())
-    val neverAgain: StateFlow<Set<String>> = _neverAgain.asStateFlow()
+    private val _neverAgainList = MutableStateFlow<List<Restaurant>>(emptyList())
+    val neverAgainList: StateFlow<List<Restaurant>> = _neverAgainList.asStateFlow()
+//    val neverAgainCount: StateFlow<Set<String>> = _neverAgainList.asStateFlow()
 
     private val _selectedRestaurant = MutableStateFlow<Restaurant?>(null)
     val selectedRestaurant: StateFlow<Restaurant?> = _selectedRestaurant.asStateFlow()
@@ -51,8 +54,8 @@ class SwipeManager(
             restaurantRepository.getRestaurants().collect { restaurants ->
                 _allRestaurants.value = restaurants
                 // Update helper state flows for favorites and never again
-                _favorites.value = restaurants.filter { it.isFavorite }.map { it.id }.toSet()
-                _neverAgain.value = restaurants.filter { it.isNeverAgain }.map { it.id }.toSet()
+                _favoritesList.value = restaurants.filter { it.isFavorite }
+                _neverAgainList.value = restaurants.filter { it.isNeverAgain}
                 updateDeck()
             }
         }

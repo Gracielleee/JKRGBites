@@ -75,20 +75,24 @@ class RestaurantAdapter(
             .replace("?", "")
             .replace("/", "")
         
-        val resId = context.resources.getIdentifier(resourceName, "drawable", context.packageName)
+//        val resId = context.resources.getIdentifier(resourceName, "drawable", context.packageName)
 //        if (resId != 0) {
 //            holder.restaurantImage.setImageResource(resId)
 //        } else {
 //            holder.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
 //        }
 
-        // Set card background color based on logo color using Coil and Palette
-        holder.restaurantImage.load(resId) {
+        val resId = context?.resources?.getIdentifier(
+            restaurant.logoResourceName?.takeIf { it.isNotEmpty() },
+            "drawable",
+            context?.packageName
+        ) ?: 0
+
+        holder.restaurantImage.load(resId.takeIf { it != 0 } ?: android.R.drawable.ic_menu_gallery) {
             crossfade(true)
-            allowHardware(false) //Palette needs software bitmaps to read pixels
+            allowHardware(false)
             memoryCachePolicy(CachePolicy.ENABLED)
 
-            // Shadow settings
             val shadowRadius = 8f
             val shadowDx = 0f
             val shadowDy = 2f
@@ -98,44 +102,36 @@ class RestaurantAdapter(
                 onSuccess = { _, result ->
                     val bitmap = (result.drawable as BitmapDrawable).bitmap
                     Palette.from(bitmap).generate { palette ->
-                        val swatch = palette?.mutedSwatch ?: palette?.darkVibrantSwatch
-                        ?: palette?.dominantSwatch
+                        val swatch = palette?.mutedSwatch
+                            ?: palette?.darkVibrantSwatch
+                            ?: palette?.dominantSwatch
 
                         swatch?.let {
                             val color = it.rgb
                             val glassyColor = ColorUtils.setAlphaComponent(color, 180)
-                            holder.cardFront.setCardBackgroundColor(glassyColor)
 
-                            // FORCE WHITE TEXT WITH SHADOW
-                            holder.restaurantName.setTextColor(Color.WHITE)
-                            holder.restaurantName.setShadowLayer(
-                                shadowRadius,
-                                shadowDx,
-                                shadowDy,
-                                shadowColor
-                            )
+                            holder.cardFront.setCardBackgroundColor(glassyColor)
+                            holder.restaurantName.apply {
+                                setTextColor(Color.WHITE)
+                                setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor)
+                            }
                         }
                     }
                 },
-                onError = { _, _ -> //In case logo cannot be found
-                    holder.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
-
+                onError = { _, _ ->
                     val hash = restaurant.name.hashCode()
-                    val hexColor = String.format("#%06X", (0xFFFFFF and hash))
-                    val backColor = Color.parseColor(hexColor)
+                    val backColor = Color.parseColor(String.format("#%06X", (0xFFFFFF and hash)))
 
                     holder.cardFront.setCardBackgroundColor(backColor)
-
-                    holder.restaurantName.setTextColor(Color.WHITE)
-                    holder.restaurantName.setShadowLayer(
-                        shadowRadius,
-                        shadowDx,
-                        shadowDy,
-                        shadowColor
-                    )
+                    holder.restaurantName.apply {
+                        setTextColor(Color.WHITE)
+                        setShadowLayer(shadowRadius, shadowDx, shadowDy, shadowColor)
+                    }
                 }
             )
         }
+
+
 
         // 3. Set Back Info
         holder.backName.text = displayName
