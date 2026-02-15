@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.jrkg.jrkgbites.adapter.RestaurantAdapter
 import com.jrkg.jrkgbites.databinding.FragmentSeeAllRestaurantsBinding
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
@@ -36,18 +38,23 @@ class SeeAllRestaurantsFragment : Fragment() {
         binding.allRestaurantsRecycler.layoutManager = GridLayoutManager(requireContext(), 2)
 
         // 3. Get arguments (if you passed any from FavoriteFragment)
-        val showOnlyFavorites = arguments?.getBoolean("SHOW_ONLY_FAVORITES") ?: false
+//        val showOnlyFavorites = arguments?.getBoolean("SHOW_ONLY_FAVORITES") ?: false
 
         // 4. Use data from ViewModel
-        val fullList = viewModel.deck.value ?: emptyList()
-        val displayList = if (showOnlyFavorites) {
-            fullList.filter { it.isFavorite }
-        } else {
-            fullList
-        }
+        val fullList = viewModel.allRestaurants.value ?: emptyList()
+        val displayList = fullList.filter { it.isFavorite }
+//        val displayList = if (showOnlyFavorites) {
+//            fullList.filter { it.isFavorite }
+//        } else {
+//            fullList
+//        }
 
         // 5. Set the Adapter
         binding.allRestaurantsRecycler.adapter = RestaurantAdapter(requireContext(), displayList)
+
+        binding.backButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     override fun onDestroyView() {

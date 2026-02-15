@@ -3,17 +3,22 @@ package com.jrkg.jrkgbites.utils
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import kotlin.jvm.JvmStatic
 
-class Converters {
+object Converters {
+    private val gson = Gson()
+    
     @TypeConverter
+    @JvmStatic
     fun fromStringList(list: List<String>?): String? {
-        return list?.let { Gson().toJson(it) }
+        return list?.let { gson.toJson(it) }
     }
 
     @TypeConverter
+    @JvmStatic
     fun toStringList(json: String?): List<String>? {
         return json?.let {
-            Gson().fromJson(json, object : TypeToken<List<String>>() {}.type)
+            gson.fromJson(json, object : TypeToken<List<String>>() {}.type)
         }
     }
 }

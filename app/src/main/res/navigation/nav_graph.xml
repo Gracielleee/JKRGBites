@@ -108,13 +108,18 @@
         app:destination="@id/loginFragment"
         app:popUpTo="@id/loginFragment"
         app:popUpToInclusive="true" />
-
     <action
         android:id="@+id/to_registerFragment"
         app:destination="@id/registerFragment" />
-
     <action
         android:id="@+id/to_forgotPasswordDialog"
         app:destination="@id/forgotPasswordDialog" />
+    <action
+        android:id="@+id/to_restaurantDetailsFragment"
+        app:destination="@id/restaurantDetailsFragment">
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
+    </action>
 
 </navigation>

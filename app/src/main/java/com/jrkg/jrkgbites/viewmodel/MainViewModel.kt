@@ -4,8 +4,6 @@ import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jrkg.jrkgbites.AppDatabase
-import com.jrkg.jrkgbites.data.RestaurantDao
-import com.jrkg.jrkgbites.data.RestaurantRatingDao
 import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.data.source.FakeAuthService
@@ -24,10 +22,9 @@ import com.jrkg.jrkgbites.services.BiometricService
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import android.util.Log
 
 class MainViewModel(
-    private val application: Application, // ADDED: Application context for MainViewModel
+    private val application: Application,
     private val restaurantPicker: RestaurantPicker,
     private val swipeManager: SwipeManager,
     private val searchManager: SearchManager,
@@ -59,13 +56,14 @@ class MainViewModel(
     private val _pickedResult = MutableStateFlow<String?>(null)
     val pickedResult: StateFlow<String?> = _pickedResult.asStateFlow()
 
-    // --- Update deck to come from RestaurantRepository ---
-    val deck: StateFlow<List<Restaurant>> = restaurantRepository.getRestaurants()
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000),
-            emptyList()
-        )
+    // --- Swipe Manager State ---
+    val deck: StateFlow<List<Restaurant>> = swipeManager.deck
+
+    val allRestaurants: StateFlow<List<Restaurant>> = swipeManager.allRestaurants
+
+    val favoritesList: StateFlow<List<Restaurant>> = swipeManager.favoritesList
+    val neverAgainList: StateFlow<List<Restaurant>> = swipeManager.neverAgainList
+    
     val selectedRestaurant: StateFlow<Restaurant?> = swipeManager.selectedRestaurant
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
         .stateIn(
@@ -74,8 +72,6 @@ class MainViewModel(
             emptyList()
         )
 
-    // Update searchResults to come from RestaurantRepository. (Currently SearchManager filters from an internal list)
-    // For now, keep as is, but will update SearchManager to use Room later.
     private val _searchResults = MutableStateFlow<List<Restaurant>>(emptyList())
     val searchResults: StateFlow<List<Restaurant>> = _searchResults.asStateFlow()
 
@@ -103,8 +99,39 @@ class MainViewModel(
         swipeManager.onSwipe(restaurant, direction)
     }
 
+    fun resetDeck() {
+        swipeManager.clearSessionSwipes()
+    }
+
+    fun shuffleDeck(){
+        swipeManager.shuffleDeck()
+    }
+
+    fun undoSwipe(){
+        swipeManager.undoLastSwipe()
+    }
+
+    /**
+     * Re-applies current session filters to the deck. Useful when
+     * returning to the picker so that previously swiped restaurants
+     * (including RIGHT swipes) are not shown again.
+     */
+    fun refreshDeck() {
+        swipeManager.updateDeck()
+    }
+
+
     fun clearSelectedRestaurant() {
         swipeManager.clearSelectedRestaurant()
+    }
+
+    /**
+     * Exposes a Flow for a single restaurant by ID so that
+     * UI layers (e.g., RestaurantDetailsFragment) don't depend
+     * on the current swipe deck contents.
+     */
+    fun getRestaurantById(id: String): Flow<Restaurant?> {
+        return restaurantRepository.getRestaurantById(id)
     }
 
     fun submitRating(restaurantId: String, rating: Int, comment: String) {
@@ -113,8 +140,6 @@ class MainViewModel(
         }
     }
 }
-
-
 
 @Suppress("UNCHECKED_CAST")
 class MainViewModelFactory(
@@ -128,7 +153,7 @@ class MainViewModelFactory(
 
             val restaurantRepository = RestaurantRepository(restaurantDao)
             val prefsManager = UserPreferencesManager(application)
-            val authService = FakeAuthService() // Assuming FakeAuthService is for testing, replace if needed
+            val authService = FakeAuthService()
             val sessionManager = SessionManager(authService)
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)

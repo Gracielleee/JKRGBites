@@ -35,9 +35,11 @@ class ProfileFragment : Fragment() {
 
         // 2. Set the Stats (Favorites Count)
         // We filter the list from the ViewModel to see how many are favorites
-        val favoriteCount = viewModel.deck.value?.count { it.isFavorite } ?: 0
+        val favoriteCount = viewModel.favoritesList.value.count()
         binding.favCountText.text = favoriteCount.toString()
-        binding.neverAgainCountText.text = "0" // Placeholder for future logic
+
+        val neverAgainCount = viewModel.neverAgainList.value.count()
+        binding.neverAgainCountText.text = neverAgainCount.toString()
 
         // 3. Setup Location Switch logic
         binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->

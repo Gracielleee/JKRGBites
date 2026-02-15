@@ -67,6 +67,9 @@ dependencies {
     // Splashscreen
     implementation(libs.core.splashscreen)
 
+    implementation(libs.androidx.palette.ktx)
+    implementation(libs.coil.ktx)
+
     // Test Dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

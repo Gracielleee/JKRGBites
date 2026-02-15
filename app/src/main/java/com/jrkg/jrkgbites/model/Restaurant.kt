@@ -17,5 +17,6 @@ data class Restaurant(
     @SerializedName("logoResourceName") val logoResourceName: String?,
     @SerializedName("tags") val tags: List<String>?,
 
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
+    var isNeverAgain: Boolean = false
 )

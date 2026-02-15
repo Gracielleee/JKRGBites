@@ -54,8 +54,8 @@
                             android:text="Grub Explorer"
                             android:textSize="@dimen/txt_headline"
                             android:textStyle="bold"
-                            android:layout_marginTop="8dp"
-                            android:textColor="#333333"/>
+                            android:textColor="@color/md_theme_onSurfaceVariant"
+                            android:layout_marginTop="8dp" />
         
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -122,6 +122,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="24dp"
+                            app:cardBackgroundColor="@color/md_theme_secondaryContainer"
                             app:cardCornerRadius="8dp"
                             app:cardElevation="4dp">
         
@@ -137,7 +138,7 @@
                                     android:text="Manage Restaurant Ratings"
                                     android:textSize="@dimen/txt_body"
                                     android:textStyle="bold"
-                                    android:textColor="?attr/colorOnSurface"/>
+                                    android:textColor="?attr/colorOnSecondaryContainer"/>
         
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -145,7 +146,7 @@
                                     android:layout_marginTop="4dp"
                                     android:text="Add, edit, or delete your restaurant ratings and comments."
                                     android:textSize="@dimen/txt_label"
-                                    android:textColor="?attr/colorOnSurfaceVariant"/>
+                                    android:textColor="?attr/colorOnSecondaryContainer"/>
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
         
@@ -198,8 +199,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="10dp"
                                 android:text="Location Enabled"
-                                android:textSize="@dimen/txt_body"
-                                android:textColor="#555555" />
+                                android:textSize="@dimen/txt_body"/>
                         </LinearLayout>
         
                         <Button

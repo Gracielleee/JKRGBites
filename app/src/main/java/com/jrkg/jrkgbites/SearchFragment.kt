@@ -39,7 +39,7 @@ class SearchFragment : Fragment() {
         binding.searchResultsRecycler.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.deck.collect { restaurants ->
+            viewModel.allRestaurants.collect { restaurants ->
                 if (restaurants.isNotEmpty()) {
                     fullRestaurantList = restaurants
                     adapter.updateList(fullRestaurantList)

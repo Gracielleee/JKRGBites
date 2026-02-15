@@ -15,8 +15,6 @@ import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.databinding.FragmentRestaurantDetailsBinding
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
-import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class RestaurantDetailsFragment : Fragment() {
@@ -49,19 +47,19 @@ class RestaurantDetailsFragment : Fragment() {
         currentRestaurantId = args.restaurantId
 
         viewLifecycleOwner.lifecycleScope.launch {
-            // Fetch the specific restaurant from the deck (or any other source in ViewModel)
-            val restaurant = viewModel.deck.filterNotNull().first().find { it.id == currentRestaurantId }
-
-            restaurant?.let {
-                displayRestaurantDetails(it)
-                setupRatingSection(it)
-                observeExistingRating(it.id)
-            } ?: run {
-                // Handle case where restaurant is not found
-                Toast.makeText(requireContext(), "Restaurant not found!", Toast.LENGTH_SHORT).show()
-                findNavController().navigateUp()
+            viewModel.getRestaurantById(currentRestaurantId!!).collect { restaurant ->
+                restaurant?.let {
+                    displayRestaurantDetails(it)
+                    setupRatingSection(it)
+                    observeExistingRating(it.id)
+                } ?: run {
+                    Toast.makeText(requireContext(), "Restaurant not found!", Toast.LENGTH_SHORT).show()
+                    findNavController().navigateUp()
+                }
             }
         }
+
+
     }
 
     private fun displayRestaurantDetails(restaurant: Restaurant) {
