@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:2:1-34:12
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:2:1-34:12
 MERGED from [androidx.databinding:viewbinding:9.0.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\f3d076806530cc0001c40694d4073da9\workspace\transformed\viewbinding-9.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\e1497f2519c6d02a2db888fcd7846649\workspace\transformed\navigation-common-2.7.7\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-ktx:2.7.7] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\ea9ae6e337b6575b8c44c6c9edfb7922\workspace\transformed\navigation-common-ktx-2.7.7\AndroidManifest.xml:2:1-7:12
@@ -75,18 +75,18 @@ MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\User
 MERGED from [androidx.print:print:1.0.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\389e1d50fddb2276f073bde9a8693585\workspace\transformed\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\bb026bb54571352a5c7e718fd39809da\workspace\transformed\multidex-2.0.1\AndroidManifest.xml:17:1-22:12
 	package
-		INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:5:5-32:19
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:5:5-32:19
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:5:5-32:19
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:5:5-32:19
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\28cc2c294a5d53c1ff03e066bf45a176\workspace\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.11.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\28cc2c294a5d53c1ff03e066bf45a176\workspace\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\62500b1f3389d0b855acc1f2d297015f\workspace\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -108,55 +108,55 @@ MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\Chaz\.gr
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\dc1abfb526cf9f08d7dd0d46516eb32d\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\dc1abfb526cf9f08d7dd0d46516eb32d\workspace\transformed\startup-runtime-1.1.1\AndroidManifest.xml:25:5-31:19
 	android:extractNativeLibs
-		INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.12.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\b3d7f57e2b9285f8e01dcad395ee0a17\workspace\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:10:9-34
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:10:9-34
 	android:fullBackupContent
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:8:9-54
 	android:roundIcon
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:11:9-54
 	android:icon
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:9:9-43
 	android:allowBackup
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:13:9-47
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:13:9-47
 	android:dataExtractionRules
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:7:9-65
 activity#com.jrkg.jrkgbites.MainActivity
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:15:9-22:20
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:15:9-22:20
 	android:exported
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:17:13-36
 	android:name
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:16:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:18:13-21:29
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:18:13-21:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:19:17-69
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:19:25-66
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:20:27-74
 activity#com.jrkg.jrkgbites.MainActivity2
-ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:24:9-30:20
+ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:24:9-30:20
 	android:label
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:27:13-38
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:27:13-38
 	android:exported
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:26:13-37
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:26:13-37
 	android:theme
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:28:13-51
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:28:13-51
 	android:name
-		ADDED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:25:13-42
+		ADDED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:25:13-42
 uses-sdk
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
-INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 MERGED from [androidx.databinding:viewbinding:9.0.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\f3d076806530cc0001c40694d4073da9\workspace\transformed\viewbinding-9.0.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.databinding:viewbinding:9.0.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\f3d076806530cc0001c40694d4073da9\workspace\transformed\viewbinding-9.0.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.navigation:navigation-common:2.7.7] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\e1497f2519c6d02a2db888fcd7846649\workspace\transformed\navigation-common-2.7.7\AndroidManifest.xml:20:5-44
@@ -298,9 +298,9 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\Chaz\.gradle\caches\9.1.0\tran
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\bb026bb54571352a5c7e718fd39809da\workspace\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.1] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\bb026bb54571352a5c7e718fd39809da\workspace\transformed\multidex-2.0.1\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
-		INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.USE_BIOMETRIC
 ADDED from [androidx.biometric:biometric:1.1.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\4e252f56b5534e4ef0f94a63d9c6a86c\workspace\transformed\biometric-1.1.0\AndroidManifest.xml:24:5-72
 	android:name

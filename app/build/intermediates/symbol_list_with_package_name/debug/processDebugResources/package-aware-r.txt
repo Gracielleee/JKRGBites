@@ -3206,6 +3206,7 @@ drawable aristocrat
 drawable armynavy
 drawable asakusa
 drawable auntieannes
+drawable aurangediner
 drawable avd_hide_password
 drawable avd_jrkg_spin_anim
 drawable avd_show_password
@@ -3271,6 +3272,7 @@ drawable flossomkitchen
 drawable frankiesny
 drawable gadz100
 drawable gangnamgrill
+drawable gardenbar
 drawable genkisushi
 drawable gerrysgrill
 drawable giligans
@@ -3636,24 +3638,8 @@ id btnLogin
 id btnRegister
 id btnResend
 id btnSubmit
-id btn_all
-id btn_bakery
-id btn_buffet
-id btn_cafe
-id btn_casual
-id btn_dessert
-id btn_fastCasual
-id btn_fastFood
-id btn_fineCasual
-id btn_fineDining
-id btn_foodHall
-id btn_grill
-id btn_healthy
 id btn_reset
-id btn_restoBar
 id btn_shuffle
-id btn_snack
-id btn_stall
 id btn_undo
 id buttonPanel
 id by_category_text
@@ -3679,6 +3665,8 @@ id checkbox
 id checkboxAgreement
 id checkboxKeepMeLoggedIn
 id checked
+id chip_all
+id chip_group_categories
 id chronometer
 id circle_center
 id clear_text
@@ -4897,6 +4885,7 @@ style ButtonPrimary
 style CardView
 style CardView_Dark
 style CardView_Light
+style CustomChipStyle
 style InputRounded
 style MaterialAlertDialog_Material3
 style MaterialAlertDialog_Material3_Animation

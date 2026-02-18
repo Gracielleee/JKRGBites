@@ -10,10 +10,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.card.MaterialCardView;
 import com.jrkg.jrkgbites.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -36,7 +36,7 @@ public final class FragmentPickerBinding implements ViewBinding {
   public final View pickerAppBar;
 
   @NonNull
-  public final CardView pickerCard;
+  public final MaterialCardView pickerCard;
 
   @NonNull
   public final LinearLayout pickerCardBackLayout;
@@ -64,7 +64,7 @@ public final class FragmentPickerBinding implements ViewBinding {
 
   private FragmentPickerBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView btnReset,
       @NonNull ImageView btnShuffle, @NonNull ImageView btnUndo, @NonNull View pickerAppBar,
-      @NonNull CardView pickerCard, @NonNull LinearLayout pickerCardBackLayout,
+      @NonNull MaterialCardView pickerCard, @NonNull LinearLayout pickerCardBackLayout,
       @NonNull TextView pickerCardCategory, @NonNull TextView pickerCardDetails,
       @NonNull FrameLayout pickerCardFlipContainer, @NonNull ImageView pickerCardFront,
       @NonNull TextView pickerCardLocation, @NonNull TextView pickerCardName,
@@ -137,7 +137,7 @@ public final class FragmentPickerBinding implements ViewBinding {
       }
 
       id = R.id.picker_card;
-      CardView pickerCard = ViewBindings.findChildViewById(rootView, id);
+      MaterialCardView pickerCard = ViewBindings.findChildViewById(rootView, id);
       if (pickerCard == null) {
         break missingId;
       }

@@ -4,7 +4,6 @@ package com.jrkg.jrkgbites.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -14,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.chip.Chip;
+import com.google.android.material.chip.ChipGroup;
 import com.jrkg.jrkgbites.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -24,54 +25,6 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
-  public final Button btnAll;
-
-  @NonNull
-  public final Button btnBakery;
-
-  @NonNull
-  public final Button btnBuffet;
-
-  @NonNull
-  public final Button btnCafe;
-
-  @NonNull
-  public final Button btnCasual;
-
-  @NonNull
-  public final Button btnDessert;
-
-  @NonNull
-  public final Button btnFastCasual;
-
-  @NonNull
-  public final Button btnFastFood;
-
-  @NonNull
-  public final Button btnFineCasual;
-
-  @NonNull
-  public final Button btnFineDining;
-
-  @NonNull
-  public final Button btnFoodHall;
-
-  @NonNull
-  public final Button btnGrill;
-
-  @NonNull
-  public final Button btnHealthy;
-
-  @NonNull
-  public final Button btnRestoBar;
-
-  @NonNull
-  public final Button btnSnack;
-
-  @NonNull
-  public final Button btnStall;
-
-  @NonNull
   public final TextView byCategoryText;
 
   @NonNull
@@ -79,6 +32,12 @@ public final class FragmentFavoriteBinding implements ViewBinding {
 
   @NonNull
   public final RecyclerView categoryRecyclerId;
+
+  @NonNull
+  public final Chip chipAll;
+
+  @NonNull
+  public final ChipGroup chipGroupCategories;
 
   @NonNull
   public final HorizontalScrollView horizontalScrollViewCategory;
@@ -98,38 +57,19 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   @NonNull
   public final TextView seeAllFavorites;
 
-  private FragmentFavoriteBinding(@NonNull ScrollView rootView, @NonNull Button btnAll,
-      @NonNull Button btnBakery, @NonNull Button btnBuffet, @NonNull Button btnCafe,
-      @NonNull Button btnCasual, @NonNull Button btnDessert, @NonNull Button btnFastCasual,
-      @NonNull Button btnFastFood, @NonNull Button btnFineCasual, @NonNull Button btnFineDining,
-      @NonNull Button btnFoodHall, @NonNull Button btnGrill, @NonNull Button btnHealthy,
-      @NonNull Button btnRestoBar, @NonNull Button btnSnack, @NonNull Button btnStall,
-      @NonNull TextView byCategoryText, @NonNull RelativeLayout categoryHeader,
-      @NonNull RecyclerView categoryRecyclerId,
+  private FragmentFavoriteBinding(@NonNull ScrollView rootView, @NonNull TextView byCategoryText,
+      @NonNull RelativeLayout categoryHeader, @NonNull RecyclerView categoryRecyclerId,
+      @NonNull Chip chipAll, @NonNull ChipGroup chipGroupCategories,
       @NonNull HorizontalScrollView horizontalScrollViewCategory,
       @NonNull RelativeLayout recentHeader, @NonNull RecyclerView recentlyAddedRecycler,
       @NonNull TextView recentlyAddedText, @NonNull TextView seeAllCategory,
       @NonNull TextView seeAllFavorites) {
     this.rootView = rootView;
-    this.btnAll = btnAll;
-    this.btnBakery = btnBakery;
-    this.btnBuffet = btnBuffet;
-    this.btnCafe = btnCafe;
-    this.btnCasual = btnCasual;
-    this.btnDessert = btnDessert;
-    this.btnFastCasual = btnFastCasual;
-    this.btnFastFood = btnFastFood;
-    this.btnFineCasual = btnFineCasual;
-    this.btnFineDining = btnFineDining;
-    this.btnFoodHall = btnFoodHall;
-    this.btnGrill = btnGrill;
-    this.btnHealthy = btnHealthy;
-    this.btnRestoBar = btnRestoBar;
-    this.btnSnack = btnSnack;
-    this.btnStall = btnStall;
     this.byCategoryText = byCategoryText;
     this.categoryHeader = categoryHeader;
     this.categoryRecyclerId = categoryRecyclerId;
+    this.chipAll = chipAll;
+    this.chipGroupCategories = chipGroupCategories;
     this.horizontalScrollViewCategory = horizontalScrollViewCategory;
     this.recentHeader = recentHeader;
     this.recentlyAddedRecycler = recentlyAddedRecycler;
@@ -165,102 +105,6 @@ public final class FragmentFavoriteBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.btn_all;
-      Button btnAll = ViewBindings.findChildViewById(rootView, id);
-      if (btnAll == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_bakery;
-      Button btnBakery = ViewBindings.findChildViewById(rootView, id);
-      if (btnBakery == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_buffet;
-      Button btnBuffet = ViewBindings.findChildViewById(rootView, id);
-      if (btnBuffet == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_cafe;
-      Button btnCafe = ViewBindings.findChildViewById(rootView, id);
-      if (btnCafe == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_casual;
-      Button btnCasual = ViewBindings.findChildViewById(rootView, id);
-      if (btnCasual == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_dessert;
-      Button btnDessert = ViewBindings.findChildViewById(rootView, id);
-      if (btnDessert == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_fastCasual;
-      Button btnFastCasual = ViewBindings.findChildViewById(rootView, id);
-      if (btnFastCasual == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_fastFood;
-      Button btnFastFood = ViewBindings.findChildViewById(rootView, id);
-      if (btnFastFood == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_fineCasual;
-      Button btnFineCasual = ViewBindings.findChildViewById(rootView, id);
-      if (btnFineCasual == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_fineDining;
-      Button btnFineDining = ViewBindings.findChildViewById(rootView, id);
-      if (btnFineDining == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_foodHall;
-      Button btnFoodHall = ViewBindings.findChildViewById(rootView, id);
-      if (btnFoodHall == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_grill;
-      Button btnGrill = ViewBindings.findChildViewById(rootView, id);
-      if (btnGrill == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_healthy;
-      Button btnHealthy = ViewBindings.findChildViewById(rootView, id);
-      if (btnHealthy == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_restoBar;
-      Button btnRestoBar = ViewBindings.findChildViewById(rootView, id);
-      if (btnRestoBar == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_snack;
-      Button btnSnack = ViewBindings.findChildViewById(rootView, id);
-      if (btnSnack == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_stall;
-      Button btnStall = ViewBindings.findChildViewById(rootView, id);
-      if (btnStall == null) {
-        break missingId;
-      }
-
       id = R.id.by_category_text;
       TextView byCategoryText = ViewBindings.findChildViewById(rootView, id);
       if (byCategoryText == null) {
@@ -276,6 +120,18 @@ public final class FragmentFavoriteBinding implements ViewBinding {
       id = R.id.category_recycler_id;
       RecyclerView categoryRecyclerId = ViewBindings.findChildViewById(rootView, id);
       if (categoryRecyclerId == null) {
+        break missingId;
+      }
+
+      id = R.id.chip_all;
+      Chip chipAll = ViewBindings.findChildViewById(rootView, id);
+      if (chipAll == null) {
+        break missingId;
+      }
+
+      id = R.id.chip_group_categories;
+      ChipGroup chipGroupCategories = ViewBindings.findChildViewById(rootView, id);
+      if (chipGroupCategories == null) {
         break missingId;
       }
 
@@ -315,11 +171,9 @@ public final class FragmentFavoriteBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentFavoriteBinding((ScrollView) rootView, btnAll, btnBakery, btnBuffet,
-          btnCafe, btnCasual, btnDessert, btnFastCasual, btnFastFood, btnFineCasual, btnFineDining,
-          btnFoodHall, btnGrill, btnHealthy, btnRestoBar, btnSnack, btnStall, byCategoryText,
-          categoryHeader, categoryRecyclerId, horizontalScrollViewCategory, recentHeader,
-          recentlyAddedRecycler, recentlyAddedText, seeAllCategory, seeAllFavorites);
+      return new FragmentFavoriteBinding((ScrollView) rootView, byCategoryText, categoryHeader,
+          categoryRecyclerId, chipAll, chipGroupCategories, horizontalScrollViewCategory,
+          recentHeader, recentlyAddedRecycler, recentlyAddedText, seeAllCategory, seeAllFavorites);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

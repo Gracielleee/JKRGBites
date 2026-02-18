@@ -27,55 +27,55 @@
 18-->[androidx.core:core:1.12.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\b3d7f57e2b9285f8e01dcad395ee0a17\workspace\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
 19
 20    <application
-20-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:5:5-32:19
+20-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:5:5-32:19
 21        android:allowBackup="true"
-21-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:6:9-35
+21-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:6:9-35
 22        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
 22-->[androidx.core:core:1.12.0] C:\Users\Chaz\.gradle\caches\9.1.0\transforms\b3d7f57e2b9285f8e01dcad395ee0a17\workspace\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
 23        android:dataExtractionRules="@xml/data_extraction_rules"
-23-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:7:9-65
+23-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:7:9-65
 24        android:debuggable="true"
 25        android:extractNativeLibs="false"
 26        android:fullBackupContent="@xml/backup_rules"
-26-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:8:9-54
+26-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:8:9-54
 27        android:icon="@mipmap/ic_launcher"
-27-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:9:9-43
+27-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:9:9-43
 28        android:label="JRKGBites"
-28-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:10:9-34
+28-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:10:9-34
 29        android:roundIcon="@mipmap/ic_launcher_round"
-29-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:11:9-54
+29-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:11:9-54
 30        android:supportsRtl="true"
-30-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:12:9-35
+30-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:12:9-35
 31        android:testOnly="true"
 32        android:theme="@style/Theme.JRKGBites" >
-32-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:13:9-47
+32-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:13:9-47
 33        <activity
-33-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:15:9-22:20
+33-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:15:9-22:20
 34            android:name="com.jrkg.jrkgbites.MainActivity"
-34-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:16:13-41
+34-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:16:13-41
 35            android:exported="true" >
-35-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:17:13-36
+35-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:17:13-36
 36            <intent-filter>
-36-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:18:13-21:29
+36-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:18:13-21:29
 37                <action android:name="android.intent.action.MAIN" />
-37-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:19:17-69
-37-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:19:25-66
+37-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:19:17-69
+37-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:19:25-66
 38
 39                <category android:name="android.intent.category.LAUNCHER" />
-39-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:20:17-77
-39-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:20:27-74
+39-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:20:17-77
+39-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:20:27-74
 40            </intent-filter>
 41        </activity>
 42        <activity
-42-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:24:9-30:20
+42-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:24:9-30:20
 43            android:name="com.jrkg.jrkgbites.MainActivity2"
-43-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:25:13-42
+43-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:25:13-42
 44            android:exported="false"
-44-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:26:13-37
+44-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:26:13-37
 45            android:label="JRKGBites"
-45-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:27:13-38
+45-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:27:13-38
 46            android:theme="@style/Theme.JRKGBites" >
-46-->C:\Users\Chaz\Documents\GitHub\JRKGBites_JR\Group5_MobileDev\app\src\main\AndroidManifest.xml:28:13-51
+46-->C:\Users\Chaz\Documents\GitHub\JKRGBites\app\src\main\AndroidManifest.xml:28:13-51
 47        </activity>
 48
 49        <provider
