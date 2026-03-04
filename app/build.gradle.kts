@@ -51,6 +51,12 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     kapt(libs.androidx.room.compiler)
 
+    // API
+    implementation(libs.squareup.retrofit)
+    implementation(libs.converter.gson)
+    implementation(libs.kotlinx.coroutines.android)
+    implementation(libs.nanoid.kotlin)
+
     // New dependencies for XML-based UI
     implementation(libs.androidx.appcompat)
     implementation(libs.google.material)
