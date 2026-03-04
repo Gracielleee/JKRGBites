@@ -4,7 +4,7 @@
             "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-49:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\732698ee877d67575cf436a092d72437\\workspace\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\a5dc024df4066e9f2950b8a972554423\\workspace\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\908e67d7df50e491b427d93a0f5c2dcf\\workspace\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\78c32bc3c9d9529e3b63a0ec67d5912f\\workspace\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -1,7 +1,7 @@
-#Wed Feb 18 23:31:42 CST 2026
-base.0=C\:\\MMDC\\MDA\\Development Phases\\Sprint_2.9\\JKRGBites\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
-base.1=C\:\\MMDC\\MDA\\Development Phases\\Sprint_2.9\\JKRGBites\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
-base.2=C\:\\MMDC\\MDA\\Development Phases\\Sprint_2.9\\JKRGBites\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\14\\classes.dex
+#Wed Mar 04 16:29:24 PST 2026
+base.0=C\:\\Users\\Chaz\\Documents\\GitHub\\JKRGBites\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeExtDexDebugAndroidTest\\classes.dex
+base.1=C\:\\Users\\Chaz\\Documents\\GitHub\\JKRGBites\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\0\\classes.dex
+base.2=C\:\\Users\\Chaz\\Documents\\GitHub\\JKRGBites\\app\\build\\intermediates\\dex\\debugAndroidTest\\mergeProjectDexDebugAndroidTest\\14\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=14/classes.dex
