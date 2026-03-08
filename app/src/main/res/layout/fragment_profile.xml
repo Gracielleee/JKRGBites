@@ -163,16 +163,16 @@
                             android:textStyle="bold"
                             android:textSize="@dimen/txt_subheading"
                             android:layout_marginBottom="12dp"/>
-        
+
                         <com.google.android.material.switchmaterial.SwitchMaterial
                             android:id="@+id/location_switch"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:checked="true"
                             android:text="Enable Location-Aware Suggestions"
                             android:textColor="?attr/colorOnSurface"
-                            android:textSize="@dimen/txt_body"
-                            android:checked="true"/>
-        
+                            android:textSize="@dimen/txt_body" />
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

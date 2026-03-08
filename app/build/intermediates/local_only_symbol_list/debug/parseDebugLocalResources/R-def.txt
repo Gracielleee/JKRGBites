@@ -393,6 +393,7 @@ id btnBioAuth
 id btnLogin
 id btnRegister
 id btnResend
+id btnSave
 id btnSubmit
 id btn_reset
 id btn_shuffle
@@ -409,8 +410,11 @@ id checkboxKeepMeLoggedIn
 id chip_all
 id chip_group_categories
 id commentTextView
+id etCategory
 id etConfirmPassword
 id etEmail
+id etLocation
+id etName
 id etPassword
 id etUsername
 id fav_count_text
@@ -479,8 +483,11 @@ id see_all_category
 id see_all_favorites
 id submit_rating_button
 id textViewEmptyState
+id tilCategory
 id tilConfirmPassword
 id tilEmail
+id tilLocation
+id tilName
 id tilPassword
 id tilUsername
 id to_forgotPasswordDialog
@@ -494,6 +501,7 @@ id txtBeforeGotoRegister
 id txtDisplay
 id txtForgotPassword
 id txtGotoRegister
+id txtHeader
 id txtInstructions
 id txtInstructions2
 id txtLoginHeader
@@ -505,6 +513,7 @@ layout activity_main
 layout activity_main2
 layout dialog_email_verification
 layout dialog_forgot_password
+layout fragment_add_restaurant
 layout fragment_favorite
 layout fragment_home
 layout fragment_login
