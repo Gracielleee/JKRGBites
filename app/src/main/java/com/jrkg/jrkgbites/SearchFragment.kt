@@ -8,6 +8,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jrkg.jrkgbites.databinding.FragmentSearchBinding
 import com.jrkg.jrkgbites.model.Restaurant
@@ -22,6 +23,14 @@ class SearchFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: RestaurantAdapter
     private var fullRestaurantList = listOf<Restaurant>()
+    
+    private var currentQuery: String = ""
+    
+    // Filter states
+    private var currentCategory: String = "All"
+    private var currentCuisine: String = "All"
+    private var currentLevel: String = "All"
+    private var currentTag: String = "All"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
@@ -34,36 +43,66 @@ class SearchFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         binding.searchResultsRecycler.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // Initialize adapter early to prevent crashes
-        adapter = com.jrkg.jrkgbites.adapter.RestaurantAdapter(requireContext(), emptyList(), null)
+        adapter = RestaurantAdapter(requireContext(), emptyList(), null)
         binding.searchResultsRecycler.adapter = adapter
 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.allRestaurants.collect { restaurants ->
                 if (restaurants.isNotEmpty()) {
                     fullRestaurantList = restaurants
-                    adapter.updateList(fullRestaurantList)
+                    applyFilters()
                 }
             }
         }
 
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
-                filter(newText)
+                currentQuery = newText.orEmpty()
+                applyFilters()
                 return true
             }
             override fun onQueryTextSubmit(query: String?): Boolean = false
         })
+
+        binding.filterIcon.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("category", currentCategory)
+                putString("cuisine", currentCuisine)
+                putString("level", currentLevel)
+                putString("tag", currentTag)
+            }
+            findNavController().navigate(R.id.action_nav_search_to_searchFilterFragment, bundle)
+        }
+
+        parentFragmentManager.setFragmentResultListener("filter_request", viewLifecycleOwner) { _, bundle ->
+            currentCategory = bundle.getString("category", "All")
+            currentCuisine = bundle.getString("cuisine", "All")
+            currentLevel = bundle.getString("level", "All")
+            currentTag = bundle.getString("tag", "All")
+            applyFilters()
+        }
     }
 
-    private fun filter(text: String?) {
-        val filteredList = if (text.isNullOrEmpty()) {
-            fullRestaurantList
-        } else {
-            fullRestaurantList.filter { it.name?.lowercase()?.contains(text.lowercase()) == true }
+    private fun applyFilters() {
+        val query = currentQuery.lowercase()
+
+        val filteredList = fullRestaurantList.filter { restaurant ->
+            val matchesQuery = currentQuery.isEmpty() ||
+                    listOf(restaurant.name, restaurant.category, restaurant.cuisine)
+                        .any { it?.lowercase()?.contains(query) == true }
+
+            val matchesFilters =
+                (currentCategory == "All" || restaurant.category == currentCategory) &&
+                        (currentCuisine == "All" || restaurant.cuisine == currentCuisine) &&
+                        (currentLevel == "All" || restaurant.level == currentLevel) &&
+                        (currentTag == "All" || restaurant.tags?.contains(currentTag) == true)
+
+            matchesQuery && matchesFilters
         }
-        adapter.updateList(filteredList)
+
+        adapter.updateList(filteredList.sortedBy { it.name })
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

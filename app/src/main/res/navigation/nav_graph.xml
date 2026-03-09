@@ -47,7 +47,17 @@
         android:id="@+id/nav_search"
         android:name="com.jrkg.jrkgbites.SearchFragment"
         android:label="Search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_nav_search_to_searchFilterFragment"
+            app:destination="@id/searchFilterFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/searchFilterFragment"
+        android:name="com.jrkg.jrkgbites.SearchFilterFragment"
+        android:label="Filters"
+        tools:layout="@layout/fragment_search_filter" />
 
     <fragment
         android:id="@+id/nav_picker"
@@ -95,7 +105,7 @@
         android:id="@+id/see_all_category"
         android:name="com.jrkg.jrkgbites.SeeAllRestaurantsFragment"
         android:label="All Restaurants"
-        tools:layout="@layout/fragment_see_all_restaurants" />
+        tools:layout="@layout/fragment_see_all_fav_restaurants" />
 
     <!--    Actions     -->
     <action

@@ -9,13 +9,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jrkg.jrkgbites.adapter.RestaurantAdapter
-import com.jrkg.jrkgbites.databinding.FragmentSeeAllRestaurantsBinding
+import com.jrkg.jrkgbites.databinding.FragmentSeeAllFavRestaurantsBinding
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 
 class SeeAllRestaurantsFragment : Fragment() {
 
-    private var _binding: FragmentSeeAllRestaurantsBinding? = null
+    private var _binding: FragmentSeeAllFavRestaurantsBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
 
@@ -23,7 +23,7 @@ class SeeAllRestaurantsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentSeeAllRestaurantsBinding.inflate(inflater, container, false)
+        _binding = FragmentSeeAllFavRestaurantsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -34,20 +34,10 @@ class SeeAllRestaurantsFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
         // 2. Setup the Grid with 2 columns
-        // This matches your XML ID: android:id="@+id/all_restaurants_recycler"
         binding.allRestaurantsRecycler.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // 3. Get arguments (if you passed any from FavoriteFragment)
-//        val showOnlyFavorites = arguments?.getBoolean("SHOW_ONLY_FAVORITES") ?: false
-
         // 4. Use data from ViewModel
-        val fullList = viewModel.allRestaurants.value ?: emptyList()
-        val displayList = fullList.filter { it.isFavorite }
-//        val displayList = if (showOnlyFavorites) {
-//            fullList.filter { it.isFavorite }
-//        } else {
-//            fullList
-//        }
+        val displayList = viewModel.favoritesList.value ?: emptyList()
 
         // 5. Set the Adapter
         binding.allRestaurantsRecycler.adapter = RestaurantAdapter(requireContext(), displayList)

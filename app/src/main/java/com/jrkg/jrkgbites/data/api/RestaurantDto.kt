@@ -3,7 +3,7 @@ package com.jrkg.jrkgbites.data.api
 data class RestaurantDto(
     val id: String,
     val addedBy: String, //userId
-    val public: Boolean,
+    val isPublic: Boolean,
 
     val name: String,
     val category: String,

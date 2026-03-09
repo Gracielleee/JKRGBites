@@ -35,6 +35,18 @@ class MainViewModel(
     private val restaurantRepository: RestaurantRepository
 ) : ViewModel() {
 
+    init {
+        // Initialize managers that collect from Flows.
+        swipeManager.init(viewModelScope)
+        restaurantPicker.init(viewModelScope)
+        searchManager.init(viewModelScope)
+
+        // Initial data loading for RoomDB
+        viewModelScope.launch {
+            restaurantRepository.refreshRestaurants(application)
+        }
+    }
+
     // --- Session Manager State ---
     val sessionState: StateFlow<User?> = sessionManager.sessionState
         .stateIn(
@@ -57,14 +69,16 @@ class MainViewModel(
     val pickedResult: StateFlow<String?> = _pickedResult.asStateFlow()
 
     // --- Swipe Manager State ---
-    val deck: StateFlow<List<Restaurant>> = swipeManager.deck
+    // Use 'by lazy' to ensure these are only accessed after SwipeManager.init(viewModelScope) has been called.
+    val deck: StateFlow<List<Restaurant>> by lazy { swipeManager.deck }
 
-    val allRestaurants: StateFlow<List<Restaurant>> = swipeManager.allRestaurants
+    val allRestaurants: StateFlow<List<Restaurant>> by lazy { swipeManager.allRestaurants }
 
-    val favoritesList: StateFlow<List<Restaurant>> = swipeManager.favoritesList
-    val neverAgainList: StateFlow<List<Restaurant>> = swipeManager.neverAgainList
+    val favoritesList: StateFlow<List<Restaurant>> by lazy { swipeManager.favoritesList }
+    val neverAgainList: StateFlow<List<Restaurant>> by lazy { swipeManager.neverAgainList }
     
-    val selectedRestaurant: StateFlow<Restaurant?> = swipeManager.selectedRestaurant
+    val selectedRestaurant: StateFlow<Restaurant?> by lazy { swipeManager.selectedRestaurant }
+
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
         .stateIn(
             viewModelScope,
@@ -74,18 +88,6 @@ class MainViewModel(
 
     private val _searchResults = MutableStateFlow<List<Restaurant>>(emptyList())
     val searchResults: StateFlow<List<Restaurant>> = _searchResults.asStateFlow()
-
-    init {
-        // Initialize managers that collect from Flows
-        swipeManager.init(viewModelScope)
-        restaurantPicker.init(viewModelScope)
-        searchManager.init(viewModelScope)
-
-        // Initial data loading for RoomDB
-        viewModelScope.launch {
-            restaurantRepository.refreshRestaurants(application)
-        }
-    }
 
     fun login(email: String, pass: String): Flow<AuthResult> {
         return sessionManager.login(email, pass)
@@ -150,8 +152,13 @@ class MainViewModelFactory(
             val database = AppDatabase.getDatabase(application)
             val restaurantDao = database.restaurantDao()
             val restaurantRatingDao = database.restaurantRatingDao()
-
-            val restaurantRepository = RestaurantRepository(restaurantDao)
+            val favoriteRestaurantDao = database.favoriteRestaurantDao()
+            val neverAgainRestaurantDao = database.neverAgainRestaurantDao()
+            val restaurantRepository = RestaurantRepository(
+                restaurantDao,
+                favoriteRestaurantDao,
+                neverAgainRestaurantDao
+            )
             val prefsManager = UserPreferencesManager(application)
             val authService = FakeAuthService()
             val sessionManager = SessionManager(authService)

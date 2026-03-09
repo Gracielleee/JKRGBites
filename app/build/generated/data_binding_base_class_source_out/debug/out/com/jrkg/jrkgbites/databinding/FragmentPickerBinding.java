@@ -33,6 +33,12 @@ public final class FragmentPickerBinding implements ViewBinding {
   public final ImageView btnUndo;
 
   @NonNull
+  public final TextView cardCountDesc;
+
+  @NonNull
+  public final TextView cardCountDisplay;
+
+  @NonNull
   public final View pickerAppBar;
 
   @NonNull
@@ -63,7 +69,8 @@ public final class FragmentPickerBinding implements ViewBinding {
   public final TextView pickerTitle;
 
   private FragmentPickerBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView btnReset,
-      @NonNull ImageView btnShuffle, @NonNull ImageView btnUndo, @NonNull View pickerAppBar,
+      @NonNull ImageView btnShuffle, @NonNull ImageView btnUndo, @NonNull TextView cardCountDesc,
+      @NonNull TextView cardCountDisplay, @NonNull View pickerAppBar,
       @NonNull MaterialCardView pickerCard, @NonNull LinearLayout pickerCardBackLayout,
       @NonNull TextView pickerCardCategory, @NonNull TextView pickerCardDetails,
       @NonNull FrameLayout pickerCardFlipContainer, @NonNull ImageView pickerCardFront,
@@ -73,6 +80,8 @@ public final class FragmentPickerBinding implements ViewBinding {
     this.btnReset = btnReset;
     this.btnShuffle = btnShuffle;
     this.btnUndo = btnUndo;
+    this.cardCountDesc = cardCountDesc;
+    this.cardCountDisplay = cardCountDisplay;
     this.pickerAppBar = pickerAppBar;
     this.pickerCard = pickerCard;
     this.pickerCardBackLayout = pickerCardBackLayout;
@@ -127,6 +136,18 @@ public final class FragmentPickerBinding implements ViewBinding {
       id = R.id.btn_undo;
       ImageView btnUndo = ViewBindings.findChildViewById(rootView, id);
       if (btnUndo == null) {
+        break missingId;
+      }
+
+      id = R.id.card_count_desc;
+      TextView cardCountDesc = ViewBindings.findChildViewById(rootView, id);
+      if (cardCountDesc == null) {
+        break missingId;
+      }
+
+      id = R.id.card_count_display;
+      TextView cardCountDisplay = ViewBindings.findChildViewById(rootView, id);
+      if (cardCountDisplay == null) {
         break missingId;
       }
 
@@ -191,9 +212,9 @@ public final class FragmentPickerBinding implements ViewBinding {
       }
 
       return new FragmentPickerBinding((ConstraintLayout) rootView, btnReset, btnShuffle, btnUndo,
-          pickerAppBar, pickerCard, pickerCardBackLayout, pickerCardCategory, pickerCardDetails,
-          pickerCardFlipContainer, pickerCardFront, pickerCardLocation, pickerCardName,
-          pickerTitle);
+          cardCountDesc, cardCountDisplay, pickerAppBar, pickerCard, pickerCardBackLayout,
+          pickerCardCategory, pickerCardDetails, pickerCardFlipContainer, pickerCardFront,
+          pickerCardLocation, pickerCardName, pickerTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

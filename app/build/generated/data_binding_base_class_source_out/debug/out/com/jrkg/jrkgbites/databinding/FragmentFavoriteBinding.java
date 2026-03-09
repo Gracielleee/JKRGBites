@@ -10,6 +10,7 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
@@ -40,6 +41,12 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   public final ChipGroup chipGroupCategories;
 
   @NonNull
+  public final TextView emptyFavoritesText;
+
+  @NonNull
+  public final Group favoritesContentGroup;
+
+  @NonNull
   public final HorizontalScrollView horizontalScrollViewCategory;
 
   @NonNull
@@ -52,6 +59,9 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   public final TextView recentlyAddedText;
 
   @NonNull
+  public final TextView screenTitleDisplay;
+
+  @NonNull
   public final TextView seeAllCategory;
 
   @NonNull
@@ -60,20 +70,24 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   private FragmentFavoriteBinding(@NonNull ScrollView rootView, @NonNull TextView byCategoryText,
       @NonNull RelativeLayout categoryHeader, @NonNull RecyclerView categoryRecyclerId,
       @NonNull Chip chipAll, @NonNull ChipGroup chipGroupCategories,
+      @NonNull TextView emptyFavoritesText, @NonNull Group favoritesContentGroup,
       @NonNull HorizontalScrollView horizontalScrollViewCategory,
       @NonNull RelativeLayout recentHeader, @NonNull RecyclerView recentlyAddedRecycler,
-      @NonNull TextView recentlyAddedText, @NonNull TextView seeAllCategory,
-      @NonNull TextView seeAllFavorites) {
+      @NonNull TextView recentlyAddedText, @NonNull TextView screenTitleDisplay,
+      @NonNull TextView seeAllCategory, @NonNull TextView seeAllFavorites) {
     this.rootView = rootView;
     this.byCategoryText = byCategoryText;
     this.categoryHeader = categoryHeader;
     this.categoryRecyclerId = categoryRecyclerId;
     this.chipAll = chipAll;
     this.chipGroupCategories = chipGroupCategories;
+    this.emptyFavoritesText = emptyFavoritesText;
+    this.favoritesContentGroup = favoritesContentGroup;
     this.horizontalScrollViewCategory = horizontalScrollViewCategory;
     this.recentHeader = recentHeader;
     this.recentlyAddedRecycler = recentlyAddedRecycler;
     this.recentlyAddedText = recentlyAddedText;
+    this.screenTitleDisplay = screenTitleDisplay;
     this.seeAllCategory = seeAllCategory;
     this.seeAllFavorites = seeAllFavorites;
   }
@@ -135,6 +149,18 @@ public final class FragmentFavoriteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.empty_favorites_text;
+      TextView emptyFavoritesText = ViewBindings.findChildViewById(rootView, id);
+      if (emptyFavoritesText == null) {
+        break missingId;
+      }
+
+      id = R.id.favorites_content_group;
+      Group favoritesContentGroup = ViewBindings.findChildViewById(rootView, id);
+      if (favoritesContentGroup == null) {
+        break missingId;
+      }
+
       id = R.id.horizontalScrollViewCategory;
       HorizontalScrollView horizontalScrollViewCategory = ViewBindings.findChildViewById(rootView, id);
       if (horizontalScrollViewCategory == null) {
@@ -159,6 +185,12 @@ public final class FragmentFavoriteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.screen_title_display;
+      TextView screenTitleDisplay = ViewBindings.findChildViewById(rootView, id);
+      if (screenTitleDisplay == null) {
+        break missingId;
+      }
+
       id = R.id.see_all_category;
       TextView seeAllCategory = ViewBindings.findChildViewById(rootView, id);
       if (seeAllCategory == null) {
@@ -172,8 +204,9 @@ public final class FragmentFavoriteBinding implements ViewBinding {
       }
 
       return new FragmentFavoriteBinding((ScrollView) rootView, byCategoryText, categoryHeader,
-          categoryRecyclerId, chipAll, chipGroupCategories, horizontalScrollViewCategory,
-          recentHeader, recentlyAddedRecycler, recentlyAddedText, seeAllCategory, seeAllFavorites);
+          categoryRecyclerId, chipAll, chipGroupCategories, emptyFavoritesText,
+          favoritesContentGroup, horizontalScrollViewCategory, recentHeader, recentlyAddedRecycler,
+          recentlyAddedText, screenTitleDisplay, seeAllCategory, seeAllFavorites);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

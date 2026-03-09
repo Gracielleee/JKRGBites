@@ -23,6 +23,12 @@ interface RestaurantDao {
     @Query("SELECT * FROM restaurants WHERE id = :id")
     fun getRestaurantById(id: String): Flow<Restaurant?>
 
+    @Query("SELECT * FROM restaurants WHERE id IN (SELECT favorite_restaurant FROM favorite_restaurants)")
+    fun getFavoriteRestaurantsFlow(): Flow<List<Restaurant>>
+
+    @Query("SELECT * FROM restaurants WHERE id IN (SELECT never_again_restaurant FROM never_again_restaurants)")
+    fun getNeverAgainRestaurantsFlow(): Flow<List<Restaurant>>
+
     @Update
     suspend fun update(restaurant: Restaurant)
 

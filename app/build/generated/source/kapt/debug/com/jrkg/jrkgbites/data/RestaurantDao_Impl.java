@@ -10,6 +10,7 @@ import androidx.room.util.SQLiteStatementUtil;
 import androidx.sqlite.SQLiteStatement;
 import com.jrkg.jrkgbites.model.Restaurant;
 import com.jrkg.jrkgbites.utils.Converters;
+import java.lang.Boolean;
 import java.lang.Class;
 import java.lang.Integer;
 import java.lang.NullPointerException;
@@ -42,7 +43,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `restaurants` (`id`,`name`,`category`,`cuisine`,`level`,`location`,`lat`,`lng`,`logoResourceName`,`tags`,`isFavorite`,`isNeverAgain`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `restaurants` (`id`,`name`,`category`,`cuisine`,`level`,`location`,`lat`,`lng`,`logoResourceName`,`tags`,`addedBy`,`isPublic`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -99,10 +100,17 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         } else {
           statement.bindText(10, _tmp);
         }
-        final int _tmp_1 = entity.isFavorite() ? 1 : 0;
-        statement.bindLong(11, _tmp_1);
-        final int _tmp_2 = entity.isNeverAgain() ? 1 : 0;
-        statement.bindLong(12, _tmp_2);
+        if (entity.getAddedBy() == null) {
+          statement.bindNull(11);
+        } else {
+          statement.bindText(11, entity.getAddedBy());
+        }
+        final Integer _tmp_1 = entity.isPublic() == null ? null : (entity.isPublic() ? 1 : 0);
+        if (_tmp_1 == null) {
+          statement.bindNull(12);
+        } else {
+          statement.bindLong(12, _tmp_1);
+        }
       }
     };
     this.__deleteAdapterOfRestaurant = new EntityDeleteOrUpdateAdapter<Restaurant>() {
@@ -126,7 +134,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `restaurants` SET `id` = ?,`name` = ?,`category` = ?,`cuisine` = ?,`level` = ?,`location` = ?,`lat` = ?,`lng` = ?,`logoResourceName` = ?,`tags` = ?,`isFavorite` = ?,`isNeverAgain` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `restaurants` SET `id` = ?,`name` = ?,`category` = ?,`cuisine` = ?,`level` = ?,`location` = ?,`lat` = ?,`lng` = ?,`logoResourceName` = ?,`tags` = ?,`addedBy` = ?,`isPublic` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -183,10 +191,17 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         } else {
           statement.bindText(10, _tmp);
         }
-        final int _tmp_1 = entity.isFavorite() ? 1 : 0;
-        statement.bindLong(11, _tmp_1);
-        final int _tmp_2 = entity.isNeverAgain() ? 1 : 0;
-        statement.bindLong(12, _tmp_2);
+        if (entity.getAddedBy() == null) {
+          statement.bindNull(11);
+        } else {
+          statement.bindText(11, entity.getAddedBy());
+        }
+        final Integer _tmp_1 = entity.isPublic() == null ? null : (entity.isPublic() ? 1 : 0);
+        if (_tmp_1 == null) {
+          statement.bindNull(12);
+        } else {
+          statement.bindLong(12, _tmp_1);
+        }
         if (entity.getId() == null) {
           statement.bindNull(13);
         } else {
@@ -249,8 +264,8 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         final int _columnIndexOfLng = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "lng");
         final int _columnIndexOfLogoResourceName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "logoResourceName");
         final int _columnIndexOfTags = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "tags");
-        final int _columnIndexOfIsFavorite = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isFavorite");
-        final int _columnIndexOfIsNeverAgain = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isNeverAgain");
+        final int _columnIndexOfAddedBy = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "addedBy");
+        final int _columnIndexOfIsPublic = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isPublic");
         final List<Restaurant> _result = new ArrayList<Restaurant>();
         while (_stmt.step()) {
           final Restaurant _item;
@@ -316,15 +331,21 @@ public final class RestaurantDao_Impl implements RestaurantDao {
             _tmp = _stmt.getText(_columnIndexOfTags);
           }
           _tmpTags = Converters.INSTANCE.toStringList(_tmp);
-          final boolean _tmpIsFavorite;
-          final int _tmp_1;
-          _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsFavorite));
-          _tmpIsFavorite = _tmp_1 != 0;
-          final boolean _tmpIsNeverAgain;
-          final int _tmp_2;
-          _tmp_2 = (int) (_stmt.getLong(_columnIndexOfIsNeverAgain));
-          _tmpIsNeverAgain = _tmp_2 != 0;
-          _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite,_tmpIsNeverAgain);
+          final String _tmpAddedBy;
+          if (_stmt.isNull(_columnIndexOfAddedBy)) {
+            _tmpAddedBy = null;
+          } else {
+            _tmpAddedBy = _stmt.getText(_columnIndexOfAddedBy);
+          }
+          final Boolean _tmpIsPublic;
+          final Integer _tmp_1;
+          if (_stmt.isNull(_columnIndexOfIsPublic)) {
+            _tmp_1 = null;
+          } else {
+            _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsPublic));
+          }
+          _tmpIsPublic = _tmp_1 == null ? null : _tmp_1 != 0;
+          _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpAddedBy,_tmpIsPublic);
           _result.add(_item);
         }
         return _result;
@@ -356,8 +377,8 @@ public final class RestaurantDao_Impl implements RestaurantDao {
         final int _columnIndexOfLng = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "lng");
         final int _columnIndexOfLogoResourceName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "logoResourceName");
         final int _columnIndexOfTags = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "tags");
-        final int _columnIndexOfIsFavorite = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isFavorite");
-        final int _columnIndexOfIsNeverAgain = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isNeverAgain");
+        final int _columnIndexOfAddedBy = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "addedBy");
+        final int _columnIndexOfIsPublic = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isPublic");
         final Restaurant _result;
         if (_stmt.step()) {
           final String _tmpId;
@@ -422,17 +443,239 @@ public final class RestaurantDao_Impl implements RestaurantDao {
             _tmp = _stmt.getText(_columnIndexOfTags);
           }
           _tmpTags = Converters.INSTANCE.toStringList(_tmp);
-          final boolean _tmpIsFavorite;
-          final int _tmp_1;
-          _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsFavorite));
-          _tmpIsFavorite = _tmp_1 != 0;
-          final boolean _tmpIsNeverAgain;
-          final int _tmp_2;
-          _tmp_2 = (int) (_stmt.getLong(_columnIndexOfIsNeverAgain));
-          _tmpIsNeverAgain = _tmp_2 != 0;
-          _result = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpIsFavorite,_tmpIsNeverAgain);
+          final String _tmpAddedBy;
+          if (_stmt.isNull(_columnIndexOfAddedBy)) {
+            _tmpAddedBy = null;
+          } else {
+            _tmpAddedBy = _stmt.getText(_columnIndexOfAddedBy);
+          }
+          final Boolean _tmpIsPublic;
+          final Integer _tmp_1;
+          if (_stmt.isNull(_columnIndexOfIsPublic)) {
+            _tmp_1 = null;
+          } else {
+            _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsPublic));
+          }
+          _tmpIsPublic = _tmp_1 == null ? null : _tmp_1 != 0;
+          _result = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpAddedBy,_tmpIsPublic);
         } else {
           _result = null;
+        }
+        return _result;
+      } finally {
+        _stmt.close();
+      }
+    });
+  }
+
+  @Override
+  public Flow<List<Restaurant>> getFavoriteRestaurantsFlow() {
+    final String _sql = "SELECT * FROM restaurants WHERE id IN (SELECT favorite_restaurant FROM favorite_restaurants)";
+    return FlowUtil.createFlow(__db, false, new String[] {"restaurants",
+        "favorite_restaurants"}, (_connection) -> {
+      final SQLiteStatement _stmt = _connection.prepare(_sql);
+      try {
+        final int _columnIndexOfId = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "id");
+        final int _columnIndexOfName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "name");
+        final int _columnIndexOfCategory = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "category");
+        final int _columnIndexOfCuisine = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "cuisine");
+        final int _columnIndexOfLevel = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "level");
+        final int _columnIndexOfLocation = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "location");
+        final int _columnIndexOfLat = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "lat");
+        final int _columnIndexOfLng = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "lng");
+        final int _columnIndexOfLogoResourceName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "logoResourceName");
+        final int _columnIndexOfTags = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "tags");
+        final int _columnIndexOfAddedBy = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "addedBy");
+        final int _columnIndexOfIsPublic = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isPublic");
+        final List<Restaurant> _result = new ArrayList<Restaurant>();
+        while (_stmt.step()) {
+          final Restaurant _item;
+          final String _tmpId;
+          if (_stmt.isNull(_columnIndexOfId)) {
+            _tmpId = null;
+          } else {
+            _tmpId = _stmt.getText(_columnIndexOfId);
+          }
+          final String _tmpName;
+          if (_stmt.isNull(_columnIndexOfName)) {
+            _tmpName = null;
+          } else {
+            _tmpName = _stmt.getText(_columnIndexOfName);
+          }
+          final String _tmpCategory;
+          if (_stmt.isNull(_columnIndexOfCategory)) {
+            _tmpCategory = null;
+          } else {
+            _tmpCategory = _stmt.getText(_columnIndexOfCategory);
+          }
+          final String _tmpCuisine;
+          if (_stmt.isNull(_columnIndexOfCuisine)) {
+            _tmpCuisine = null;
+          } else {
+            _tmpCuisine = _stmt.getText(_columnIndexOfCuisine);
+          }
+          final String _tmpLevel;
+          if (_stmt.isNull(_columnIndexOfLevel)) {
+            _tmpLevel = null;
+          } else {
+            _tmpLevel = _stmt.getText(_columnIndexOfLevel);
+          }
+          final String _tmpLocation;
+          if (_stmt.isNull(_columnIndexOfLocation)) {
+            _tmpLocation = null;
+          } else {
+            _tmpLocation = _stmt.getText(_columnIndexOfLocation);
+          }
+          final String _tmpLat;
+          if (_stmt.isNull(_columnIndexOfLat)) {
+            _tmpLat = null;
+          } else {
+            _tmpLat = _stmt.getText(_columnIndexOfLat);
+          }
+          final String _tmpLng;
+          if (_stmt.isNull(_columnIndexOfLng)) {
+            _tmpLng = null;
+          } else {
+            _tmpLng = _stmt.getText(_columnIndexOfLng);
+          }
+          final String _tmpLogoResourceName;
+          if (_stmt.isNull(_columnIndexOfLogoResourceName)) {
+            _tmpLogoResourceName = null;
+          } else {
+            _tmpLogoResourceName = _stmt.getText(_columnIndexOfLogoResourceName);
+          }
+          final List<String> _tmpTags;
+          final String _tmp;
+          if (_stmt.isNull(_columnIndexOfTags)) {
+            _tmp = null;
+          } else {
+            _tmp = _stmt.getText(_columnIndexOfTags);
+          }
+          _tmpTags = Converters.INSTANCE.toStringList(_tmp);
+          final String _tmpAddedBy;
+          if (_stmt.isNull(_columnIndexOfAddedBy)) {
+            _tmpAddedBy = null;
+          } else {
+            _tmpAddedBy = _stmt.getText(_columnIndexOfAddedBy);
+          }
+          final Boolean _tmpIsPublic;
+          final Integer _tmp_1;
+          if (_stmt.isNull(_columnIndexOfIsPublic)) {
+            _tmp_1 = null;
+          } else {
+            _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsPublic));
+          }
+          _tmpIsPublic = _tmp_1 == null ? null : _tmp_1 != 0;
+          _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpAddedBy,_tmpIsPublic);
+          _result.add(_item);
+        }
+        return _result;
+      } finally {
+        _stmt.close();
+      }
+    });
+  }
+
+  @Override
+  public Flow<List<Restaurant>> getNeverAgainRestaurantsFlow() {
+    final String _sql = "SELECT * FROM restaurants WHERE id IN (SELECT never_again_restaurant FROM never_again_restaurants)";
+    return FlowUtil.createFlow(__db, false, new String[] {"restaurants",
+        "never_again_restaurants"}, (_connection) -> {
+      final SQLiteStatement _stmt = _connection.prepare(_sql);
+      try {
+        final int _columnIndexOfId = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "id");
+        final int _columnIndexOfName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "name");
+        final int _columnIndexOfCategory = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "category");
+        final int _columnIndexOfCuisine = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "cuisine");
+        final int _columnIndexOfLevel = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "level");
+        final int _columnIndexOfLocation = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "location");
+        final int _columnIndexOfLat = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "lat");
+        final int _columnIndexOfLng = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "lng");
+        final int _columnIndexOfLogoResourceName = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "logoResourceName");
+        final int _columnIndexOfTags = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "tags");
+        final int _columnIndexOfAddedBy = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "addedBy");
+        final int _columnIndexOfIsPublic = SQLiteStatementUtil.getColumnIndexOrThrow(_stmt, "isPublic");
+        final List<Restaurant> _result = new ArrayList<Restaurant>();
+        while (_stmt.step()) {
+          final Restaurant _item;
+          final String _tmpId;
+          if (_stmt.isNull(_columnIndexOfId)) {
+            _tmpId = null;
+          } else {
+            _tmpId = _stmt.getText(_columnIndexOfId);
+          }
+          final String _tmpName;
+          if (_stmt.isNull(_columnIndexOfName)) {
+            _tmpName = null;
+          } else {
+            _tmpName = _stmt.getText(_columnIndexOfName);
+          }
+          final String _tmpCategory;
+          if (_stmt.isNull(_columnIndexOfCategory)) {
+            _tmpCategory = null;
+          } else {
+            _tmpCategory = _stmt.getText(_columnIndexOfCategory);
+          }
+          final String _tmpCuisine;
+          if (_stmt.isNull(_columnIndexOfCuisine)) {
+            _tmpCuisine = null;
+          } else {
+            _tmpCuisine = _stmt.getText(_columnIndexOfCuisine);
+          }
+          final String _tmpLevel;
+          if (_stmt.isNull(_columnIndexOfLevel)) {
+            _tmpLevel = null;
+          } else {
+            _tmpLevel = _stmt.getText(_columnIndexOfLevel);
+          }
+          final String _tmpLocation;
+          if (_stmt.isNull(_columnIndexOfLocation)) {
+            _tmpLocation = null;
+          } else {
+            _tmpLocation = _stmt.getText(_columnIndexOfLocation);
+          }
+          final String _tmpLat;
+          if (_stmt.isNull(_columnIndexOfLat)) {
+            _tmpLat = null;
+          } else {
+            _tmpLat = _stmt.getText(_columnIndexOfLat);
+          }
+          final String _tmpLng;
+          if (_stmt.isNull(_columnIndexOfLng)) {
+            _tmpLng = null;
+          } else {
+            _tmpLng = _stmt.getText(_columnIndexOfLng);
+          }
+          final String _tmpLogoResourceName;
+          if (_stmt.isNull(_columnIndexOfLogoResourceName)) {
+            _tmpLogoResourceName = null;
+          } else {
+            _tmpLogoResourceName = _stmt.getText(_columnIndexOfLogoResourceName);
+          }
+          final List<String> _tmpTags;
+          final String _tmp;
+          if (_stmt.isNull(_columnIndexOfTags)) {
+            _tmp = null;
+          } else {
+            _tmp = _stmt.getText(_columnIndexOfTags);
+          }
+          _tmpTags = Converters.INSTANCE.toStringList(_tmp);
+          final String _tmpAddedBy;
+          if (_stmt.isNull(_columnIndexOfAddedBy)) {
+            _tmpAddedBy = null;
+          } else {
+            _tmpAddedBy = _stmt.getText(_columnIndexOfAddedBy);
+          }
+          final Boolean _tmpIsPublic;
+          final Integer _tmp_1;
+          if (_stmt.isNull(_columnIndexOfIsPublic)) {
+            _tmp_1 = null;
+          } else {
+            _tmp_1 = (int) (_stmt.getLong(_columnIndexOfIsPublic));
+          }
+          _tmpIsPublic = _tmp_1 == null ? null : _tmp_1 != 0;
+          _item = new Restaurant(_tmpId,_tmpName,_tmpCategory,_tmpCuisine,_tmpLevel,_tmpLocation,_tmpLat,_tmpLng,_tmpLogoResourceName,_tmpTags,_tmpAddedBy,_tmpIsPublic);
+          _result.add(_item);
         }
         return _result;
       } finally {

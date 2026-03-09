@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.jrkg.jrkgbites.databinding.FragmentFavoriteBinding
 import com.jrkg.jrkgbites.model.Restaurant
+import com.jrkg.jrkgbites.services.FilterService
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
@@ -35,7 +36,7 @@ class FavoriteFragment : Fragment() {
 
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
-        // 1. Set Managers to match your old UI
+        // 1. Set Managers
         binding.recentlyAddedRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.categoryRecyclerId.layoutManager = GridLayoutManager(requireContext(), 2)
 
@@ -46,11 +47,20 @@ class FavoriteFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favoritesList.collect { restaurantList ->
                 if (restaurantList.isNotEmpty()) {
+                    binding.emptyFavoritesText.visibility = View.GONE
+                    binding.favoritesContentGroup.visibility = View.VISIBLE
+
                     val recentlyAddedList = restaurantList.take(6)
                     binding.recentlyAddedRecycler.adapter = com.jrkg.jrkgbites.adapter.RestaurantAdapter(requireContext(), recentlyAddedList)
 
                     //Load all favorites by default
                     updateRestaurantLists(restaurantList)
+                    
+                    // Update chips as they might depend on data
+                    setupCategoryChips()
+                } else {
+                    binding.emptyFavoritesText.visibility = View.VISIBLE
+                    binding.favoritesContentGroup.visibility = View.GONE
                 }
             }
         }
@@ -60,22 +70,10 @@ class FavoriteFragment : Fragment() {
         binding.seeAllCategory.setOnClickListener { findNavController().navigate(R.id.see_all_category) }
     }
 
-    //Dynamic categories creation
-    private fun generateCategories(): List<String> {
-        val categorySet = mutableSetOf<String>()
-
-        viewModel.favoritesList.value.forEach { restaurant ->
-            restaurant.category?.takeIf { it.isNotBlank() }?.let { categorySet.add(it) }
-//            restaurant.cuisine?.takeIf { it.isNotBlank() }?.let { categorySet.add(it) }
-        }
-
-        return listOf("All") + categorySet.sorted()
-    }
-
 
     private fun setupCategoryChips() {
         // Define categories
-        val categories = generateCategories()
+        val categories = FilterService.generateCategoryFilter(viewModel.favoritesList.value)
 
         // Clear existing chips
         binding.chipGroupCategories.removeAllViews()
@@ -97,7 +95,6 @@ class FavoriteFragment : Fragment() {
                 } else {
                     viewModel.favoritesList.value.filter { restaurant ->
                         restaurant.category == category
-//                        restaurant.cuisine == category
                     }
                 }
                 updateRestaurantLists(filteredList)

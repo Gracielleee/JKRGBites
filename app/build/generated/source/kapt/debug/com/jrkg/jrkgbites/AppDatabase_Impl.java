@@ -9,6 +9,10 @@ import androidx.room.util.DBUtil;
 import androidx.room.util.TableInfo;
 import androidx.sqlite.SQLite;
 import androidx.sqlite.SQLiteConnection;
+import com.jrkg.jrkgbites.data.FavoriteRestaurantDao;
+import com.jrkg.jrkgbites.data.FavoriteRestaurantDao_Impl;
+import com.jrkg.jrkgbites.data.NeverAgainRestaurantDao;
+import com.jrkg.jrkgbites.data.NeverAgainRestaurantDao_Impl;
 import com.jrkg.jrkgbites.data.RestaurantDao;
 import com.jrkg.jrkgbites.data.RestaurantDao_Impl;
 import com.jrkg.jrkgbites.data.RestaurantRatingDao;
@@ -32,22 +36,30 @@ public final class AppDatabase_Impl extends AppDatabase {
 
   private volatile RestaurantRatingDao _restaurantRatingDao;
 
+  private volatile FavoriteRestaurantDao _favoriteRestaurantDao;
+
+  private volatile NeverAgainRestaurantDao _neverAgainRestaurantDao;
+
   @Override
   @NonNull
   protected RoomOpenDelegate createOpenDelegate() {
-    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(3, "cfbb5dfc3e44eed81f2faa88afb02bbe", "c9d16e29e5e164ef1aff5a7d871d952c") {
+    final RoomOpenDelegate _openDelegate = new RoomOpenDelegate(4, "0ce3b3ceccc64a0cfd4214ddf454dec9", "f895f3150b365b4062a21d174b7bd4f4") {
       @Override
       public void createAllTables(@NonNull final SQLiteConnection connection) {
-        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurants` (`id` TEXT NOT NULL, `name` TEXT, `category` TEXT, `cuisine` TEXT, `level` TEXT, `location` TEXT, `lat` TEXT, `lng` TEXT, `logoResourceName` TEXT, `tags` TEXT, `isFavorite` INTEGER NOT NULL, `isNeverAgain` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurants` (`id` TEXT NOT NULL, `name` TEXT, `category` TEXT, `cuisine` TEXT, `level` TEXT, `location` TEXT, `lat` TEXT, `lng` TEXT, `logoResourceName` TEXT, `tags` TEXT, `addedBy` TEXT, `isPublic` INTEGER, PRIMARY KEY(`id`))");
         SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `restaurant_ratings` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `restaurantId` TEXT NOT NULL, `rating` INTEGER NOT NULL, `comment` TEXT NOT NULL, `timestamp` INTEGER NOT NULL)");
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `favorite_restaurants` (`favorite_restaurant` TEXT NOT NULL, PRIMARY KEY(`favorite_restaurant`))");
+        SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS `never_again_restaurants` (`never_again_restaurant` TEXT NOT NULL, PRIMARY KEY(`never_again_restaurant`))");
         SQLite.execSQL(connection, "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'cfbb5dfc3e44eed81f2faa88afb02bbe')");
+        SQLite.execSQL(connection, "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '0ce3b3ceccc64a0cfd4214ddf454dec9')");
       }
 
       @Override
       public void dropAllTables(@NonNull final SQLiteConnection connection) {
         SQLite.execSQL(connection, "DROP TABLE IF EXISTS `restaurants`");
         SQLite.execSQL(connection, "DROP TABLE IF EXISTS `restaurant_ratings`");
+        SQLite.execSQL(connection, "DROP TABLE IF EXISTS `favorite_restaurants`");
+        SQLite.execSQL(connection, "DROP TABLE IF EXISTS `never_again_restaurants`");
       }
 
       @Override
@@ -83,8 +95,8 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsRestaurants.put("lng", new TableInfo.Column("lng", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("logoResourceName", new TableInfo.Column("logoResourceName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsRestaurants.put("tags", new TableInfo.Column("tags", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsRestaurants.put("isFavorite", new TableInfo.Column("isFavorite", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
-        _columnsRestaurants.put("isNeverAgain", new TableInfo.Column("isNeverAgain", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRestaurants.put("addedBy", new TableInfo.Column("addedBy", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsRestaurants.put("isPublic", new TableInfo.Column("isPublic", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final Set<TableInfo.ForeignKey> _foreignKeysRestaurants = new HashSet<TableInfo.ForeignKey>(0);
         final Set<TableInfo.Index> _indicesRestaurants = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoRestaurants = new TableInfo("restaurants", _columnsRestaurants, _foreignKeysRestaurants, _indicesRestaurants);
@@ -109,6 +121,28 @@ public final class AppDatabase_Impl extends AppDatabase {
                   + " Expected:\n" + _infoRestaurantRatings + "\n"
                   + " Found:\n" + _existingRestaurantRatings);
         }
+        final Map<String, TableInfo.Column> _columnsFavoriteRestaurants = new HashMap<String, TableInfo.Column>(1);
+        _columnsFavoriteRestaurants.put("favorite_restaurant", new TableInfo.Column("favorite_restaurant", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final Set<TableInfo.ForeignKey> _foreignKeysFavoriteRestaurants = new HashSet<TableInfo.ForeignKey>(0);
+        final Set<TableInfo.Index> _indicesFavoriteRestaurants = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoFavoriteRestaurants = new TableInfo("favorite_restaurants", _columnsFavoriteRestaurants, _foreignKeysFavoriteRestaurants, _indicesFavoriteRestaurants);
+        final TableInfo _existingFavoriteRestaurants = TableInfo.read(connection, "favorite_restaurants");
+        if (!_infoFavoriteRestaurants.equals(_existingFavoriteRestaurants)) {
+          return new RoomOpenDelegate.ValidationResult(false, "favorite_restaurants(com.jrkg.jrkgbites.model.FavoriteRestaurantId).\n"
+                  + " Expected:\n" + _infoFavoriteRestaurants + "\n"
+                  + " Found:\n" + _existingFavoriteRestaurants);
+        }
+        final Map<String, TableInfo.Column> _columnsNeverAgainRestaurants = new HashMap<String, TableInfo.Column>(1);
+        _columnsNeverAgainRestaurants.put("never_again_restaurant", new TableInfo.Column("never_again_restaurant", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        final Set<TableInfo.ForeignKey> _foreignKeysNeverAgainRestaurants = new HashSet<TableInfo.ForeignKey>(0);
+        final Set<TableInfo.Index> _indicesNeverAgainRestaurants = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoNeverAgainRestaurants = new TableInfo("never_again_restaurants", _columnsNeverAgainRestaurants, _foreignKeysNeverAgainRestaurants, _indicesNeverAgainRestaurants);
+        final TableInfo _existingNeverAgainRestaurants = TableInfo.read(connection, "never_again_restaurants");
+        if (!_infoNeverAgainRestaurants.equals(_existingNeverAgainRestaurants)) {
+          return new RoomOpenDelegate.ValidationResult(false, "never_again_restaurants(com.jrkg.jrkgbites.model.NeverAgainRestaurantId).\n"
+                  + " Expected:\n" + _infoNeverAgainRestaurants + "\n"
+                  + " Found:\n" + _existingNeverAgainRestaurants);
+        }
         return new RoomOpenDelegate.ValidationResult(true, null);
       }
     };
@@ -120,12 +154,12 @@ public final class AppDatabase_Impl extends AppDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final Map<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     final Map<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "restaurants", "restaurant_ratings");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "restaurants", "restaurant_ratings", "favorite_restaurants", "never_again_restaurants");
   }
 
   @Override
   public void clearAllTables() {
-    super.performClear(false, "restaurants", "restaurant_ratings");
+    super.performClear(false, "restaurants", "restaurant_ratings", "favorite_restaurants", "never_again_restaurants");
   }
 
   @Override
@@ -134,6 +168,8 @@ public final class AppDatabase_Impl extends AppDatabase {
     final Map<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
     _typeConvertersMap.put(RestaurantDao.class, RestaurantDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(RestaurantRatingDao.class, RestaurantRatingDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(FavoriteRestaurantDao.class, FavoriteRestaurantDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(NeverAgainRestaurantDao.class, NeverAgainRestaurantDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -176,6 +212,34 @@ public final class AppDatabase_Impl extends AppDatabase {
           _restaurantRatingDao = new RestaurantRatingDao_Impl(this);
         }
         return _restaurantRatingDao;
+      }
+    }
+  }
+
+  @Override
+  public FavoriteRestaurantDao favoriteRestaurantDao() {
+    if (_favoriteRestaurantDao != null) {
+      return _favoriteRestaurantDao;
+    } else {
+      synchronized(this) {
+        if(_favoriteRestaurantDao == null) {
+          _favoriteRestaurantDao = new FavoriteRestaurantDao_Impl(this);
+        }
+        return _favoriteRestaurantDao;
+      }
+    }
+  }
+
+  @Override
+  public NeverAgainRestaurantDao neverAgainRestaurantDao() {
+    if (_neverAgainRestaurantDao != null) {
+      return _neverAgainRestaurantDao;
+    } else {
+      synchronized(this) {
+        if(_neverAgainRestaurantDao == null) {
+          _neverAgainRestaurantDao = new NeverAgainRestaurantDao_Impl(this);
+        }
+        return _neverAgainRestaurantDao;
       }
     }
   }

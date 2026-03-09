@@ -80,7 +80,6 @@
         android:layout_height="500dp"
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginEnd="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
         android:layout_marginBottom="@dimen/spacing_huge"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -155,5 +154,36 @@
             </LinearLayout>
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/card_count_display"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/picker_card"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginBottom="@dimen/spacing_large"
+        android:textSize="@dimen/txt_display"
+        android:textColor="@color/md_theme_primary"
+        tools:text="30">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/card_count_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="in deck"
+        android:textColor="@color/md_theme_onSurface"
+        android:textSize="@dimen/txt_headline"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_count_display"
+        app:layout_constraintVertical_bias="0.1">
+
+    </TextView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

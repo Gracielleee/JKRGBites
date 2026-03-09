@@ -4,13 +4,18 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jrkg.jrkgbites.R
-import com.jrkg.jrkgbites.data.RestaurantDao
+import com.jrkg.jrkgbites.model.FavoriteRestaurantId
+import com.jrkg.jrkgbites.model.NeverAgainRestaurantId
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import java.io.InputStreamReader
 
-class RestaurantRepository(private val restaurantDao: RestaurantDao) {
+class RestaurantRepository(
+    private val restaurantDao: RestaurantDao,
+    private val favoriteRestaurantDao: FavoriteRestaurantDao,
+    private val neverAgainRestaurantDao: NeverAgainRestaurantDao
+) {
 
     // Get restaurants from the database
     fun getRestaurants(): Flow<List<Restaurant>> {
@@ -20,6 +25,14 @@ class RestaurantRepository(private val restaurantDao: RestaurantDao) {
     // Get a specific restaurant by its ID
     fun getRestaurantById(id: String): Flow<Restaurant?> {
         return restaurantDao.getRestaurantById(id)
+    }
+
+    fun getFavoriteRestaurantsFlow(): Flow<List<Restaurant>> {
+        return restaurantDao.getFavoriteRestaurantsFlow()
+    }
+
+    fun getNeverAgainRestaurantsFlow(): Flow<List<Restaurant>> {
+        return restaurantDao.getNeverAgainRestaurantsFlow()
     }
 
     // Check if the database has any restaurants
@@ -49,8 +62,26 @@ class RestaurantRepository(private val restaurantDao: RestaurantDao) {
         return getRestaurants().first().filter { it.name?.contains(query, ignoreCase = true) == true }
     }
 
-    // For updating restaurant status (Favorite, Never Again, etc.)
+    // For updating restaurant status
     suspend fun updateRestaurantStatus(restaurant: Restaurant) {
         restaurantDao.update(restaurant)
     }
+
+    suspend fun addToFavorites(restaurantId: String) {
+        favoriteRestaurantDao.insert(FavoriteRestaurantId(restaurantId))
+    }
+
+    suspend fun removeFromFavorites(restaurantId: String) {
+        favoriteRestaurantDao.deleteById(restaurantId)
+    }
+
+    suspend fun addToNeverAgain(restaurantId: String) {
+        neverAgainRestaurantDao.insert(NeverAgainRestaurantId(restaurantId))
+    }
+
+    suspend fun removeFromNeverAgain(restaurantId: String) {
+        neverAgainRestaurantDao.deleteById(restaurantId)
+    }
+
+
 }

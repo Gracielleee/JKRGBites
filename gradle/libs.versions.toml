@@ -36,6 +36,12 @@ multidex = "2.0.1"
 paletteKtx = "1.0.0"
 coil = "2.5.0"
 
+# Added for testing
+mockito = "5.8.0"
+mockitoKotlin = "5.2.1"
+kotlinxCoroutinesTest = "1.7.3"
+turbine = "1.0.0"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 coil-ktx = { module = "io.coil-kt:coil", version.ref = "coil" }
@@ -74,6 +80,11 @@ androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", versi
 nanoid-kotlin = { module = "io.viascom.nanoid:nanoid", version.ref = "nanoid" }
 squareup-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 
+# Added for testing
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockitoKotlin" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutinesTest" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -195,14 +195,14 @@
         <item name="cornerRadius">8dp</item>
     </style>
     <style name="CustomChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        
-        <item name="chipBackgroundColor">@color/md_theme_primary</item>
+        <item name="chipBackgroundColor">@color/chip_bg_selector</item>
         <item name="chipStrokeColor">@color/md_theme_outline</item>
         <item name="chipStrokeWidth">1dp</item>
-        <item name="android:textColor">@color/md_theme_onPrimary</item>
+        <item name="android:textColor">@color/chip_text_selector</item>
         <item name="android:paddingStart">20dp</item>
         <item name="android:paddingEnd">20dp</item>
         <item name="android:layout_height">40dp</item>
+        <item name="checkedIconEnabled">false</item>
     </style>
     <style name="InputRounded" parent="Widget.Material3.TextInputLayout.OutlinedBox">
         <item name="boxCornerRadiusBottomEnd">12dp</item>

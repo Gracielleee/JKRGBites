@@ -254,6 +254,9 @@ class PickerFragment : Fragment() {
     private fun observeRestaurantDeck() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.deck.collect { deck ->
+                // Update the count whenever the deck changes
+                binding.cardCountDisplay.text = deck.size.toString()
+
                 if (deck.isNotEmpty()) {
                     val nextRestaurant = deck.first()
                     currentRestaurant = nextRestaurant
@@ -264,11 +267,11 @@ class PickerFragment : Fragment() {
                 } else {
                     currentRestaurant = null
                     binding.pickerCard.visibility = View.GONE
-                    Toast.makeText(
-                        requireContext(),
-                        "No more restaurants in the deck!",
-                        Toast.LENGTH_LONG
-                    ).show()
+//                    Toast.makeText(
+//                        requireContext(),
+//                        "No more restaurants in the deck!",
+//                        Toast.LENGTH_LONG
+//                    ).show()
                 }
             }
         }

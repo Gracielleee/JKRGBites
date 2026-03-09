@@ -28,14 +28,18 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final RecyclerView recyclerViewRestaurants;
 
   @NonNull
+  public final TextView screenTitleDisplay;
+
+  @NonNull
   public final TextView textViewEmptyState;
 
   private FragmentHomeBinding(@NonNull ConstraintLayout rootView,
       @NonNull ProgressBar progressBarHome, @NonNull RecyclerView recyclerViewRestaurants,
-      @NonNull TextView textViewEmptyState) {
+      @NonNull TextView screenTitleDisplay, @NonNull TextView textViewEmptyState) {
     this.rootView = rootView;
     this.progressBarHome = progressBarHome;
     this.recyclerViewRestaurants = recyclerViewRestaurants;
+    this.screenTitleDisplay = screenTitleDisplay;
     this.textViewEmptyState = textViewEmptyState;
   }
 
@@ -78,6 +82,12 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.screen_title_display;
+      TextView screenTitleDisplay = ViewBindings.findChildViewById(rootView, id);
+      if (screenTitleDisplay == null) {
+        break missingId;
+      }
+
       id = R.id.textViewEmptyState;
       TextView textViewEmptyState = ViewBindings.findChildViewById(rootView, id);
       if (textViewEmptyState == null) {
@@ -85,7 +95,7 @@ public final class FragmentHomeBinding implements ViewBinding {
       }
 
       return new FragmentHomeBinding((ConstraintLayout) rootView, progressBarHome,
-          recyclerViewRestaurants, textViewEmptyState);
+          recyclerViewRestaurants, screenTitleDisplay, textViewEmptyState);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

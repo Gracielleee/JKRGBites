@@ -34,12 +34,10 @@ class RecentlyAddedFavoriteFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
         // 2. Setup the 2-column grid layout
-        // Ensure android:id="@+id/recentRecyclerView" is in your fragment_see_recently_added.xml
         binding.recentRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // 3. Filter data: Only show favorites
-        val allRestaurants = viewModel.allRestaurants.value ?: emptyList()
-        val favoriteRestaurants = allRestaurants.filter { it.isFavorite }.take(10)
+        // 3. Get favorites
+        val favoriteRestaurants = viewModel.favoritesList.value ?: emptyList()
 
         // 4. Set the Adapter
         binding.recentRecyclerView.adapter = RestaurantAdapter(requireContext(), favoriteRestaurants)

@@ -28,6 +28,7 @@ import com.jrkg.jrkgbites.services.BiometricService
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
@@ -60,7 +61,7 @@ class HomeFragment : Fragment() {
                 viewModel = ViewModelProvider(requireActivity(), MainViewModelFactory(requireActivity().application))[MainViewModel::class.java]
         
                 setupRecyclerView()
-                observeData() // Renamed to observe general data, including search results
+                observeData()
     }
 
     private fun setupRecyclerView() {
@@ -70,15 +71,20 @@ class HomeFragment : Fragment() {
     private fun observeData() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                // Observe the main restaurant deck
-                viewModel.allRestaurants.collectLatest { deck ->
-                    val filteredRestaurants = deck.filter { !it.isNeverAgain }
+                combine(
+                    viewModel.allRestaurants,
+                    viewModel.neverAgainList
+                ) { allRestaurants, neverAgainList ->
+                    allRestaurants.filter { restaurant ->
+                        !neverAgainList.any { it.id == restaurant.id }
+                    }
+                }.collectLatest { filteredRestaurants ->
                     updateRestaurantList(filteredRestaurants)
                 }
-
             }
         }
     }
+
 
     private fun updateRestaurantList(restaurants: List<Restaurant>) {
         if (restaurants.isNotEmpty()) {

@@ -5,6 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/screen_title_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Home"
+        android:padding="@dimen/spacing_standard"
+        android:textSize="@dimen/txt_display"
+        >
+    </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewRestaurants"
         android:layout_width="0dp"
@@ -15,7 +26,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/screen_title_display"
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/item_restaurant_card" />
 

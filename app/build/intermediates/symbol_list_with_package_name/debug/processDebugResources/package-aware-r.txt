@@ -1431,6 +1431,8 @@ color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
+color chip_bg_selector
+color chip_text_selector
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -3197,6 +3199,7 @@ drawable abc_vector_test
 drawable abe
 drawable abovesealevel
 drawable aboysfreshlumpia
+drawable add_resto_ic
 drawable afterdark
 drawable ajisenramen
 drawable alejorestaurant
@@ -3451,6 +3454,7 @@ drawable phohoa
 drawable picker_button
 drawable pill_button
 drawable pineapplehillskitchen
+drawable plus_solid_ic
 drawable popeyes
 drawable potatocorner
 drawable pound
@@ -3588,10 +3592,12 @@ id action_mode_bar_stub
 id action_mode_close_button
 id action_nav_picker_to_restaurantDetailsFragment
 id action_nav_profile_to_restaurantRatingFragment
+id action_nav_search_to_searchFilterFragment
 id action_text
 id actions
 id activity_chooser_view_content
 id add
+id add_resto_btn
 id alertTitle
 id aligned
 id all
@@ -3605,7 +3611,12 @@ id antiClockwise
 id anticipate
 id appName
 id appNameBG2
+id apply_filters_button
 id arc
+id arrow_category
+id arrow_cuisine
+id arrow_level
+id arrow_tags
 id asConfigured
 id async
 id auto
@@ -3648,9 +3659,12 @@ id callMeasure
 id cancel_button
 id cancel_rating_button
 id card_back
+id card_count_desc
+id card_count_display
 id card_flip_container
 id card_front
 id carryVelocity
+id category_chip_group
 id category_header
 id category_recycler_id
 id center
@@ -3669,6 +3683,7 @@ id chip_all
 id chip_group_categories
 id chronometer
 id circle_center
+id clear_filters_button
 id clear_text
 id clip_horizontal
 id clip_vertical
@@ -3689,6 +3704,7 @@ id coordinator
 id cos
 id counterclockwise
 id cradle
+id cuisine_chip_group
 id currentState
 id custom
 id customPanel
@@ -3731,6 +3747,7 @@ id edit_query
 id edit_text_id
 id elastic
 id embed
+id empty_favorites_text
 id end
 id endToStart
 id enterAlways
@@ -3744,11 +3761,13 @@ id expand_activities_button
 id expanded_menu
 id fade
 id fav_count_text
+id favorites_content_group
 id fill
 id fill_horizontal
 id fill_vertical
 id filled
 id filter_icon
+id filter_title
 id fingerprint_description
 id fingerprint_error
 id fingerprint_icon
@@ -3779,6 +3798,10 @@ id groups
 id guide_end
 id guide_start
 id guide_top
+id header_category
+id header_cuisine
+id header_level
+id header_tags
 id header_title
 id hide_ime_id
 id hideable
@@ -3810,6 +3833,7 @@ id layout
 id left
 id leftToRight
 id legacy
+id level_chip_group
 id line1
 id line3
 id linear
@@ -4000,11 +4024,13 @@ id sawtooth
 id scale
 id screen
 id screen_title
+id screen_title_display
 id scroll
 id scrollIndicatorDown
 id scrollIndicatorUp
 id scrollView
 id scrollable
+id searchFilterFragment
 id search_badge
 id search_bar
 id search_button
@@ -4016,6 +4042,10 @@ id search_plate
 id search_results_recycler
 id search_src_text
 id search_voice_btn
+id section_title_category
+id section_title_cuisine
+id section_title_level
+id section_title_tags
 id see_all_category
 id see_all_favorites
 id select_dialog_listview
@@ -4077,6 +4107,7 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id tags_chip_group
 id text
 id text2
 id textEnd
@@ -4301,7 +4332,8 @@ layout fragment_register
 layout fragment_restaurant_details
 layout fragment_restaurant_rating
 layout fragment_search
-layout fragment_see_all_restaurants
+layout fragment_search_filter
+layout fragment_see_all_fav_restaurants
 layout fragment_see_recently_added
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
