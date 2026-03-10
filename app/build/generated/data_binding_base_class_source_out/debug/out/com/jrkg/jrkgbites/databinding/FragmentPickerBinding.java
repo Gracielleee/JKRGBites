@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,10 +44,13 @@ public final class FragmentPickerBinding implements ViewBinding {
   public final MaterialCardView pickerCard;
 
   @NonNull
-  public final LinearLayout pickerCardBackLayout;
+  public final MaterialCardView pickerCardBackLayout;
 
   @NonNull
   public final TextView pickerCardCategory;
+
+  @NonNull
+  public final TextView pickerCardCuisine;
 
   @NonNull
   public final TextView pickerCardDetails;
@@ -71,11 +73,11 @@ public final class FragmentPickerBinding implements ViewBinding {
   private FragmentPickerBinding(@NonNull ConstraintLayout rootView, @NonNull ImageView btnReset,
       @NonNull ImageView btnShuffle, @NonNull ImageView btnUndo, @NonNull TextView cardCountDesc,
       @NonNull TextView cardCountDisplay, @NonNull View pickerAppBar,
-      @NonNull MaterialCardView pickerCard, @NonNull LinearLayout pickerCardBackLayout,
-      @NonNull TextView pickerCardCategory, @NonNull TextView pickerCardDetails,
-      @NonNull FrameLayout pickerCardFlipContainer, @NonNull ImageView pickerCardFront,
-      @NonNull TextView pickerCardLocation, @NonNull TextView pickerCardName,
-      @NonNull TextView pickerTitle) {
+      @NonNull MaterialCardView pickerCard, @NonNull MaterialCardView pickerCardBackLayout,
+      @NonNull TextView pickerCardCategory, @NonNull TextView pickerCardCuisine,
+      @NonNull TextView pickerCardDetails, @NonNull FrameLayout pickerCardFlipContainer,
+      @NonNull ImageView pickerCardFront, @NonNull TextView pickerCardLocation,
+      @NonNull TextView pickerCardName, @NonNull TextView pickerTitle) {
     this.rootView = rootView;
     this.btnReset = btnReset;
     this.btnShuffle = btnShuffle;
@@ -86,6 +88,7 @@ public final class FragmentPickerBinding implements ViewBinding {
     this.pickerCard = pickerCard;
     this.pickerCardBackLayout = pickerCardBackLayout;
     this.pickerCardCategory = pickerCardCategory;
+    this.pickerCardCuisine = pickerCardCuisine;
     this.pickerCardDetails = pickerCardDetails;
     this.pickerCardFlipContainer = pickerCardFlipContainer;
     this.pickerCardFront = pickerCardFront;
@@ -164,7 +167,7 @@ public final class FragmentPickerBinding implements ViewBinding {
       }
 
       id = R.id.picker_card_back_layout;
-      LinearLayout pickerCardBackLayout = ViewBindings.findChildViewById(rootView, id);
+      MaterialCardView pickerCardBackLayout = ViewBindings.findChildViewById(rootView, id);
       if (pickerCardBackLayout == null) {
         break missingId;
       }
@@ -172,6 +175,12 @@ public final class FragmentPickerBinding implements ViewBinding {
       id = R.id.picker_card_category;
       TextView pickerCardCategory = ViewBindings.findChildViewById(rootView, id);
       if (pickerCardCategory == null) {
+        break missingId;
+      }
+
+      id = R.id.picker_card_cuisine;
+      TextView pickerCardCuisine = ViewBindings.findChildViewById(rootView, id);
+      if (pickerCardCuisine == null) {
         break missingId;
       }
 
@@ -213,8 +222,8 @@ public final class FragmentPickerBinding implements ViewBinding {
 
       return new FragmentPickerBinding((ConstraintLayout) rootView, btnReset, btnShuffle, btnUndo,
           cardCountDesc, cardCountDisplay, pickerAppBar, pickerCard, pickerCardBackLayout,
-          pickerCardCategory, pickerCardDetails, pickerCardFlipContainer, pickerCardFront,
-          pickerCardLocation, pickerCardName, pickerTitle);
+          pickerCardCategory, pickerCardCuisine, pickerCardDetails, pickerCardFlipContainer,
+          pickerCardFront, pickerCardLocation, pickerCardName, pickerTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

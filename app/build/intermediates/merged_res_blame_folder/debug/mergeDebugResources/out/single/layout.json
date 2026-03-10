@@ -12,6 +12,10 @@
         "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_search_filter.xml"
     },
     {
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-50:/layout/fragment_picker.xml",
+        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_picker.xml"
+    },
+    {
         "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\fragment_search.xml",
         "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_search.xml"
     },
@@ -60,24 +64,16 @@
         "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_login.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-50:/layout/fragment_search_filter.xml",
-        "source": "com.jrkg.jrkgbites.app-main-53:/layout/fragment_search_filter.xml"
+        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\layout_custom_toast.xml",
+        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\layout_custom_toast.xml"
     },
     {
         "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\fragment_profile.xml",
         "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\fragment_see_all_restaurants.xml",
-        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_see_all_restaurants.xml"
-    },
-    {
         "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\fragment_see_recently_added.xml",
         "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\fragment_see_recently_added.xml"
-    },
-    {
-        "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\dialog_search_filter.xml",
-        "source": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-main-53:\\layout\\dialog_search_filter.xml"
     },
     {
         "merged": "C:\\Users\\Chaz\\.gradle\\daemon\\9.1.0\\com.jrkg.jrkgbites.app-mergeDebugResources-50:\\layout\\fragment_see_all_fav_restaurants.xml",

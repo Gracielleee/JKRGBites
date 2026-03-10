@@ -20,6 +20,9 @@ interface FavoriteRestaurantDao {
     @Query("SELECT favorite_restaurant FROM favorite_restaurants")
     suspend fun getAllFavoriteRestaurantIds(): List<String>
 
+    @Query("SELECT EXISTS(SELECT 1 FROM favorite_restaurants WHERE favorite_restaurant = :restaurantId)")
+    suspend fun isFavorited(restaurantId: String): Boolean
+
     @Delete
     suspend fun delete(favoriteRestaurant: FavoriteRestaurantId)
 

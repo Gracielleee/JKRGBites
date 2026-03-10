@@ -8,7 +8,9 @@ import androidx.room.coroutines.FlowUtil;
 import androidx.room.util.DBUtil;
 import androidx.sqlite.SQLiteStatement;
 import com.jrkg.jrkgbites.model.FavoriteRestaurantId;
+import java.lang.Boolean;
 import java.lang.Class;
+import java.lang.Integer;
 import java.lang.NullPointerException;
 import java.lang.Object;
 import java.lang.Override;
@@ -127,6 +129,38 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
             _item = _stmt.getText(0);
           }
           _result.add(_item);
+        }
+        return _result;
+      } finally {
+        _stmt.close();
+      }
+    }, $completion);
+  }
+
+  @Override
+  public Object isFavorited(final String restaurantId,
+      final Continuation<? super Boolean> $completion) {
+    final String _sql = "SELECT EXISTS(SELECT 1 FROM favorite_restaurants WHERE favorite_restaurant = ?)";
+    return DBUtil.performSuspending(__db, true, false, (_connection) -> {
+      final SQLiteStatement _stmt = _connection.prepare(_sql);
+      try {
+        int _argIndex = 1;
+        if (restaurantId == null) {
+          _stmt.bindNull(_argIndex);
+        } else {
+          _stmt.bindText(_argIndex, restaurantId);
+        }
+        final Boolean _result;
+        if (_stmt.step()) {
+          final Integer _tmp;
+          if (_stmt.isNull(0)) {
+            _tmp = null;
+          } else {
+            _tmp = (int) (_stmt.getLong(0));
+          }
+          _result = _tmp == null ? null : _tmp != 0;
+        } else {
+          _result = null;
         }
         return _result;
       } finally {

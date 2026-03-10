@@ -3,6 +3,7 @@ package com.jrkg.jrkgbites.domain
 import android.content.Context
 import android.graphics.Bitmap
 import com.jrkg.jrkgbites.data.RestaurantDao
+import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.model.RestaurantRating
 import kotlinx.coroutines.flow.Flow
@@ -11,7 +12,8 @@ import io.viascom.nanoid.NanoId
 import java.io.File
 
 class RestaurantManager(
-    private val restaurantDao: RestaurantDao
+    private val restaurantDao: RestaurantDao,
+    private val restaurantRepository: RestaurantRepository
 ) {
 
     suspend fun addRestaurant(name: String,
@@ -53,5 +55,35 @@ class RestaurantManager(
             bitmap.compress(Bitmap.CompressFormat.JPEG, 90, stream)
         }
     }
+
+    suspend fun toggleFavorite(restaurantId: String) {
+        if (restaurantRepository.isFavorited(restaurantId)) {
+            restaurantRepository.removeFromFavorites(restaurantId)
+        } else {
+            if (restaurantRepository.isNeverAgain(restaurantId)) {
+                restaurantRepository.removeFromNeverAgain(restaurantId)  // Can't be both
+            }
+            restaurantRepository.addToFavorites(restaurantId)
+        }
+    }
+
+    suspend fun toggleNeverAgain(restaurantId: String) {
+        if (restaurantRepository.isNeverAgain(restaurantId)) {
+            restaurantRepository.removeFromNeverAgain(restaurantId)
+        } else {
+            if (restaurantRepository.isFavorited(restaurantId)) {
+                restaurantRepository.removeFromFavorites(restaurantId)  // Can't be both
+            }
+            restaurantRepository.addToNeverAgain(restaurantId)
+        }
+    }
+
+    suspend fun addToNeverAgain(restaurantId: String) {
+        if (restaurantRepository.isFavorited(restaurantId)) {
+            restaurantRepository.removeFromFavorites(restaurantId)  // Can't be both }
+        }
+        restaurantRepository.addToNeverAgain(restaurantId)
+    }
+
 
 }

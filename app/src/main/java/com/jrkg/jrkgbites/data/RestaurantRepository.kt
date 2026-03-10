@@ -14,7 +14,7 @@ import java.io.InputStreamReader
 class RestaurantRepository(
     private val restaurantDao: RestaurantDao,
     private val favoriteRestaurantDao: FavoriteRestaurantDao,
-    private val neverAgainRestaurantDao: NeverAgainRestaurantDao
+    private val neverAgainRestaurantDao: NeverAgainRestaurantDao,
 ) {
 
     // Get restaurants from the database
@@ -46,6 +46,11 @@ class RestaurantRepository(
             val restaurants = loadRestaurantsFromAsset(context)
             restaurantDao.insertAll(restaurants)
         }
+    }
+
+    suspend fun fullFreshFromJSON(context: Context) {
+        val restaurants = loadRestaurantsFromAsset(context)
+        restaurantDao.insertAll(restaurants)
     }
 
     // Load restaurants from a JSON file in the assets folder
@@ -82,6 +87,15 @@ class RestaurantRepository(
     suspend fun removeFromNeverAgain(restaurantId: String) {
         neverAgainRestaurantDao.deleteById(restaurantId)
     }
+
+    suspend fun isFavorited(restaurantId: String): Boolean {
+        return favoriteRestaurantDao.isFavorited(restaurantId)
+    }
+
+    suspend fun isNeverAgain(restaurantId: String): Boolean {
+        return neverAgainRestaurantDao.isNeverAgain(restaurantId)
+    }
+
 
 
 }

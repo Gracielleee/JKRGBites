@@ -1,11 +1,11 @@
 package com.jrkg.jrkgbites
 
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RatingBar
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -14,7 +14,9 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.databinding.FragmentRestaurantDetailsBinding
 import com.jrkg.jrkgbites.model.Restaurant
+import com.jrkg.jrkgbites.utils.ToastUtils
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class RestaurantDetailsFragment : Fragment() {
@@ -46,6 +48,36 @@ class RestaurantDetailsFragment : Fragment() {
 
         currentRestaurantId = args.restaurantId
 
+        binding.toggleFavoriteButton.setOnClickListener {
+            currentRestaurantId?.let { id ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val favorites = viewModel.favoritesList.value
+                    val isFavorited = favorites.any { it.id == id }
+                    viewModel.toggleFavorite(id)
+                    
+                    val message = if (isFavorited) "Removed from Favorites" else "Added to Favorites"
+                    val type = if (isFavorited) ToastUtils.ToastType.INFO else ToastUtils.ToastType.SUCCESS
+                    
+                    ToastUtils.showCustomToast(
+                        context = requireContext(),
+                        message = message,
+                        type = type,
+                        durationMs = 1000L,
+                        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                        yOffset = 200
+                    )
+                }
+            }
+        }
+
+        // Observe favorites to update the UI
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.favoritesList.collect { favorites ->
+                val isFavorited = favorites.any { it.id == currentRestaurantId }
+                updateFavoriteButton(isFavorited)
+            }
+        }
+
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getRestaurantById(currentRestaurantId!!).collect { restaurant ->
                 restaurant?.let {
@@ -53,13 +85,27 @@ class RestaurantDetailsFragment : Fragment() {
                     setupRatingSection(it)
                     observeExistingRating(it.id)
                 } ?: run {
-                    Toast.makeText(requireContext(), "Restaurant not found!", Toast.LENGTH_SHORT).show()
+                    ToastUtils.showCustomToast(
+                        context = requireContext(),
+                        message = "Restaurant not found!",
+                        type = ToastUtils.ToastType.ERROR,
+                        durationMs = 1500L,
+                        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                        yOffset = 200
+                    )
                     findNavController().navigateUp()
                 }
             }
         }
+    }
 
-
+    private fun updateFavoriteButton(isFavorited: Boolean) {
+        val icon = if (isFavorited) {
+            R.drawable.favorite_ic_filled  // Solid heart
+        } else {
+            R.drawable.favorite_border_ic  // Empty heart outline
+        }
+        binding.toggleFavoriteButton.setImageResource(icon)
     }
 
     private fun displayRestaurantDetails(restaurant: Restaurant) {
@@ -80,9 +126,6 @@ class RestaurantDetailsFragment : Fragment() {
         } else {
             binding.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
         }
-
-        // TODO: Implement actual map integration using the restaurant's location data
-        // For now, the FrameLayout serves as a placeholder.
     }
 
     private fun setupRatingSection(restaurant: Restaurant) {
@@ -96,22 +139,34 @@ class RestaurantDetailsFragment : Fragment() {
             val comment = commentInput.text.toString()
 
             if (rating == 0f) {
-                Toast.makeText(requireContext(), "Please select a star rating.", Toast.LENGTH_SHORT).show()
+                ToastUtils.showCustomToast(
+                    context = requireContext(),
+                    message = "Please select a star rating.",
+                    type = ToastUtils.ToastType.WARNING,
+                    durationMs = 1500L,
+                    gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                    yOffset = 200
+                )
                 return@setOnClickListener
             }
 
             viewModel.submitRating(restaurant.id, rating.toInt(), comment)
-            Toast.makeText(requireContext(), "Rating submitted for ${restaurant.name}!", Toast.LENGTH_SHORT).show()
-            // After submission, optionally clear inputs or navigate back
-            // For now, we will just update the displayed rating via the observer
+            
+            ToastUtils.showCustomToast(
+                context = requireContext(),
+                message = "Rating submitted for ${restaurant.name}!",
+                type = ToastUtils.ToastType.SUCCESS,
+                durationMs = 1500L,
+                gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                yOffset = 200
+            )
             commentInput.setText("")
         }
 
         cancelButton.setOnClickListener {
-            // Clear current input without submitting
             ratingBar.rating = 0f
             commentInput.setText("")
-            findNavController().navigateUp() // Navigate back to the previous screen
+            findNavController().navigateUp()
         }
     }
 
@@ -123,7 +178,6 @@ class RestaurantDetailsFragment : Fragment() {
                     binding.restaurantRatingBar.rating = it.rating.toFloat()
                     binding.ratingCommentInput.setText(it.comment)
                 } ?: run {
-                    // No existing rating, reset UI
                     binding.restaurantRatingBar.rating = 0f
                     binding.ratingCommentInput.setText("")
                 }

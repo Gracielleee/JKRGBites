@@ -24,7 +24,7 @@
         android:layout_marginEnd="@dimen/spacing_standard"
         android:text="Add Restaurant"
         style="@style/ButtonOutlined"
-        app:icon="@drawable/plus_solid_ic"
+        app:icon="@drawable/add_resto_ic"
         app:layout_constraintBottom_toBottomOf="@+id/screen_title_display"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/screen_title_display" />

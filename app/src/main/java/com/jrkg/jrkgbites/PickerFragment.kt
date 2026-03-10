@@ -4,6 +4,7 @@ import android.animation.AnimatorInflater
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.GestureDetector
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
@@ -17,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.jrkg.jrkgbites.databinding.FragmentPickerBinding
 import com.jrkg.jrkgbites.domain.SwipeDirection
 import com.jrkg.jrkgbites.model.Restaurant
+import com.jrkg.jrkgbites.utils.ToastUtils
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
@@ -186,32 +188,56 @@ class PickerFragment : Fragment() {
         val targetX: Float
         val targetY: Float
         val targetRotation: Float
-        var toastMessage: String
+        val toastMessage: String
+        val toastType: ToastUtils.ToastType
+        val toastDurationMs = 1000L
 
         when (direction) {
             SwipeDirection.RIGHT -> {
                 targetX = screenWidth
                 targetY = 0f
                 targetRotation = 30f
-                toastMessage = "Restaurant Selected!"
+//                toastMessage = "Restaurant Selected."
+//                toastType = ToastUtils.ToastType.INFO
+//                ToastUtils.showCustomToast(requireContext(),
+//                    toastMessage,
+//                    toastType,
+//                    toastDurationMs,
+//                    gravity = Gravity.TOP,
+//                    yOffset = 200)
             }
             SwipeDirection.LEFT -> {
                 targetX = -screenWidth
                 targetY = 0f
                 targetRotation = -30f
-                toastMessage = "Restaurant Discarded."
+//                toastMessage = "Restaurant Discarded."
+//                toastType = ToastUtils.ToastType.INFO
             }
             SwipeDirection.UP -> {
                 targetX = 0f
                 targetY = -screenHeight
                 targetRotation = 0f
                 toastMessage = "Added to Favorites!"
+                toastType = ToastUtils.ToastType.SUCCESS
+                ToastUtils.showCustomToast(requireContext(),
+                    toastMessage,
+                    toastType,
+                    toastDurationMs,
+                    gravity = Gravity.TOP,
+                    yOffset = 200)
             }
             SwipeDirection.DOWN -> {
                 targetX = 0f
                 targetY = screenHeight
                 targetRotation = 0f
                 toastMessage = "Added to Never Again."
+                toastType = ToastUtils.ToastType.INFO
+                ToastUtils.showCustomToast(requireContext(),
+                    toastMessage,
+                    toastType,
+                    toastDurationMs,
+                    gravity = Gravity.TOP,
+                    yOffset = 200)
             }
         }
 
@@ -224,7 +250,6 @@ class PickerFragment : Fragment() {
                 isAnimating = false
                 currentRestaurant?.let { restaurant ->
                     viewModel.onSwipe(restaurant, direction)
-                    Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
                 }
                 if (direction != SwipeDirection.RIGHT) { // Only load next if not navigating away
                     resetCardVisuals() // Just reset visuals, observeDeck handles next
@@ -283,11 +308,11 @@ class PickerFragment : Fragment() {
         binding.pickerCardFront.visibility = View.VISIBLE
         binding.pickerCardBackLayout.visibility = View.GONE
 
-
         binding.pickerCardName.text = restaurant.name.orEmpty()
-        binding.pickerCardCategory.text = "${restaurant.cuisine.orEmpty()} • ${restaurant.category.orEmpty()}"
-        binding.pickerCardLocation.text = restaurant.level.orEmpty()
-        binding.pickerCardDetails.text = restaurant.tags?.joinToString(", ").orEmpty() // Assuming picker_card_details
+        binding.pickerCardCategory.text = "Category: " + restaurant.category.orEmpty()
+        binding.pickerCardCuisine.text = "Cuisine: " + restaurant.cuisine.orEmpty()
+        binding.pickerCardLocation.text = "Level: " +restaurant.level.orEmpty()
+        binding.pickerCardDetails.text = restaurant.tags?.joinToString(", ").orEmpty()
 
         // Load image using the explicit logoResourceName
         val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
@@ -303,90 +328,88 @@ class PickerFragment : Fragment() {
         }
     }
 
-        private fun flipCard() {
+    private fun flipCard() {
 
-            val scale = requireContext().resources.displayMetrics.density
+        val scale = requireContext().resources.displayMetrics.density
 
-            binding.pickerCardFlipContainer.cameraDistance = 8000 * scale
+        binding.pickerCardFlipContainer.cameraDistance = 8000 * scale
 
-    
 
-            val flipOutAnimator = AnimatorInflater.loadAnimator(requireContext(), R.animator.card_flip_right_out)
 
-            val flipInAnimator = AnimatorInflater.loadAnimator(requireContext(), R.animator.card_flip_right_in)
+        val flipOutAnimator = AnimatorInflater.loadAnimator(requireContext(), R.animator.card_flip_right_out)
 
-    
+        val flipInAnimator = AnimatorInflater.loadAnimator(requireContext(), R.animator.card_flip_right_in)
 
-            if (binding.pickerCardFront.visibility == View.VISIBLE) {
 
-                flipOutAnimator.setTarget(binding.pickerCardFront)
 
-                flipInAnimator.setTarget(binding.pickerCardBackLayout)
+        if (binding.pickerCardFront.visibility == View.VISIBLE) {
 
-                flipOutAnimator.start()
+            flipOutAnimator.setTarget(binding.pickerCardFront)
 
-                flipInAnimator.start()
+            flipInAnimator.setTarget(binding.pickerCardBackLayout)
 
-                // This visibility change ensures the back is fully visible after the animation
+            flipOutAnimator.start()
 
-                binding.pickerCardFront.postDelayed({ binding.pickerCardFront.visibility = View.GONE }, 250)
+            flipInAnimator.start()
 
-                binding.pickerCardBackLayout.visibility = View.VISIBLE
+            // This visibility change ensures the back is fully visible after the animation
 
-            } else {
+            binding.pickerCardFront.postDelayed({ binding.pickerCardFront.visibility = View.GONE }, 250)
 
-                flipOutAnimator.setTarget(binding.pickerCardBackLayout)
+            binding.pickerCardBackLayout.visibility = View.VISIBLE
 
-                flipInAnimator.setTarget(binding.pickerCardFront)
+        } else {
 
-                flipOutAnimator.start()
+            flipOutAnimator.setTarget(binding.pickerCardBackLayout)
 
-                flipInAnimator.start()
+            flipInAnimator.setTarget(binding.pickerCardFront)
 
-                // This visibility change ensures the front is fully visible after the animation
+            flipOutAnimator.start()
 
-                binding.pickerCardBackLayout.postDelayed({ binding.pickerCardBackLayout.visibility = View.GONE }, 250)
+            flipInAnimator.start()
 
-                binding.pickerCardFront.visibility = View.VISIBLE
+            // This visibility change ensures the front is fully visible after the animation
 
-            }
+            binding.pickerCardBackLayout.postDelayed({ binding.pickerCardBackLayout.visibility = View.GONE }, 250)
+
+            binding.pickerCardFront.visibility = View.VISIBLE
 
         }
 
+    }
 
 
-        private fun observeSelectedRestaurant() {
 
-            viewLifecycleOwner.lifecycleScope.launch {
+    private fun observeSelectedRestaurant() {
 
-                viewModel.selectedRestaurant.filterNotNull().collect { selectedRestaurant ->
+        viewLifecycleOwner.lifecycleScope.launch {
 
-                    // This block is triggered when _selectedRestaurant is set (i.e., on SwipeDirection.RIGHT)
+            viewModel.selectedRestaurant.filterNotNull().collect { selectedRestaurant ->
 
-                    // Only guard against concurrent navigations; animation has already finished
-                    if (!isNavigating) {
+                // This block is triggered when _selectedRestaurant is set (i.e., on SwipeDirection.RIGHT)
 
-                        isNavigating = true // Set flag to prevent deck updates
+                // Only guard against concurrent navigations; animation has already finished
+                if (!isNavigating) {
 
-                        currentRestaurant = null // Clear current restaurant
+                    isNavigating = true // Set flag to prevent deck updates
 
-                        binding.pickerCard.visibility = View.GONE // Hide the picker card immediately
+                    currentRestaurant = null // Clear current restaurant
 
-    
+                    binding.pickerCard.visibility = View.GONE // Hide the picker card immediately
 
-                        val action = PickerFragmentDirections.actionNavPickerToRestaurantDetailsFragment(selectedRestaurant.id!!)
 
-                        findNavController().navigate(action)
 
-    
+                    val action = PickerFragmentDirections.actionNavPickerToRestaurantDetailsFragment(selectedRestaurant.id!!)
 
-                        // Reset selected restaurant in ViewModel after navigation (important for subsequent selections)
+                    findNavController().navigate(action)
 
-                        viewModel.clearSelectedRestaurant()
 
-                        isNavigating = false // Reset navigation flag
 
-                    }
+                    // Reset selected restaurant in ViewModel after navigation (important for subsequent selections)
+
+                    viewModel.clearSelectedRestaurant()
+
+                    isNavigating = false // Reset navigation flag
 
                 }
 
@@ -394,13 +417,15 @@ class PickerFragment : Fragment() {
 
         }
 
-    
+    }
 
-        override fun onDestroyView() {
 
-            super.onDestroyView()
 
-            _binding = null
+    override fun onDestroyView() {
 
-        }
+        super.onDestroyView()
+
+        _binding = null
+
+    }
 }

@@ -217,6 +217,8 @@ drawable elpolloloco
 drawable euroresto
 drawable everythingbutcheese
 drawable fatfook
+drawable favorite_border_ic
+drawable favorite_ic_filled
 drawable favorites_button
 drawable feastandfire
 drawable filter_icon
@@ -240,13 +242,17 @@ drawable hillbrewscoffee
 drawable holographic
 drawable home_button
 drawable ic_arrow_back
+drawable ic_check_circle
+drawable ic_error
 drawable ic_filter
+drawable ic_info
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_menu_hamburger
 drawable ic_reset
 drawable ic_shuffle
 drawable ic_undo
+drawable ic_warning
 drawable inihawexpress
 drawable ippudo
 drawable islandbistro
@@ -317,7 +323,7 @@ drawable popeyes
 drawable potatocorner
 drawable pound
 drawable pranaindian
-drawable profile_button
+drawable profile_ic
 drawable puffys
 drawable racks
 drawable ramenagi
@@ -468,6 +474,7 @@ id picker_app_bar
 id picker_card
 id picker_card_back_layout
 id picker_card_category
+id picker_card_cuisine
 id picker_card_details
 id picker_card_flip_container
 id picker_card_front
@@ -518,6 +525,10 @@ id to_forgotPasswordDialog
 id to_loginFragment
 id to_registerFragment
 id to_restaurantDetailsFragment
+id toast_card
+id toast_icon
+id toast_text
+id toggleFavoriteButton
 id touchBackToLogin
 id txtAltLogin
 id txtBackToLogin
@@ -551,6 +562,7 @@ layout fragment_see_recently_added
 layout item_restaurant_card
 layout item_restaurant_list_card
 layout item_restaurant_rating
+layout layout_custom_toast
 menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_background

@@ -44,7 +44,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/profile_button"/>
+                            android:src="@drawable/profile_ic"/>
         
                         <TextView
                             android:id="@+id/user_name_text"

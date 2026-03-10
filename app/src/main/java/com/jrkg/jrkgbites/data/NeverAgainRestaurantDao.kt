@@ -20,6 +20,9 @@ interface NeverAgainRestaurantDao {
     @Query("SELECT never_again_restaurant FROM never_again_restaurants")
     suspend fun getAllNeverAgainRestaurantIds(): List<String>
 
+    @Query("SELECT EXISTS(SELECT 1 FROM never_again_restaurants WHERE never_again_restaurant = :restaurantId)")
+    suspend fun isNeverAgain(restaurantId: String): Boolean
+
     @Delete
     suspend fun delete(neverAgainRestaurant: NeverAgainRestaurantId)
 

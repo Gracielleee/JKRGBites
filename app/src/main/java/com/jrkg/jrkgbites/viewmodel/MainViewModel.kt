@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 import androidx.lifecycle.viewModelScope
+import com.jrkg.jrkgbites.data.RestaurantRatingRepository
 import com.jrkg.jrkgbites.services.BiometricService
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.stateIn
@@ -32,7 +33,8 @@ class MainViewModel(
     private val authManager: AuthManager,
     private val prefsManager: UserPreferencesManager,
     private val sessionManager: SessionManager,
-    private val restaurantRepository: RestaurantRepository
+    private val restaurantRepository: RestaurantRepository,
+    private val restaurantManager: RestaurantManager
 ) : ViewModel() {
 
     init {
@@ -46,6 +48,16 @@ class MainViewModel(
             restaurantRepository.refreshRestaurants(application)
         }
     }
+
+    // --- Toast ---
+    private val _toastMessage = MutableStateFlow<String?>(null)
+    val toastMessage: StateFlow<String?> = _toastMessage.asStateFlow()
+
+    fun clearToastMessage() {
+        _toastMessage.value = null
+    }
+
+//    -----------------------------------------------------------------------------------------   //
 
     // --- Session Manager State ---
     val sessionState: StateFlow<User?> = sessionManager.sessionState
@@ -76,7 +88,7 @@ class MainViewModel(
 
     val favoritesList: StateFlow<List<Restaurant>> by lazy { swipeManager.favoritesList }
     val neverAgainList: StateFlow<List<Restaurant>> by lazy { swipeManager.neverAgainList }
-    
+
     val selectedRestaurant: StateFlow<Restaurant?> by lazy { swipeManager.selectedRestaurant }
 
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
@@ -136,9 +148,16 @@ class MainViewModel(
         return restaurantRepository.getRestaurantById(id)
     }
 
+    fun toggleFavorite(restaurantId: String) {
+        viewModelScope.launch {
+            restaurantManager.toggleFavorite(restaurantId)
+        }
+    }
+
     fun submitRating(restaurantId: String, rating: Int, comment: String) {
         viewModelScope.launch {
             ratingManager.submitRating(restaurantId, rating.toInt(), comment)
+            _toastMessage.value = "Rating submitted"
         }
     }
 }
@@ -159,13 +178,15 @@ class MainViewModelFactory(
                 favoriteRestaurantDao,
                 neverAgainRestaurantDao
             )
+            val restaurantRatingRepository = RestaurantRatingRepository(restaurantRatingDao)
+            val restaurantManager = RestaurantManager(restaurantDao, restaurantRepository)
             val prefsManager = UserPreferencesManager(application)
             val authService = FakeAuthService()
             val sessionManager = SessionManager(authService)
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)
-            val swipeManager = SwipeManager(restaurantRepository)
-            val ratingManager = RatingManager(swipeManager, restaurantRatingDao)
+            val swipeManager = SwipeManager(restaurantRepository, restaurantManager)
+            val ratingManager = RatingManager(restaurantRatingRepository, restaurantManager)
             val searchManager = SearchManager(restaurantRepository)
             val restaurantPicker = RestaurantPicker(restaurantRepository)
 
@@ -178,7 +199,8 @@ class MainViewModelFactory(
                 authManager = authManager,
                 prefsManager = prefsManager,
                 sessionManager = sessionManager,
-                restaurantRepository = restaurantRepository
+                restaurantRepository = restaurantRepository,
+                restaurantManager = restaurantManager
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

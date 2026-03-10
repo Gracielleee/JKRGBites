@@ -18,7 +18,9 @@ enum class SwipeDirection {
  * Manages the state and logic for the swipeable "Tinder-style" card picker.
  */
 class SwipeManager(
-    private val restaurantRepository: RestaurantRepository
+    private val restaurantRepository: RestaurantRepository,
+
+    private val restaurantManager: RestaurantManager
 ) {
     private lateinit var scope: CoroutineScope
 
@@ -81,16 +83,12 @@ class SwipeManager(
 
         scope.launch {
             when (direction) {
-                SwipeDirection.UP -> restaurantRepository.addToFavorites(restaurant.id)
-                SwipeDirection.DOWN -> restaurantRepository.addToNeverAgain(restaurant.id)
+                SwipeDirection.UP -> toggleFavorite(restaurant.id)
+                SwipeDirection.DOWN -> toggleNeverAgain(restaurant.id)
                 SwipeDirection.RIGHT -> _selectedRestaurant.update { restaurant }
                 else -> {}
             }
         }
-    }
-
-    suspend fun addToNeverAgain(restaurantId: String) {
-        restaurantRepository.addToNeverAgain(restaurantId)
     }
 
     fun undoLastSwipe() {
@@ -98,14 +96,27 @@ class SwipeManager(
             val (lastRestaurant, lastDirection) = _swipeHistory.removeAt(_swipeHistory.lastIndex)
             scope.launch {
                 when (lastDirection) {
-                    SwipeDirection.UP -> restaurantRepository.removeFromFavorites(lastRestaurant.id)
-                    SwipeDirection.DOWN -> restaurantRepository.removeFromNeverAgain(lastRestaurant.id)
+                    SwipeDirection.UP -> toggleFavorite(lastRestaurant.id)
+                    SwipeDirection.DOWN -> toggleNeverAgain(lastRestaurant.id)
                     else -> {}
                 }
                 _sessionSwipedRestaurants.update { it - lastRestaurant.id }
             }
         }
     }
+
+    fun toggleFavorite(restaurantId: String) {
+        scope.launch {
+            restaurantManager.toggleFavorite(restaurantId)
+        }
+    }
+
+    fun toggleNeverAgain(restaurantId: String) {
+        scope.launch {
+            restaurantManager.toggleNeverAgain(restaurantId)
+        }
+    }
+
 
     fun shuffleDeck() {
         val currentOrder = if (_displayOrder.value.isNotEmpty()) _displayOrder.value else _allRestaurants.value

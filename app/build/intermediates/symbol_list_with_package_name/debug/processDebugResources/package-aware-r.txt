@@ -3266,6 +3266,8 @@ drawable elpolloloco
 drawable euroresto
 drawable everythingbutcheese
 drawable fatfook
+drawable favorite_border_ic
+drawable favorite_ic_filled
 drawable favorites_button
 drawable feastandfire
 drawable filter_icon
@@ -3298,9 +3300,12 @@ drawable ic_call_answer_video
 drawable ic_call_answer_video_low
 drawable ic_call_decline
 drawable ic_call_decline_low
+drawable ic_check_circle
 drawable ic_clear_black_24
 drawable ic_clock_black_24dp
+drawable ic_error
 drawable ic_filter
+drawable ic_info
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -3316,6 +3321,7 @@ drawable ic_reset
 drawable ic_search_black_24
 drawable ic_shuffle
 drawable ic_undo
+drawable ic_warning
 drawable icon_background
 drawable inihawexpress
 drawable ippudo
@@ -3459,7 +3465,7 @@ drawable popeyes
 drawable potatocorner
 drawable pound
 drawable pranaindian
-drawable profile_button
+drawable profile_ic
 drawable puffys
 drawable racks
 drawable ramenagi
@@ -3972,6 +3978,7 @@ id picker_app_bar
 id picker_card
 id picker_card_back_layout
 id picker_card_category
+id picker_card_cuisine
 id picker_card_details
 id picker_card_flip_container
 id picker_card_front
@@ -4137,7 +4144,11 @@ id to_forgotPasswordDialog
 id to_loginFragment
 id to_registerFragment
 id to_restaurantDetailsFragment
+id toast_card
+id toast_icon
+id toast_text
 id toggle
+id toggleFavoriteButton
 id top
 id topPanel
 id touchBackToLogin
@@ -4340,6 +4351,7 @@ layout ime_secondary_split_test_activity
 layout item_restaurant_card
 layout item_restaurant_list_card
 layout item_restaurant_rating
+layout layout_custom_toast
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title

@@ -64,15 +64,38 @@
                 tools:src="@drawable/ic_launcher_background"
                 android:layout_marginBottom="@dimen/spacing_standard"/>
 
-            <TextView
-                android:id="@+id/restaurant_name"
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/txt_display"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnSurface"
-                tools:text="The Grand Eatery"
-                android:layout_marginBottom="@dimen/spacing_medium"/>
+                android:layout_marginBottom="@dimen/spacing_medium">
+
+                <TextView
+                    android:id="@+id/restaurant_name"
+                    android:layout_marginTop="@dimen/spacing_medium"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/toggleFavoriteButton"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/txt_headline"
+                    android:textStyle="bold"
+                    android:gravity="center_vertical"
+                    android:textColor="?attr/colorOnSurface"
+                    tools:text="The Grand Eatery" />
+
+                <ImageView
+                    android:id="@+id/toggleFavoriteButton"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="@dimen/touchtarget_min"
+                    android:layout_height="@dimen/touchtarget_min"
+                    android:src="@drawable/favorite_border_ic"
+                    android:contentDescription="Toggle Favorite"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/restaurant_category_cuisine"
@@ -112,22 +135,22 @@
                 android:layout_marginTop="@dimen/spacing_standard"
                 android:layout_marginBottom="@dimen/spacing_medium"/>
 
+            <!-- Rating and Comment Input Section -->
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="@color/md_theme_surfaceContainerHigh"
-                android:layout_marginBottom="@dimen/spacing_standard">
+                android:layout_marginBottom="@dimen/spacing_standard"
+                android:background="@color/md_theme_surfaceContainerHigh">
                 <!-- Placeholder for Map View -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Map Placeholder"
                     android:layout_gravity="center"
+                    android:text="Map Placeholder"
                     android:textColor="?attr/colorOnSurfaceVariant"
-                    android:textSize="@dimen/txt_headline"/>
+                    android:textSize="@dimen/txt_headline" />
             </FrameLayout>
 
-            <!-- Rating and Comment Input Section -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

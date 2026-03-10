@@ -62,13 +62,17 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
   @NonNull
   public final Button submitRatingButton;
 
+  @NonNull
+  public final ImageView toggleFavoriteButton;
+
   private FragmentRestaurantDetailsBinding(@NonNull ConstraintLayout rootView,
       @NonNull View actionBarBg, @NonNull ImageView backButton, @NonNull Button cancelRatingButton,
       @NonNull TextView mapHeader, @NonNull TextInputEditText ratingCommentInput,
       @NonNull TextView restaurantCategoryCuisine, @NonNull ImageView restaurantImage,
       @NonNull TextView restaurantLevel, @NonNull TextView restaurantName,
       @NonNull RatingBar restaurantRatingBar, @NonNull TextView restaurantTags,
-      @NonNull TextView screenTitle, @NonNull Button submitRatingButton) {
+      @NonNull TextView screenTitle, @NonNull Button submitRatingButton,
+      @NonNull ImageView toggleFavoriteButton) {
     this.rootView = rootView;
     this.actionBarBg = actionBarBg;
     this.backButton = backButton;
@@ -83,6 +87,7 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
     this.restaurantTags = restaurantTags;
     this.screenTitle = screenTitle;
     this.submitRatingButton = submitRatingButton;
+    this.toggleFavoriteButton = toggleFavoriteButton;
   }
 
   @Override
@@ -190,10 +195,16 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.toggleFavoriteButton;
+      ImageView toggleFavoriteButton = ViewBindings.findChildViewById(rootView, id);
+      if (toggleFavoriteButton == null) {
+        break missingId;
+      }
+
       return new FragmentRestaurantDetailsBinding((ConstraintLayout) rootView, actionBarBg,
           backButton, cancelRatingButton, mapHeader, ratingCommentInput, restaurantCategoryCuisine,
           restaurantImage, restaurantLevel, restaurantName, restaurantRatingBar, restaurantTags,
-          screenTitle, submitRatingButton);
+          screenTitle, submitRatingButton, toggleFavoriteButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

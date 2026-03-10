@@ -81,6 +81,9 @@
         android:layout_marginStart="@dimen/spacing_large"
         android:layout_marginEnd="@dimen/spacing_large"
         android:layout_marginBottom="@dimen/spacing_huge"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,7 +91,6 @@
 
         <FrameLayout
             android:id="@+id/picker_card_flip_container"
-            app:cardBackgroundColor="?attr/colorSecondaryContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -96,62 +98,90 @@
             <ImageView
                 android:id="@+id/picker_card_front"
                 android:layout_width="match_parent"
-                android:layout_height="391dp"
-                android:layout_gravity="center"
+                android:layout_height="match_parent"
                 android:contentDescription="@null"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                android:visibility="gone"/>
 
-<!--            Back    -->
-            <LinearLayout
+<!--            Back               -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/picker_card_back_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/spacing_standard"
-                android:background="?attr/colorSecondary"
-                android:gravity="center"
-                android:visibility="gone">
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/md_theme_surface"
+                android:visibility="visible">
 
-                <TextView
-                    android:id="@+id/picker_card_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:textSize="@dimen/txt_headline"
-                    android:textStyle="bold"
-                    tools:text="Restaurant Name" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_large"
+                    android:gravity="center"
+                    android:translationY="-20dp">
 
-                <TextView
-                    android:id="@+id/picker_card_category"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:textSize="@dimen/txt_body"
-                    android:maxLines="2"
-                    tools:text="Cuisine • Category" />
+                    <TextView
+                        android:id="@+id/picker_card_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        android:letterSpacing="-0.01"
+                        tools:text="Restaurant Name" />
 
-                <TextView
-                    android:id="@+id/picker_card_details"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:textSize="@dimen/txt_body"
-                    android:maxLines="1"
-                    tools:text="Tags: Vegetarian, Fast Food" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/md_theme_outlineVariant" />
 
-                <TextView
-                    android:id="@+id/picker_card_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:textColor="?attr/colorOnSecondary"
-                    android:textSize="@dimen/txt_body"
-                    tools:text="Location: SM North EDSA" />
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/picker_card_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/md_theme_secondary"
+                        android:textSize="@dimen/txt_headline"
+                        android:alpha="0.9"
+                        tools:text="Category: Italian, Seafood" />
+
+                    <TextView
+                        android:id="@+id/picker_card_cuisine"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/md_theme_secondary"
+                        android:textSize="@dimen/txt_headline"
+                        android:alpha="0.9"
+                        tools:text="Cuisine: Pizza, Pasta" />
+
+                    <TextView
+                        android:id="@+id/picker_card_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/md_theme_tertiary"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/txt_subheading"
+                        tools:text="LEVEL: GROUND FLOOR" />
+
+                    <TextView
+                        android:id="@+id/picker_card_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:textColor="@color/md_theme_secondary"
+                        android:textSize="@dimen/txt_subheading"
+                        android:alpha="1"
+                        android:lineSpacingExtra="4dp"
+                        tools:text="Tags: Vegetarian, Halal, Outdoor Seating" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
         </FrameLayout>
     </com.google.android.material.card.MaterialCardView>
 
