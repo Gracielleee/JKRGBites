@@ -82,6 +82,16 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
   }
 
   @Override
+  public Object insertAll(final List<NeverAgainRestaurantId> neverAgainRestaurants,
+      final Continuation<? super Unit> $completion) {
+    if (neverAgainRestaurants == null) throw new NullPointerException();
+    return DBUtil.performSuspending(__db, false, true, (_connection) -> {
+      __insertAdapterOfNeverAgainRestaurantId.insert(_connection, neverAgainRestaurants);
+      return Unit.INSTANCE;
+    }, $completion);
+  }
+
+  @Override
   public Object delete(final NeverAgainRestaurantId neverAgainRestaurant,
       final Continuation<? super Unit> $completion) {
     if (neverAgainRestaurant == null) throw new NullPointerException();

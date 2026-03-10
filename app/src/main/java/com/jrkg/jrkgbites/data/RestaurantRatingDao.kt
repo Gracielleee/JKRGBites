@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.jrkg.jrkgbites.model.NeverAgainRestaurantId
 import com.jrkg.jrkgbites.model.RestaurantRating
 import kotlinx.coroutines.flow.Flow
 
@@ -13,6 +14,9 @@ import kotlinx.coroutines.flow.Flow
 interface RestaurantRatingDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(rating: RestaurantRating)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(ratings: List<RestaurantRating>)
 
     @Update
     suspend fun update(rating: RestaurantRating)

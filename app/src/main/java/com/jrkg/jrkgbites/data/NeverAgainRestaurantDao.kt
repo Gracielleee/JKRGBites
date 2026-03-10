@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.jrkg.jrkgbites.model.FavoriteRestaurantId
 import com.jrkg.jrkgbites.model.NeverAgainRestaurantId
 import kotlinx.coroutines.flow.Flow
 
@@ -13,6 +14,9 @@ interface NeverAgainRestaurantDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(neverAgainRestaurant: NeverAgainRestaurantId)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(neverAgainRestaurants: List<NeverAgainRestaurantId>)
 
     @Query("SELECT never_again_restaurant FROM never_again_restaurants")
     fun getAllNeverAgainRestaurantIdsFlow(): Flow<List<String>>

@@ -110,6 +110,11 @@ app:startDestination="@id/loginFragment" > <!-- Changed start destination to log
     android:name="com.jrkg.jrkgbites.SeeAllRestaurantsFragment"
     android:label="All Restaurants"
     tools:layout="@layout/fragment_see_all_fav_restaurants" />
+<fragment
+    android:id="@+id/fragment_add_restaurant"
+    android:name="com.jrkg.jrkgbites.AddRestaurantFragment"
+    android:label="Add Restaurant"
+    tools:layout="@layout/fragment_add_restaurant" />
 
 <!-- Actions -->
 <action
@@ -137,4 +142,7 @@ app:startDestination="@id/loginFragment" > <!-- Changed start destination to log
         app:argType="string" />
 
 </action>
+<action
+    android:id="@+id/to_addRestaurant"
+    app:destination="@id/fragment_add_restaurant" />
 </navigation>

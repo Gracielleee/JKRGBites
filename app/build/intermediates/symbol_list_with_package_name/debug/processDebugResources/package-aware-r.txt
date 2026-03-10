@@ -3654,6 +3654,7 @@ id btnBioAuth
 id btnLogin
 id btnRegister
 id btnResend
+id btnSave
 id btnSubmit
 id btn_reset
 id btn_shuffle
@@ -3758,8 +3759,11 @@ id end
 id endToStart
 id enterAlways
 id enterAlwaysCollapsed
+id etCategory
 id etConfirmPassword
 id etEmail
+id etLocation
+id etName
 id etPassword
 id etUsername
 id exitUntilCollapsed
@@ -3788,6 +3792,7 @@ id flip
 id floating
 id forever
 id forgotPasswordDialog
+id fragment_add_restaurant
 id fragment_container_view_tag
 id front_logo
 id front_name
@@ -4132,14 +4137,18 @@ id textinput_helper_text
 id textinput_placeholder
 id textinput_prefix_text
 id textinput_suffix_text
+id tilCategory
 id tilConfirmPassword
 id tilEmail
+id tilLocation
+id tilName
 id tilPassword
 id tilUsername
 id time
 id title
 id titleDividerNoCustom
 id title_template
+id to_addRestaurant
 id to_forgotPasswordDialog
 id to_loginFragment
 id to_registerFragment
@@ -4167,6 +4176,7 @@ id txtBeforeGotoRegister
 id txtDisplay
 id txtForgotPassword
 id txtGotoRegister
+id txtHeader
 id txtInstructions
 id txtInstructions2
 id txtLoginHeader
@@ -4334,6 +4344,7 @@ layout design_text_input_start_icon
 layout dialog_email_verification
 layout dialog_forgot_password
 layout fingerprint_dialog_layout
+layout fragment_add_restaurant
 layout fragment_favorite
 layout fragment_home
 layout fragment_login

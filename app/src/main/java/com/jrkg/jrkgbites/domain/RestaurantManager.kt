@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import com.jrkg.jrkgbites.data.RestaurantDao
 import com.jrkg.jrkgbites.data.RestaurantRepository
+import com.jrkg.jrkgbites.data.api.RetrofitInstance
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.model.RestaurantRating
 import kotlinx.coroutines.flow.Flow

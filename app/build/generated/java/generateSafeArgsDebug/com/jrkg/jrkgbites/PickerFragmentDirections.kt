@@ -38,5 +38,8 @@ public class PickerFragmentDirections private constructor() {
 
     @CheckResult
     public fun toRestaurantDetailsFragment(restaurantId: String): NavDirections = NavGraphDirections.toRestaurantDetailsFragment(restaurantId)
+
+    @CheckResult
+    public fun toAddRestaurant(): NavDirections = NavGraphDirections.toAddRestaurant()
   }
 }

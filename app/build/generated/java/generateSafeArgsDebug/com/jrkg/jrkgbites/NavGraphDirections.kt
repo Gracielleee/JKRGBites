@@ -36,5 +36,8 @@ public class NavGraphDirections private constructor() {
 
     @CheckResult
     public fun toRestaurantDetailsFragment(restaurantId: String): NavDirections = ToRestaurantDetailsFragment(restaurantId)
+
+    @CheckResult
+    public fun toAddRestaurant(): NavDirections = ActionOnlyNavDirections(R.id.to_addRestaurant)
   }
 }

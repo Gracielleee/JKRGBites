@@ -4,6 +4,7 @@ import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.jrkg.jrkgbites.R
+import com.jrkg.jrkgbites.data.api.RetrofitInstance
 import com.jrkg.jrkgbites.model.FavoriteRestaurantId
 import com.jrkg.jrkgbites.model.NeverAgainRestaurantId
 import com.jrkg.jrkgbites.model.Restaurant
@@ -17,6 +18,70 @@ class RestaurantRepository(
     private val neverAgainRestaurantDao: NeverAgainRestaurantDao,
 ) {
 
+  //REMOTE MANAGEMENT
+    suspend fun getRestaurantsFromRemote() {
+        try {
+            // Fetch from the API found in RestaurantApiService
+            val remoteRestaurants = RetrofitInstance.restaurantApi.getRestaurants()
+
+            // Mapping DTO to local Model
+            val localRestaurants = remoteRestaurants.map { dto ->
+                Restaurant(
+                    id = dto.id,
+                    name = dto.name,
+                    category = dto.category,
+                    cuisine = dto.cuisine,
+                    level = dto.level,
+                    location = dto.location,
+                    lat = dto.lat,
+                    lng = dto.lng,
+                    logoResourceName = dto.logoResourceName,
+                    tags = dto.tags,
+                    addedBy = dto.addedBy,
+                    isPublic = dto.isPublic
+                )
+            }
+            restaurantDao.insertAll(localRestaurants)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getFavoritesFromRemote() {
+        try {
+            // Fetch from the API found in RestaurantApiService
+            val remoteRestaurants = RetrofitInstance.restaurantApi.getFavoriteRestaurants()
+
+            // Mapping DTO to local Model
+            val localRestaurants = remoteRestaurants.map { dto ->
+                FavoriteRestaurantId(
+                    favoriteRestaurantId = dto.restaurantId
+                )
+            }
+            favoriteRestaurantDao.insertAll(localRestaurants)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+    suspend fun getNeverAgainFromRemote() {
+        try {
+            // Fetch from the API found in RestaurantApiService
+            val remoteRestaurants = RetrofitInstance.restaurantApi.getNeverAgainRestaurants()
+
+            // Mapping DTO to local Model
+            val localRestaurants = remoteRestaurants.map { dto ->
+                NeverAgainRestaurantId(
+                    neverAgainRestaurantId = dto.restaurantId
+                )
+            }
+            neverAgainRestaurantDao.insertAll(localRestaurants)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
+ //LOCAL MANAGEMENT
     // Get restaurants from the database
     fun getRestaurants(): Flow<List<Restaurant>> {
         return restaurantDao.getAllRestaurants()

@@ -55,6 +55,10 @@ class SearchFragment : Fragment() {
             }
         }
 
+        binding.addRestoBtn.setOnClickListener {
+            findNavController().navigate(R.id.to_addRestaurant)
+        }
+
         binding.searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(newText: String?): Boolean {
                 currentQuery = newText.orEmpty()

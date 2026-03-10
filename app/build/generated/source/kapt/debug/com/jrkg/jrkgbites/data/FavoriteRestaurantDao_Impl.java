@@ -82,6 +82,16 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
   }
 
   @Override
+  public Object insertAll(final List<FavoriteRestaurantId> favoriteRestaurants,
+      final Continuation<? super Unit> $completion) {
+    if (favoriteRestaurants == null) throw new NullPointerException();
+    return DBUtil.performSuspending(__db, false, true, (_connection) -> {
+      __insertAdapterOfFavoriteRestaurantId.insert(_connection, favoriteRestaurants);
+      return Unit.INSTANCE;
+    }, $completion);
+  }
+
+  @Override
   public Object delete(final FavoriteRestaurantId favoriteRestaurant,
       final Continuation<? super Unit> $completion) {
     if (favoriteRestaurant == null) throw new NullPointerException();
