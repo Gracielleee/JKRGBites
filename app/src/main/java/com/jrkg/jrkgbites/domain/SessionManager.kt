@@ -1,5 +1,6 @@
 package com.jrkg.jrkgbites.domain
 
+import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.domain.service.AuthService
 import com.jrkg.jrkgbites.model.User

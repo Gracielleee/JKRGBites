@@ -86,11 +86,23 @@
                 <ImageView
                     android:id="@+id/toggleFavoriteButton"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/toggleNeverAgainButton"
                     android:layout_width="@dimen/touchtarget_min"
                     android:layout_height="@dimen/touchtarget_min"
                     android:src="@drawable/favorite_border_ic"
                     android:contentDescription="Toggle Favorite"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <ImageView
+                    android:id="@+id/toggleNeverAgainButton"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_width="@dimen/touchtarget_min"
+                    android:layout_height="@dimen/touchtarget_min"
+                    android:src="@drawable/ic_trash"
+                    android:contentDescription="Toggle Never Again"
                     android:scaleType="centerInside"
                     android:padding="8dp"
                     android:background="?attr/selectableItemBackground" />

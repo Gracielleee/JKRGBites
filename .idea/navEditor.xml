@@ -8,7 +8,12 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="">
+                  <entry key="action_loginFragment_to_nav_home">
+                    <value>
+                      <LayoutPositions />
+                    </value>
+                  </entry>
+                  <entry key="forgotPasswordDialog">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -20,12 +25,7 @@
                       </LayoutPositions>
                     </value>
                   </entry>
-                  <entry key="action_loginFragment_to_nav_home">
-                    <value>
-                      <LayoutPositions />
-                    </value>
-                  </entry>
-                  <entry key="forgotPasswordDialog">
+                  <entry key="fragment_add_restaurant">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
@@ -215,6 +215,11 @@
                           </Point>
                         </option>
                       </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="to_addRestaurant">
+                    <value>
+                      <LayoutPositions />
                     </value>
                   </entry>
                   <entry key="to_forgotPasswordDialog">

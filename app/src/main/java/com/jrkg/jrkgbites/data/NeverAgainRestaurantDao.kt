@@ -35,4 +35,9 @@ interface NeverAgainRestaurantDao {
 
     @Query("DELETE FROM never_again_restaurants")
     suspend fun deleteAll()
+
+    suspend fun clearAndInsert(neverAgainRestaurants: List<NeverAgainRestaurantId>) {
+        deleteAll()
+        insertAll(neverAgainRestaurants)
+    }
 }

@@ -44,14 +44,14 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/profile_ic"/>
+                            android:src="@drawable/ic_profile"/>
         
                         <TextView
                             android:id="@+id/user_name_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:text="Grub Explorer"
+                            android:text="Name Here"
                             android:textSize="@dimen/txt_headline"
                             android:textStyle="bold"
                             android:textColor="@color/md_theme_onSurfaceVariant"

@@ -4,6 +4,7 @@ package com.jrkg.jrkgbites.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -12,6 +13,7 @@ import androidx.constraintlayout.widget.Guideline;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.jrkg.jrkgbites.R;
@@ -24,10 +26,22 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
   private final ScrollView rootView;
 
   @NonNull
+  public final MaterialButton btnPickImage;
+
+  @NonNull
   public final MaterialButton btnSave;
 
   @NonNull
+  public final MaterialCardView cvImage;
+
+  @NonNull
   public final TextInputEditText etCategory;
+
+  @NonNull
+  public final TextInputEditText etCuisine;
+
+  @NonNull
+  public final TextInputEditText etLevel;
 
   @NonNull
   public final TextInputEditText etLocation;
@@ -36,13 +50,25 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
   public final TextInputEditText etName;
 
   @NonNull
+  public final TextInputEditText etTags;
+
+  @NonNull
   public final Guideline guideEnd;
 
   @NonNull
   public final Guideline guideStart;
 
   @NonNull
+  public final ImageView ivRestaurantLogo;
+
+  @NonNull
   public final TextInputLayout tilCategory;
+
+  @NonNull
+  public final TextInputLayout tilCuisine;
+
+  @NonNull
+  public final TextInputLayout tilLevel;
 
   @NonNull
   public final TextInputLayout tilLocation;
@@ -51,24 +77,40 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
   public final TextInputLayout tilName;
 
   @NonNull
+  public final TextInputLayout tilTags;
+
+  @NonNull
   public final TextView txtHeader;
 
   private FragmentAddRestaurantBinding(@NonNull ScrollView rootView,
-      @NonNull MaterialButton btnSave, @NonNull TextInputEditText etCategory,
+      @NonNull MaterialButton btnPickImage, @NonNull MaterialButton btnSave,
+      @NonNull MaterialCardView cvImage, @NonNull TextInputEditText etCategory,
+      @NonNull TextInputEditText etCuisine, @NonNull TextInputEditText etLevel,
       @NonNull TextInputEditText etLocation, @NonNull TextInputEditText etName,
-      @NonNull Guideline guideEnd, @NonNull Guideline guideStart,
-      @NonNull TextInputLayout tilCategory, @NonNull TextInputLayout tilLocation,
-      @NonNull TextInputLayout tilName, @NonNull TextView txtHeader) {
+      @NonNull TextInputEditText etTags, @NonNull Guideline guideEnd, @NonNull Guideline guideStart,
+      @NonNull ImageView ivRestaurantLogo, @NonNull TextInputLayout tilCategory,
+      @NonNull TextInputLayout tilCuisine, @NonNull TextInputLayout tilLevel,
+      @NonNull TextInputLayout tilLocation, @NonNull TextInputLayout tilName,
+      @NonNull TextInputLayout tilTags, @NonNull TextView txtHeader) {
     this.rootView = rootView;
+    this.btnPickImage = btnPickImage;
     this.btnSave = btnSave;
+    this.cvImage = cvImage;
     this.etCategory = etCategory;
+    this.etCuisine = etCuisine;
+    this.etLevel = etLevel;
     this.etLocation = etLocation;
     this.etName = etName;
+    this.etTags = etTags;
     this.guideEnd = guideEnd;
     this.guideStart = guideStart;
+    this.ivRestaurantLogo = ivRestaurantLogo;
     this.tilCategory = tilCategory;
+    this.tilCuisine = tilCuisine;
+    this.tilLevel = tilLevel;
     this.tilLocation = tilLocation;
     this.tilName = tilName;
+    this.tilTags = tilTags;
     this.txtHeader = txtHeader;
   }
 
@@ -99,15 +141,39 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btnPickImage;
+      MaterialButton btnPickImage = ViewBindings.findChildViewById(rootView, id);
+      if (btnPickImage == null) {
+        break missingId;
+      }
+
       id = R.id.btnSave;
       MaterialButton btnSave = ViewBindings.findChildViewById(rootView, id);
       if (btnSave == null) {
         break missingId;
       }
 
+      id = R.id.cvImage;
+      MaterialCardView cvImage = ViewBindings.findChildViewById(rootView, id);
+      if (cvImage == null) {
+        break missingId;
+      }
+
       id = R.id.etCategory;
       TextInputEditText etCategory = ViewBindings.findChildViewById(rootView, id);
       if (etCategory == null) {
+        break missingId;
+      }
+
+      id = R.id.etCuisine;
+      TextInputEditText etCuisine = ViewBindings.findChildViewById(rootView, id);
+      if (etCuisine == null) {
+        break missingId;
+      }
+
+      id = R.id.etLevel;
+      TextInputEditText etLevel = ViewBindings.findChildViewById(rootView, id);
+      if (etLevel == null) {
         break missingId;
       }
 
@@ -123,6 +189,12 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.etTags;
+      TextInputEditText etTags = ViewBindings.findChildViewById(rootView, id);
+      if (etTags == null) {
+        break missingId;
+      }
+
       id = R.id.guide_end;
       Guideline guideEnd = ViewBindings.findChildViewById(rootView, id);
       if (guideEnd == null) {
@@ -135,9 +207,27 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.ivRestaurantLogo;
+      ImageView ivRestaurantLogo = ViewBindings.findChildViewById(rootView, id);
+      if (ivRestaurantLogo == null) {
+        break missingId;
+      }
+
       id = R.id.tilCategory;
       TextInputLayout tilCategory = ViewBindings.findChildViewById(rootView, id);
       if (tilCategory == null) {
+        break missingId;
+      }
+
+      id = R.id.tilCuisine;
+      TextInputLayout tilCuisine = ViewBindings.findChildViewById(rootView, id);
+      if (tilCuisine == null) {
+        break missingId;
+      }
+
+      id = R.id.tilLevel;
+      TextInputLayout tilLevel = ViewBindings.findChildViewById(rootView, id);
+      if (tilLevel == null) {
         break missingId;
       }
 
@@ -153,14 +243,22 @@ public final class FragmentAddRestaurantBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tilTags;
+      TextInputLayout tilTags = ViewBindings.findChildViewById(rootView, id);
+      if (tilTags == null) {
+        break missingId;
+      }
+
       id = R.id.txtHeader;
       TextView txtHeader = ViewBindings.findChildViewById(rootView, id);
       if (txtHeader == null) {
         break missingId;
       }
 
-      return new FragmentAddRestaurantBinding((ScrollView) rootView, btnSave, etCategory,
-          etLocation, etName, guideEnd, guideStart, tilCategory, tilLocation, tilName, txtHeader);
+      return new FragmentAddRestaurantBinding((ScrollView) rootView, btnPickImage, btnSave, cvImage,
+          etCategory, etCuisine, etLevel, etLocation, etName, etTags, guideEnd, guideStart,
+          ivRestaurantLogo, tilCategory, tilCuisine, tilLevel, tilLocation, tilName, tilTags,
+          txtHeader);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

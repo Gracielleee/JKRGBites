@@ -1,6 +1,5 @@
 package com.jrkg.jrkgbites.domain
 
-import androidx.room.util.copy
 import com.jrkg.jrkgbites.data.RestaurantRatingRepository
 import com.jrkg.jrkgbites.model.RestaurantRating
 import kotlinx.coroutines.flow.Flow
@@ -48,7 +47,7 @@ class RatingManager(
 
         // If the rating is below the threshold, the restaurant is automatically added to the "Never Again" list.
         if (rating < RATING_THRESHOLD) {
-            restaurantManager.addToNeverAgain(restaurantId)
+            restaurantManager.addToNeverAgainLocal(restaurantId)
         }
     }
 

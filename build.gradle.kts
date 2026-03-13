@@ -4,4 +4,5 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.kapt) apply false // ADDED for Kotlin Kapt
     alias(libs.plugins.androidx.navigation.safeargs.kotlin) apply false // ADDED for Navigation Safe Args
+    id("com.google.gms.google-services") version "4.4.4" apply false // Firebase
 }

@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white">
+    android:background="@color/md_theme_surface">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/spacing_large">
+        android:paddingBottom="32dp">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_start"
@@ -31,11 +31,40 @@
             android:layout_marginTop="40dp"
             android:text="Add New Restaurant"
             android:textAlignment="center"
-            android:textSize="@dimen/txt_display"
+            android:textColor="?android:attr/textColorPrimary"
+            android:textSize="@dimen/txt_headline"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvImage"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="@dimen/spacing_large"
+            app:cardCornerRadius="@dimen/spacing_standard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txtHeader">
+            <ImageView
+                android:id="@+id/ivRestaurantLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@android:drawable/ic_menu_gallery" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPickImage"
+            style="@style/ButtonOutlined"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Image"
+            android:layout_marginTop="@dimen/spacing_medium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvImage" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilName"
@@ -45,14 +74,13 @@
             android:layout_marginTop="@dimen/spacing_large"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toBottomOf="@id/txtHeader">
-
+            app:layout_constraintTop_toBottomOf="@id/btnPickImage">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etName"
+                style="@style/InputRounded"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Restaurant Name"
-                android:textSize="@dimen/txt_subheading" />
+                android:hint="Restaurant Name *" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,17 +88,50 @@
             style="@style/InputRounded"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_standard"
+            android:layout_marginTop="@dimen/spacing_medium"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
             app:layout_constraintTop_toBottomOf="@id/tilName">
-
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etCategory"
+                style="@style/InputRounded"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Category (e.g. Japanese)"
-                android:textSize="@dimen/txt_subheading" />
+                android:hint="Category * (e.g. Casual)" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilCuisine"
+            style="@style/InputRounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/tilCategory">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etCuisine"
+                style="@style/InputRounded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Cuisine * (e.g. Filipino)" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilLevel"
+            style="@style/InputRounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/tilCuisine">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etLevel"
+                style="@style/InputRounded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Level / Floor (e.g. Level 1)" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -78,17 +139,33 @@
             style="@style/InputRounded"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_standard"
+            android:layout_marginTop="@dimen/spacing_medium"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toBottomOf="@id/tilCategory">
-
+            app:layout_constraintTop_toBottomOf="@id/tilLevel">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etLocation"
+                style="@style/InputRounded"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Location"
-                android:textSize="@dimen/txt_subheading" />
+                android:hint="Location (Mall or Street Name)" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTags"
+            style="@style/InputRounded"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_medium"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start"
+            app:layout_constraintTop_toBottomOf="@id/tilLocation">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTags"
+                style="@style/InputRounded"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tag/s separated by comma (e.g. Healthy, Miso)" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
@@ -96,11 +173,13 @@
             style="@style/ButtonPrimary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_huge"
+            android:layout_marginTop="@dimen/spacing_large"
             android:text="Save Restaurant"
+            android:backgroundTint="?attr/colorPrimary"
+            android:textColor="?attr/colorOnPrimary"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toBottomOf="@id/tilLocation" />
+            app:layout_constraintTop_toBottomOf="@id/tilTags" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

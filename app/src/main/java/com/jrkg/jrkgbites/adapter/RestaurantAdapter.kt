@@ -22,7 +22,9 @@ import androidx.core.graphics.ColorUtils
 import androidx.core.os.bundleOf
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.DiffUtil
 import coil.request.CachePolicy
+import com.jrkg.jrkgbites.utils.ImageStorageUtils
 
 class RestaurantAdapter(
     private val context: Context,
@@ -31,8 +33,10 @@ class RestaurantAdapter(
 ) : RecyclerView.Adapter<RestaurantAdapter.RestaurantViewHolder>() {
 
     fun updateList(newList: List<Restaurant>) {
+        val diffResult = DiffUtil.calculateDiff(RestaurantDiffCallback(this.restaurantList, newList))
         this.restaurantList = newList
         notifyDataSetChanged()
+        diffResult.dispatchUpdatesTo(this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
@@ -62,33 +66,36 @@ class RestaurantAdapter(
 //        holder.restaurantDescription.text = restaurant.category ?: "N/A"
 
         // Logo Logic: matches "Ajisen Ramen" to "ajisenramen" (no underscores)
-        val normalizedDisplayName = displayName.lowercase().replace("'", "").replace("’", "")
-
-        // Generate resource name by removing special characters and spaces
-        var resourceName = normalizedDisplayName
-            .replace(" ", "")
-            .replace("-", "")
-            .replace(".", "")
-            .replace("&", "")
-            .replace(",", "")
-            .replace("!", "")
-            .replace("?", "")
-            .replace("/", "")
-        
+//        val normalizedDisplayName = displayName.lowercase().replace("'", "").replace("’", "")
+//
+//        // Generate resource name by removing special characters and spaces
+//        var resourceName = normalizedDisplayName
+//            .replace(" ", "")
+//            .replace("-", "")
+//            .replace(".", "")
+//            .replace("&", "")
+//            .replace(",", "")
+//            .replace("!", "")
+//            .replace("?", "")
+//            .replace("/", "")
+//
 //        val resId = context.resources.getIdentifier(resourceName, "drawable", context.packageName)
 //        if (resId != 0) {
 //            holder.restaurantImage.setImageResource(resId)
 //        } else {
 //            holder.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
 //        }
+//
+//        val resId = context?.resources?.getIdentifier(
+//            restaurant.logoResourceName?.takeIf { it.isNotEmpty() },
+//            "drawable",
+//            context?.packageName
+//        ) ?: 0
 
-        val resId = context?.resources?.getIdentifier(
-            restaurant.logoResourceName?.takeIf { it.isNotEmpty() },
-            "drawable",
-            context?.packageName
-        ) ?: 0
+        // Logo Logic: Check local storage first, then drawable resources
+        val logoData = ImageStorageUtils.getLogo(context, restaurant.id, restaurant.name)
 
-        holder.restaurantImage.load(resId.takeIf { it != 0 } ?: android.R.drawable.ic_menu_gallery) {
+        holder.restaurantImage.load(logoData ?: android.R.drawable.ic_menu_gallery) {
             crossfade(true)
             allowHardware(false)
             memoryCachePolicy(CachePolicy.ENABLED)
@@ -205,6 +212,20 @@ class RestaurantAdapter(
         val backCuisine = binding.backCuisine
         val backLevel = binding.backLevel
         val backTags = binding.backTags
+    }
+
+    class RestaurantDiffCallback(
+        private val oldList: List<Restaurant>,
+        private val newList: List<Restaurant>
+    ) : DiffUtil.Callback() {
+        override fun getOldListSize(): Int = oldList.size
+        override fun getNewListSize(): Int = newList.size
+        override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition].id == newList[newItemPosition].id
+        }
+        override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+            return oldList[oldItemPosition] == newList[newItemPosition]
+        }
     }
 
 }

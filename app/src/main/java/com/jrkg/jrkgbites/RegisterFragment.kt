@@ -11,9 +11,17 @@ import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.google.android.material.textfield.TextInputEditText
+import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.utils.ValidationUtils
+import com.jrkg.jrkgbites.viewmodel.MainViewModel
+import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
@@ -36,6 +44,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
 
     private var isTermsAndConditionsAccepted: Boolean = false
 
+    private lateinit var viewModel: MainViewModel
 
 
 
@@ -50,6 +59,9 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         etConfirmPassword = view.findViewById(R.id.etConfirmPassword)
         backButton = view.findViewById(R.id.btnBack)
         checkBoxTermsAgreement = view.findViewById(R.id.checkboxAgreement)
+
+        val factory = MainViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         setupListeners()
     }
@@ -128,7 +140,30 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
             isValidEmailFormat &&
             isValidPasswordFormat &&
             isTermsAndConditionsAccepted) {
-            Toast.makeText(requireContext(), "Test: Successfully registered", Toast.LENGTH_SHORT)
+
+            viewLifecycleOwner.lifecycleScope.launch {
+                viewModel.signUp(emailInput, passwordInput, usernameInput).collectLatest { authResult ->
+                    when (authResult) {
+                        is AuthResult.Success -> {
+                            var successMessage = "Registration Successful. Please login with your credentials"
+
+                            Toast.makeText(requireContext(), successMessage, Toast.LENGTH_SHORT).show()
+                            val action = R.id.to_loginFragment
+
+                            findNavController().navigate(action, null)
+                        }
+                        is AuthResult.Error -> {
+                            Toast.makeText(requireContext(), "Registration Failed. ${authResult.message}", Toast.LENGTH_SHORT).show()
+                        }
+                        is AuthResult.Loading -> {
+                            // Optionally show a loading indicator
+                            Toast.makeText(requireContext(), "Registering...", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+            }
+
+            Toast.makeText(requireContext(), "Successfully registered", Toast.LENGTH_SHORT)
                 .show()
 
         } //Option 2: Register Failure. Terms and conditions not accepted

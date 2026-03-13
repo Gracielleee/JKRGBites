@@ -35,4 +35,9 @@ interface FavoriteRestaurantDao {
 
     @Query("DELETE FROM favorite_restaurants")
     suspend fun deleteAll()
+
+    suspend fun clearAndInsert(favoriteRestaurants: List<FavoriteRestaurantId>) {
+        deleteAll()
+        insertAll(favoriteRestaurants)
+    }
 }

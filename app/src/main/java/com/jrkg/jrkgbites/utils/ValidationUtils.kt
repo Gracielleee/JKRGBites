@@ -2,6 +2,10 @@ package com.jrkg.jrkgbites.utils
 
 import android.util.Patterns
 import android.widget.EditText
+import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 object ValidationUtils {
 
@@ -9,6 +13,19 @@ object ValidationUtils {
 
     private val usernamePattern = Regex("^[a-zA-Z][a-zA-Z0-9_-]{2,15}\$")
 
+
+    fun highlightErrorFields(scope: CoroutineScope, vararg layouts: TextInputLayout) {
+        layouts.forEach { til ->
+            if (til.editText?.text.isNullOrBlank()) {
+                til.error = " " // Triggers the error stroke color
+            }
+        }
+
+        scope.launch {
+            delay(2000)
+            layouts.forEach { it.error = null } // Clears the error state
+        }
+    }
     fun validateUsernameFormat(editText: EditText): Boolean {
         val username = editText.text.toString().trim()
         if (username.length < 3) {

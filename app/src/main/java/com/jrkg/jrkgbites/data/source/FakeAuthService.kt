@@ -26,10 +26,10 @@ class FakeAuthService : AuthService {
 
         if (email.equals("test@jrkg.com", ignoreCase = true) && password == "password123") {
             val dummyUser = User(
-                userId = "user-123",
+                id = "user-123",
                 email = email,
                 preferredName = "Test User",
-                preferences = UserPreferences(maxDistance = 5000)
+//                preferences = UserPreferences(maxDistance = 5000)
             )
             sessionState.value = dummyUser
             emit(AuthResult.Success(dummyUser))
@@ -44,10 +44,10 @@ class FakeAuthService : AuthService {
 
         // In a real app, you would check if the email is already taken.
         val newUser = User(
-            userId = UUID.randomUUID().toString(),
+            id = UUID.randomUUID().toString(),
             email = email,
             preferredName = preferredName,
-            preferences = UserPreferences(maxDistance = 5000) // Default preferences
+//            preferences = UserPreferences(maxDistance = 5000) // Default preferences
         )
         sessionState.value = newUser
         emit(AuthResult.Success(newUser))

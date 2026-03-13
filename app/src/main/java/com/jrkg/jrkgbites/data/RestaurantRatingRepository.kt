@@ -3,36 +3,18 @@ package com.jrkg.jrkgbites.data
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.jrkg.jrkgbites.data.api.RestaurantRatingDto
 import com.jrkg.jrkgbites.data.api.RetrofitInstance
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.model.RestaurantRating
+import com.jrkg.jrkgbites.model.User
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 class RestaurantRatingRepository(
-    private val restaurantRatingDao: RestaurantRatingDao
+    private val restaurantRatingDao: RestaurantRatingDao,
+//    private val user: User
 ) {
-
-    // REMOTE MANAGEMENT
-    suspend fun getRatingsFromRemote() {
-        try {
-            // Fetch from the API found in RestaurantRatingApiService
-            val remoteRatings = RetrofitInstance.ratingApi.getRestaurantRatings()
-
-            // Mapping DTO to local Model
-            val localRatings = remoteRatings.map { dto ->
-                RestaurantRating(
-                    id = dto.id,
-                    restaurantId = dto.restaurantId,
-                    rating = dto.rating,
-                    comment = dto.comment,
-                    timestamp = dto.timestamp
-                )
-            }
-            restaurantRatingDao.insertAll(localRatings)
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
 
     // LOCAL MANAGEMENT
     fun getRatings(): Flow<List<RestaurantRating>> {

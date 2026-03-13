@@ -11,6 +11,10 @@ import androidx.navigation.NavOptions
 import androidx.navigation.fragment.findNavController // ADD THIS IMPORT
 import com.jrkg.jrkgbites.databinding.FragmentProfileBinding
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.lifecycle.Lifecycle
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
 
@@ -33,13 +37,29 @@ class ProfileFragment : Fragment() {
         // 1. Initialize ViewModel (Sharing data with MainActivity)
         viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
-        // 2. Set the Stats (Favorites Count)
-        // We filter the list from the ViewModel to see how many are favorites
-        val favoriteCount = viewModel.favoritesList.value.count()
-        binding.favCountText.text = favoriteCount.toString()
+        // 2. Observe Session and Stats reactively
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
 
-        val neverAgainCount = viewModel.neverAgainList.value.count()
-        binding.neverAgainCountText.text = neverAgainCount.toString()
+                launch {
+                    viewModel.sessionState.collect { user ->
+                        binding.userNameText.text = user?.preferredName ?: "User"
+                    }
+                }
+
+                launch {
+                    viewModel.favoritesList.collect { list ->
+                        binding.favCountText.text = list.size.toString()
+                    }
+                }
+
+                launch {
+                    viewModel.neverAgainList.collect { list ->
+                        binding.neverAgainCountText.text = list.size.toString()
+                    }
+                }
+            }
+        }
 
         // 3. Setup Location Switch logic
         binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -54,21 +74,24 @@ class ProfileFragment : Fragment() {
 
         // 4. Logout Logic
         binding.logoutButton.setOnClickListener {
-            // Log out the user (e.g., clear session data)
-            viewModel.logout()
+            lifecycleScope.launch {
+                try {
+                    viewModel.logout() // Log out the user
+                    Toast.makeText(context, "Logged out successfully", Toast.LENGTH_SHORT).show()
 
-            // Navigate to the LoginFragment and clear the back stack
-            findNavController().navigate(
-                R.id.loginFragment,
-                null,
-                NavOptions.Builder()
-                    .setPopUpTo(R.id.nav_graph,
-                        true)
-                    .build()
-            )
-            Toast.makeText(requireContext(),
-                "Logging out...",
-                Toast.LENGTH_SHORT).show()
+                    // Navigate to the LoginFragment and clear the back stack
+                    findNavController().navigate(
+                        R.id.loginFragment,
+                        null,
+                        NavOptions.Builder()
+                            .setPopUpTo(R.id.nav_graph, true)
+                            .build()
+                    )
+                    Toast.makeText(requireContext(), "Logging out...", Toast.LENGTH_SHORT).show()
+                } catch (e: Exception) {
+                    Toast.makeText(context, "Error: ${e.localizedMessage}", Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         // 5. Navigate to Restaurant Ratings

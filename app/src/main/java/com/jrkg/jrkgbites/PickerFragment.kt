@@ -15,9 +15,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import coil.load
 import com.jrkg.jrkgbites.databinding.FragmentPickerBinding
 import com.jrkg.jrkgbites.domain.SwipeDirection
 import com.jrkg.jrkgbites.model.Restaurant
+import com.jrkg.jrkgbites.utils.ImageStorageUtils
 import com.jrkg.jrkgbites.utils.ToastUtils
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.filterNotNull
@@ -314,17 +316,11 @@ class PickerFragment : Fragment() {
         binding.pickerCardLocation.text = "Level: " +restaurant.level.orEmpty()
         binding.pickerCardDetails.text = restaurant.tags?.joinToString(", ").orEmpty()
 
-        // Load image using the explicit logoResourceName
-        val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
-            context?.resources?.getIdentifier(restaurant.logoResourceName, "drawable", context?.packageName) ?: 0
-        } else {
-            0
-        }
-
-        if (resId != 0) {
-            binding.pickerCardFront.setImageResource(resId)
-        } else {
-            binding.pickerCardFront.setImageResource(android.R.drawable.ic_menu_gallery)
+        val logoData = ImageStorageUtils.getLogo(requireContext(), restaurant.id, restaurant.name)
+        binding.pickerCardFront.load(logoData ?: android.R.drawable.ic_menu_gallery) {
+            crossfade(true)
+            placeholder(android.R.drawable.ic_menu_gallery)
+            error(android.R.drawable.ic_menu_gallery)
         }
     }
 

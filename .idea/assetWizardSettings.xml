@@ -19,8 +19,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="favorite_ic_filled" />
-                            <entry key="sourceFile" value="C:\Users\Chaz\Downloads\favorite_24dp_1F1F1F.svg" />
+                            <entry key="outputName" value="ic_error2" />
+                            <entry key="sourceFile" value="C:\Users\Chaz\Downloads\warning_24dp_1F1F1F_FILL0_wght400_GRAD0_opsz24.svg" />
                           </map>
                         </option>
                       </PersistentState>

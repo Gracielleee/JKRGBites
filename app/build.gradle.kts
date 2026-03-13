@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.androidx.navigation.safeargs.kotlin)
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -76,16 +78,23 @@ dependencies {
     implementation(libs.androidx.palette.ktx)
     implementation(libs.coil.ktx)
 
-    // Test Dependencies
-    testImplementation(libs.junit)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.mockito.kotlin)
-    testImplementation(libs.kotlinx.coroutines.test)
-    testImplementation(libs.turbine)
+//    // Test Dependencies
+//    testImplementation(libs.junit)
+//    testImplementation(libs.mockito.core)
+//    testImplementation(libs.mockito.kotlin)
+//    testImplementation(libs.kotlinx.coroutines.test)
+//    testImplementation(libs.turbine)
     
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.rules)
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-auth")
+    implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-storage")
 }

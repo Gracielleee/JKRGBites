@@ -1,6 +1,6 @@
 package com.jrkg.jrkgbites.data;
 
-@kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u00008\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010 \n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0005\n\u0002\u0010\b\n\u0002\b\u0002\bg\u0018\u00002\u00020\u0001J\u0016\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u0006J\u001c\u0010\u0007\u001a\u00020\u00032\f\u0010\b\u001a\b\u0012\u0004\u0012\u00020\u00050\tH\u00a7@\u00a2\u0006\u0002\u0010\nJ\u0014\u0010\u000b\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00050\t0\fH\'J\u0018\u0010\r\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\u00050\f2\u0006\u0010\u000e\u001a\u00020\u000fH\'J\u0014\u0010\u0010\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00050\t0\fH\'J\u0014\u0010\u0011\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00050\t0\fH\'J\u0016\u0010\u0012\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u0006J\u0016\u0010\u0013\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u0006J\u000e\u0010\u0014\u001a\u00020\u0015H\u00a7@\u00a2\u0006\u0002\u0010\u0016\u00a8\u0006\u0017\u00c0\u0006\u0003"}, d2 = {"Lcom/jrkg/jrkgbites/data/RestaurantDao;", "", "insert", "", "restaurant", "Lcom/jrkg/jrkgbites/model/Restaurant;", "(Lcom/jrkg/jrkgbites/model/Restaurant;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "insertAll", "restaurants", "", "(Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAllRestaurants", "Lkotlinx/coroutines/flow/Flow;", "getRestaurantById", "id", "", "getFavoriteRestaurantsFlow", "getNeverAgainRestaurantsFlow", "update", "delete", "getRestaurantCount", "", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "app_debug"})
+@kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u00008\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010 \n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000e\n\u0002\b\u0007\n\u0002\u0010\b\n\u0002\b\u0002\bg\u0018\u00002\u00020\u0001J\u0016\u0010\u0002\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u0006J\u001c\u0010\u0007\u001a\u00020\u00032\f\u0010\b\u001a\b\u0012\u0004\u0012\u00020\u00050\tH\u00a7@\u00a2\u0006\u0002\u0010\nJ\u0014\u0010\u000b\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00050\t0\fH\'J\u0018\u0010\r\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\u00050\f2\u0006\u0010\u000e\u001a\u00020\u000fH\'J\u0014\u0010\u0010\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00050\t0\fH\'J\u0014\u0010\u0011\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u00050\t0\fH\'J\u0016\u0010\u0012\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u0006J\u0016\u0010\u0013\u001a\u00020\u00032\u0006\u0010\u0004\u001a\u00020\u0005H\u00a7@\u00a2\u0006\u0002\u0010\u0006J\u000e\u0010\u0014\u001a\u00020\u0003H\u00a7@\u00a2\u0006\u0002\u0010\u0015J\u000e\u0010\u0016\u001a\u00020\u0017H\u00a7@\u00a2\u0006\u0002\u0010\u0015J\u001c\u0010\u0018\u001a\u00020\u00032\f\u0010\b\u001a\b\u0012\u0004\u0012\u00020\u00050\tH\u0097@\u00a2\u0006\u0002\u0010\n\u00a8\u0006\u0019\u00c0\u0006\u0003"}, d2 = {"Lcom/jrkg/jrkgbites/data/RestaurantDao;", "", "insert", "", "restaurant", "Lcom/jrkg/jrkgbites/model/Restaurant;", "(Lcom/jrkg/jrkgbites/model/Restaurant;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "insertAll", "restaurants", "", "(Ljava/util/List;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getAllRestaurants", "Lkotlinx/coroutines/flow/Flow;", "getRestaurantById", "id", "", "getFavoriteRestaurantsFlow", "getNeverAgainRestaurantsFlow", "update", "delete", "deleteAll", "(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getRestaurantCount", "", "clearAndInsert", "app_debug"})
 @androidx.room.Dao()
 public abstract interface RestaurantDao {
     
@@ -45,8 +45,35 @@ public abstract interface RestaurantDao {
     com.jrkg.jrkgbites.model.Restaurant restaurant, @org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
     
+    @androidx.room.Query(value = "DELETE FROM restaurants")
+    @org.jetbrains.annotations.Nullable()
+    public abstract java.lang.Object deleteAll(@org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion);
+    
     @androidx.room.Query(value = "SELECT COUNT(*) FROM restaurants")
     @org.jetbrains.annotations.Nullable()
     public abstract java.lang.Object getRestaurantCount(@org.jetbrains.annotations.NotNull()
     kotlin.coroutines.Continuation<? super java.lang.Integer> $completion);
+    
+    @androidx.room.Transaction()
+    @org.jetbrains.annotations.Nullable()
+    public default java.lang.Object clearAndInsert(@org.jetbrains.annotations.NotNull()
+    java.util.List<com.jrkg.jrkgbites.model.Restaurant> restaurants, @org.jetbrains.annotations.NotNull()
+    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
+        return null;
+    }
+    
+    @kotlin.Metadata(mv = {2, 2, 0}, k = 3, xi = 48)
+    public static final class DefaultImpls {
+        
+        @androidx.room.Transaction()
+        @org.jetbrains.annotations.Nullable()
+        @java.lang.Deprecated()
+        public static java.lang.Object clearAndInsert(@org.jetbrains.annotations.NotNull()
+        com.jrkg.jrkgbites.data.RestaurantDao $this, @org.jetbrains.annotations.NotNull()
+        java.util.List<com.jrkg.jrkgbites.model.Restaurant> restaurants, @org.jetbrains.annotations.NotNull()
+        kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
+            return null;
+        }
+    }
 }

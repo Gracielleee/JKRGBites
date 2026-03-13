@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.jrkg.jrkgbites.AppDatabase
 import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
-import com.jrkg.jrkgbites.data.source.FakeAuthService
 import com.jrkg.jrkgbites.domain.*
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.model.Restaurant
@@ -19,8 +18,11 @@ import kotlinx.coroutines.flow.asStateFlow
 
 import androidx.lifecycle.viewModelScope
 import com.jrkg.jrkgbites.data.RestaurantRatingRepository
+import com.jrkg.jrkgbites.data.source.FirebaseAuthService
 import com.jrkg.jrkgbites.services.BiometricService
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
@@ -37,6 +39,14 @@ class MainViewModel(
     private val restaurantManager: RestaurantManager
 ) : ViewModel() {
 
+    // --- Session Manager State ---
+    val sessionState: StateFlow<User?> = sessionManager.sessionState
+        .stateIn(
+            viewModelScope,
+            SharingStarted.WhileSubscribed(5000),
+            null
+        )
+
     init {
         // Initialize managers that collect from Flows.
         swipeManager.init(viewModelScope)
@@ -45,7 +55,20 @@ class MainViewModel(
 
         // Initial data loading for RoomDB
         viewModelScope.launch {
-            restaurantRepository.refreshRestaurants(application)
+//            restaurantRepository.refreshRestaurants(application)
+            // 1. Observe the sessionState Flow
+            sessionState.collectLatest { user ->
+                when {
+                    user == null -> {
+                    //Fallback
+                        restaurantRepository.pullFreshFromJSON(application)
+                    }
+                    user.id.isNotEmpty() -> {
+                        // User restored from session OR just logged in
+                        restaurantRepository.syncRestaurants(user.id)
+                    }
+                }
+            }
         }
     }
 
@@ -58,14 +81,6 @@ class MainViewModel(
     }
 
 //    -----------------------------------------------------------------------------------------   //
-
-    // --- Session Manager State ---
-    val sessionState: StateFlow<User?> = sessionManager.sessionState
-        .stateIn(
-            viewModelScope,
-            SharingStarted.WhileSubscribed(5000),
-            null
-        )
 
     // --- Auth Manager State ---
     private val _requiredAuthMethod = MutableStateFlow(authManager.getRequiredAuthMethod())
@@ -105,7 +120,11 @@ class MainViewModel(
         return sessionManager.login(email, pass)
     }
 
-    fun logout() {
+    fun signUp(email: String, pass: String, preferredName: String): Flow<AuthResult> {
+        return sessionManager.signUp(email, pass, preferredName)
+    }
+    suspend fun logout() {
+        restaurantRepository.deleteAllLocal()
         sessionManager.logout()
     }
 
@@ -150,7 +169,13 @@ class MainViewModel(
 
     fun toggleFavorite(restaurantId: String) {
         viewModelScope.launch {
-            restaurantManager.toggleFavorite(restaurantId)
+            restaurantManager.toggleFavorite(restaurantId, sessionState.value?.id ?: "")
+        }
+    }
+
+    fun toggleNeverAgain(restaurantId: String) {
+        viewModelScope.launch {
+            restaurantManager.toggleNeverAgain(restaurantId, sessionState.value?.id ?: "")
         }
     }
 
@@ -158,6 +183,12 @@ class MainViewModel(
         viewModelScope.launch {
             ratingManager.submitRating(restaurantId, rating.toInt(), comment)
             _toastMessage.value = "Rating submitted"
+        }
+    }
+
+    fun createRestaurant(restaurant: Restaurant) {
+        viewModelScope.launch {
+            restaurantRepository.createRestaurant(restaurant, sessionState.value?.id ?: "")
         }
     }
 }
@@ -181,11 +212,12 @@ class MainViewModelFactory(
             val restaurantRatingRepository = RestaurantRatingRepository(restaurantRatingDao)
             val restaurantManager = RestaurantManager(restaurantDao, restaurantRepository)
             val prefsManager = UserPreferencesManager(application)
-            val authService = FakeAuthService()
+            val authService = FirebaseAuthService()
             val sessionManager = SessionManager(authService)
+            val userIdFlow = sessionManager.sessionState.map { it?.id ?: "" }
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)
-            val swipeManager = SwipeManager(restaurantRepository, restaurantManager)
+            val swipeManager = SwipeManager(userIdFlow, restaurantRepository, restaurantManager)
             val ratingManager = RatingManager(restaurantRatingRepository, restaurantManager)
             val searchManager = SearchManager(restaurantRepository)
             val restaurantPicker = RestaurantPicker(restaurantRepository)

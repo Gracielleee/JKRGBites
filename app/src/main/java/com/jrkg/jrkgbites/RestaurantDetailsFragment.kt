@@ -11,9 +11,11 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import coil.load
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.databinding.FragmentRestaurantDetailsBinding
 import com.jrkg.jrkgbites.model.Restaurant
+import com.jrkg.jrkgbites.utils.ImageStorageUtils
 import com.jrkg.jrkgbites.utils.ToastUtils
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.first
@@ -70,11 +72,40 @@ class RestaurantDetailsFragment : Fragment() {
             }
         }
 
+        binding.toggleNeverAgainButton.setOnClickListener {
+            currentRestaurantId?.let { id ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val neverAgain = viewModel.neverAgainList.value
+                    val isNeverAgain = neverAgain.any { it.id == id }
+                    viewModel.toggleNeverAgain(id)
+
+                    val message = if (isNeverAgain) "Removed from Never Again. Restaurant Restored." else "Added to Never Again. You can find this restaurant again in the Search page."
+                    val type = if (isNeverAgain) ToastUtils.ToastType.INFO else ToastUtils.ToastType.SUCCESS
+
+                    ToastUtils.showCustomToast(
+                        context = requireContext(),
+                        message = message,
+                        type = type,
+                        durationMs = 1000L,
+                        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                        yOffset = 200
+                    )
+                }
+            }
+        }
+
         // Observe favorites to update the UI
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favoritesList.collect { favorites ->
                 val isFavorited = favorites.any { it.id == currentRestaurantId }
                 updateFavoriteButton(isFavorited)
+            }
+        }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.neverAgainList.collect { neverAgain ->
+                val isNeverAgain = neverAgain.any { it.id == currentRestaurantId }
+                updateNeverAgainButton(isNeverAgain)
             }
         }
 
@@ -108,23 +139,38 @@ class RestaurantDetailsFragment : Fragment() {
         binding.toggleFavoriteButton.setImageResource(icon)
     }
 
+    private fun updateNeverAgainButton(isNeverAgain: Boolean) {
+        val icon = if (isNeverAgain) {
+            R.drawable.ic_trash_restore  // Restore from Trash
+        } else {
+            R.drawable.ic_trash  // Can Trash
+        }
+        binding.toggleNeverAgainButton.setImageResource(icon)
+    }
+
     private fun displayRestaurantDetails(restaurant: Restaurant) {
         binding.restaurantName.text = restaurant.name.orEmpty()
         binding.restaurantCategoryCuisine.text = "${restaurant.cuisine.orEmpty()} • ${restaurant.category.orEmpty()}"
         binding.restaurantLevel.text = "Level: ${restaurant.level.orEmpty()}"
         binding.restaurantTags.text = "Tags: ${restaurant.tags?.joinToString(", ").orEmpty()}"
 
-        // Load image using the explicit logoResourceName
-        val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
-            context?.resources?.getIdentifier(restaurant.logoResourceName, "drawable", context?.packageName) ?: 0
-        } else {
-            0
-        }
-
-        if (resId != 0) {
-            binding.restaurantImage.setImageResource(resId)
-        } else {
-            binding.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
+//        // Load image using the explicit logoResourceName
+//        val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
+//            context?.resources?.getIdentifier(restaurant.logoResourceName, "drawable", context?.packageName) ?: 0
+//        } else {
+//            0
+//        }
+//
+//        if (resId != 0) {
+//            binding.restaurantImage.setImageResource(resId)
+//        } else {
+//            binding.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
+//        }
+        val logoData = ImageStorageUtils.getLogo(requireContext(), restaurant.id, restaurant.name)
+        binding.restaurantImage.load(logoData ?: android.R.drawable.ic_menu_gallery) {
+            crossfade(true)
+            placeholder(android.R.drawable.ic_menu_gallery)
+            error(android.R.drawable.ic_menu_gallery)
         }
     }
 

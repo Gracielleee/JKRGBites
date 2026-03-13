@@ -213,6 +213,12 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
     }, $completion);
   }
 
+  @Override
+  public Object clearAndInsert(final List<FavoriteRestaurantId> favoriteRestaurants,
+      final Continuation<? super Unit> $completion) {
+    return FavoriteRestaurantDao.DefaultImpls.clearAndInsert(FavoriteRestaurantDao_Impl.this, favoriteRestaurants, $completion);
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

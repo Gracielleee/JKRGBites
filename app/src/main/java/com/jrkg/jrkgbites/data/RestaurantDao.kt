@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.flow.Flow
@@ -35,6 +36,15 @@ interface RestaurantDao {
     @Delete
     suspend fun delete(restaurant: Restaurant)
 
+    @Query("DELETE FROM restaurants")
+    suspend fun deleteAll()
+
     @Query("SELECT COUNT(*) FROM restaurants")
     suspend fun getRestaurantCount(): Int
+
+    @Transaction
+    suspend fun clearAndInsert(restaurants: List<Restaurant>) {
+        deleteAll()
+        insertAll(restaurants)
+    }
 }

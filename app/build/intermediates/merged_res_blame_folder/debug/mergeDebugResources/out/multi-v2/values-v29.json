@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-49:/values-v29/values-v29.xml",
+            "outputFile": "com.jrkg.jrkgbites.app-mergeDebugResources-64:/values-v29/values-v29.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\02752d4aa7b1632e6df594003cec6ce2\\workspace\\transformed\\core-splashscreen-1.0.1\\res\\values-v29\\values-v29.xml",
+                    "source": "C:\\Users\\Chaz\\.gradle\\caches\\9.1.0\\transforms\\7716593021af28e38f31d828586edf10\\workspace\\transformed\\core-splashscreen-1.0.1\\res\\values-v29\\values-v29.xml",
                     "from": {
                         "startLines": "2,7",
                         "startColumns": "4,4",

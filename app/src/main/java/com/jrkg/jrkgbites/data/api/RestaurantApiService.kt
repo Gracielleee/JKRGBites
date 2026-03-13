@@ -1,10 +1,14 @@
 package com.jrkg.jrkgbites.data.api
+import com.jrkg.jrkgbites.model.Restaurant
 import retrofit2.http.*
 
 interface RestaurantApiService {
 
     @GET("restaurants")
     suspend fun getRestaurants(): List<RestaurantDto>
+
+    @GET("restaurants/{id}")
+    suspend fun getRestaurant(@Path("id") id: String): Restaurant
 
     @POST("restaurants")
     suspend fun createRestaurant(@Body restaurant: RestaurantDto): RestaurantDto

@@ -12,9 +12,9 @@ data class UserPreferences(
  * Represents a logged-in user in the application.
  */
 data class User(
-    val userId: String,
+    val id: String,
     val email: String,
     val preferredName: String, // As mentioned in the sign-up function description
 //    val favorites: Set<String> = emptySet(), // A Set is used to ensure no duplicate favorite IDs
-    val preferences: UserPreferences
+//    val preferences: UserPreferences
 )

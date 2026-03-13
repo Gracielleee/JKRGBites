@@ -170,6 +170,11 @@
     <string name="etHint_Email">Email</string>
     <string name="etHint_Password">Password</string>
     <string name="etHint_Username">Nickname</string>
+    <string name="gcm_defaultSenderId" translatable="false">367790106810</string>
+    <string name="google_api_key" translatable="false">AIzaSyDAw39ZFKO5zuRzfH8AcYrDCgZIsjOoPuc</string>
+    <string name="google_app_id" translatable="false">1:367790106810:android:c448f61dbfcabad7037a83</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDAw39ZFKO5zuRzfH8AcYrDCgZIsjOoPuc</string>
+    <string name="google_storage_bucket" translatable="false">jrkgbites-119.firebasestorage.app</string>
     <string name="header_ForgotPasswordDialog">No worries, we\'ll help you.</string>
     <string name="header_Login">Please Login to your Account</string>
     <string name="imgDesc_Jrkgbites_logo">JRKGbites logo</string>
@@ -183,6 +188,7 @@
     <string name="lbl_GoToLogin">"  Login Now"</string>
     <string name="linkLabel_ForgotPassword">Forgot Password?</string>
     <string name="linkLabel_GoToRegister">" Register Now"</string>
+    <string name="project_id" translatable="false">jrkgbites-119</string>
     <style name="ButtonOutlined" parent="Widget.Material3.Button.OutlinedButton">
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">12dp</item>

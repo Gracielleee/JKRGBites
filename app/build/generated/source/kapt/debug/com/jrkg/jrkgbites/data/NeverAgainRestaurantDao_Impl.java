@@ -214,6 +214,12 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
     }, $completion);
   }
 
+  @Override
+  public Object clearAndInsert(final List<NeverAgainRestaurantId> neverAgainRestaurants,
+      final Continuation<? super Unit> $completion) {
+    return NeverAgainRestaurantDao.DefaultImpls.clearAndInsert(NeverAgainRestaurantDao_Impl.this, neverAgainRestaurants, $completion);
+  }
+
   @NonNull
   public static List<Class<?>> getRequiredConverters() {
     return Collections.emptyList();

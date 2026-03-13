@@ -4,7 +4,6 @@ import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class RestaurantPicker(
@@ -18,7 +17,7 @@ class RestaurantPicker(
     fun init(scope: CoroutineScope) {
         this.scope = scope
         scope.launch {
-            restaurantRepository.getRestaurants().collect { restaurants ->
+            restaurantRepository.getRestaurantsLocal().collect { restaurants ->
                 _allRestaurants.value = restaurants
             }
         }

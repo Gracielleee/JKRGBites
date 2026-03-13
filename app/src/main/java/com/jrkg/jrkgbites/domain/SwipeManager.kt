@@ -18,10 +18,12 @@ enum class SwipeDirection {
  * Manages the state and logic for the swipeable "Tinder-style" card picker.
  */
 class SwipeManager(
+    private val userIdFlow: Flow<String>,
     private val restaurantRepository: RestaurantRepository,
-
-    private val restaurantManager: RestaurantManager
+    private val restaurantManager: RestaurantManager,
 ) {
+
+    private var currentUserId: String = ""
     private lateinit var scope: CoroutineScope
 
     private val _allRestaurants = MutableStateFlow<List<Restaurant>>(emptyList())
@@ -63,11 +65,34 @@ class SwipeManager(
 
     fun init(scope: CoroutineScope) {
         this.scope = scope
+
+        // Tracks the current user ID
         scope.launch {
-            restaurantRepository.getRestaurants().collect { restaurants ->
+            userIdFlow.collect { id ->
+                currentUserId = id
+            }
+        }
+
+        scope.launch {
+            restaurantRepository.getRestaurantsLocal().collect { restaurants ->
                 _allRestaurants.value = restaurants
-                if (_displayOrder.value.isEmpty()) {
+                val currentOrder = _displayOrder.value
+                if (currentOrder.isEmpty()) {
                     _displayOrder.value = restaurants
+                } else {
+                    // Checks currentOrder for new restaurants
+                    val existingIds = currentOrder.map { it.id }.toSet()
+                    val newItems = restaurants.filter { it.id !in existingIds }
+                    if (newItems.isNotEmpty()) {
+                        Log.d("SwipeManager", "Adding ${newItems.size} new items to session deck")
+                        _displayOrder.value = currentOrder + newItems
+                    }
+
+                    // Also checks currentOrder for items that might have been deleted
+                    val availableIds = restaurants.map { it.id }.toSet()
+                    if (currentOrder.any { it.id !in availableIds }) {
+                        _displayOrder.value = currentOrder.filter { it.id in availableIds }
+                    }
                 }
             }
         }
@@ -106,14 +131,22 @@ class SwipeManager(
     }
 
     fun toggleFavorite(restaurantId: String) {
+        if (currentUserId.isEmpty()) {
+            Log.e("SwipeManager", "Cannot toggle favorite: User ID is empty")
+            return
+        }
         scope.launch {
-            restaurantManager.toggleFavorite(restaurantId)
+            restaurantManager.toggleFavorite(restaurantId, currentUserId)
         }
     }
 
     fun toggleNeverAgain(restaurantId: String) {
+        if (currentUserId.isEmpty()) {
+            Log.e("SwipeManager", "Cannot toggle never again: User ID is empty")
+            return
+        }
         scope.launch {
-            restaurantManager.toggleNeverAgain(restaurantId)
+            restaurantManager.toggleNeverAgain(restaurantId, currentUserId)
         }
     }
 
