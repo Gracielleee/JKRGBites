@@ -157,8 +157,8 @@ class SwipeManager(
     }
 
     fun updateDeck() {
-        // No action because the deck is a combined flow,
-        // Kept for dependency purposes
+        // Reset the display order to align with the latest restaurant list.
+        _displayOrder.value = _allRestaurants.value
     }
 
     fun clearSessionSwipes() {

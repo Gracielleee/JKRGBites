@@ -84,4 +84,14 @@ class FirebaseAuthService(
     }
 
     override fun getSessionState(): Flow<User?> = _sessionState.asStateFlow()
+
+    override fun sendPasswordResetEmail(email: String): Flow<Boolean> = flow {
+        emit(false)
+        try {
+            firebaseAuth.sendPasswordResetEmail(email).await()
+            emit(true)
+        } catch (_: Exception) {
+            emit(false)
+        }
+    }
 }

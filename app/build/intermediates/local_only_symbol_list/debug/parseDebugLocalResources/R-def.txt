@@ -600,6 +600,10 @@ string btnLabel_Register
 string btnLabel_Submit
 string checkboxLabel_AutoLogin
 string checkboxLabel_TermsAgreement
+string dialog_never_again_message
+string dialog_never_again_negative
+string dialog_never_again_positive
+string dialog_never_again_title
 string display_ForgotPasswordDialog
 string display_Login
 string display_Register
@@ -626,6 +630,9 @@ string lbl_GoToLogin
 string linkLabel_ForgotPassword
 string linkLabel_GoToRegister
 string project_id
+string toast_rating_submitted
+string toast_rating_submitted_for
+string toast_select_star_rating
 style ButtonOutlined
 style ButtonPrimary
 style CustomChipStyle

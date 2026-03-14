@@ -35,5 +35,14 @@
     <string name="btnLabel_Submit">Submit</string>
     <string name="lbl_BackToLogin">Back to Login</string>
 
+    <!--    Ratings / Restaurant Details-->
+    <string name="toast_select_star_rating">Please select a star rating.</string>
+    <string name="toast_rating_submitted">Rating submitted.</string>
+    <string name="toast_rating_submitted_for">Rating submitted for %1$s!</string>
+    <string name="dialog_never_again_title">Never Again?</string>
+    <string name="dialog_never_again_message">This is a low rating. Would you like to add this restaurant to your &quot;Never Again&quot; list?</string>
+    <string name="dialog_never_again_positive">Yes, add to Never Again</string>
+    <string name="dialog_never_again_negative">No, keep it</string>
+
 
 </resources>

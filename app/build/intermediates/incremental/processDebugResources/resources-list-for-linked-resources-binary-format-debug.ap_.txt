@@ -1,1 +1,1 @@
-C:\Users\Chaz\Documents\GitHub\JKRGBites\app\build\intermediates\compiled_navigation_res\debug\compileDebugNavigationResources\navigation_nav_graph.xml.flat 
+C:\Users\gabri\AndroidStudioProjects\JKRGBites-2\app\build\intermediates\compiled_navigation_res\debug\compileDebugNavigationResources\navigation_nav_graph.xml.flat 

@@ -19,22 +19,27 @@ class RatingManager(
 
     companion object {
         /**
-         * The star rating below which a restaurant is automatically disliked.
+         * The star rating below which a restaurant is considered a poor experience.
          */
-        const val RATING_THRESHOLD = 3
+        const val RATING_THRESHOLD = 2
     }
 
     // This Flow comes directly from the database
     val allRatings: Flow<List<RestaurantRating>> = restaurantRatingRepository.getRatings()
 
     /**
-     * Submits a rating for a given restaurant and applies rules based on the rating.
+     * Submits a rating for a given restaurant and returns whether it is considered "low".
+     *
+     * Domain layer no longer decides on "Never Again" side effects. Instead, callers can
+     * use the returned flag to drive UI (e.g., showing a confirmation dialog) and call
+     * the appropriate RestaurantManager method explicitly.
      *
      * @param restaurantId The ID of the restaurant being rated.
      * @param rating The star rating given by the user (e.g., 1, 2, 3, 4, 5).
      * @param comment The user's comment for the rating.
+     * @return true if the rating is below [RATING_THRESHOLD], false otherwise.
      */
-    suspend fun submitRating(restaurantId: String, rating: Int, comment: String) { // Made suspend
+    suspend fun submitRating(restaurantId: String, rating: Int, comment: String): Boolean {
         val existingRating = restaurantRatingRepository.getRatingForRestaurant(restaurantId).first()
 
         val newRating = if (existingRating != null) {
@@ -45,10 +50,8 @@ class RatingManager(
 
         restaurantRatingRepository.insertRating(newRating) // Insert (or update due to REPLACE strategy)
 
-        // If the rating is below the threshold, the restaurant is automatically added to the "Never Again" list.
-        if (rating < RATING_THRESHOLD) {
-            restaurantManager.addToNeverAgainLocal(restaurantId)
-        }
+        // The caller decides what to do with low ratings (e.g., prompt for "Never Again").
+        return rating < RATING_THRESHOLD
     }
 
     /**

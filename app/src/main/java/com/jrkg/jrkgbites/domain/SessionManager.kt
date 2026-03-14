@@ -38,4 +38,11 @@ class SessionManager(private val authService: AuthService) {
     fun logout() {
         authService.logout()
     }
+
+    /**
+     * Delegates sending a password reset email to the underlying auth service.
+     */
+    fun sendPasswordResetEmail(email: String): Flow<Boolean> {
+        return authService.sendPasswordResetEmail(email)
+    }
 }

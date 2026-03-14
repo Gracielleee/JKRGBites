@@ -4584,6 +4584,10 @@ string confirm_device_credential_password
 string copy_toast_msg
 string default_error_msg
 string dest_title
+string dialog_never_again_message
+string dialog_never_again_negative
+string dialog_never_again_positive
+string dialog_never_again_title
 string display_ForgotPasswordDialog
 string display_Login
 string display_Register
@@ -4745,6 +4749,9 @@ string searchview_navigation_content_description
 string side_sheet_accessibility_pane_title
 string side_sheet_behavior
 string status_bar_notification_info_overflow
+string toast_rating_submitted
+string toast_rating_submitted_for
+string toast_select_star_rating
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog

@@ -60,4 +60,15 @@ class FakeAuthService : AuthService {
     override fun getSessionState(): Flow<User?> {
         return sessionState.asStateFlow()
     }
+    override fun sendPasswordResetEmail(email: String): Flow<Boolean> = flow {
+        // Simulate a short network delay
+        delay(500)
+
+        // Logic: succeed if the email looks valid, otherwise fail
+        if (email.contains("@")) {
+            emit(true)
+        } else {
+            emit(false)
+        }
+    }
 }

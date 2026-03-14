@@ -8,12 +8,16 @@ import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.domain.*
 import com.jrkg.jrkgbites.domain.service.AuthResult
+import com.jrkg.jrkgbites.domain.service.AuthService
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.model.RestaurantRating
 import com.jrkg.jrkgbites.model.User
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 import androidx.lifecycle.viewModelScope
@@ -25,6 +29,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
+import com.jrkg.jrkgbites.R
 
 class MainViewModel(
     private val application: Application,
@@ -76,6 +81,10 @@ class MainViewModel(
     private val _toastMessage = MutableStateFlow<String?>(null)
     val toastMessage: StateFlow<String?> = _toastMessage.asStateFlow()
 
+    // --- One-off Events ---
+    private val _lowRatingEvent = MutableSharedFlow<String>(extraBufferCapacity = 1)
+    val lowRatingEvent: SharedFlow<String> = _lowRatingEvent.asSharedFlow()
+
     fun clearToastMessage() {
         _toastMessage.value = null
     }
@@ -90,6 +99,11 @@ class MainViewModel(
         MutableStateFlow(prefsManager.isBiometricAuthEnabled())
     val isBiometricPreferenceEnabled: StateFlow<Boolean> =
         _isBiometricPreferenceEnabled.asStateFlow()
+
+    private val _isKeepLoggedInEnabled =
+        MutableStateFlow(prefsManager.isKeepLoggedIn())
+    val isKeepLoggedInEnabled: StateFlow<Boolean> =
+        _isKeepLoggedInEnabled.asStateFlow()
 
     // --- Shake Picker State ---
     private val _pickedResult = MutableStateFlow<String?>(null)
@@ -179,10 +193,32 @@ class MainViewModel(
         }
     }
 
+    fun setKeepLoggedIn(enabled: Boolean) {
+        prefsManager.setKeepLoggedIn(enabled)
+        _isKeepLoggedInEnabled.value = enabled
+    }
+
     fun submitRating(restaurantId: String, rating: Int, comment: String) {
         viewModelScope.launch {
-            ratingManager.submitRating(restaurantId, rating.toInt(), comment)
-            _toastMessage.value = "Rating submitted"
+            val isLowRating = ratingManager.submitRating(restaurantId, rating.toInt(), comment)
+
+            _toastMessage.value = application.getString(R.string.toast_rating_submitted)
+
+            if (isLowRating) {
+                // Emit an event so the UI can decide whether to add to "Never Again".
+                _lowRatingEvent.emit(restaurantId)
+            }
+        }
+    }
+
+    fun addToNeverAgainFromRating(restaurantId: String) {
+        viewModelScope.launch {
+            val userId = sessionState.value?.id.orEmpty()
+            if (userId.isNotEmpty()) {
+                restaurantManager.addToNeverAgain(restaurantId, userId)
+            } else {
+                restaurantManager.addToNeverAgainLocal(restaurantId)
+            }
         }
     }
 
@@ -190,6 +226,10 @@ class MainViewModel(
         viewModelScope.launch {
             restaurantRepository.createRestaurant(restaurant, sessionState.value?.id ?: "")
         }
+    }
+
+    fun sendPasswordResetEmail(email: String): Flow<Boolean> {
+        return sessionManager.sendPasswordResetEmail(email)
     }
 }
 

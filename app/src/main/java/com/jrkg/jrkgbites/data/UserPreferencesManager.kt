@@ -11,6 +11,7 @@ class UserPreferencesManager(context: Context) {
     companion object {
         private const val PREFERENCES_FILE_NAME = "JRKGBitesUserPrefs"
         private const val KEY_BIOMETRIC_AUTH_ENABLED = "biometricAuthEnabled"
+        private const val KEY_KEEP_LOGGED_IN = "keepLoggedIn"
     }
 
     private val sharedPreferences: SharedPreferences =
@@ -35,5 +36,22 @@ class UserPreferencesManager(context: Context) {
      */
     fun isBiometricAuthEnabled(): Boolean {
         return sharedPreferences.getBoolean(KEY_BIOMETRIC_AUTH_ENABLED, false)
+    }
+
+    /**
+     * Stores the user's preference for keeping the session active across app launches.
+     */
+    fun setKeepLoggedIn(isEnabled: Boolean) {
+        with(sharedPreferences.edit()) {
+            putBoolean(KEY_KEEP_LOGGED_IN, isEnabled)
+            apply()
+        }
+    }
+
+    /**
+     * Returns whether the user has requested to stay logged in.
+     */
+    fun isKeepLoggedIn(): Boolean {
+        return sharedPreferences.getBoolean(KEY_KEEP_LOGGED_IN, false)
     }
 }

@@ -7,9 +7,15 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.utils.ValidationUtils
+import com.jrkg.jrkgbites.viewmodel.MainViewModel
+import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class ForgotPasswordDialog : DialogFragment(R.layout.dialog_forgot_password) {
 
@@ -18,6 +24,7 @@ class ForgotPasswordDialog : DialogFragment(R.layout.dialog_forgot_password) {
     private lateinit var etEmail: TextInputEditText
 
     private var isEmailFormatValid: Boolean = false
+    private lateinit var viewModel: MainViewModel
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,6 +33,9 @@ class ForgotPasswordDialog : DialogFragment(R.layout.dialog_forgot_password) {
         submitButton = view.findViewById(R.id.btnSubmit)
         backtoLogin = view.findViewById(R.id.touchBackToLogin)
         etEmail = view.findViewById(R.id.etEmail)
+
+        val factory = MainViewModelFactory(requireActivity().application)
+        viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
         setupListeners()
     }
@@ -54,21 +64,31 @@ class ForgotPasswordDialog : DialogFragment(R.layout.dialog_forgot_password) {
     private fun onSubmitButtonPressed() {
         val emailInput = etEmail.text.toString().trim()
 
-        //Option 1: Reset Success. Email format is valid and Email is found in database
-        if (isEmailFormatValid) {
+        if (!isEmailFormatValid) {
             Toast.makeText(
                 requireContext(),
-                "Test: We sent you a link to reset your password",
+                getString(R.string.instructions_ForgotPasswordDialog),
                 Toast.LENGTH_SHORT
             ).show()
+            return
+        }
 
-        //Option 2: Reset Failure. Email format is valid but Email is NOT found in database
-//        }else if (isEmailFormatValid) {
-//            Toast.makeText(requireContext(), "Test: Email does not match a user in our system.", Toast.LENGTH_SHORT).show()
-//
-        //Option 2: Reset Failure. Email format is invalid.
-        } else {
-            Toast.makeText(requireContext(), "Test: Invalid email format. Please try again.", Toast.LENGTH_SHORT).show()
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.sendPasswordResetEmail(emailInput).collectLatest { success ->
+                if (success) {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.display_ForgotPasswordDialog),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    Toast.makeText(
+                        requireContext(),
+                        getString(R.string.header_ForgotPasswordDialog),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
         }
     }
 

@@ -8,6 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.utils.ValidationUtils
@@ -18,6 +19,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.navOptions
 import com.jrkg.jrkgbites.domain.service.AuthResult
+import com.jrkg.jrkgbites.services.BiometricService
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
@@ -37,6 +39,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private var isAutoLoginEnabled: Boolean = false
 
     private lateinit var viewModel: MainViewModel
+    private lateinit var biometricService: BiometricService
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -53,7 +56,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val factory = MainViewModelFactory(requireActivity().application)
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
+        biometricService = BiometricService(requireContext())
+
         setupListeners()
+        observeSessionForAutoLogin()
     }
 
     private fun setupListeners() {
@@ -136,11 +142,24 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun onBioAuthButtonPressed(){
-        Toast.makeText(requireContext(), "Test: Biometric Authentication not yet implemented.", Toast.LENGTH_SHORT).show()
+        val activity = requireActivity() as FragmentActivity
+        biometricService.authenticate(
+            activity = activity,
+            onSuccess = {
+                navigateToHomeIfSessionActive()
+            },
+            onError = { _, errString ->
+                Toast.makeText(requireContext(), errString, Toast.LENGTH_SHORT).show()
+            },
+            onFailed = {
+                Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
+            }
+        )
     }
 
     private fun updateAutoLoginStatus(isChecked: Boolean) {
         isAutoLoginEnabled = isChecked
+        viewModel.setKeepLoggedIn(isChecked)
     }
 
     private fun onGoToRegisterPressed() {
@@ -149,6 +168,31 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun onGoToForgotPasswordPressed() {
         findNavController().navigate(R.id.to_forgotPasswordDialog)
+    }
+
+    private fun observeSessionForAutoLogin() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.sessionState.collectLatest { user ->
+                        if (user != null && viewModel.isKeepLoggedInEnabled.value) {
+                            navigateToHomeIfSessionActive()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    private fun navigateToHomeIfSessionActive() {
+        val user = viewModel.sessionState.value
+        if (user != null) {
+            val action = R.id.action_loginFragment_to_nav_home
+            val navOptions = navOptions {
+                popUpTo(R.id.loginFragment) { inclusive = true }
+            }
+            findNavController().navigate(action, null, navOptions)
+        }
     }
 
 }

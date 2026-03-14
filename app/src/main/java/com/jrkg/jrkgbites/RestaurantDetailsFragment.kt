@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.databinding.FragmentRestaurantDetailsBinding
 import com.jrkg.jrkgbites.model.Restaurant
@@ -187,7 +188,7 @@ class RestaurantDetailsFragment : Fragment() {
             if (rating == 0f) {
                 ToastUtils.showCustomToast(
                     context = requireContext(),
-                    message = "Please select a star rating.",
+                    message = getString(R.string.toast_select_star_rating),
                     type = ToastUtils.ToastType.WARNING,
                     durationMs = 1500L,
                     gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
@@ -196,16 +197,21 @@ class RestaurantDetailsFragment : Fragment() {
                 return@setOnClickListener
             }
 
-            viewModel.submitRating(restaurant.id, rating.toInt(), comment)
-            
+            val ratingValue = rating.toInt()
+            viewModel.submitRating(restaurant.id, ratingValue, comment)
+
             ToastUtils.showCustomToast(
                 context = requireContext(),
-                message = "Rating submitted for ${restaurant.name}!",
+                message = getString(R.string.toast_rating_submitted_for, restaurant.name.orEmpty()),
                 type = ToastUtils.ToastType.SUCCESS,
                 durationMs = 1500L,
                 gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
                 yOffset = 200
             )
+
+            if (ratingValue < com.jrkg.jrkgbites.domain.RatingManager.RATING_THRESHOLD) {
+                showNeverAgainDialog(restaurant.id)
+            }
             commentInput.setText("")
         }
 
@@ -229,6 +235,17 @@ class RestaurantDetailsFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun showNeverAgainDialog(restaurantId: String) {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle(getString(R.string.dialog_never_again_title))
+            .setMessage(getString(R.string.dialog_never_again_message))
+            .setPositiveButton(getString(R.string.dialog_never_again_positive)) { _, _ ->
+                viewModel.addToNeverAgainFromRating(restaurantId)
+            }
+            .setNegativeButton(getString(R.string.dialog_never_again_negative), null)
+            .show()
     }
 
     override fun onDestroyView() {

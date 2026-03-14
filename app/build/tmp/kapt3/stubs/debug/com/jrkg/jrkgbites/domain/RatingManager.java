@@ -7,7 +7,7 @@ package com.jrkg.jrkgbites.domain;
  * add restaurants to the "Never Again" list based on rating.
  * @param restaurantRatingDao The DAO for accessing restaurant rating data in the database.
  */
-@kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u0000<\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u0002\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\b\n\u0002\b\u0005\u0018\u0000 \u00172\u00020\u0001:\u0001\u0017B\u0017\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0004\b\u0006\u0010\u0007J&\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u00112\u0006\u0010\u0012\u001a\u00020\u00132\u0006\u0010\u0014\u001a\u00020\u0011H\u0086@\u00a2\u0006\u0002\u0010\u0015J\u0016\u0010\u0016\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\u000b0\t2\u0006\u0010\u0010\u001a\u00020\u0011R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001d\u0010\b\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u000b0\n0\t\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\r\u00a8\u0006\u0018"}, d2 = {"Lcom/jrkg/jrkgbites/domain/RatingManager;", "", "restaurantRatingRepository", "Lcom/jrkg/jrkgbites/data/RestaurantRatingRepository;", "restaurantManager", "Lcom/jrkg/jrkgbites/domain/RestaurantManager;", "<init>", "(Lcom/jrkg/jrkgbites/data/RestaurantRatingRepository;Lcom/jrkg/jrkgbites/domain/RestaurantManager;)V", "allRatings", "Lkotlinx/coroutines/flow/Flow;", "", "Lcom/jrkg/jrkgbites/model/RestaurantRating;", "getAllRatings", "()Lkotlinx/coroutines/flow/Flow;", "submitRating", "", "restaurantId", "", "rating", "", "comment", "(Ljava/lang/String;ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getRatingForRestaurant", "Companion", "app_debug"})
+@kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u0000<\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0010\u000b\n\u0000\n\u0002\u0010\u000e\n\u0000\n\u0002\u0010\b\n\u0002\b\u0005\u0018\u0000 \u00172\u00020\u0001:\u0001\u0017B\u0017\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u00a2\u0006\u0004\b\u0006\u0010\u0007J&\u0010\u000e\u001a\u00020\u000f2\u0006\u0010\u0010\u001a\u00020\u00112\u0006\u0010\u0012\u001a\u00020\u00132\u0006\u0010\u0014\u001a\u00020\u0011H\u0086@\u00a2\u0006\u0002\u0010\u0015J\u0016\u0010\u0016\u001a\n\u0012\u0006\u0012\u0004\u0018\u00010\u000b0\t2\u0006\u0010\u0010\u001a\u00020\u0011R\u000e\u0010\u0002\u001a\u00020\u0003X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u001d\u0010\b\u001a\u000e\u0012\n\u0012\b\u0012\u0004\u0012\u00020\u000b0\n0\t\u00a2\u0006\b\n\u0000\u001a\u0004\b\f\u0010\r\u00a8\u0006\u0018"}, d2 = {"Lcom/jrkg/jrkgbites/domain/RatingManager;", "", "restaurantRatingRepository", "Lcom/jrkg/jrkgbites/data/RestaurantRatingRepository;", "restaurantManager", "Lcom/jrkg/jrkgbites/domain/RestaurantManager;", "<init>", "(Lcom/jrkg/jrkgbites/data/RestaurantRatingRepository;Lcom/jrkg/jrkgbites/domain/RestaurantManager;)V", "allRatings", "Lkotlinx/coroutines/flow/Flow;", "", "Lcom/jrkg/jrkgbites/model/RestaurantRating;", "getAllRatings", "()Lkotlinx/coroutines/flow/Flow;", "submitRating", "", "restaurantId", "", "rating", "", "comment", "(Ljava/lang/String;ILjava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "getRatingForRestaurant", "Companion", "app_debug"})
 public final class RatingManager {
     @org.jetbrains.annotations.NotNull()
     private final com.jrkg.jrkgbites.data.RestaurantRatingRepository restaurantRatingRepository = null;
@@ -15,9 +15,9 @@ public final class RatingManager {
     private final com.jrkg.jrkgbites.domain.RestaurantManager restaurantManager = null;
     
     /**
-     * The star rating below which a restaurant is automatically disliked.
+     * The star rating below which a restaurant is considered a poor experience.
      */
-    public static final int RATING_THRESHOLD = 3;
+    public static final int RATING_THRESHOLD = 2;
     @org.jetbrains.annotations.NotNull()
     private final kotlinx.coroutines.flow.Flow<java.util.List<com.jrkg.jrkgbites.model.RestaurantRating>> allRatings = null;
     @org.jetbrains.annotations.NotNull()
@@ -35,17 +35,22 @@ public final class RatingManager {
     }
     
     /**
-     * Submits a rating for a given restaurant and applies rules based on the rating.
+     * Submits a rating for a given restaurant and returns whether it is considered "low".
+     *
+     * Domain layer no longer decides on "Never Again" side effects. Instead, callers can
+     * use the returned flag to drive UI (e.g., showing a confirmation dialog) and call
+     * the appropriate RestaurantManager method explicitly.
      *
      * @param restaurantId The ID of the restaurant being rated.
      * @param rating The star rating given by the user (e.g., 1, 2, 3, 4, 5).
      * @param comment The user's comment for the rating.
+     * @return true if the rating is below [RATING_THRESHOLD], false otherwise.
      */
     @org.jetbrains.annotations.Nullable()
     public final java.lang.Object submitRating(@org.jetbrains.annotations.NotNull()
     java.lang.String restaurantId, int rating, @org.jetbrains.annotations.NotNull()
     java.lang.String comment, @org.jetbrains.annotations.NotNull()
-    kotlin.coroutines.Continuation<? super kotlin.Unit> $completion) {
+    kotlin.coroutines.Continuation<? super java.lang.Boolean> $completion) {
         return null;
     }
     

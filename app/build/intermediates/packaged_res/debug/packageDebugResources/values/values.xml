@@ -163,6 +163,10 @@
     <string name="btnLabel_Submit">Submit</string>
     <string name="checkboxLabel_AutoLogin">Keep me logged in</string>
     <string name="checkboxLabel_TermsAgreement">I agree to the Terms and Conditions and Privacy Policy</string>
+    <string name="dialog_never_again_message">This is a low rating. Would you like to add this restaurant to your "Never Again" list?</string>
+    <string name="dialog_never_again_negative">No, keep it</string>
+    <string name="dialog_never_again_positive">Yes, add to Never Again</string>
+    <string name="dialog_never_again_title">Never Again?</string>
     <string name="display_ForgotPasswordDialog">Forgot Your Password?</string>
     <string name="display_Login">Welcome back!</string>
     <string name="display_Register">Hello! Register to get started</string>
@@ -189,6 +193,9 @@
     <string name="linkLabel_ForgotPassword">Forgot Password?</string>
     <string name="linkLabel_GoToRegister">" Register Now"</string>
     <string name="project_id" translatable="false">jrkgbites-119</string>
+    <string name="toast_rating_submitted">Rating submitted.</string>
+    <string name="toast_rating_submitted_for">Rating submitted for %1$s!</string>
+    <string name="toast_select_star_rating">Please select a star rating.</string>
     <style name="ButtonOutlined" parent="Widget.Material3.Button.OutlinedButton">
         <item name="strokeWidth">2dp</item>
         <item name="cornerRadius">12dp</item>

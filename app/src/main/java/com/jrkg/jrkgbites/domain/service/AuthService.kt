@@ -40,4 +40,10 @@ interface AuthService {
      * Emits the User object if logged in, or null if logged out.
      */
     fun getSessionState(): Flow<User?>
+
+    /**
+     * Sends a password reset email to the given address.
+     * @return A Flow emitting true on success, false on failure.
+     */
+    fun sendPasswordResetEmail(email: String): Flow<Boolean>
 }
