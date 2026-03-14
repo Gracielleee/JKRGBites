@@ -28,8 +28,18 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.jrkg.jrkgbites.R
+
+/**
+ * Resolved start destination for the navigation graph.
+ * Used by the Activity to set the graph programmatically and avoid login flash.
+ */
+enum class StartDestination {
+    LOGIN,
+    MAIN
+}
 
 class MainViewModel(
     private val application: Application,
@@ -52,28 +62,46 @@ class MainViewModel(
             null
         )
 
+    /** Resolved once auth state has settled; used by Activity to set nav graph start destination. */
+    private val _startDestination = MutableStateFlow<StartDestination?>(null)
+    val startDestination: StateFlow<StartDestination?> = _startDestination.asStateFlow()
+
+    /** One-off event: request navigation to main after biometric (or other auth) success. */
+    private val _navigateToMainEvent = MutableSharedFlow<Unit>(extraBufferCapacity = 1)
+    val navigateToMainEvent: SharedFlow<Unit> = _navigateToMainEvent.asSharedFlow()
+
     init {
         // Initialize managers that collect from Flows.
         swipeManager.init(viewModelScope)
         restaurantPicker.init(viewModelScope)
         searchManager.init(viewModelScope)
 
-        // Initial data loading for RoomDB
+        // Resolve start destination after auth state has settled (avoids login flash).
         viewModelScope.launch {
-//            restaurantRepository.refreshRestaurants(application)
-            // 1. Observe the sessionState Flow
+            delay(150)
+            _startDestination.value = if (sessionState.value != null) StartDestination.MAIN else StartDestination.LOGIN
+        }
+
+        // Initial data loading for RoomDB; full dataset from JSON when needed, then sync.
+        viewModelScope.launch {
             sessionState.collectLatest { user ->
                 when {
                     user == null -> {
-                    //Fallback
                         restaurantRepository.pullFreshFromJSON(application)
                     }
                     user.id.isNotEmpty() -> {
-                        // User restored from session OR just logged in
+                        restaurantRepository.ensureLocalDataFromJsonIfEmpty(application)
                         restaurantRepository.syncRestaurants(user.id)
                     }
                 }
             }
+        }
+    }
+
+    /** Call after biometric (or other) auth success to trigger navigation to main. */
+    fun requestNavigateToMainAfterAuth() {
+        viewModelScope.launch {
+            _navigateToMainEvent.emit(Unit)
         }
     }
 

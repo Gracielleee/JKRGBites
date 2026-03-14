@@ -44,5 +44,17 @@
     <string name="dialog_never_again_positive">Yes, add to Never Again</string>
     <string name="dialog_never_again_negative">No, keep it</string>
 
+    <!-- Auth / Login -->
+    <string name="toast_please_fill_fields">Please fill in all fields.</string>
+    <string name="toast_invalid_email_format">Invalid email format.</string>
+    <string name="toast_login_success_auto">Login successful. Auto login enabled.</string>
+    <string name="toast_login_success_no_auto">Login successful.</string>
+    <string name="toast_login_failed">Login failed. %1$s</string>
+    <string name="toast_logging_in">Logging in…</string>
+    <string name="toast_biometric_not_available">Biometric not available. Log in with password first and enable \"Keep me logged in\".</string>
+    <string name="toast_biometric_auth_failed">Authentication failed.</string>
 
+    <!-- Picker empty state -->
+    <string name="picker_no_restaurants">No restaurants in the deck.</string>
+    <string name="no_restaurants_found">No restaurants found.</string>
 </resources>

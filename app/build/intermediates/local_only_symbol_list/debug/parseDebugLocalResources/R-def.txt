@@ -629,7 +629,17 @@ string lbl_BeforeGoToRegister
 string lbl_GoToLogin
 string linkLabel_ForgotPassword
 string linkLabel_GoToRegister
+string no_restaurants_found
+string picker_no_restaurants
 string project_id
+string toast_biometric_auth_failed
+string toast_biometric_not_available
+string toast_invalid_email_format
+string toast_logging_in
+string toast_login_failed
+string toast_login_success_auto
+string toast_login_success_no_auto
+string toast_please_fill_fields
 string toast_rating_submitted
 string toast_rating_submitted_for
 string toast_select_star_rating

@@ -67,8 +67,8 @@ class RestaurantRepository(
                 }
             }
 
-            restaurantDao.clearAndInsert(firebaseData)
-            Log.d(TAG, "Successfully synced ${firebaseData.size} restaurants")
+            restaurantDao.insertAll(firebaseData)
+            Log.d(TAG, "Successfully synced ${firebaseData.size} restaurants (merged)")
             Log.d(TAG, "Syncing complete for user: $userId")
         } catch (e: Exception) {
             Log.e(TAG, "Error syncing restaurants", e)
@@ -328,6 +328,18 @@ class RestaurantRepository(
         if (!hasData()) {
             val restaurants = loadRestaurantsFromAsset(context)
             restaurantDao.insertAll(restaurants)
+        }
+    }
+
+    /**
+     * Ensures the local database has the full JSON dataset when empty.
+     * Call before syncing from Firestore so logged-in users still have the full collection.
+     */
+    suspend fun ensureLocalDataFromJsonIfEmpty(context: Context) {
+        if (!hasData()) {
+            val restaurants = loadRestaurantsFromAsset(context)
+            restaurantDao.insertAll(restaurants)
+            Log.d(TAG, "Loaded ${restaurants.size} restaurants from JSON (local was empty)")
         }
     }
 

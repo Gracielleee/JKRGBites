@@ -60,6 +60,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         setupListeners()
         observeSessionForAutoLogin()
+        observeNavigateToMainAfterAuth()
     }
 
     private fun setupListeners() {
@@ -103,12 +104,12 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         val passwordInput = etPassword.text.toString().trim()
 
         if (emailInput.isEmpty() || passwordInput.isEmpty()) {
-            Toast.makeText(requireContext(), "Test: Please fill in all fields", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_please_fill_fields), Toast.LENGTH_SHORT).show()
             return
         }
 
         if (!isValidEmailFormat) {
-            Toast.makeText(requireContext(), "Test: Invalid email format", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), getString(R.string.toast_invalid_email_format), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -117,42 +118,44 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 when (authResult) {
                     is AuthResult.Success -> {
                         val message = if (isAutoLoginEnabled) {
-                            "Test: Login Successful. Auto Login Enabled."
+                            getString(R.string.toast_login_success_auto)
                         } else {
-                            "Test: Login Successful. Auto Login Disabled."
+                            getString(R.string.toast_login_success_no_auto)
                         }
                         Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
-//                        findNavController().navigate(R.id.action_loginFragment_to_nav_home)
-                        val action = R.id.action_loginFragment_to_nav_home
-                        val navOptions = navOptions {
-                            popUpTo(R.id.loginFragment) { inclusive = true } // Remove from backstack
-                        }
-                        findNavController().navigate(action, null, navOptions)
+                        navigateToMain()
                     }
                     is AuthResult.Error -> {
-                        Toast.makeText(requireContext(), "Test: Login Failed. ${authResult.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.toast_login_failed, authResult.message), Toast.LENGTH_SHORT).show()
                     }
                     is AuthResult.Loading -> {
-                        // Optionally show a loading indicator
-                        Toast.makeText(requireContext(), "Test: Logging in...", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireContext(), getString(R.string.toast_logging_in), Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         }
     }
 
-    private fun onBioAuthButtonPressed(){
+    private fun onBioAuthButtonPressed() {
+        if (!viewModel.isBiometricPreferenceEnabled.value) {
+            Toast.makeText(requireContext(), getString(R.string.toast_biometric_not_available), Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (viewModel.sessionState.value == null) {
+            Toast.makeText(requireContext(), getString(R.string.toast_biometric_not_available), Toast.LENGTH_SHORT).show()
+            return
+        }
         val activity = requireActivity() as FragmentActivity
         biometricService.authenticate(
             activity = activity,
             onSuccess = {
-                navigateToHomeIfSessionActive()
+                viewModel.requestNavigateToMainAfterAuth()
             },
             onError = { _, errString ->
-                Toast.makeText(requireContext(), errString, Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), errString.toString(), Toast.LENGTH_SHORT).show()
             },
             onFailed = {
-                Toast.makeText(requireContext(), "Authentication failed", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), getString(R.string.toast_biometric_auth_failed), Toast.LENGTH_SHORT).show()
             }
         )
     }
@@ -173,26 +176,31 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun observeSessionForAutoLogin() {
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.STARTED) {
-                launch {
-                    viewModel.sessionState.collectLatest { user ->
-                        if (user != null && viewModel.isKeepLoggedInEnabled.value) {
-                            navigateToHomeIfSessionActive()
-                        }
+                viewModel.sessionState.collectLatest { user ->
+                    if (user != null && viewModel.isKeepLoggedInEnabled.value) {
+                        navigateToMain()
                     }
                 }
             }
         }
     }
 
-    private fun navigateToHomeIfSessionActive() {
-        val user = viewModel.sessionState.value
-        if (user != null) {
-            val action = R.id.action_loginFragment_to_nav_home
-            val navOptions = navOptions {
-                popUpTo(R.id.loginFragment) { inclusive = true }
+    private fun observeNavigateToMainAfterAuth() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.navigateToMainEvent.collect {
+                    navigateToMain()
+                }
             }
-            findNavController().navigate(action, null, navOptions)
         }
     }
 
+    private fun navigateToMain() {
+        if (viewModel.sessionState.value == null) return
+        val action = R.id.action_loginFragment_to_nav_home
+        val options = navOptions {
+            popUpTo(R.id.loginFragment) { inclusive = true }
+        }
+        findNavController().navigate(action, null, options)
+    }
 }

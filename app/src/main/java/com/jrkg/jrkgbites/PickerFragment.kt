@@ -22,6 +22,7 @@ import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.utils.ImageStorageUtils
 import com.jrkg.jrkgbites.utils.ToastUtils
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
+import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filterNotNull
 import kotlinx.coroutines.launch
 
@@ -280,25 +281,24 @@ class PickerFragment : Fragment() {
 
     private fun observeRestaurantDeck() {
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.deck.collect { deck ->
-                // Update the count whenever the deck changes
-                binding.cardCountDisplay.text = deck.size.toString()
+            combine(viewModel.deck, viewModel.allRestaurants) { deck, allRestaurants ->
+                Pair(deck, allRestaurants)
+            }.collect { (deck, allRestaurants) ->
+                binding.cardCountDisplay.text = when {
+                    deck.isNotEmpty() -> deck.size.toString()
+                    allRestaurants.isEmpty() -> getString(R.string.no_restaurants_found)
+                    else -> getString(R.string.picker_no_restaurants)
+                }
 
                 if (deck.isNotEmpty()) {
                     val nextRestaurant = deck.first()
                     currentRestaurant = nextRestaurant
                     updateCardUI(currentRestaurant!!)
-                    // Animate fade-in for the new card
                     binding.pickerCard.animate().alpha(1f).setDuration(200).start()
                     binding.pickerCard.visibility = View.VISIBLE
                 } else {
                     currentRestaurant = null
                     binding.pickerCard.visibility = View.GONE
-//                    Toast.makeText(
-//                        requireContext(),
-//                        "No more restaurants in the deck!",
-//                        Toast.LENGTH_LONG
-//                    ).show()
                 }
             }
         }
