@@ -20,22 +20,20 @@ class RatingManager(
         const val RATING_THRESHOLD = 3
     }
 
-    // Expose ratings from the unified repository
+    // This Flow comes directly from the database
     val allRatings: Flow<List<RestaurantRating>> = restaurantRatingRepository.getRatingsLocal()
 
     /**
-     * Submits a rating and returns whether it is considered "low".
+     * Submits a rating for a given restaurant and applies rules based on the rating.
      *
      * @param restaurantId The ID of the restaurant being rated.
-     * @param rating The star rating (1-5).
-     * @param comment The user's feedback.
-     * @param userId The current authenticated user ID for Firestore syncing.
-     * @return true if the rating is below [RATING_THRESHOLD].
+     * @param rating The star rating given by the user (e.g., 1, 2, 3, 4, 5).
+     * @param comment The user's comment for the rating.
      */
     suspend fun submitRating(
-        restaurantId: String, 
-        rating: Int, 
-        comment: String, 
+        restaurantId: String,
+        rating: Int,
+        comment: String,
         userId: String
     ): Boolean {
         // 1. Check for existing local rating
@@ -55,7 +53,7 @@ class RatingManager(
         // 2. Submit via repository (handles both Room and Firestore)
         restaurantRatingRepository.submitRating(newRating, userId)
 
-        // 3. Logic check: if you want it to be automatic like Version 1, 
+        // 3. Logic check: if you want it to be automatic like Version 1,
         // you can uncomment the line below. Otherwise, let the ViewModel handle it.
         // if (rating < RATING_THRESHOLD) restaurantManager.addToNeverAgain(restaurantId, userId)
 

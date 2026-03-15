@@ -9,46 +9,33 @@ import kotlinx.coroutines.tasks.await
 
 class RestaurantRatingRepository(
     private val restaurantRatingDao: RestaurantRatingDao,
-    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
+//    private val user: User
 ) {
 
     companion object {
-        private const val TAG = "RestaurantRatingRepo"
+        private const val TAG = "RestaurantRatingRepository"
         private const val RESTAURANTS_COLLECTION = "restaurants"
         private const val RATINGS_COLLECTION = "restaurant_ratings"
         private const val USER_COLLECTION = "users"
     }
 
-    // --- LOCAL MANAGEMENT (Room) ---
-
-    fun getRatingsLocal(): Flow<List<RestaurantRating>> = 
-        restaurantRatingDao.getAllRatings()
-
-    fun getRatingForRestaurantLocal(restaurantId: String): Flow<RestaurantRating?> = 
-        restaurantRatingDao.getLatestRatingForRestaurant(restaurantId)
-
-    // --- REMOTE SYNCING (Firestore) ---
-
-    /**
-     * Fetches all ratings for a specific user from Firestore and updates the local database.
-     */
-    suspend fun syncRatingsFromRemote(userId: String) = coroutineScope {
-        val userRef = firestore.collection(USER_COLLECTION).document(userId)
+    // REMOTE MANAGEMENT
+    suspend fun syncRatings(userId: String) = coroutineScope {
+        val db = FirebaseFirestore.getInstance()
+        val collection = db.collection(RATINGS_COLLECTION)
+        val userRef = db.collection(USER_COLLECTION).document(userId)
 
         try {
-            val querySnapshot = firestore.collection(RATINGS_COLLECTION)
-                .whereEqualTo("user_id", userRef)
-                .get()
-                .await()
+            val querySnapshot = collection.whereEqualTo("user_id", userRef).get().await() //Fetch only current user ratings
 
             val firebaseData = querySnapshot.documents.mapNotNull { doc ->
                 try {
                     val restaurantRef = doc.getDocumentReference("restaurant_id")
                     val timestamp = doc.getTimestamp("timestamp")
-                    val timestampLong = timestamp?.toDate()?.time ?: 0L
+                    val timestampLong = if (timestamp != null) timestamp.toDate().getTime() else 0 // Convert Timestamp to Long
 
                     RestaurantRating(
-                        id = doc.id.hashCode(), // Using hashCode if your Room ID is an Int
+                        id = doc.id.toInt(),
                         restaurantId = restaurantRef?.id ?: "",
                         rating = doc.getLong("rating")?.toInt() ?: 0,
                         comment = doc.getString("comment") ?: "",
@@ -61,50 +48,57 @@ class RestaurantRatingRepository(
             }
 
             restaurantRatingDao.clearAndInsert(firebaseData)
-            Log.d(TAG, "Successfully synced ${firebaseData.size} ratings for user: $userId")
+
+            Log.d(TAG, "Successfully synced ${firebaseData.size} ratings")
+            Log.d(TAG, "Ratings syncing complete for user: $userId")
 
         } catch (e: Exception) {
-            Log.e(TAG, "Error syncing ratings from remote", e)
+            Log.e(TAG, "Error syncing ratings", e)
         }
     }
 
-    /**
-     * Inserts locally first for instant UI response, then attempts to push to Firestore.
-     */
-    suspend fun submitRating(rating: RestaurantRating, userId: String) {
-        // 1. Local write first
-        restaurantRatingDao.insert(rating)
-
-        // 2. Prepare remote data
-        val userRef = firestore.collection(USER_COLLECTION).document(userId)
-        val restaurantRef = firestore.collection(RESTAURANTS_COLLECTION).document(rating.restaurantId)
-        
-        // Use a composite key (userId + restaurantId) to prevent duplicate ratings per restaurant
-        val compositeKey = "${userId}_${rating.restaurantId}"
+    suspend fun submitRating(restaurantRating: RestaurantRating, userId: String) {
+        val db = FirebaseFirestore.getInstance()
+        val collection = db.collection(RATINGS_COLLECTION)
+        val userRef = db.collection(USER_COLLECTION).document(userId)
+        val restaurantRef = db.collection(RESTAURANTS_COLLECTION).document(restaurantRating.restaurantId)
+        val compositeKey = RestaurantRepository.generateCompositeKey(restaurantRating.restaurantId, userId)
 
         val ratingData = hashMapOf(
             "user_id" to userRef,
             "restaurant_id" to restaurantRef,
-            "rating" to rating.rating,
-            "comment" to rating.comment,
-            "timestamp" to System.currentTimeMillis()
+            "rating" to restaurantRating.rating,
+            "comment" to restaurantRating.comment,
+            "timestamp" to System.currentTimeMillis(),
         )
 
+        //Add to RoomDB first for instant UI updates
+        insertRatingLocal(restaurantRating)
+        Log.d(TAG, "Attempting to add to ratings: ${restaurantRating.restaurantId}")
         try {
-            firestore.collection(RATINGS_COLLECTION)
-                .document(compositeKey)
-                .set(ratingData)
-                .await()
-            Log.d(TAG, "Successfully synced rating to Firestore")
+            collection.document(compositeKey).set(ratingData).await()
+            Log.d(TAG, "Successfully added to ratings: ${restaurantRating.restaurantId}")
         } catch (e: Exception) {
-            Log.e(TAG, "Firestore sync failed", e)
-            // Optional: If sync fails, you could choose to delete the local record 
-            // or leave it to be synced later.
+            Log.e(TAG, "Error saving rating to Firestore", e)
+            removeRatingLocal(restaurantRating)
         }
     }
 
-    suspend fun removeRating(rating: RestaurantRating) {
-        restaurantRatingDao.delete(rating)
-        // Add Firestore delete logic here if needed
+    // LOCAL MANAGEMENT
+    fun getRatingsLocal(): Flow<List<RestaurantRating>> {
+        return restaurantRatingDao.getAllRatings()
     }
+
+    fun getRatingForRestaurantLocal(restaurantId: String): Flow<RestaurantRating?> {
+        return restaurantRatingDao.getLatestRatingForRestaurant(restaurantId)
+    }
+
+    suspend fun insertRatingLocal(rating: RestaurantRating) {
+        restaurantRatingDao.insert(rating)
+    }
+
+    suspend fun removeRatingLocal(rating: RestaurantRating) {
+        restaurantRatingDao.delete(rating)
+    }
+
 }
