@@ -96,13 +96,16 @@ class MainViewModel(
 
         // Initial data loading for RoomDB; full dataset from JSON when needed, then sync.
         viewModelScope.launch {
+//            restaurantRepository.refreshRestaurants(application)
+            // 1. Observe the sessionState Flow
             sessionState.collectLatest { user ->
                 when {
                     user == null -> {
+                    //Fallback
                         restaurantRepository.pullFreshFromJSON(application)
                     }
                     user.id.isNotEmpty() -> {
-                        restaurantRepository.ensureLocalDataFromJsonIfEmpty(application)
+                        // User restored from session OR just logged in
                         restaurantRepository.syncRestaurants(user.id)
                     }
                 }
