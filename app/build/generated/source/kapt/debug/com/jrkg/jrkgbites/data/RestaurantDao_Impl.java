@@ -212,40 +212,40 @@ public final class RestaurantDao_Impl implements RestaurantDao {
   }
 
   @Override
-  public Object insert(final Restaurant restaurant, final Continuation<? super Unit> $completion) {
+  public Object insert(final Restaurant restaurant, final Continuation<? super Unit> arg1) {
     if (restaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurant.insert(_connection, restaurant);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object insertAll(final List<Restaurant> restaurants,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     if (restaurants == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurant.insert(_connection, restaurants);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object delete(final Restaurant restaurant, final Continuation<? super Unit> $completion) {
+  public Object delete(final Restaurant restaurant, final Continuation<? super Unit> arg1) {
     if (restaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfRestaurant.handle(_connection, restaurant);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object update(final Restaurant restaurant, final Continuation<? super Unit> $completion) {
+  public Object update(final Restaurant restaurant, final Continuation<? super Unit> arg1) {
     if (restaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __updateAdapterOfRestaurant.handle(_connection, restaurant);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -693,7 +693,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
   }
 
   @Override
-  public Object getRestaurantCount(final Continuation<? super Integer> $completion) {
+  public Object getRestaurantCount(final Continuation<? super Integer> arg0) {
     final String _sql = "SELECT COUNT(*) FROM restaurants";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -714,11 +714,11 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
-  public Object deleteAll(final Continuation<? super Unit> $completion) {
+  public Object deleteAll(final Continuation<? super Unit> arg0) {
     final String _sql = "DELETE FROM restaurants";
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -728,7 +728,7 @@ public final class RestaurantDao_Impl implements RestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, $completion);
+    }, arg0);
   }
 
   @NonNull

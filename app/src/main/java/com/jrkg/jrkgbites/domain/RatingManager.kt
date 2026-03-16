@@ -6,11 +6,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 
 /**
- * Manages the logic related to submitting restaurant ratings.
- *
- * @param swipeManager The manager for user lists (favorites, never again), used to
- * add restaurants to the "Never Again" list based on rating.
- * @param restaurantRatingDao The DAO for accessing restaurant rating data in the database.
+ * Manages the logic related to submitting restaurant ratings and identifying poor experiences.
  */
 class RatingManager(
     private val restaurantRatingRepository: RestaurantRatingRepository,
@@ -19,47 +15,57 @@ class RatingManager(
 
     companion object {
         /**
-         * The star rating below which a restaurant is considered a poor experience.
+         * The star rating below which a restaurant is considered a poor experience (candidate for Never Again).
          */
-        const val RATING_THRESHOLD = 2
+        const val RATING_THRESHOLD = 3
     }
 
-    // This Flow comes directly from the database
-    val allRatings: Flow<List<RestaurantRating>> = restaurantRatingRepository.getRatings()
+    // Expose ratings from the unified repository
+    val allRatings: Flow<List<RestaurantRating>> = restaurantRatingRepository.getRatingsLocal()
 
     /**
-     * Submits a rating for a given restaurant and returns whether it is considered "low".
-     *
-     * Domain layer no longer decides on "Never Again" side effects. Instead, callers can
-     * use the returned flag to drive UI (e.g., showing a confirmation dialog) and call
-     * the appropriate RestaurantManager method explicitly.
+     * Submits a rating and returns whether it is considered "low".
      *
      * @param restaurantId The ID of the restaurant being rated.
-     * @param rating The star rating given by the user (e.g., 1, 2, 3, 4, 5).
-     * @param comment The user's comment for the rating.
-     * @return true if the rating is below [RATING_THRESHOLD], false otherwise.
+     * @param rating The star rating (1-5).
+     * @param comment The user's feedback.
+     * @param userId The current authenticated user ID for Firestore syncing.
+     * @return true if the rating is below [RATING_THRESHOLD].
      */
-    suspend fun submitRating(restaurantId: String, rating: Int, comment: String): Boolean {
-        val existingRating = restaurantRatingRepository.getRatingForRestaurant(restaurantId).first()
+    suspend fun submitRating(
+        restaurantId: String, 
+        rating: Int, 
+        comment: String, 
+        userId: String
+    ): Boolean {
+        // 1. Check for existing local rating
+        val existingRating = restaurantRatingRepository.getRatingForRestaurantLocal(restaurantId).first()
 
-        val newRating = if (existingRating != null) {
-            existingRating.copy(rating = rating, comment = comment, timestamp = System.currentTimeMillis())
-        } else {
-            RestaurantRating(restaurantId = restaurantId, rating = rating, comment = comment, timestamp = System.currentTimeMillis())
-        }
+        val newRating = existingRating?.copy(
+            rating = rating,
+            comment = comment,
+            timestamp = System.currentTimeMillis()
+        ) ?: RestaurantRating(
+            restaurantId = restaurantId,
+            rating = rating,
+            comment = comment,
+            timestamp = System.currentTimeMillis()
+        )
 
-        restaurantRatingRepository.insertRating(newRating) // Insert (or update due to REPLACE strategy)
+        // 2. Submit via repository (handles both Room and Firestore)
+        restaurantRatingRepository.submitRating(newRating, userId)
 
-        // The caller decides what to do with low ratings (e.g., prompt for "Never Again").
+        // 3. Logic check: if you want it to be automatic like Version 1, 
+        // you can uncomment the line below. Otherwise, let the ViewModel handle it.
+        // if (rating < RATING_THRESHOLD) restaurantManager.addToNeverAgain(restaurantId, userId)
+
         return rating < RATING_THRESHOLD
     }
 
     /**
      * Retrieves the latest stored rating for a specific restaurant.
-     * @param restaurantId The ID of the restaurant.
-     * @return A Flow emitting the latest RestaurantRating or null if not found.
      */
     fun getRatingForRestaurant(restaurantId: String): Flow<RestaurantRating?> {
-        return restaurantRatingRepository.getRatingForRestaurant(restaurantId)
+        return restaurantRatingRepository.getRatingForRestaurantLocal(restaurantId)
     }
 }

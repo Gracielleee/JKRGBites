@@ -243,7 +243,8 @@ class MainViewModel(
 
     fun submitRating(restaurantId: String, rating: Int, comment: String) {
         viewModelScope.launch {
-            val isLowRating = ratingManager.submitRating(restaurantId, rating.toInt(), comment)
+            val userId = sessionState.value?.id.orEmpty()
+            val isLowRating = ratingManager.submitRating(restaurantId, rating, comment, userId)
 
             _toastMessage.value = application.getString(R.string.toast_rating_submitted)
 

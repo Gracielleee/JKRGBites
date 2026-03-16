@@ -1,7 +1,9 @@
 package com.jrkg.jrkgbites.data
 
+import android.util.Log
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jrkg.jrkgbites.model.RestaurantRating
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
 
@@ -11,49 +13,98 @@ class RestaurantRatingRepository(
 ) {
 
     companion object {
+        private const val TAG = "RestaurantRatingRepo"
+        private const val RESTAURANTS_COLLECTION = "restaurants"
         private const val RATINGS_COLLECTION = "restaurant_ratings"
+        private const val USER_COLLECTION = "users"
     }
 
-    private val ratingsCollection = firestore.collection(RATINGS_COLLECTION)
+    // --- LOCAL MANAGEMENT (Room) ---
 
-    // LOCAL MANAGEMENT
-    fun getRatings(): Flow<List<RestaurantRating>> {
-        return restaurantRatingDao.getAllRatings()
-    }
+    fun getRatingsLocal(): Flow<List<RestaurantRating>> = 
+        restaurantRatingDao.getAllRatings()
 
-    fun getRatingForRestaurant(restaurantId: String): Flow<RestaurantRating?> {
-        return restaurantRatingDao.getLatestRatingForRestaurant(restaurantId)
+    fun getRatingForRestaurantLocal(restaurantId: String): Flow<RestaurantRating?> = 
+        restaurantRatingDao.getLatestRatingForRestaurant(restaurantId)
+
+    // --- REMOTE SYNCING (Firestore) ---
+
+    /**
+     * Fetches all ratings for a specific user from Firestore and updates the local database.
+     */
+    suspend fun syncRatingsFromRemote(userId: String) = coroutineScope {
+        val userRef = firestore.collection(USER_COLLECTION).document(userId)
+
+        try {
+            val querySnapshot = firestore.collection(RATINGS_COLLECTION)
+                .whereEqualTo("user_id", userRef)
+                .get()
+                .await()
+
+            val firebaseData = querySnapshot.documents.mapNotNull { doc ->
+                try {
+                    val restaurantRef = doc.getDocumentReference("restaurant_id")
+                    val timestamp = doc.getTimestamp("timestamp")
+                    val timestampLong = timestamp?.toDate()?.time ?: 0L
+
+                    RestaurantRating(
+                        id = doc.id.hashCode(), // Using hashCode if your Room ID is an Int
+                        restaurantId = restaurantRef?.id ?: "",
+                        rating = doc.getLong("rating")?.toInt() ?: 0,
+                        comment = doc.getString("comment") ?: "",
+                        timestamp = timestampLong
+                    )
+                } catch (e: Exception) {
+                    Log.e(TAG, "Error parsing rating document ${doc.id}", e)
+                    null
+                }
+            }
+
+            restaurantRatingDao.clearAndInsert(firebaseData)
+            Log.d(TAG, "Successfully synced ${firebaseData.size} ratings for user: $userId")
+
+        } catch (e: Exception) {
+            Log.e(TAG, "Error syncing ratings from remote", e)
+        }
     }
 
     /**
-     * Inserts or updates a rating in the local Room database and mirrors the change to Firestore.
+     * Inserts locally first for instant UI response, then attempts to push to Firestore.
      */
-    suspend fun insertRating(rating: RestaurantRating) {
-        // 1. Local write for immediate UI reactivity
+    suspend fun submitRating(rating: RestaurantRating, userId: String) {
+        // 1. Local write first
         restaurantRatingDao.insert(rating)
 
-        // 2. Remote write for persistence and cross-device access
-        syncRatingToRemote(rating)
+        // 2. Prepare remote data
+        val userRef = firestore.collection(USER_COLLECTION).document(userId)
+        val restaurantRef = firestore.collection(RESTAURANTS_COLLECTION).document(rating.restaurantId)
+        
+        // Use a composite key (userId + restaurantId) to prevent duplicate ratings per restaurant
+        val compositeKey = "${userId}_${rating.restaurantId}"
+
+        val ratingData = hashMapOf(
+            "user_id" to userRef,
+            "restaurant_id" to restaurantRef,
+            "rating" to rating.rating,
+            "comment" to rating.comment,
+            "timestamp" to System.currentTimeMillis()
+        )
+
+        try {
+            firestore.collection(RATINGS_COLLECTION)
+                .document(compositeKey)
+                .set(ratingData)
+                .await()
+            Log.d(TAG, "Successfully synced rating to Firestore")
+        } catch (e: Exception) {
+            Log.e(TAG, "Firestore sync failed", e)
+            // Optional: If sync fails, you could choose to delete the local record 
+            // or leave it to be synced later.
+        }
     }
 
-    /**
-     * Writes the given rating to Firestore using the restaurantId as the document key.
-     */
-    private suspend fun syncRatingToRemote(rating: RestaurantRating) {
-        try {
-            val data = hashMapOf(
-                "restaurant_id" to rating.restaurantId,
-                "rating" to rating.rating,
-                "comment" to rating.comment,
-                "timestamp" to rating.timestamp
-            )
-
-            ratingsCollection
-                .document(rating.restaurantId)
-                .set(data)
-                .await()
-        } catch (_: Exception) {
-            // Swallow remote errors for now; local data remains the single source of truth.
-        }
+    suspend fun removeRating(rating: RestaurantRating) {
+        restaurantRatingDao.delete(rating)
+        // Add Firestore delete logic here if needed
     }
 }

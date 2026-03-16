@@ -73,32 +73,32 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
 
   @Override
   public Object insert(final FavoriteRestaurantId favoriteRestaurant,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     if (favoriteRestaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfFavoriteRestaurantId.insert(_connection, favoriteRestaurant);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object insertAll(final List<FavoriteRestaurantId> favoriteRestaurants,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     if (favoriteRestaurants == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfFavoriteRestaurantId.insert(_connection, favoriteRestaurants);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
   public Object delete(final FavoriteRestaurantId favoriteRestaurant,
-      final Continuation<? super Unit> $completion) {
+      final Continuation<? super Unit> arg1) {
     if (favoriteRestaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfFavoriteRestaurantId.handle(_connection, favoriteRestaurant);
       return Unit.INSTANCE;
-    }, $completion);
+    }, arg1);
   }
 
   @Override
@@ -125,7 +125,7 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
   }
 
   @Override
-  public Object getAllFavoriteRestaurantIds(final Continuation<? super List<String>> $completion) {
+  public Object getAllFavoriteRestaurantIds(final Continuation<? super List<String>> arg0) {
     final String _sql = "SELECT favorite_restaurant FROM favorite_restaurants";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -144,12 +144,11 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
-  public Object isFavorited(final String restaurantId,
-      final Continuation<? super Boolean> $completion) {
+  public Object isFavorited(final String restaurantId, final Continuation<? super Boolean> arg1) {
     final String _sql = "SELECT EXISTS(SELECT 1 FROM favorite_restaurants WHERE favorite_restaurant = ?)";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -176,11 +175,11 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteById(final String id, final Continuation<? super Unit> $completion) {
+  public Object deleteById(final String id, final Continuation<? super Unit> arg1) {
     final String _sql = "DELETE FROM favorite_restaurants WHERE favorite_restaurant = ?";
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -196,11 +195,11 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, $completion);
+    }, arg1);
   }
 
   @Override
-  public Object deleteAll(final Continuation<? super Unit> $completion) {
+  public Object deleteAll(final Continuation<? super Unit> arg0) {
     final String _sql = "DELETE FROM favorite_restaurants";
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -210,7 +209,7 @@ public final class FavoriteRestaurantDao_Impl implements FavoriteRestaurantDao {
       } finally {
         _stmt.close();
       }
-    }, $completion);
+    }, arg0);
   }
 
   @Override
