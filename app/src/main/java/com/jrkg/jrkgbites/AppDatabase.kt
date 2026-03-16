@@ -20,7 +20,7 @@ import com.jrkg.jrkgbites.utils.Converters
         FavoriteRestaurantId::class,
         NeverAgainRestaurantId::class
     ],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 @TypeConverters(Converters::class)

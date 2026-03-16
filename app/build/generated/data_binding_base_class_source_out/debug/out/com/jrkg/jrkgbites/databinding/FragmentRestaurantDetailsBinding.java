@@ -33,6 +33,15 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
   public final Button cancelRatingButton;
 
   @NonNull
+  public final ImageView deleteRestaurantButton;
+
+  @NonNull
+  public final ImageView editRestaurantButton;
+
+  @NonNull
+  public final TextView isPublicBadge;
+
+  @NonNull
   public final TextView mapHeader;
 
   @NonNull
@@ -70,16 +79,21 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
 
   private FragmentRestaurantDetailsBinding(@NonNull ConstraintLayout rootView,
       @NonNull View actionBarBg, @NonNull ImageView backButton, @NonNull Button cancelRatingButton,
-      @NonNull TextView mapHeader, @NonNull TextInputEditText ratingCommentInput,
-      @NonNull TextView restaurantCategoryCuisine, @NonNull ImageView restaurantImage,
-      @NonNull TextView restaurantLevel, @NonNull TextView restaurantName,
-      @NonNull RatingBar restaurantRatingBar, @NonNull TextView restaurantTags,
-      @NonNull TextView screenTitle, @NonNull Button submitRatingButton,
-      @NonNull ImageView toggleFavoriteButton, @NonNull ImageView toggleNeverAgainButton) {
+      @NonNull ImageView deleteRestaurantButton, @NonNull ImageView editRestaurantButton,
+      @NonNull TextView isPublicBadge, @NonNull TextView mapHeader,
+      @NonNull TextInputEditText ratingCommentInput, @NonNull TextView restaurantCategoryCuisine,
+      @NonNull ImageView restaurantImage, @NonNull TextView restaurantLevel,
+      @NonNull TextView restaurantName, @NonNull RatingBar restaurantRatingBar,
+      @NonNull TextView restaurantTags, @NonNull TextView screenTitle,
+      @NonNull Button submitRatingButton, @NonNull ImageView toggleFavoriteButton,
+      @NonNull ImageView toggleNeverAgainButton) {
     this.rootView = rootView;
     this.actionBarBg = actionBarBg;
     this.backButton = backButton;
     this.cancelRatingButton = cancelRatingButton;
+    this.deleteRestaurantButton = deleteRestaurantButton;
+    this.editRestaurantButton = editRestaurantButton;
+    this.isPublicBadge = isPublicBadge;
     this.mapHeader = mapHeader;
     this.ratingCommentInput = ratingCommentInput;
     this.restaurantCategoryCuisine = restaurantCategoryCuisine;
@@ -136,6 +150,24 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
       id = R.id.cancel_rating_button;
       Button cancelRatingButton = ViewBindings.findChildViewById(rootView, id);
       if (cancelRatingButton == null) {
+        break missingId;
+      }
+
+      id = R.id.deleteRestaurantButton;
+      ImageView deleteRestaurantButton = ViewBindings.findChildViewById(rootView, id);
+      if (deleteRestaurantButton == null) {
+        break missingId;
+      }
+
+      id = R.id.editRestaurantButton;
+      ImageView editRestaurantButton = ViewBindings.findChildViewById(rootView, id);
+      if (editRestaurantButton == null) {
+        break missingId;
+      }
+
+      id = R.id.isPublic_badge;
+      TextView isPublicBadge = ViewBindings.findChildViewById(rootView, id);
+      if (isPublicBadge == null) {
         break missingId;
       }
 
@@ -212,9 +244,10 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
       }
 
       return new FragmentRestaurantDetailsBinding((ConstraintLayout) rootView, actionBarBg,
-          backButton, cancelRatingButton, mapHeader, ratingCommentInput, restaurantCategoryCuisine,
-          restaurantImage, restaurantLevel, restaurantName, restaurantRatingBar, restaurantTags,
-          screenTitle, submitRatingButton, toggleFavoriteButton, toggleNeverAgainButton);
+          backButton, cancelRatingButton, deleteRestaurantButton, editRestaurantButton,
+          isPublicBadge, mapHeader, ratingCommentInput, restaurantCategoryCuisine, restaurantImage,
+          restaurantLevel, restaurantName, restaurantRatingBar, restaurantTags, screenTitle,
+          submitRatingButton, toggleFavoriteButton, toggleNeverAgainButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

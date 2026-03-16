@@ -1,14 +1,29 @@
 package com.jrkg.jrkgbites.domain
 
 import com.jrkg.jrkgbites.data.RestaurantDao
+import com.jrkg.jrkgbites.data.RestaurantRatingRepository
 import com.jrkg.jrkgbites.data.RestaurantRepository
+import com.jrkg.jrkgbites.model.Restaurant
 
 class RestaurantManager(
-    private val restaurantDao: RestaurantDao,
-    private val restaurantRepository: RestaurantRepository
+    private val restaurantRepository: RestaurantRepository,
+    private val restaurantRatingRepository: RestaurantRatingRepository
 ) {
 
     // REMOTE
+    suspend fun deleteRestaurant(restaurant: Restaurant, userId: String): Int {
+        val result = restaurantRepository.deleteRestaurant(restaurant, userId)
+        
+        // Only cascade if the main deletion was successful
+        if (result == 200) {
+            restaurantRepository.removeFromFavorites(restaurant.id, userId)
+            restaurantRepository.removeFromNeverAgain(restaurant.id, userId)
+            restaurantRatingRepository.deleteRestaurantRatingByCascade(restaurant.id, userId)
+        }
+        
+        return result
+    }
+
     suspend fun toggleFavorite(restaurantId: String, userId: String) {
         if (restaurantRepository.isFavorited(restaurantId, userId)) {
             restaurantRepository.removeFromFavorites(restaurantId, userId)
@@ -67,6 +82,4 @@ class RestaurantManager(
         }
         restaurantRepository.addToNeverAgainLocal(restaurantId)
     }
-
-
 }

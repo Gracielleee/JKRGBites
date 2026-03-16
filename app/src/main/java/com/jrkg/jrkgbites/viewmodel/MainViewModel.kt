@@ -21,6 +21,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 import androidx.lifecycle.viewModelScope
+import com.jrkg.jrkgbites.R  // <--- ADDED THIS IMPORT TO FIX UNRESOLVED REFERENCE
 import com.jrkg.jrkgbites.data.RestaurantRatingRepository
 import com.jrkg.jrkgbites.data.source.FirebaseAuthService
 import com.jrkg.jrkgbites.services.BiometricService
@@ -76,7 +77,7 @@ class MainViewModel(
         restaurantPicker.init(viewModelScope)
         searchManager.init(viewModelScope)
 
-        // Resolve start destination after auth state & keep-logged-in preference have settled.
+        // Initial data loading for RoomDB
         viewModelScope.launch {
             delay(150)
             val currentUser = sessionState.value
@@ -101,12 +102,13 @@ class MainViewModel(
             sessionState.collectLatest { user ->
                 when {
                     user == null -> {
-                    //Fallback
+                        // Fallback
                         restaurantRepository.pullFreshFromJSON(application)
                     }
                     user.id.isNotEmpty() -> {
                         // User restored from session OR just logged in
                         restaurantRepository.syncRestaurants(user.id)
+                        restaurantRatingRepository.syncRatings(user.id)
                     }
                 }
             }
@@ -153,14 +155,10 @@ class MainViewModel(
     val pickedResult: StateFlow<String?> = _pickedResult.asStateFlow()
 
     // --- Swipe Manager State ---
-    // Use 'by lazy' to ensure these are only accessed after SwipeManager.init(viewModelScope) has been called.
     val deck: StateFlow<List<Restaurant>> by lazy { swipeManager.deck }
-
     val allRestaurants: StateFlow<List<Restaurant>> by lazy { swipeManager.allRestaurants }
-
     val favoritesList: StateFlow<List<Restaurant>> by lazy { swipeManager.favoritesList }
     val neverAgainList: StateFlow<List<Restaurant>> by lazy { swipeManager.neverAgainList }
-
     val selectedRestaurant: StateFlow<Restaurant?> by lazy { swipeManager.selectedRestaurant }
 
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
@@ -180,6 +178,7 @@ class MainViewModel(
     fun signUp(email: String, pass: String, preferredName: String): Flow<AuthResult> {
         return sessionManager.signUp(email, pass, preferredName)
     }
+
     suspend fun logout() {
         restaurantRepository.deleteAllLocal()
         // When the user explicitly logs out, also clear the keep-logged-in preference.
@@ -204,25 +203,14 @@ class MainViewModel(
         swipeManager.undoLastSwipe()
     }
 
-    /**
-     * Re-applies current session filters to the deck. Useful when
-     * returning to the picker so that previously swiped restaurants
-     * (including RIGHT swipes) are not shown again.
-     */
     fun refreshDeck() {
         swipeManager.updateDeck()
     }
-
 
     fun clearSelectedRestaurant() {
         swipeManager.clearSelectedRestaurant()
     }
 
-    /**
-     * Exposes a Flow for a single restaurant by ID so that
-     * UI layers (e.g., RestaurantDetailsFragment) don't depend
-     * on the current swipe deck contents.
-     */
     fun getRestaurantById(id: String): Flow<Restaurant?> {
         return restaurantRepository.getRestaurantById(id)
     }
@@ -258,20 +246,45 @@ class MainViewModel(
         }
     }
 
+    fun isUserOwner(restaurant: Restaurant?): Boolean {
+        return restaurant?.addedBy == sessionState.value?.id
+    }
+
     fun addToNeverAgainFromRating(restaurantId: String) {
         viewModelScope.launch {
-            val userId = sessionState.value?.id.orEmpty()
-            if (userId.isNotEmpty()) {
-                restaurantManager.addToNeverAgain(restaurantId, userId)
-            } else {
-                restaurantManager.addToNeverAgainLocal(restaurantId)
-            }
+            restaurantManager.addToNeverAgain(restaurantId, sessionState.value?.id ?: "")
         }
     }
 
     fun createRestaurant(restaurant: Restaurant) {
         viewModelScope.launch {
             restaurantRepository.createRestaurant(restaurant, sessionState.value?.id ?: "")
+        }
+    }
+
+    fun updateRestaurant(restaurant: Restaurant) {
+        viewModelScope.launch {
+            val result = restaurantRepository.updateRestaurant(restaurant, sessionState.value?.id ?: "")
+            if (result == 200) {
+                _toastMessage.value = "Restaurant updated successfully!"
+            } else if (result == 401) {
+                _toastMessage.value = "Unauthorized. You do not have permission to perform this action."
+            } else {
+                _toastMessage.value = "Failed to update restaurant. Try again later."
+            }
+        }
+    }
+
+    fun deleteRestaurant(restaurant: Restaurant) {
+        viewModelScope.launch {
+            val result = restaurantManager.deleteRestaurant(restaurant, sessionState.value?.id ?: "")
+            if (result == 200) {
+                _toastMessage.value = "Restaurant deleted successfully!"
+            } else if (result == 401) {
+                _toastMessage.value = "Unauthorized. You do not have permission to perform this action."
+            } else {
+                _toastMessage.value = "Failed to delete restaurant. Try again later."
+            }
         }
     }
 
@@ -297,7 +310,7 @@ class MainViewModelFactory(
                 neverAgainRestaurantDao
             )
             val restaurantRatingRepository = RestaurantRatingRepository(restaurantRatingDao)
-            val restaurantManager = RestaurantManager(restaurantDao, restaurantRepository)
+            val restaurantManager = RestaurantManager(restaurantRepository, restaurantRatingRepository)
             val prefsManager = UserPreferencesManager(application)
             val authService = FirebaseAuthService()
             val sessionManager = SessionManager(authService)
@@ -305,7 +318,7 @@ class MainViewModelFactory(
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)
             val swipeManager = SwipeManager(userIdFlow, restaurantRepository, restaurantManager)
-            val ratingManager = RatingManager(restaurantRatingRepository, restaurantManager)
+            val ratingManager = RatingManager(restaurantRatingRepository)
             val searchManager = SearchManager(restaurantRepository)
             val restaurantPicker = RestaurantPicker(restaurantRepository)
 
@@ -319,7 +332,8 @@ class MainViewModelFactory(
                 prefsManager = prefsManager,
                 sessionManager = sessionManager,
                 restaurantRepository = restaurantRepository,
-                restaurantManager = restaurantManager
+                restaurantManager = restaurantManager,
+                restaurantRatingRepository =  restaurantRatingRepository
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

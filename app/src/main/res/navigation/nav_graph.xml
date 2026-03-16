@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment"> <!-- Changed start destination to loginFragment -->
+    app:startDestination="@id/loginFragment">
 
     <!-- Authentication Fragments -->
     <fragment
@@ -30,7 +30,7 @@
         tools:layout="@layout/dialog_forgot_password">
     </dialog>
 
-    <!-- Main Application Fragments (existing) -->
+    <!-- Main Application Fragments -->
     <fragment
         android:id="@+id/nav_home"
         android:name="com.jrkg.jrkgbites.HomeFragment"
@@ -77,6 +77,9 @@
         <argument
             android:name="restaurantId"
             app:argType="string" />
+        <action
+            android:id="@+id/action_restaurantDetailsFragment_to_updateRestaurantFragment"
+            app:destination="@id/updateRestaurantFragment" />
     </fragment>
 
     <fragment
@@ -113,7 +116,17 @@
         android:label="Add Restaurant"
         tools:layout="@layout/fragment_add_restaurant" />
 
-    <!--    Actions     -->
+    <fragment
+        android:id="@+id/updateRestaurantFragment"
+        android:name="com.jrkg.jrkgbites.UpdateRestaurantFragment"
+        android:label="Update Restaurant"
+        tools:layout="@layout/fragment_update_restaurant">
+        <argument
+            android:name="restaurantId"
+            app:argType="string" />
+    </fragment>
+
+    <!-- Global Actions -->
     <action
         android:id="@+id/action_loginFragment_to_nav_home"
         app:destination="@id/nav_home"

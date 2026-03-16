@@ -14,6 +14,7 @@ import java.io.InputStreamReader
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Filter
 import com.google.firebase.firestore.GeoPoint
+import com.google.firebase.firestore.SetOptions
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.tasks.await
 
@@ -175,6 +176,77 @@ class RestaurantRepository(
         }
     }
 
+    suspend fun updateRestaurant(restaurant: Restaurant, userId: String): Int {
+        val db = FirebaseFirestore.getInstance()
+        val collection = db.collection(RESTAURANTS_COLLECTION)
+
+        if (!isUserOwner(restaurant.addedBy ?: "", userId)) {
+            Log.e(TAG, "Unauthorized. User ${restaurant.addedBy} attempted to update a restaurant added_by: ${restaurant.addedBy}")
+            return 401
+        }
+
+        // Capture original state for rollback
+        val originalRestaurant = restaurantDao.getRestaurantById(restaurant.id).first()
+        val userRef = restaurant.addedBy?.let { db.collection(USER_COLLECTION).document(it) }
+
+        val restaurantData = hashMapOf(
+            "name" to restaurant.name,
+            "category" to restaurant.category,
+            "cuisine" to restaurant.cuisine,
+            "level" to restaurant.level,
+            "is_public" to (restaurant.isPublic ?: false),
+            "added_by" to userRef,
+            "location" to restaurant.location,
+            "geopoint" to GeoPoint(
+                restaurant.lat?.toDoubleOrNull() ?: 0.0,
+                restaurant.lng?.toDoubleOrNull() ?: 0.0
+            ),
+            "logo_filename" to restaurant.logoResourceName,
+            "tags" to (restaurant.tags ?: emptyList<String>())
+        )
+
+        updateRestaurant(restaurant)
+
+        try {
+            collection.document(restaurant.id)
+                .set(restaurantData, SetOptions.merge())
+                .await()
+            return 200
+        } catch (e: Exception) {
+            Log.e(TAG, "Error updating restaurant in Firestore", e)
+            originalRestaurant?.let { updateRestaurant(it) } //Rollback Room data if update fails
+            return 500
+        }
+    }
+
+    suspend fun deleteRestaurant(restaurant: Restaurant, userId: String): Int {
+        val db = FirebaseFirestore.getInstance()
+        val collection = db.collection(RESTAURANTS_COLLECTION)
+
+        if (!isUserOwner(restaurant.addedBy ?: "", userId)) {
+            Log.e(TAG, "Unauthorized. User ${restaurant.addedBy} attempted to delete a restaurant added_by: ${restaurant.addedBy}")
+            return 401
+        }
+
+        deleteRestaurantLocal(restaurant)
+
+        try {
+            // Delete the document
+            collection.document(restaurant.id).delete().await()
+            Log.d(TAG, "Successfully deleted from restaurants: ${restaurant.id}")
+            return 200
+        } catch (e: Exception) {
+            Log.e(TAG, "Error deleting Restaurant from Firestore", e)
+            insertRestaurantLocal(restaurant)
+            return 500
+        }
+    }
+
+    private fun isUserOwner(addedBy: String, userId: String): Boolean{
+        return addedBy == userId
+    }
+
+
     suspend fun addToFavorites(restaurantId: String, userId: String) {
         val db = FirebaseFirestore.getInstance()
         val collection = db.collection("favoriteRestaurants")
@@ -299,6 +371,14 @@ class RestaurantRepository(
         return restaurantDao.getAllRestaurants()
     }
 
+    suspend fun insertRestaurantLocal(restaurant: Restaurant): Unit {
+        return restaurantDao.insert(restaurant)
+    }
+
+    suspend fun deleteRestaurantLocal(restaurant: Restaurant): Unit {
+        return restaurantDao.delete(restaurant)
+    }
+
     suspend fun deleteAllLocal(): Unit {
         return restaurantDao.deleteAll()
 
@@ -350,8 +430,7 @@ class RestaurantRepository(
         return getRestaurantsLocal().first().filter { it.name?.contains(query, ignoreCase = true) == true }
     }
 
-    // For updating restaurant status
-    suspend fun updateRestaurantStatus(restaurant: Restaurant) {
+    suspend fun updateRestaurant(restaurant: Restaurant) {
         restaurantDao.update(restaurant)
     }
 

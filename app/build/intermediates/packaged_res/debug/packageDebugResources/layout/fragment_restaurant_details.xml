@@ -15,6 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/back_button"
         android:layout_width="@dimen/touchtarget_min"
@@ -26,6 +27,18 @@
         app:layout_constraintTop_toTopOf="@id/action_bar_bg"
         app:layout_constraintBottom_toBottomOf="@id/action_bar_bg"
         app:tint="?attr/colorOnSurface" />
+
+<!--    <ImageView-->
+<!--        android:id="@+id/more_topBar_button"-->
+<!--        android:layout_width="@dimen/touchtarget_min"-->
+<!--        android:layout_height="@dimen/touchtarget_min"-->
+<!--        android:contentDescription="More"-->
+<!--        android:padding="10dp"-->
+<!--        app:srcCompat="@drawable/ic_more_vert"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@id/action_bar_bg"-->
+<!--        app:layout_constraintBottom_toBottomOf="@id/action_bar_bg"-->
+<!--        app:tint="?attr/colorOnSurface" />-->
 
     <TextView
         android:id="@+id/screen_title"
@@ -71,9 +84,8 @@
 
                 <TextView
                     android:id="@+id/restaurant_name"
-                    android:layout_marginTop="@dimen/spacing_medium"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/toggleFavoriteButton"
+                    app:layout_constraintEnd_toStartOf="@id/isPublic_badge"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -83,29 +95,18 @@
                     android:textColor="?attr/colorOnSurface"
                     tools:text="The Grand Eatery" />
 
-                <ImageView
-                    android:id="@+id/toggleFavoriteButton"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/toggleNeverAgainButton"
-                    android:layout_width="@dimen/touchtarget_min"
-                    android:layout_height="@dimen/touchtarget_min"
-                    android:src="@drawable/favorite_border_ic"
-                    android:contentDescription="Toggle Favorite"
-                    android:scaleType="centerInside"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground" />
-
-                <ImageView
-                    android:id="@+id/toggleNeverAgainButton"
+                <TextView
+                    android:id="@+id/isPublic_badge"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/txt_label"
+                    android:layout_marginHorizontal="@dimen/spacing_standard"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_width="@dimen/touchtarget_min"
-                    android:layout_height="@dimen/touchtarget_min"
-                    android:src="@drawable/ic_trash"
-                    android:contentDescription="Toggle Never Again"
-                    android:scaleType="centerInside"
-                    android:padding="8dp"
-                    android:background="?attr/selectableItemBackground" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:textColor="@color/md_theme_secondary"
+                    tools:text="Public" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -135,6 +136,63 @@
                 android:textColor="?attr/colorOnSurfaceVariant"
                 tools:text="Tags: Family-friendly, Wifi, Outdoor Seating"
                 android:layout_marginBottom="@dimen/spacing_standard"/>
+
+<!--            <TextView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Options"-->
+<!--                android:textSize="@dimen/txt_subheading"-->
+<!--                android:textStyle="bold"-->
+<!--                android:textColor="?attr/colorOnSurface"-->
+<!--                android:layout_marginTop="@dimen/spacing_standard"-->
+<!--                android:layout_marginBottom="@dimen/spacing_medium"/>-->
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/touchtarget_min"
+                android:layout_gravity="start">
+
+                <ImageView
+                    android:id="@+id/toggleFavoriteButton"
+                    android:layout_width="@dimen/touchtarget_min"
+                    android:layout_height="@dimen/touchtarget_min"
+                    android:src="@drawable/favorite_border_ic"
+                    android:contentDescription="Toggle Favorite"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <ImageView
+                    android:id="@+id/toggleNeverAgainButton"
+                    android:layout_width="@dimen/touchtarget_min"
+                    android:layout_height="@dimen/touchtarget_min"
+                    android:src="@drawable/ic_archive"
+                    android:contentDescription="Toggle Never Again"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <ImageView
+                    android:id="@+id/editRestaurantButton"
+                    android:layout_width="@dimen/touchtarget_min"
+                    android:layout_height="@dimen/touchtarget_min"
+                    android:src="@drawable/ic_edit"
+                    android:contentDescription="Edit Restaurant Details"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground" />
+
+                <ImageView
+                    android:id="@+id/deleteRestaurantButton"
+                    android:layout_width="@dimen/touchtarget_min"
+                    android:layout_height="@dimen/touchtarget_min"
+                    android:src="@drawable/ic_trash"
+                    android:contentDescription="Delete Restaurant"
+                    android:scaleType="centerInside"
+                    android:padding="8dp"
+                    android:background="?attr/selectableItemBackground" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/map_header"

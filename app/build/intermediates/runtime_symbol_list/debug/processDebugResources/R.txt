@@ -3335,6 +3335,7 @@ int drawable henlin 0x7f0800ea
 int drawable hillbrewscoffee 0x7f0800eb
 int drawable holographic 0x7f0800ec
 int drawable home_button 0x7f0800ed
+int drawable ic_archive 0x7f0801de
 int drawable ic_arrow_back 0x7f0800ee
 int drawable ic_arrow_back_black_24 0x7f0800ef
 int drawable ic_call_answer 0x7f0800f0
@@ -3346,6 +3347,7 @@ int drawable ic_call_decline_low 0x7f0800f5
 int drawable ic_check_circle 0x7f0800f6
 int drawable ic_clear_black_24 0x7f0800f7
 int drawable ic_clock_black_24dp 0x7f0800f8
+int drawable ic_edit 0x7f0801df
 int drawable ic_error 0x7f0800f9
 int drawable ic_filter 0x7f0800fa
 int drawable ic_info 0x7f0800fb
@@ -3356,6 +3358,7 @@ int drawable ic_m3_chip_check 0x7f0800ff
 int drawable ic_m3_chip_checked_circle 0x7f080100
 int drawable ic_m3_chip_close 0x7f080101
 int drawable ic_menu_hamburger 0x7f080102
+int drawable ic_more_vert 0x7f0801e0
 int drawable ic_mtrl_checked_circle 0x7f080103
 int drawable ic_mtrl_chip_checked_black 0x7f080104
 int drawable ic_mtrl_chip_checked_circle 0x7f080105
@@ -3370,6 +3373,7 @@ int drawable ic_search_black_24 0x7f08010d
 int drawable ic_shuffle 0x7f08010e
 int drawable ic_trash 0x7f08010f
 int drawable ic_trash_restore 0x7f080110
+int drawable ic_unarchive 0x7f0801e1
 int drawable ic_undo 0x7f080111
 int drawable ic_warning 0x7f080112
 int drawable icon_background 0x7f080113
@@ -3647,6 +3651,7 @@ int id action_mode_close_button 0x7f090044
 int id action_nav_picker_to_restaurantDetailsFragment 0x7f090045
 int id action_nav_profile_to_restaurantRatingFragment 0x7f090046
 int id action_nav_search_to_searchFilterFragment 0x7f090047
+int id action_restaurantDetailsFragment_to_updateRestaurantFragment 0x7f0902c0
 int id action_text 0x7f090048
 int id actions 0x7f090049
 int id activity_chooser_view_content 0x7f09004a
@@ -3779,6 +3784,7 @@ int id decelerate 0x7f0900c8
 int id decelerateAndComplete 0x7f0900c9
 int id decor_content_parent 0x7f0900ca
 int id default_activity_button 0x7f0900cb
+int id deleteRestaurantButton 0x7f0902bd
 int id deltaRelative 0x7f0900cc
 int id dependency_ordering 0x7f0900cd
 int id design_bottom_sheet 0x7f0900ce
@@ -3808,6 +3814,7 @@ int id easeInOut 0x7f0900e5
 int id easeOut 0x7f0900e6
 int id east 0x7f0900e7
 int id edge 0x7f0900e8
+int id editRestaurantButton 0x7f0902be
 int id edit_query 0x7f0900e9
 int id edit_text_id 0x7f0900ea
 int id elastic 0x7f0900eb
@@ -3821,8 +3828,10 @@ int id etCategory 0x7f0900f2
 int id etConfirmPassword 0x7f0900f3
 int id etCuisine 0x7f0900f4
 int id etEmail 0x7f0900f5
+int id etLat 0x7f0902c1
 int id etLevel 0x7f0900f6
 int id etLocation 0x7f0900f7
+int id etLong 0x7f0902c2
 int id etName 0x7f0900f8
 int id etPassword 0x7f0900f9
 int id etTags 0x7f0900fa
@@ -3897,6 +3906,7 @@ int id indeterminate 0x7f09013e
 int id info 0x7f09013f
 int id invisible 0x7f090140
 int id inward 0x7f090141
+int id isPublic_badge 0x7f0902bf
 int id italic 0x7f090142
 int id item_touch_helper_previous_elevation 0x7f090143
 int id ivRestaurantLogo 0x7f090144
@@ -3904,6 +3914,7 @@ int id jumpToEnd 0x7f090145
 int id jumpToStart 0x7f090146
 int id labeled 0x7f090147
 int id layout 0x7f090148
+int id layout_geopoint 0x7f0902c3
 int id left 0x7f090149
 int id leftToRight 0x7f09014a
 int id legacy 0x7f09014b
@@ -4205,8 +4216,10 @@ int id tilCategory 0x7f090272
 int id tilConfirmPassword 0x7f090273
 int id tilCuisine 0x7f090274
 int id tilEmail 0x7f090275
+int id tilLat 0x7f0902c4
 int id tilLevel 0x7f090276
 int id tilLocation 0x7f090277
+int id tilLong 0x7f0902c5
 int id tilName 0x7f090278
 int id tilPassword 0x7f090279
 int id tilTags 0x7f09027a
@@ -4244,7 +4257,6 @@ int id txtBeforeGotoRegister 0x7f090299
 int id txtDisplay 0x7f09029a
 int id txtForgotPassword 0x7f09029b
 int id txtGotoRegister 0x7f09029c
-int id txtHeader 0x7f09029d
 int id txtInstructions 0x7f09029e
 int id txtInstructions2 0x7f09029f
 int id txtLoginHeader 0x7f0902a0
@@ -4255,6 +4267,7 @@ int id unchecked 0x7f0902a4
 int id uniform 0x7f0902a5
 int id unlabeled 0x7f0902a6
 int id up 0x7f0902a7
+int id updateRestaurantFragment 0x7f0902c6
 int id useLogo 0x7f0902a8
 int id user_name_text 0x7f0902a9
 int id vertical_only 0x7f0902aa
@@ -4429,6 +4442,7 @@ int layout fragment_search 0x7f0c003c
 int layout fragment_search_filter 0x7f0c003d
 int layout fragment_see_all_fav_restaurants 0x7f0c003e
 int layout fragment_see_recently_added 0x7f0c003f
+int layout fragment_update_restaurant 0x7f0c0084
 int layout ime_base_split_test_activity 0x7f0c0040
 int layout ime_secondary_split_test_activity 0x7f0c0041
 int layout item_restaurant_card 0x7f0c0042

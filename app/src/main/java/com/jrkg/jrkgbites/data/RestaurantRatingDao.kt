@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import com.jrkg.jrkgbites.model.NeverAgainRestaurantId
 import com.jrkg.jrkgbites.model.RestaurantRating
@@ -33,6 +34,7 @@ interface RestaurantRatingDao {
     @Query("SELECT * FROM restaurant_ratings WHERE restaurantId = :restaurantId ORDER BY timestamp DESC LIMIT 1")
     fun getLatestRatingForRestaurant(restaurantId: String): Flow<RestaurantRating?>
 
+    @Transaction
     suspend fun clearAndInsert(ratings: List<RestaurantRating>) {
         deleteAll()
         insertAll(ratings)

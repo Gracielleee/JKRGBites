@@ -9,6 +9,7 @@ import com.jrkg.jrkgbites.databinding.ItemRestaurantRatingBinding
 import com.jrkg.jrkgbites.model.RestaurantRating
 
 class RestaurantRatingAdapter(
+    private val onItemClick: (String) -> Unit,
     private val onRatingUpdate: (RestaurantRating) -> Unit,
     private val onRatingDelete: (RestaurantRating) -> Unit
 ) : ListAdapter<RestaurantRating, RestaurantRatingAdapter.RatingViewHolder>(DiffCallback) {
@@ -25,8 +26,10 @@ class RestaurantRatingAdapter(
     override fun onBindViewHolder(holder: RatingViewHolder, position: Int) {
         val current = getItem(position)
         holder.bind(current)
-        // Implement update and delete logic here if needed, for example:
-        // holder.itemView.setOnClickListener { onRatingUpdate(current) }
+        
+        holder.itemView.setOnClickListener { 
+            onItemClick(current.restaurantId)
+        }
     }
 
     class RatingViewHolder(private val binding: ItemRestaurantRatingBinding) :
@@ -41,13 +44,11 @@ class RestaurantRatingAdapter(
 
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<RestaurantRating>() {
-            override fun areItemsTheSame(oldItem: RestaurantRating, newItem: RestaurantRating):
-                    Boolean {
+            override fun areItemsTheSame(oldItem: RestaurantRating, newItem: RestaurantRating): Boolean {
                 return oldItem.id == newItem.id
             }
 
-            override fun areContentsTheSame(oldItem: RestaurantRating, newItem: RestaurantRating):
-                    Boolean {
+            override fun areContentsTheSame(oldItem: RestaurantRating, newItem: RestaurantRating): Boolean {
                 return oldItem == newItem
             }
         }

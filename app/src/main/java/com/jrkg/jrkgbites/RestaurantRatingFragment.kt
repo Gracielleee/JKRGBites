@@ -47,16 +47,19 @@ class RestaurantRatingFragment : Fragment() {
 
     private fun setupRecyclerView() {
         ratingAdapter = RestaurantRatingAdapter(
+            onItemClick = { restaurantId ->
+                // Navigate to details page when a rating is clicked
+                val bundle = Bundle().apply {
+                    putString("restaurantId", restaurantId)
+                }
+                findNavController().navigate(R.id.to_restaurantDetailsFragment, bundle)
+            },
             onRatingUpdate = {
-                // Callback function for when a rating is updated from the adapter
                 viewModel.submitRating(it.restaurantId, it.rating.toInt(), it.comment)
-                Toast.makeText(requireContext(), "Rating for ${it.restaurantId} updated!", Toast.LENGTH_SHORT).show()
             },
             onRatingDelete = { rating ->
-                // For future implementation: Add a confirmation dialog before deleting
-                // For now, we'll just set rating to 0 and remove comment
+                // Basic cleanup for now
                 viewModel.submitRating(rating.restaurantId, 0, "")
-                Toast.makeText(requireContext(), "Rating for ${rating.restaurantId} removed.", Toast.LENGTH_SHORT).show()
             }
         )
 
@@ -70,7 +73,6 @@ class RestaurantRatingFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.allRestaurantRatings.collect { ratings ->
                 if (ratings.isEmpty()) {
-                    // Show a message if there are no ratings yet
                     binding.ratingsRecyclerView.visibility = View.GONE
                     binding.noRatingsMessage.visibility = View.VISIBLE
                 } else {

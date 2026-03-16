@@ -19,6 +19,7 @@ import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.utils.ImageStorageUtils
 import com.jrkg.jrkgbites.utils.ToastUtils
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -50,6 +51,25 @@ class RestaurantDetailsFragment : Fragment() {
         }
 
         currentRestaurantId = args.restaurantId
+
+        // Observe restaurant details and handle silent pop on deletion
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.getRestaurantById(currentRestaurantId!!).collect { restaurant ->
+                if (restaurant != null) {
+                    displayRestaurantDetails(restaurant)
+                    setupRatingSection(restaurant)
+                    observeExistingRating(restaurant.id)
+                    updateIsPublicText(restaurant.isPublic == true)
+                    willHideUnathorizedButtons(restaurant)
+                } else {
+                    // Small delay ensures MainActivity Toast shows up reliably
+                    delay(100)
+                    if (isAdded && findNavController().currentDestination?.id == R.id.restaurantDetailsFragment) {
+                        findNavController().popBackStack()
+                    }
+                }
+            }
+        }
 
         binding.toggleFavoriteButton.setOnClickListener {
             currentRestaurantId?.let { id ->
@@ -94,8 +114,21 @@ class RestaurantDetailsFragment : Fragment() {
                 }
             }
         }
+        
+        binding.editRestaurantButton.setOnClickListener {
+            currentRestaurantId?.let { id ->
+                val bundle = Bundle().apply {
+                    putString("restaurantId", id)
+                }
+                findNavController().navigate(R.id.action_restaurantDetailsFragment_to_updateRestaurantFragment, bundle)
+            }
+        }
 
-        // Observe favorites to update the UI
+        binding.deleteRestaurantButton.setOnClickListener {
+            showDeleteConfirmationDialog()
+        }
+
+        // Observe favorites/never again to update the UI
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favoritesList.collect { favorites ->
                 val isFavorited = favorites.any { it.id == currentRestaurantId }
@@ -107,26 +140,6 @@ class RestaurantDetailsFragment : Fragment() {
             viewModel.neverAgainList.collect { neverAgain ->
                 val isNeverAgain = neverAgain.any { it.id == currentRestaurantId }
                 updateNeverAgainButton(isNeverAgain)
-            }
-        }
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.getRestaurantById(currentRestaurantId!!).collect { restaurant ->
-                restaurant?.let {
-                    displayRestaurantDetails(it)
-                    setupRatingSection(it)
-                    observeExistingRating(it.id)
-                } ?: run {
-                    ToastUtils.showCustomToast(
-                        context = requireContext(),
-                        message = "Restaurant not found!",
-                        type = ToastUtils.ToastType.ERROR,
-                        durationMs = 1500L,
-                        gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
-                        yOffset = 200
-                    )
-                    findNavController().navigateUp()
-                }
             }
         }
     }
@@ -142,11 +155,31 @@ class RestaurantDetailsFragment : Fragment() {
 
     private fun updateNeverAgainButton(isNeverAgain: Boolean) {
         val icon = if (isNeverAgain) {
-            R.drawable.ic_trash_restore  // Restore from Trash
+            R.drawable.ic_unarchive  // Restore from Archive
         } else {
-            R.drawable.ic_trash  // Can Trash
+            R.drawable.ic_archive  // Can Archive
         }
         binding.toggleNeverAgainButton.setImageResource(icon)
+    }
+
+    private fun updateIsPublicText(isPublic: Boolean) {
+        var stringDisplay = if (isPublic) {
+            "Public"
+        } else {
+            "Private"
+        }
+        binding.isPublicBadge.text = stringDisplay
+    }
+
+    private fun willHideUnathorizedButtons(restaurant: Restaurant) {
+        val isOwner = viewModel.isUserOwner(restaurant)
+        if (isOwner) {
+            binding.editRestaurantButton.visibility = View.VISIBLE
+            binding.deleteRestaurantButton.visibility = View.VISIBLE
+        } else {
+            binding.editRestaurantButton.visibility = View.GONE
+            binding.deleteRestaurantButton.visibility = View.GONE
+        }
     }
 
     private fun displayRestaurantDetails(restaurant: Restaurant) {
@@ -155,18 +188,6 @@ class RestaurantDetailsFragment : Fragment() {
         binding.restaurantLevel.text = "Level: ${restaurant.level.orEmpty()}"
         binding.restaurantTags.text = "Tags: ${restaurant.tags?.joinToString(", ").orEmpty()}"
 
-//        // Load image using the explicit logoResourceName
-//        val resId = if (!restaurant.logoResourceName.isNullOrEmpty()) {
-//            context?.resources?.getIdentifier(restaurant.logoResourceName, "drawable", context?.packageName) ?: 0
-//        } else {
-//            0
-//        }
-//
-//        if (resId != 0) {
-//            binding.restaurantImage.setImageResource(resId)
-//        } else {
-//            binding.restaurantImage.setImageResource(android.R.drawable.ic_menu_gallery)
-//        }
         val logoData = ImageStorageUtils.getLogo(requireContext(), restaurant.id, restaurant.name)
         binding.restaurantImage.load(logoData ?: android.R.drawable.ic_menu_gallery) {
             crossfade(true)
@@ -237,12 +258,34 @@ class RestaurantDetailsFragment : Fragment() {
         }
     }
 
+    private fun showDeleteConfirmationDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Delete Restaurant")
+            .setMessage("Are you sure you want to delete this restaurant? This action cannot be undone.")
+            .setPositiveButton("Delete") { _, _ ->
+                viewLifecycleOwner.lifecycleScope.launch {
+                    val restaurant = viewModel.getRestaurantById(currentRestaurantId!!).first()
+                    restaurant?.let { viewModel.deleteRestaurant(it) }
+                }
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
     private fun showNeverAgainDialog(restaurantId: String) {
         MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.dialog_never_again_title))
             .setMessage(getString(R.string.dialog_never_again_message))
             .setPositiveButton(getString(R.string.dialog_never_again_positive)) { _, _ ->
                 viewModel.addToNeverAgainFromRating(restaurantId)
+                ToastUtils.showCustomToast(
+                    context = requireContext(),
+                    message = "Added to Never Again. You can restore it in the Search page",
+                    type = ToastUtils.ToastType.SUCCESS,
+                    durationMs = 1500L,
+                    gravity = Gravity.TOP or Gravity.CENTER_HORIZONTAL,
+                    yOffset = 200
+                )
             }
             .setNegativeButton(getString(R.string.dialog_never_again_negative), null)
             .show()

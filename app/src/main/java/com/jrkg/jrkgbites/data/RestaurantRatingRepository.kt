@@ -1,22 +1,28 @@
 package com.jrkg.jrkgbites.data
 
 import android.util.Log
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.SetOptions
 import com.jrkg.jrkgbites.model.RestaurantRating
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.tasks.await
 
 class RestaurantRatingRepository(
     private val restaurantRatingDao: RestaurantRatingDao,
-//    private val user: User
 ) {
 
     companion object {
         private const val TAG = "RestaurantRatingRepository"
         private const val RESTAURANTS_COLLECTION = "restaurants"
-        private const val RATINGS_COLLECTION = "restaurant_ratings"
+        private const val RATINGS_COLLECTION = "restaurantRatings"
         private const val USER_COLLECTION = "users"
+
+        fun generateCompositeKey(restaurantId: String, userId: String): String{
+            return "${restaurantId}_${userId}"
+        }
     }
 
     // REMOTE MANAGEMENT
@@ -31,11 +37,14 @@ class RestaurantRatingRepository(
             val firebaseData = querySnapshot.documents.mapNotNull { doc ->
                 try {
                     val restaurantRef = doc.getDocumentReference("restaurant_id")
-                    val timestamp = doc.getTimestamp("timestamp")
-                    val timestampLong = if (timestamp != null) timestamp.toDate().getTime() else 0 // Convert Timestamp to Long
+                    val timestampLong = when (val ts = doc.get("timestamp")) {
+                        is Long -> ts
+                        is com.google.firebase.Timestamp -> ts.toDate().time
+                        else -> 0L
+                    }
 
                     RestaurantRating(
-                        id = doc.id.toInt(),
+                        id = doc.id,
                         restaurantId = restaurantRef?.id ?: "",
                         rating = doc.getLong("rating")?.toInt() ?: 0,
                         comment = doc.getString("comment") ?: "",
@@ -69,18 +78,43 @@ class RestaurantRatingRepository(
             "restaurant_id" to restaurantRef,
             "rating" to restaurantRating.rating,
             "comment" to restaurantRating.comment,
-            "timestamp" to System.currentTimeMillis(),
+            "timestamp" to Timestamp.now(),
         )
 
         //Add to RoomDB first for instant UI updates
         insertRatingLocal(restaurantRating)
         Log.d(TAG, "Attempting to add to ratings: ${restaurantRating.restaurantId}")
         try {
-            collection.document(compositeKey).set(ratingData).await()
+            collection
+                .document(compositeKey)
+                .set(ratingData, SetOptions.merge()) //For replacing/updating existing ratings
+                .await()
             Log.d(TAG, "Successfully added to ratings: ${restaurantRating.restaurantId}")
         } catch (e: Exception) {
             Log.e(TAG, "Error saving rating to Firestore", e)
             removeRatingLocal(restaurantRating)
+        }
+    }
+
+    suspend fun deleteRestaurantRatingByCascade(restaurantId: String, userId: String): Int {
+        val db = FirebaseFirestore.getInstance()
+        val collection = db.collection(RATINGS_COLLECTION)
+        val compositeKey = RestaurantRepository.generateCompositeKey(restaurantId, userId)
+
+        val originalRating = getRatingForRestaurantLocal(restaurantId).firstOrNull()
+
+        originalRating?.let { removeRatingLocal(it) }
+
+        return try {
+            // Delete from Firestore using composite key
+            collection.document(compositeKey).delete().await()
+            Log.d(TAG, "Successfully deleted rating: $compositeKey")
+            200
+        } catch (e: Exception) {
+            Log.e(TAG, "Error deleting rating from Firestore", e)
+            // Rollback if Firestore fails
+            originalRating?.let { insertRatingLocal(it) }
+            500
         }
     }
 
