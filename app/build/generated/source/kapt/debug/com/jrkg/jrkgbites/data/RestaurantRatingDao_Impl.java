@@ -119,40 +119,43 @@ public final class RestaurantRatingDao_Impl implements RestaurantRatingDao {
   }
 
   @Override
-  public Object insert(final RestaurantRating rating, final Continuation<? super Unit> arg1) {
+  public Object insert(final RestaurantRating rating,
+      final Continuation<? super Unit> $completion) {
     if (rating == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurantRating.insert(_connection, rating);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object insertAll(final List<RestaurantRating> ratings,
-      final Continuation<? super Unit> arg1) {
+      final Continuation<? super Unit> $completion) {
     if (ratings == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfRestaurantRating.insert(_connection, ratings);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object delete(final RestaurantRating rating, final Continuation<? super Unit> arg1) {
+  public Object delete(final RestaurantRating rating,
+      final Continuation<? super Unit> $completion) {
     if (rating == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfRestaurantRating.handle(_connection, rating);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object update(final RestaurantRating rating, final Continuation<? super Unit> arg1) {
+  public Object update(final RestaurantRating rating,
+      final Continuation<? super Unit> $completion) {
     if (rating == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __updateAdapterOfRestaurantRating.handle(_connection, rating);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
@@ -262,7 +265,7 @@ public final class RestaurantRatingDao_Impl implements RestaurantRatingDao {
   }
 
   @Override
-  public Object deleteAll(final Continuation<? super Unit> arg0) {
+  public Object deleteAll(final Continuation<? super Unit> $completion) {
     final String _sql = "DELETE FROM restaurant_ratings";
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -272,7 +275,7 @@ public final class RestaurantRatingDao_Impl implements RestaurantRatingDao {
       } finally {
         _stmt.close();
       }
-    }, arg0);
+    }, $completion);
   }
 
   @NonNull

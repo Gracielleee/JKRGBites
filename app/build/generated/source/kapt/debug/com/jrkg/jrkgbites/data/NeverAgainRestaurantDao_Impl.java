@@ -73,32 +73,32 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
 
   @Override
   public Object insert(final NeverAgainRestaurantId neverAgainRestaurant,
-      final Continuation<? super Unit> arg1) {
+      final Continuation<? super Unit> $completion) {
     if (neverAgainRestaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfNeverAgainRestaurantId.insert(_connection, neverAgainRestaurant);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object insertAll(final List<NeverAgainRestaurantId> neverAgainRestaurants,
-      final Continuation<? super Unit> arg1) {
+      final Continuation<? super Unit> $completion) {
     if (neverAgainRestaurants == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __insertAdapterOfNeverAgainRestaurantId.insert(_connection, neverAgainRestaurants);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
   public Object delete(final NeverAgainRestaurantId neverAgainRestaurant,
-      final Continuation<? super Unit> arg1) {
+      final Continuation<? super Unit> $completion) {
     if (neverAgainRestaurant == null) throw new NullPointerException();
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       __deleteAdapterOfNeverAgainRestaurantId.handle(_connection, neverAgainRestaurant);
       return Unit.INSTANCE;
-    }, arg1);
+    }, $completion);
   }
 
   @Override
@@ -125,7 +125,8 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
   }
 
   @Override
-  public Object getAllNeverAgainRestaurantIds(final Continuation<? super List<String>> arg0) {
+  public Object getAllNeverAgainRestaurantIds(
+      final Continuation<? super List<String>> $completion) {
     final String _sql = "SELECT never_again_restaurant FROM never_again_restaurants";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -144,11 +145,12 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
       } finally {
         _stmt.close();
       }
-    }, arg0);
+    }, $completion);
   }
 
   @Override
-  public Object isNeverAgain(final String restaurantId, final Continuation<? super Boolean> arg1) {
+  public Object isNeverAgain(final String restaurantId,
+      final Continuation<? super Boolean> $completion) {
     final String _sql = "SELECT EXISTS(SELECT 1 FROM never_again_restaurants WHERE never_again_restaurant = ?)";
     return DBUtil.performSuspending(__db, true, false, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -175,11 +177,11 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
       } finally {
         _stmt.close();
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteById(final String id, final Continuation<? super Unit> arg1) {
+  public Object deleteById(final String id, final Continuation<? super Unit> $completion) {
     final String _sql = "DELETE FROM never_again_restaurants WHERE never_again_restaurant = ?";
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -195,11 +197,11 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
       } finally {
         _stmt.close();
       }
-    }, arg1);
+    }, $completion);
   }
 
   @Override
-  public Object deleteAll(final Continuation<? super Unit> arg0) {
+  public Object deleteAll(final Continuation<? super Unit> $completion) {
     final String _sql = "DELETE FROM never_again_restaurants";
     return DBUtil.performSuspending(__db, false, true, (_connection) -> {
       final SQLiteStatement _stmt = _connection.prepare(_sql);
@@ -209,7 +211,7 @@ public final class NeverAgainRestaurantDao_Impl implements NeverAgainRestaurantD
       } finally {
         _stmt.close();
       }
-    }, arg0);
+    }, $completion);
   }
 
   @Override

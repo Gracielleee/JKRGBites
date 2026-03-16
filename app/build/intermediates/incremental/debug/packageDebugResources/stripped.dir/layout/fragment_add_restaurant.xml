@@ -24,19 +24,39 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9" />
 
-        <TextView
-            android:id="@+id/txtHeader"
+        <View
+            android:id="@+id/action_bar_bg"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="Add New Restaurant"
-            android:textAlignment="center"
-            android:textColor="?android:attr/textColorPrimary"
-            android:textSize="@dimen/txt_headline"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@id/guide_end"
-            app:layout_constraintStart_toStartOf="@id/guide_start"
+            android:layout_height="@dimen/button_height"
+            android:background="?attr/colorSurfaceContainerHigh"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="@dimen/touchtarget_min"
+            android:layout_height="@dimen/touchtarget_min"
+            android:contentDescription="@string/back_button_description"
+            android:padding="@dimen/spacing_standard"
+            app:srcCompat="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/action_bar_bg"
+            app:layout_constraintBottom_toBottomOf="@id/action_bar_bg"
+            app:tint="?attr/colorOnSurface" />
+
+        <TextView
+            android:id="@+id/screen_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Restaurant"
+            android:textSize="@dimen/txt_headline"
+            android:textColor="?attr/colorOnSurface"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/back_button"
+            app:layout_constraintTop_toTopOf="@id/action_bar_bg"
+            app:layout_constraintBottom_toBottomOf="@id/action_bar_bg"
+            android:layout_marginStart="@dimen/spacing_medium" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cvImage"
@@ -46,7 +66,7 @@
             app:cardCornerRadius="@dimen/spacing_standard"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/txtHeader">
+            app:layout_constraintTop_toBottomOf="@id/action_bar_bg">
             <ImageView
                 android:id="@+id/ivRestaurantLogo"
                 android:layout_width="match_parent"
@@ -151,6 +171,48 @@
                 android:hint="Location (Mall or Street Name)" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <LinearLayout
+            android:id="@+id/layout_geopoint"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/spacing_medium"
+            app:layout_constraintTop_toBottomOf="@id/tilLocation"
+            app:layout_constraintEnd_toEndOf="@id/guide_end"
+            app:layout_constraintStart_toStartOf="@id/guide_start">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLat"
+                style="@style/InputRounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginEnd="@dimen/spacing_small">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLat"
+                    style="@style/InputRounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Latitude (e.g. -6.73)" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLong"
+                style="@style/InputRounded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="@dimen/spacing_small">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLong"
+                    style="@style/InputRounded"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Longitude (e.g. 7.8)" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilTags"
             style="@style/InputRounded"
@@ -159,7 +221,7 @@
             android:layout_marginTop="@dimen/spacing_medium"
             app:layout_constraintEnd_toEndOf="@id/guide_end"
             app:layout_constraintStart_toStartOf="@id/guide_start"
-            app:layout_constraintTop_toBottomOf="@id/tilLocation">
+            app:layout_constraintTop_toBottomOf="@id/layout_geopoint">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etTags"
                 style="@style/InputRounded"

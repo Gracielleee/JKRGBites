@@ -56,6 +56,8 @@ class AddRestaurantFragment : Fragment(R.layout.fragment_add_restaurant) {
         val levelInput = binding.etLevel.text.toString().trim()
         val locationInput = binding.etLocation.text.toString().trim()
         val tagsInput = binding.etTags.text.toString().trim()
+        val latInput = binding.etLat.text.toString().trim()
+        val lngInput = binding.etLong.text.toString().trim()
 
         // Check if the image is selected
         if (selectedImageUri == null || selectedImageUri.toString().isEmpty()) {
@@ -96,8 +98,8 @@ class AddRestaurantFragment : Fragment(R.layout.fragment_add_restaurant) {
             location = locationInput,
             cuisine = cuisineInput,
             level = levelInput,
-            lat = "0.0", // To be added
-            lng = "0.0", // To be added
+            lat = latInput,
+            lng = lngInput,
             logoResourceName = logoResourceName,
             tags = tags ?: emptyList()
         )

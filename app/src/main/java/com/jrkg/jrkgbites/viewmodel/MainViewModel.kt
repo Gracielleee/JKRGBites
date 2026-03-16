@@ -21,7 +21,6 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 import androidx.lifecycle.viewModelScope
-import com.jrkg.jrkgbites.R  // <--- ADDED THIS IMPORT TO FIX UNRESOLVED REFERENCE
 import com.jrkg.jrkgbites.data.RestaurantRatingRepository
 import com.jrkg.jrkgbites.data.source.FirebaseAuthService
 import com.jrkg.jrkgbites.services.BiometricService
@@ -52,6 +51,7 @@ class MainViewModel(
     private val prefsManager: UserPreferencesManager,
     private val sessionManager: SessionManager,
     private val restaurantRepository: RestaurantRepository,
+    private val restaurantRatingRepository: RestaurantRatingRepository,
     private val restaurantManager: RestaurantManager
 ) : ViewModel() {
 
@@ -258,19 +258,22 @@ class MainViewModel(
 
     fun createRestaurant(restaurant: Restaurant) {
         viewModelScope.launch {
-            restaurantRepository.createRestaurant(restaurant, sessionState.value?.id ?: "")
+            try {
+                restaurantRepository.createRestaurant(restaurant, sessionState.value?.id ?: "")
+                _toastMessage.value = "Restaurant saved successfully!"
+            } catch (e: Exception) {
+                _toastMessage.value = "Failed to save restaurant."
+            }
         }
     }
 
     fun updateRestaurant(restaurant: Restaurant) {
         viewModelScope.launch {
             val result = restaurantRepository.updateRestaurant(restaurant, sessionState.value?.id ?: "")
-            if (result == 200) {
-                _toastMessage.value = "Restaurant updated successfully!"
-            } else if (result == 401) {
-                _toastMessage.value = "Unauthorized. You do not have permission to perform this action."
-            } else {
-                _toastMessage.value = "Failed to update restaurant. Try again later."
+            _toastMessage.value = when (result) {
+                200 -> "Restaurant updated successfully!"
+                401 -> "Unauthorized action."
+                else -> "Failed to update restaurant."
             }
         }
     }
