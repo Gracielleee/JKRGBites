@@ -76,10 +76,22 @@ class MainViewModel(
         restaurantPicker.init(viewModelScope)
         searchManager.init(viewModelScope)
 
-        // Resolve start destination after auth state has settled (avoids login flash).
+        // Resolve start destination after auth state & keep-logged-in preference have settled.
         viewModelScope.launch {
             delay(150)
-            _startDestination.value = if (sessionState.value != null) StartDestination.MAIN else StartDestination.LOGIN
+            val currentUser = sessionState.value
+            val keepLoggedIn = prefsManager.isKeepLoggedIn()
+
+            // If Firebase has a user but the user did NOT opt into persistence,
+            // immediately clear the Firebase session so the next launch starts clean.
+            if (currentUser != null && !keepLoggedIn) {
+                sessionManager.logout()
+                _startDestination.value = StartDestination.LOGIN
+            } else {
+                _startDestination.value =
+                    if (currentUser != null && keepLoggedIn) StartDestination.MAIN
+                    else StartDestination.LOGIN
+            }
         }
 
         // Initial data loading for RoomDB; full dataset from JSON when needed, then sync.
@@ -167,6 +179,9 @@ class MainViewModel(
     }
     suspend fun logout() {
         restaurantRepository.deleteAllLocal()
+        // When the user explicitly logs out, also clear the keep-logged-in preference.
+        prefsManager.setKeepLoggedIn(false)
+        _isKeepLoggedInEnabled.value = false
         sessionManager.logout()
     }
 
