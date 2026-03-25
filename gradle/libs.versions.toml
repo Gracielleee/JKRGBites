@@ -10,6 +10,8 @@ lifecycleRuntimeKtx = "2.7.0"
 nanoid = "1.0.1"
 retrofit = "2.9.0"
 room = "2.8.4"
+playServicesMaps = "18.2.0"
+playServicesLocation = "21.2.0"
 
 coreSplashScreen = "1.0.1"
 
@@ -79,6 +81,8 @@ multidex = { group = "androidx.multidex", name = "multidex", version.ref = "mult
 androidx-palette-ktx = { group = "androidx.palette", name = "palette-ktx", version.ref = "paletteKtx" }
 nanoid-kotlin = { module = "io.viascom.nanoid:nanoid", version.ref = "nanoid" }
 squareup-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMaps" }
+play-services-location = { group = "com.google.android.gms", name = "play-services-location", version.ref = "playServicesLocation" }
 
 # Added for testing
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }

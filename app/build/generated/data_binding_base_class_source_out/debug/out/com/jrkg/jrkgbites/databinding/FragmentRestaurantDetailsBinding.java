@@ -5,7 +5,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.jrkg.jrkgbites.R;
 import java.lang.NullPointerException;
@@ -30,6 +33,12 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
   public final ImageView backButton;
 
   @NonNull
+  public final MaterialButton btnManageTags;
+
+  @NonNull
+  public final MaterialButton btnShowMap;
+
+  @NonNull
   public final Button cancelRatingButton;
 
   @NonNull
@@ -42,7 +51,13 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
   public final TextView isPublicBadge;
 
   @NonNull
+  public final FrameLayout mapContainer;
+
+  @NonNull
   public final TextView mapHeader;
+
+  @NonNull
+  public final ProgressBar mapProgressBar;
 
   @NonNull
   public final TextInputEditText ratingCommentInput;
@@ -77,24 +92,34 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
   @NonNull
   public final ImageView toggleNeverAgainButton;
 
+  @NonNull
+  public final TextView tvMapPlaceholder;
+
   private FragmentRestaurantDetailsBinding(@NonNull ConstraintLayout rootView,
-      @NonNull View actionBarBg, @NonNull ImageView backButton, @NonNull Button cancelRatingButton,
-      @NonNull ImageView deleteRestaurantButton, @NonNull ImageView editRestaurantButton,
-      @NonNull TextView isPublicBadge, @NonNull TextView mapHeader,
-      @NonNull TextInputEditText ratingCommentInput, @NonNull TextView restaurantCategoryCuisine,
-      @NonNull ImageView restaurantImage, @NonNull TextView restaurantLevel,
-      @NonNull TextView restaurantName, @NonNull RatingBar restaurantRatingBar,
-      @NonNull TextView restaurantTags, @NonNull TextView screenTitle,
-      @NonNull Button submitRatingButton, @NonNull ImageView toggleFavoriteButton,
-      @NonNull ImageView toggleNeverAgainButton) {
+      @NonNull View actionBarBg, @NonNull ImageView backButton,
+      @NonNull MaterialButton btnManageTags, @NonNull MaterialButton btnShowMap,
+      @NonNull Button cancelRatingButton, @NonNull ImageView deleteRestaurantButton,
+      @NonNull ImageView editRestaurantButton, @NonNull TextView isPublicBadge,
+      @NonNull FrameLayout mapContainer, @NonNull TextView mapHeader,
+      @NonNull ProgressBar mapProgressBar, @NonNull TextInputEditText ratingCommentInput,
+      @NonNull TextView restaurantCategoryCuisine, @NonNull ImageView restaurantImage,
+      @NonNull TextView restaurantLevel, @NonNull TextView restaurantName,
+      @NonNull RatingBar restaurantRatingBar, @NonNull TextView restaurantTags,
+      @NonNull TextView screenTitle, @NonNull Button submitRatingButton,
+      @NonNull ImageView toggleFavoriteButton, @NonNull ImageView toggleNeverAgainButton,
+      @NonNull TextView tvMapPlaceholder) {
     this.rootView = rootView;
     this.actionBarBg = actionBarBg;
     this.backButton = backButton;
+    this.btnManageTags = btnManageTags;
+    this.btnShowMap = btnShowMap;
     this.cancelRatingButton = cancelRatingButton;
     this.deleteRestaurantButton = deleteRestaurantButton;
     this.editRestaurantButton = editRestaurantButton;
     this.isPublicBadge = isPublicBadge;
+    this.mapContainer = mapContainer;
     this.mapHeader = mapHeader;
+    this.mapProgressBar = mapProgressBar;
     this.ratingCommentInput = ratingCommentInput;
     this.restaurantCategoryCuisine = restaurantCategoryCuisine;
     this.restaurantImage = restaurantImage;
@@ -106,6 +131,7 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
     this.submitRatingButton = submitRatingButton;
     this.toggleFavoriteButton = toggleFavoriteButton;
     this.toggleNeverAgainButton = toggleNeverAgainButton;
+    this.tvMapPlaceholder = tvMapPlaceholder;
   }
 
   @Override
@@ -147,6 +173,18 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_manage_tags;
+      MaterialButton btnManageTags = ViewBindings.findChildViewById(rootView, id);
+      if (btnManageTags == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_show_map;
+      MaterialButton btnShowMap = ViewBindings.findChildViewById(rootView, id);
+      if (btnShowMap == null) {
+        break missingId;
+      }
+
       id = R.id.cancel_rating_button;
       Button cancelRatingButton = ViewBindings.findChildViewById(rootView, id);
       if (cancelRatingButton == null) {
@@ -171,9 +209,21 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.map_container;
+      FrameLayout mapContainer = ViewBindings.findChildViewById(rootView, id);
+      if (mapContainer == null) {
+        break missingId;
+      }
+
       id = R.id.map_header;
       TextView mapHeader = ViewBindings.findChildViewById(rootView, id);
       if (mapHeader == null) {
+        break missingId;
+      }
+
+      id = R.id.map_progress_bar;
+      ProgressBar mapProgressBar = ViewBindings.findChildViewById(rootView, id);
+      if (mapProgressBar == null) {
         break missingId;
       }
 
@@ -243,11 +293,18 @@ public final class FragmentRestaurantDetailsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_map_placeholder;
+      TextView tvMapPlaceholder = ViewBindings.findChildViewById(rootView, id);
+      if (tvMapPlaceholder == null) {
+        break missingId;
+      }
+
       return new FragmentRestaurantDetailsBinding((ConstraintLayout) rootView, actionBarBg,
-          backButton, cancelRatingButton, deleteRestaurantButton, editRestaurantButton,
-          isPublicBadge, mapHeader, ratingCommentInput, restaurantCategoryCuisine, restaurantImage,
-          restaurantLevel, restaurantName, restaurantRatingBar, restaurantTags, screenTitle,
-          submitRatingButton, toggleFavoriteButton, toggleNeverAgainButton);
+          backButton, btnManageTags, btnShowMap, cancelRatingButton, deleteRestaurantButton,
+          editRestaurantButton, isPublicBadge, mapContainer, mapHeader, mapProgressBar,
+          ratingCommentInput, restaurantCategoryCuisine, restaurantImage, restaurantLevel,
+          restaurantName, restaurantRatingBar, restaurantTags, screenTitle, submitRatingButton,
+          toggleFavoriteButton, toggleNeverAgainButton, tvMapPlaceholder);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

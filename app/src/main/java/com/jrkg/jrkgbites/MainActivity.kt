@@ -1,8 +1,12 @@
 package com.jrkg.jrkgbites
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
@@ -12,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jrkg.jrkgbites.services.LocationService
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
 import com.jrkg.jrkgbites.viewmodel.StartDestination
@@ -22,7 +27,21 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
     private lateinit var navController: NavController
+    private lateinit var locationService: LocationService
     private var navGraphAttached = false
+
+    private val locationPermissionRequest = registerForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { permissions ->
+        when {
+            permissions.getOrDefault(Manifest.permission.ACCESS_FINE_LOCATION, false) -> {
+                fetchAndSaveLocation()
+            }
+            permissions.getOrDefault(Manifest.permission.ACCESS_COARSE_LOCATION, false) -> {
+                fetchAndSaveLocation()
+            }
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // 1. Splash Screen setup
@@ -35,17 +54,20 @@ class MainActivity : AppCompatActivity() {
         val factory = MainViewModelFactory(application)
         viewModel = ViewModelProvider(this, factory)[MainViewModel::class.java]
 
+        // 3. Location Service
+        locationService = LocationService(this)
+
         // Keep splash on screen until we know where to go (Fixes flicker)
         splashScreen.setKeepOnScreenCondition { viewModel.startDestination.value == null }
 
-        // 3. Navigation setup
+        // 4. Navigation setup
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        // 4. Reactive Listeners
+        // 5. Reactive Listeners
         setupObservers()
 
-        // 5. Bottom Navigation
+        // 6. Bottom Navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNavigationView.setupWithNavController(navController)
 
@@ -57,6 +79,29 @@ class MainActivity : AppCompatActivity() {
                 else -> {
                     bottomNavigationView.visibility = View.VISIBLE
                 }
+            }
+        }
+
+        // 7. Check for Location Permissions on Startup (One-time check)
+        checkLocationPermissions()
+    }
+
+    private fun checkLocationPermissions() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            locationPermissionRequest.launch(arrayOf(
+                Manifest.permission.ACCESS_FINE_LOCATION,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ))
+        } else {
+            fetchAndSaveLocation()
+        }
+    }
+
+    private fun fetchAndSaveLocation() {
+        lifecycleScope.launch {
+            val location = locationService.getCurrentLocation()
+            location?.let {
+                viewModel.updateUserLocation(it.latitude, it.longitude)
             }
         }
     }

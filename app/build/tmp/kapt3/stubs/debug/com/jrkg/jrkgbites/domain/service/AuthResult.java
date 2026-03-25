@@ -1,5 +1,10 @@
 package com.jrkg.jrkgbites.domain.service;
 
+import com.google.firebase.Timestamp;
+import com.jrkg.jrkgbites.model.SubscriptionStatus;
+import com.jrkg.jrkgbites.model.User;
+import kotlinx.coroutines.flow.Flow;
+
 /**
  * A wrapper class to represent the result of an authentication operation,
  * which can be in a Success, Error, or Loading state.

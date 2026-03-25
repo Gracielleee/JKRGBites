@@ -14,6 +14,7 @@ import com.google.android.material.chip.Chip
 import com.jrkg.jrkgbites.databinding.FragmentFavoriteBinding
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.services.FilterService
+import com.jrkg.jrkgbites.services.ShakeDetector
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.launch
@@ -23,6 +24,7 @@ class FavoriteFragment : Fragment() {
     private var _binding: FragmentFavoriteBinding? = null
     private val binding get() = _binding!!
     private lateinit var viewModel: MainViewModel
+    private lateinit var shakeDetector: ShakeDetector
 
     private var currentSelectedCategory: String = "All"
 
@@ -40,15 +42,31 @@ class FavoriteFragment : Fragment() {
         binding.recentlyAddedRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         binding.categoryRecyclerId.layoutManager = GridLayoutManager(requireContext(), 2)
 
-        // 2. Setup ChipGroup
+        // 2. Setup ShakeDetector
+        shakeDetector = ShakeDetector(requireContext()).apply {
+            setThreshold(18f) // Intentional shake only
+            setOnShakeListener {
+                if (viewModel.favoritesList.value.isNotEmpty()) {
+                    navigateToRoulette()
+                }
+            }
+        }
+
+        // 3. Setup FAB
+        binding.fabSpinWheel.setOnClickListener {
+            navigateToRoulette()
+        }
+
+        // 4. Setup ChipGroup
         setupCategoryChips()
 
-        // 3. Observe the data flow
+        // 5. Observe the data flow
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favoritesList.collect { restaurantList ->
                 if (restaurantList.isNotEmpty()) {
                     binding.emptyFavoritesText.visibility = View.GONE
                     binding.favoritesContentGroup.visibility = View.VISIBLE
+                    binding.fabSpinWheel.visibility = View.VISIBLE
 
                     val recentlyAddedList = restaurantList.take(6)
                     binding.recentlyAddedRecycler.adapter = com.jrkg.jrkgbites.adapter.RestaurantAdapter(requireContext(), recentlyAddedList)
@@ -61,13 +79,31 @@ class FavoriteFragment : Fragment() {
                 } else {
                     binding.emptyFavoritesText.visibility = View.VISIBLE
                     binding.favoritesContentGroup.visibility = View.GONE
+                    binding.fabSpinWheel.visibility = View.GONE
                 }
             }
         }
 
-        // 4. Navigation
+        // 6. Navigation
         binding.seeAllFavorites.setOnClickListener { findNavController().navigate(R.id.see_all_favorites) }
         binding.seeAllCategory.setOnClickListener { findNavController().navigate(R.id.see_all_category) }
+    }
+
+    private fun navigateToRoulette() {
+        // Safe navigation to prevent multiple triggers
+        if (findNavController().currentDestination?.id == R.id.nav_favorite) {
+            findNavController().navigate(R.id.action_favoriteFragment_to_rouletteFragment)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        shakeDetector.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        shakeDetector.stop()
     }
 
 

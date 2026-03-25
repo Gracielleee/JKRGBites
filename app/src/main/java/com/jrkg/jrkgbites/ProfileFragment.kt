@@ -62,13 +62,30 @@ class ProfileFragment : Fragment() {
         }
 
         // 3. Setup Location Switch logic
-        binding.locationSwitch.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                binding.locationStatusText.text = "Location Enabled"
-                Toast.makeText(requireContext(), "Near-me suggestions active", Toast.LENGTH_SHORT).show()
+        binding.locationSwitch.isChecked = viewModel.isProximityEnabled()
+        binding.locationStatusText.text = if (binding.locationSwitch.isChecked) "Location Enabled" else "Location Disabled"
+
+        binding.locationSwitch.setOnCheckedChangeListener { buttonView, isChecked ->
+            if (!isChecked) {
+                // Show Warning Dialog when turning OFF
+                com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
+                    .setTitle("Experience Note")
+                    .setMessage("We want to make sure you get the best experience! By disabling location, we won't be able to show you exactly how close restaurants are or provide precise directions.")
+                    .setPositiveButton("Understood") { _, _ ->
+                        viewModel.setProximityEnabled(false)
+                        binding.locationStatusText.text = "Location Disabled"
+                    }
+                    .setNegativeButton("Keep Enabled") { _, _ ->
+                        // Revert the switch back to ON
+                        buttonView.isChecked = true
+                    }
+                    .setCancelable(false)
+                    .show()
             } else {
-                binding.locationStatusText.text = "Location Disabled"
-                Toast.makeText(requireContext(), "Showing all restaurants", Toast.LENGTH_SHORT).show()
+                viewModel.setProximityEnabled(true)
+                binding.locationStatusText.text = "Location Enabled"
+                val toastMsg = "Near-me suggestions active"
+                Toast.makeText(requireContext(), toastMsg, Toast.LENGTH_SHORT).show()
             }
         }
 

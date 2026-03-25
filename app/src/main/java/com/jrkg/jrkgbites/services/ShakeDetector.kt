@@ -17,16 +17,20 @@ class ShakeDetector(context: Context) : SensorEventListener {
     private var lastAcceleration = 0f
 
     private var onShakeListener: (() -> Unit)? = null
+    private var threshold: Float = 12f // Default threshold
 
     init {
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER)
-        // Initialize accelerations with a default value to avoid a spike on first detection
         currentAcceleration = SensorManager.GRAVITY_EARTH
         lastAcceleration = SensorManager.GRAVITY_EARTH
     }
 
     fun setOnShakeListener(listener: () -> Unit) {
         this.onShakeListener = listener
+    }
+
+    fun setThreshold(value: Float) {
+        this.threshold = value
     }
 
     fun start() {
@@ -52,8 +56,7 @@ class ShakeDetector(context: Context) : SensorEventListener {
             val delta = currentAcceleration - lastAcceleration
             acceleration = acceleration * 0.9f + delta
 
-            // The threshold for shake detection is set to 12, as per the idea file.
-            if (acceleration > 12) {
+            if (acceleration > threshold) {
                 onShakeListener?.invoke()
             }
         }

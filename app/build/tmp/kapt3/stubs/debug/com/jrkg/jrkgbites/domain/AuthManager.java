@@ -1,5 +1,9 @@
 package com.jrkg.jrkgbites.domain;
 
+import com.jrkg.jrkgbites.data.UserPreferencesManager;
+import com.jrkg.jrkgbites.services.BiometricAuthStatus;
+import com.jrkg.jrkgbites.services.BiometricService;
+
 /**
  * Manages the business logic for making authentication decisions.
  */

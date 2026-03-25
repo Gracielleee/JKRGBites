@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:attr/colorBackground">
+
+    <TextView
+        android:id="@+id/tv_winner_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Congratulations!"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/tv_winner_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="?attr/colorOnSurface"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="8dp"
+        tools:text="Winning Restaurant Name" />
+
+    <TextView
+        android:id="@+id/tv_winner_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="?attr/colorOnSurfaceVariant"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        tools:text="Category • Cuisine" />
+
+    <Button
+        android:id="@+id/btn_go_to_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to Details"
+        android:layout_marginBottom="8dp"/>
+
+    <Button
+        android:id="@+id/btn_directions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Directions"
+        android:layout_marginBottom="8dp"/>
+
+</LinearLayout>

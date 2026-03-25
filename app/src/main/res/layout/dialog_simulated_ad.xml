@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center">
+
+    <!-- Your custom spinning logo animation -->
+    <ImageView
+        android:id="@+id/iv_ad_animation"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:src="@drawable/avd_jrkg_spin_anim" />
+
+    <TextView
+        android:id="@+id/tv_ad_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Watching Ad... (5s)"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Please wait to receive your spin bonus."
+        android:alpha="0.7" />
+</LinearLayout>

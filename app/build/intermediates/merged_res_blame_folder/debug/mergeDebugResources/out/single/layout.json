@@ -1,90 +1,102 @@
 [
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/activity_main.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/activity_main.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/item_restaurant_card.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/item_restaurant_card.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_search_filter.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_search_filter.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/layout_custom_toast.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/layout_custom_toast.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_add_restaurant.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_add_restaurant.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_restaurant_details.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_restaurant_details.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_home.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_home.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/bottom_sheet_roulette_winner.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/bottom_sheet_roulette_winner.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_profile.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_profile.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_update_restaurant.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_update_restaurant.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_see_recently_added.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_see_recently_added.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_see_all_fav_restaurants.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_see_all_fav_restaurants.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_update_restaurant.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_update_restaurant.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_home.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_home.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_see_all_fav_restaurants.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_see_all_fav_restaurants.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_profile.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_profile.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_search.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_search.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_see_recently_added.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_see_recently_added.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_register.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_register.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_search.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_search.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/activity_main2.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/activity_main2.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_picker.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_picker.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/item_restaurant_list_card.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/item_restaurant_list_card.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_favorite.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_favorite.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_restaurant_rating.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_restaurant_rating.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_roulette.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_roulette.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/item_restaurant_card.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/item_restaurant_card.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_restaurant_rating.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_restaurant_rating.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/layout_custom_toast.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/layout_custom_toast.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/item_restaurant_list_card.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/item_restaurant_list_card.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/item_restaurant_rating.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/item_restaurant_rating.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/dialog_forgot_password.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/dialog_forgot_password.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/dialog_forgot_password.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/dialog_forgot_password.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/dialog_email_verification.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/dialog_email_verification.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_favorite.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_favorite.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_add_restaurant.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_add_restaurant.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/dialog_email_verification.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/dialog_email_verification.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_register.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_register.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_login.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_login.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/dialog_simulated_ad.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/dialog_simulated_ad.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_restaurant_details.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_restaurant_details.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_login.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_login.xml"
     },
     {
-        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-65:/layout/fragment_picker.xml",
-        "source": "com.jrkg.jrkgbites.app-main-68:/layout/fragment_picker.xml"
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/activity_main.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/fragment_search_filter.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/fragment_search_filter.xml"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/activity_main2.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/activity_main2.xml"
+    },
+    {
+        "merged": "com.jrkg.jrkgbites.app-mergeDebugResources-4:/layout/item_restaurant_rating.xml",
+        "source": "com.jrkg.jrkgbites.app-main-7:/layout/item_restaurant_rating.xml"
     }
 ]

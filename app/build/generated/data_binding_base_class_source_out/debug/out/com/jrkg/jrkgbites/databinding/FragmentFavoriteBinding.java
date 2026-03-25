@@ -6,16 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.constraintlayout.widget.Group;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.jrkg.jrkgbites.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -23,7 +24,7 @@ import java.lang.String;
 
 public final class FragmentFavoriteBinding implements ViewBinding {
   @NonNull
-  private final ScrollView rootView;
+  private final ConstraintLayout rootView;
 
   @NonNull
   public final TextView byCategoryText;
@@ -42,6 +43,9 @@ public final class FragmentFavoriteBinding implements ViewBinding {
 
   @NonNull
   public final TextView emptyFavoritesText;
+
+  @NonNull
+  public final ExtendedFloatingActionButton fabSpinWheel;
 
   @NonNull
   public final Group favoritesContentGroup;
@@ -67,10 +71,11 @@ public final class FragmentFavoriteBinding implements ViewBinding {
   @NonNull
   public final TextView seeAllFavorites;
 
-  private FragmentFavoriteBinding(@NonNull ScrollView rootView, @NonNull TextView byCategoryText,
-      @NonNull RelativeLayout categoryHeader, @NonNull RecyclerView categoryRecyclerId,
-      @NonNull Chip chipAll, @NonNull ChipGroup chipGroupCategories,
-      @NonNull TextView emptyFavoritesText, @NonNull Group favoritesContentGroup,
+  private FragmentFavoriteBinding(@NonNull ConstraintLayout rootView,
+      @NonNull TextView byCategoryText, @NonNull RelativeLayout categoryHeader,
+      @NonNull RecyclerView categoryRecyclerId, @NonNull Chip chipAll,
+      @NonNull ChipGroup chipGroupCategories, @NonNull TextView emptyFavoritesText,
+      @NonNull ExtendedFloatingActionButton fabSpinWheel, @NonNull Group favoritesContentGroup,
       @NonNull HorizontalScrollView horizontalScrollViewCategory,
       @NonNull RelativeLayout recentHeader, @NonNull RecyclerView recentlyAddedRecycler,
       @NonNull TextView recentlyAddedText, @NonNull TextView screenTitleDisplay,
@@ -82,6 +87,7 @@ public final class FragmentFavoriteBinding implements ViewBinding {
     this.chipAll = chipAll;
     this.chipGroupCategories = chipGroupCategories;
     this.emptyFavoritesText = emptyFavoritesText;
+    this.fabSpinWheel = fabSpinWheel;
     this.favoritesContentGroup = favoritesContentGroup;
     this.horizontalScrollViewCategory = horizontalScrollViewCategory;
     this.recentHeader = recentHeader;
@@ -94,7 +100,7 @@ public final class FragmentFavoriteBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public ScrollView getRoot() {
+  public ConstraintLayout getRoot() {
     return rootView;
   }
 
@@ -155,6 +161,12 @@ public final class FragmentFavoriteBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.fab_spin_wheel;
+      ExtendedFloatingActionButton fabSpinWheel = ViewBindings.findChildViewById(rootView, id);
+      if (fabSpinWheel == null) {
+        break missingId;
+      }
+
       id = R.id.favorites_content_group;
       Group favoritesContentGroup = ViewBindings.findChildViewById(rootView, id);
       if (favoritesContentGroup == null) {
@@ -203,10 +215,11 @@ public final class FragmentFavoriteBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentFavoriteBinding((ScrollView) rootView, byCategoryText, categoryHeader,
-          categoryRecyclerId, chipAll, chipGroupCategories, emptyFavoritesText,
-          favoritesContentGroup, horizontalScrollViewCategory, recentHeader, recentlyAddedRecycler,
-          recentlyAddedText, screenTitleDisplay, seeAllCategory, seeAllFavorites);
+      return new FragmentFavoriteBinding((ConstraintLayout) rootView, byCategoryText,
+          categoryHeader, categoryRecyclerId, chipAll, chipGroupCategories, emptyFavoritesText,
+          fabSpinWheel, favoritesContentGroup, horizontalScrollViewCategory, recentHeader,
+          recentlyAddedRecycler, recentlyAddedText, screenTitleDisplay, seeAllCategory,
+          seeAllFavorites);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -1,15 +1,19 @@
 package com.jrkg.jrkgbites.data.source
 
+import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
+import com.google.firebase.firestore.FirebaseFirestore
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.domain.service.AuthService
+import com.jrkg.jrkgbites.model.SubscriptionStatus
 import com.jrkg.jrkgbites.model.User
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.tasks.await
 
 class FirebaseAuthService(
-    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+    private val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance(),
+    private val firestore: FirebaseFirestore = FirebaseFirestore.getInstance()
 ) : AuthService {
 
     private val _sessionState = MutableStateFlow<User?>(null)
@@ -17,12 +21,37 @@ class FirebaseAuthService(
     init {
         firebaseAuth.addAuthStateListener { auth ->
             val firebaseUser = auth.currentUser
-            _sessionState.value = firebaseUser?.let {
-                User(
-                    id = it.uid,
-                    email = it.email ?: "",
-                    preferredName = it.displayName ?: "User"
+            if (firebaseUser != null) {
+                // Fetch extra user data from Firestore
+                fetchUserData(firebaseUser.uid, firebaseUser.email ?: "", firebaseUser.displayName ?: "User")
+            } else {
+                _sessionState.value = null
+            }
+        }
+    }
+
+    private fun fetchUserData(uid: String, email: String, name: String) {
+        firestore.collection("users").document(uid).addSnapshotListener { snapshot, _ ->
+            if (snapshot != null && snapshot.exists()) {
+                val statusStr = snapshot.getString("subscriptionStatus") ?: "NONE"
+                val trialStart = snapshot.getTimestamp("trialStartedAt")
+                
+                _sessionState.value = User(
+                    id = uid,
+                    email = email,
+                    preferredName = name,
+                    subscriptionStatus = SubscriptionStatus.valueOf(statusStr),
+                    trialStartedAt = trialStart
                 )
+            } else {
+                // Initialize default user in Firestore if not exists
+                val defaultUser = mapOf(
+                    "email" to email,
+                    "preferredName" to name,
+                    "subscriptionStatus" to "NONE"
+                )
+                firestore.collection("users").document(uid).set(defaultUser)
+                _sessionState.value = User(id = uid, email = email, preferredName = name)
             }
         }
     }
@@ -93,5 +122,14 @@ class FirebaseAuthService(
         } catch (_: Exception) {
             emit(false)
         }
+    }
+
+    override suspend fun updateSubscription(userId: String, status: SubscriptionStatus, trialStart: Timestamp?) {
+        val data = mutableMapOf<String, Any>(
+            "subscriptionStatus" to status.name
+        )
+        trialStart?.let { data["trialStartedAt"] = it }
+        
+        firestore.collection("users").document(userId).update(data).await()
     }
 }

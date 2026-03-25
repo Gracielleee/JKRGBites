@@ -1,11 +1,15 @@
 package com.jrkg.jrkgbites
 
 import androidx.`annotation`.CheckResult
+import androidx.navigation.ActionOnlyNavDirections
 import androidx.navigation.NavDirections
 import kotlin.String
 
 public class FavoriteFragmentDirections private constructor() {
   public companion object {
+    @CheckResult
+    public fun actionFavoriteFragmentToRouletteFragment(): NavDirections = ActionOnlyNavDirections(R.id.action_favoriteFragment_to_rouletteFragment)
+
     @CheckResult
     public fun actionLoginFragmentToNavHome(): NavDirections = NavGraphDirections.actionLoginFragmentToNavHome()
 

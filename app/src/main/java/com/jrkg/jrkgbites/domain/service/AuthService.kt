@@ -1,5 +1,7 @@
 package com.jrkg.jrkgbites.domain.service
 
+import com.google.firebase.Timestamp
+import com.jrkg.jrkgbites.model.SubscriptionStatus
 import com.jrkg.jrkgbites.model.User
 import kotlinx.coroutines.flow.Flow
 
@@ -46,4 +48,9 @@ interface AuthService {
      * @return A Flow emitting true on success, false on failure.
      */
     fun sendPasswordResetEmail(email: String): Flow<Boolean>
+
+    /**
+     * Updates user subscription status.
+     */
+    suspend fun updateSubscription(userId: String, status: SubscriptionStatus, trialStart: Timestamp?)
 }

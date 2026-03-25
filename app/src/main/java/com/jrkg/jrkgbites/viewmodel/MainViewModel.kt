@@ -31,6 +31,9 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.jrkg.jrkgbites.R
+import com.jrkg.jrkgbites.data.RouletteRepository
+import com.jrkg.jrkgbites.model.SpinSession
+import com.jrkg.jrkgbites.model.SubscriptionStatus
 
 /**
  * Resolved start destination for the navigation graph.
@@ -52,7 +55,10 @@ class MainViewModel(
     private val sessionManager: SessionManager,
     private val restaurantRepository: RestaurantRepository,
     private val restaurantRatingRepository: RestaurantRatingRepository,
-    private val restaurantManager: RestaurantManager
+    private val restaurantManager: RestaurantManager,
+    val rouletteRepository: RouletteRepository,
+    val adManager: AdManager,
+    val subscriptionManager: SubscriptionManager
 ) : ViewModel() {
 
     // --- Session Manager State ---
@@ -294,6 +300,62 @@ class MainViewModel(
     fun sendPasswordResetEmail(email: String): Flow<Boolean> {
         return sessionManager.sendPasswordResetEmail(email)
     }
+
+    // --- Roulette Helpers ---
+    suspend fun getRouletteSession(): SpinSession? {
+        val userId = sessionState.value?.id ?: return null
+        return rouletteRepository.getSpinSession(userId)
+    }
+
+    suspend fun logRouletteSpin(restaurantId: String) {
+        val userId = sessionState.value?.id ?: return
+        rouletteRepository.logSpin(userId, restaurantId)
+    }
+
+    suspend fun watchRouletteAd(): Boolean {
+        val userId = sessionState.value?.id ?: return false
+        return adManager.watchAd(userId)
+    }
+
+    // --- Location & Proximity ---
+    fun isProximityEnabled(): Boolean = prefsManager.isProximityFilterEnabled()
+
+    fun setProximityEnabled(enabled: Boolean) {
+        prefsManager.setProximityFilterEnabled(enabled)
+        refreshDeck() // Trigger list updates
+    }
+
+    fun updateUserLocation(lat: Double, lng: Double) {
+        prefsManager.saveLastLocation(lat, lng)
+        if (isProximityEnabled()) {
+            refreshDeck()
+        }
+    }
+
+    fun getUserLocation(): Pair<Double, Double> {
+        return Pair(prefsManager.getLastLat(), prefsManager.getLastLng())
+    }
+
+    val userPrefsManager get() = prefsManager
+
+    // --- Subscription Helpers ---
+    fun isPremiumActive(): Boolean {
+        return subscriptionManager.hasPremiumAccess(sessionState.value)
+    }
+
+    fun startFreeTrial() {
+        val userId = sessionState.value?.id ?: return
+        viewModelScope.launch {
+            sessionManager.updateSubscription(userId, SubscriptionStatus.TRIAL, com.google.firebase.Timestamp.now())
+        }
+    }
+
+    fun subscribeUser() {
+        val userId = sessionState.value?.id ?: return
+        viewModelScope.launch {
+            sessionManager.updateSubscription(userId, SubscriptionStatus.ACTIVE, null)
+        }
+    }
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -320,10 +382,13 @@ class MainViewModelFactory(
             val userIdFlow = sessionManager.sessionState.map { it?.id ?: "" }
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)
-            val swipeManager = SwipeManager(userIdFlow, restaurantRepository, restaurantManager)
+            val swipeManager = SwipeManager(userIdFlow, restaurantRepository, restaurantManager, prefsManager)
             val ratingManager = RatingManager(restaurantRatingRepository)
             val searchManager = SearchManager(restaurantRepository)
             val restaurantPicker = RestaurantPicker(restaurantRepository)
+            val rouletteRepository = RouletteRepository()
+            val adManager = AdManager(rouletteRepository)
+            val subscriptionManager = SubscriptionManager()
 
             return MainViewModel(
                 application = application,
@@ -336,7 +401,10 @@ class MainViewModelFactory(
                 sessionManager = sessionManager,
                 restaurantRepository = restaurantRepository,
                 restaurantManager = restaurantManager,
-                restaurantRatingRepository =  restaurantRatingRepository
+                restaurantRatingRepository =  restaurantRatingRepository,
+                rouletteRepository = rouletteRepository,
+                adManager = adManager,
+                subscriptionManager = subscriptionManager
             ) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")

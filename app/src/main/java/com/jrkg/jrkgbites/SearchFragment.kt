@@ -90,7 +90,7 @@ class SearchFragment : Fragment() {
     private fun applyFilters() {
         val query = currentQuery.lowercase()
 
-        val filteredList = fullRestaurantList.filter { restaurant ->
+        var filteredList = fullRestaurantList.filter { restaurant ->
             val matchesQuery = currentQuery.isEmpty() ||
                     listOf(restaurant.name, restaurant.category, restaurant.cuisine)
                         .any { it?.lowercase()?.contains(query) == true }
@@ -102,6 +102,24 @@ class SearchFragment : Fragment() {
                         (currentTag == "All" || restaurant.tags?.contains(currentTag) == true)
 
             matchesQuery && matchesFilters
+        }
+
+        // Apply proximity filter if enabled
+        if (viewModel.isProximityEnabled()) {
+            val (userLat, userLng) = viewModel.getUserLocation()
+            if (userLat != 0.0 && userLng != 0.0) {
+                filteredList = filteredList.filter { restaurant ->
+                    val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
+                    val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
+                    if (resLat != 0.0 && resLng != 0.0) {
+                        val results = FloatArray(1)
+                        android.location.Location.distanceBetween(userLat, userLng, resLat, resLng, results)
+                        results[0] <= 5000 // 5km limit
+                    } else {
+                        true
+                    }
+                }
+            }
         }
 
         adapter.updateList(filteredList.sortedBy { it.name })

@@ -2,6 +2,7 @@ package com.jrkg.jrkgbites.domain
 
 import android.util.Log
 import com.jrkg.jrkgbites.data.RestaurantRepository
+import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.*
@@ -21,6 +22,7 @@ class SwipeManager(
     private val userIdFlow: Flow<String>,
     private val restaurantRepository: RestaurantRepository,
     private val restaurantManager: RestaurantManager,
+    private val prefsManager: UserPreferencesManager
 ) {
 
     private var currentUserId: String = ""
@@ -59,7 +61,31 @@ class SwipeManager(
         ) { all, favorites, neverAgain, swipedIds, order ->
             val excludedIds = (favorites.map { it.id } + neverAgain.map { it.id } + swipedIds).toSet()
             val source = if (order.isNotEmpty()) order else all
-            source.filterNot { excludedIds.contains(it.id) }
+            
+            var filtered = source.filterNot { excludedIds.contains(it.id) }
+
+            // Apply Proximity Filter if enabled
+            if (prefsManager.isProximityFilterEnabled()) {
+                val userLat = prefsManager.getLastLat()
+                val userLng = prefsManager.getLastLng()
+                
+                if (userLat != 0.0 && userLng != 0.0) {
+                    filtered = filtered.filter { restaurant ->
+                        val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
+                        val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
+                        
+                        if (resLat != 0.0 && resLng != 0.0) {
+                            val results = FloatArray(1)
+                            android.location.Location.distanceBetween(userLat, userLng, resLat, resLng, results)
+                            results[0] <= 5000 // 5km radius limit
+                        } else {
+                            true // Keep if no location data available
+                        }
+                    }
+                }
+            }
+            
+            filtered
         }.stateIn(scope, SharingStarted.WhileSubscribed(5000), emptyList())
     }
 

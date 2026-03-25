@@ -1,5 +1,27 @@
 package com.jrkg.jrkgbites.adapter;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorInflater;
+import android.content.Context;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import androidx.recyclerview.widget.RecyclerView;
+import com.jrkg.jrkgbites.databinding.ItemRestaurantListCardBinding;
+import com.jrkg.jrkgbites.model.Restaurant;
+import com.jrkg.jrkgbites.R;
+import android.util.Log;
+import androidx.core.content.ContextCompat;
+import androidx.palette.graphics.Palette;
+import android.graphics.Color;
+import android.os.Vibrator;
+import androidx.core.graphics.ColorUtils;
+import androidx.recyclerview.widget.DiffUtil;
+import coil.request.CachePolicy;
+import com.jrkg.jrkgbites.utils.ImageStorageUtils;
+
 @kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u00008\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010 \n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\u0010\u0002\n\u0002\b\u0006\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\b\n\u0002\b\u0007\u0018\u00002\b\u0012\u0004\u0012\u00020\u00020\u0001:\u0002\u0018\u0019B5\u0012\u0006\u0010\u0003\u001a\u00020\u0004\u0012\f\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006\u0012\u0016\b\u0002\u0010\b\u001a\u0010\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\n\u0018\u00010\t\u00a2\u0006\u0004\b\u000b\u0010\fJ\u0014\u0010\r\u001a\u00020\n2\f\u0010\u000e\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006J\u0018\u0010\u000f\u001a\u00020\u00022\u0006\u0010\u0010\u001a\u00020\u00112\u0006\u0010\u0012\u001a\u00020\u0013H\u0016J\u0018\u0010\u0014\u001a\u00020\n2\u0006\u0010\u0015\u001a\u00020\u00022\u0006\u0010\u0016\u001a\u00020\u0013H\u0016J\b\u0010\u0017\u001a\u00020\u0013H\u0016R\u000e\u0010\u0003\u001a\u00020\u0004X\u0082\u0004\u00a2\u0006\u0002\n\u0000R\u0014\u0010\u0005\u001a\b\u0012\u0004\u0012\u00020\u00070\u0006X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u001c\u0010\b\u001a\u0010\u0012\u0004\u0012\u00020\u0007\u0012\u0004\u0012\u00020\n\u0018\u00010\tX\u0082\u0004\u00a2\u0006\u0002\n\u0000\u00a8\u0006\u001a"}, d2 = {"Lcom/jrkg/jrkgbites/adapter/RestaurantAdapter;", "Landroidx/recyclerview/widget/RecyclerView$Adapter;", "Lcom/jrkg/jrkgbites/adapter/RestaurantAdapter$RestaurantViewHolder;", "context", "Landroid/content/Context;", "restaurantList", "", "Lcom/jrkg/jrkgbites/model/Restaurant;", "onItemClick", "Lkotlin/Function1;", "", "<init>", "(Landroid/content/Context;Ljava/util/List;Lkotlin/jvm/functions/Function1;)V", "updateList", "newList", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "", "onBindViewHolder", "holder", "position", "getItemCount", "RestaurantViewHolder", "RestaurantDiffCallback", "app_debug"})
 public final class RestaurantAdapter extends androidx.recyclerview.widget.RecyclerView.Adapter<com.jrkg.jrkgbites.adapter.RestaurantAdapter.RestaurantViewHolder> {
     @org.jetbrains.annotations.NotNull()

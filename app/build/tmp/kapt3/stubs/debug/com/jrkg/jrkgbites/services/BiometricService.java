@@ -1,5 +1,11 @@
 package com.jrkg.jrkgbites.services;
 
+import android.content.Context;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentActivity;
+
 /**
  * A service class to handle all interactions with the Android Biometric/Fingerprint APIs.
  */

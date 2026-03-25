@@ -1,9 +1,10 @@
 package com.jrkg.jrkgbites.data.source
 
+import com.google.firebase.Timestamp
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.domain.service.AuthService
+import com.jrkg.jrkgbites.model.SubscriptionStatus
 import com.jrkg.jrkgbites.model.User
-import com.jrkg.jrkgbites.model.UserPreferences
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -28,8 +29,7 @@ class FakeAuthService : AuthService {
             val dummyUser = User(
                 id = "user-123",
                 email = email,
-                preferredName = "Test User",
-//                preferences = UserPreferences(maxDistance = 5000)
+                preferredName = "Test User"
             )
             sessionState.value = dummyUser
             emit(AuthResult.Success(dummyUser))
@@ -46,8 +46,7 @@ class FakeAuthService : AuthService {
         val newUser = User(
             id = UUID.randomUUID().toString(),
             email = email,
-            preferredName = preferredName,
-//            preferences = UserPreferences(maxDistance = 5000) // Default preferences
+            preferredName = preferredName
         )
         sessionState.value = newUser
         emit(AuthResult.Success(newUser))
@@ -70,5 +69,15 @@ class FakeAuthService : AuthService {
         } else {
             emit(false)
         }
+    }
+
+    override suspend fun updateSubscription(
+        userId: String,
+        status: SubscriptionStatus,
+        trialStart: Timestamp?
+    ) {
+        // Simulate network delay
+        delay(500)
+        // In a fake implementation, we just complete without doing anything persistent.
     }
 }

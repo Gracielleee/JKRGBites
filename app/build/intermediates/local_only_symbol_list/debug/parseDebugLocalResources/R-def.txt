@@ -1,5 +1,9 @@
 R_DEF: Internal format may change without notice
 local
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
 animator card_flip_back
 animator card_flip_front
 animator card_flip_left_in
@@ -389,6 +393,7 @@ drawable yakimix
 drawable yellowcab
 drawable yogorino
 id action_bar_bg
+id action_favoriteFragment_to_rouletteFragment
 id action_loginFragment_to_nav_home
 id action_nav_picker_to_restaurantDetailsFragment
 id action_nav_profile_to_restaurantRatingFragment
@@ -420,8 +425,14 @@ id btnRegister
 id btnResend
 id btnSave
 id btnSubmit
+id btn_directions
+id btn_get_spins
+id btn_go_to_details
+id btn_manage_tags
 id btn_reset
+id btn_show_map
 id btn_shuffle
+id btn_spin
 id btn_undo
 id by_category_text
 id cancel_rating_button
@@ -456,6 +467,7 @@ id etName
 id etPassword
 id etTags
 id etUsername
+id fab_spin_wheel
 id fav_count_text
 id favorites_content_group
 id filter_icon
@@ -476,6 +488,7 @@ id imgBtnBack
 id imgLogo
 id isPublic_badge
 id ivRestaurantLogo
+id iv_ad_animation
 id layout_geopoint
 id level_chip_group
 id location_status_text
@@ -484,7 +497,9 @@ id login
 id loginFragment
 id logout_button
 id manage_ratings_card
+id map_container
 id map_header
+id map_progress_bar
 id nav_favorite
 id nav_graph
 id nav_home
@@ -527,6 +542,7 @@ id restaurant_level
 id restaurant_name
 id restaurant_rating_bar
 id restaurant_tags
+id rouletteFragment
 id screen_title
 id screen_title_display
 id searchFilterFragment
@@ -538,6 +554,8 @@ id section_title_level
 id section_title_tags
 id see_all_category
 id see_all_favorites
+id spin_counter_card
+id spin_wheel_view
 id submit_rating_button
 id tags_chip_group
 id textViewEmptyState
@@ -564,6 +582,13 @@ id toast_text
 id toggleFavoriteButton
 id toggleNeverAgainButton
 id touchBackToLogin
+id tv_ad_message
+id tv_fast_forward
+id tv_map_placeholder
+id tv_spins_left
+id tv_winner_category
+id tv_winner_name
+id tv_winner_title
 id txtAltLogin
 id txtBackToLogin
 id txtBeforeGotoRegister
@@ -580,8 +605,10 @@ id updateRestaurantFragment
 id user_name_text
 layout activity_main
 layout activity_main2
+layout bottom_sheet_roulette_winner
 layout dialog_email_verification
 layout dialog_forgot_password
+layout dialog_simulated_ad
 layout fragment_add_restaurant
 layout fragment_favorite
 layout fragment_home
@@ -591,6 +618,7 @@ layout fragment_profile
 layout fragment_register
 layout fragment_restaurant_details
 layout fragment_restaurant_rating
+layout fragment_roulette
 layout fragment_search
 layout fragment_search_filter
 layout fragment_see_all_fav_restaurants

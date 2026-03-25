@@ -12,10 +12,37 @@ class UserPreferencesManager(context: Context) {
         private const val PREFERENCES_FILE_NAME = "JRKGBitesUserPrefs"
         private const val KEY_BIOMETRIC_AUTH_ENABLED = "biometricAuthEnabled"
         private const val KEY_KEEP_LOGGED_IN = "keepLoggedIn"
+        private const val KEY_PROXIMITY_FILTER_ENABLED = "proximityFilterEnabled"
+        private const val KEY_LAST_LAT = "lastLat"
+        private const val KEY_LAST_LNG = "lastLng"
     }
 
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences(PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
+
+    fun setProximityFilterEnabled(isEnabled: Boolean) {
+        sharedPreferences.edit().putBoolean(KEY_PROXIMITY_FILTER_ENABLED, isEnabled).apply()
+    }
+
+    fun isProximityFilterEnabled(): Boolean {
+        return sharedPreferences.getBoolean(KEY_PROXIMITY_FILTER_ENABLED, false)
+    }
+
+    fun saveLastLocation(lat: Double, lng: Double) {
+        sharedPreferences.edit().apply {
+            putFloat(KEY_LAST_LAT, lat.toFloat())
+            putFloat(KEY_LAST_LNG, lng.toFloat())
+            apply()
+        }
+    }
+
+    fun getLastLat(): Double {
+        return sharedPreferences.getFloat(KEY_LAST_LAT, 0f).toDouble()
+    }
+
+    fun getLastLng(): Double {
+        return sharedPreferences.getFloat(KEY_LAST_LNG, 0f).toDouble()
+    }
 
     /**
      * Saves the user's choice for enabling or disabling biometric authentication.

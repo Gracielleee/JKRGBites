@@ -12,6 +12,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.databinding.FragmentRestaurantDetailsBinding
@@ -128,6 +132,14 @@ class RestaurantDetailsFragment : Fragment() {
             showDeleteConfirmationDialog()
         }
 
+        binding.btnManageTags.setOnClickListener {
+            if (viewModel.isPremiumActive()) {
+                showTagPicker()
+            } else {
+                showPremiumUnlockDialog()
+            }
+        }
+
         // Observe favorites/never again to update the UI
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.favoritesList.collect { favorites ->
@@ -193,6 +205,41 @@ class RestaurantDetailsFragment : Fragment() {
             crossfade(true)
             placeholder(android.R.drawable.ic_menu_gallery)
             error(android.R.drawable.ic_menu_gallery)
+        }
+
+        // Setup Mini-Map
+        binding.btnShowMap.setOnClickListener {
+            val lat = restaurant.lat?.toDoubleOrNull()
+            val lng = restaurant.lng?.toDoubleOrNull()
+            if (lat != null && lng != null) {
+                loadMap(lat, lng, restaurant.name ?: "Restaurant")
+                binding.btnShowMap.visibility = View.GONE
+            } else {
+                ToastUtils.showCustomToast(
+                    requireContext(),
+                    "No location coordinates available for this restaurant.",
+                    ToastUtils.ToastType.INFO
+                )
+            }
+        }
+    }
+
+    private fun loadMap(lat: Double, lng: Double, name: String) {
+        binding.mapProgressBar.visibility = View.VISIBLE
+        binding.tvMapPlaceholder.visibility = View.GONE
+
+        val mapFragment = SupportMapFragment.newInstance()
+        childFragmentManager.beginTransaction()
+            .replace(R.id.map_container, mapFragment)
+            .commit()
+
+        mapFragment.getMapAsync { googleMap ->
+            binding.mapProgressBar.visibility = View.GONE
+            val location = LatLng(lat, lng)
+            googleMap.addMarker(MarkerOptions().position(location).title(name))
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16f))
+            googleMap.uiSettings.isZoomControlsEnabled = true
+            googleMap.uiSettings.isMapToolbarEnabled = true // Shows the "Open in Google Maps" button
         }
     }
 
@@ -289,6 +336,71 @@ class RestaurantDetailsFragment : Fragment() {
             }
             .setNegativeButton(getString(R.string.dialog_never_again_negative), null)
             .show()
+    }
+
+    private fun showPremiumUnlockDialog() {
+        MaterialAlertDialogBuilder(requireContext())
+            .setTitle("Unlock Custom Personalization 💎")
+            .setMessage("Custom tags like 'Date Night' or 'Family Gathering' are a premium feature. Would you like to start your 15-day free trial?")
+            .setPositiveButton("Start Free Trial") { _, _ ->
+                viewModel.startFreeTrial()
+                ToastUtils.showCustomToast(
+                    context = requireContext(),
+                    message = "Trial Started! Enjoy custom tags.",
+                    type = ToastUtils.ToastType.SUCCESS
+                )
+                showTagPicker()
+            }
+            .setNeutralButton("Subscribe Now") { _, _ ->
+                viewModel.subscribeUser()
+                ToastUtils.showCustomToast(
+                    context = requireContext(),
+                    message = "Welcome to JRKGBites Premium!",
+                    type = ToastUtils.ToastType.SUCCESS
+                )
+                showTagPicker()
+            }
+            .setNegativeButton("Maybe later", null)
+            .show()
+    }
+
+    private fun showTagPicker() {
+        val availableTags = arrayOf("Date Night", "Family Gathering", "Future Plans", "Healthy Choice", "Quick Bite", "Hidden Gem")
+        val checkedItems = BooleanArray(availableTags.size)
+        
+        viewLifecycleOwner.lifecycleScope.launch {
+            val restaurant = viewModel.getRestaurantById(currentRestaurantId!!).first()
+            val currentTags = restaurant?.tags ?: emptyList()
+            
+            for (i in availableTags.indices) {
+                checkedItems[i] = currentTags.contains(availableTags[i])
+            }
+
+            MaterialAlertDialogBuilder(requireContext())
+                .setTitle("Personalize this Restaurant")
+                .setMultiChoiceItems(availableTags, checkedItems) { _, which, isChecked ->
+                    checkedItems[which] = isChecked
+                }
+                .setPositiveButton("Save") { _, _ ->
+                    val selectedTags = mutableListOf<String>()
+                    for (i in availableTags.indices) {
+                        if (checkedItems[i]) selectedTags.add(availableTags[i])
+                    }
+                    saveTags(selectedTags)
+                }
+                .setNegativeButton("Cancel", null)
+                .show()
+        }
+    }
+
+    private fun saveTags(tags: List<String>) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            val restaurant = viewModel.getRestaurantById(currentRestaurantId!!).first()
+            restaurant?.let {
+                val updated = it.copy(tags = tags)
+                viewModel.updateRestaurant(updated)
+            }
+        }
     }
 
     override fun onDestroyView() {

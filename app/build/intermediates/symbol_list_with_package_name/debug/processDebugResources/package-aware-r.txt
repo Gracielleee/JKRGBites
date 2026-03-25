@@ -47,6 +47,10 @@ anim nav_default_enter_anim
 anim nav_default_exit_anim
 anim nav_default_pop_enter_anim
 anim nav_default_pop_exit_anim
+anim slide_in_left
+anim slide_in_right
+anim slide_out_left
+anim slide_out_right
 animator card_flip_back
 animator card_flip_front
 animator card_flip_left_in
@@ -149,6 +153,7 @@ attr alpha
 attr alphabeticModifiers
 attr altSrc
 attr alwaysExpand
+attr ambientEnabled
 attr animateCircleAngleTo
 attr animateMenuItems
 attr animateNavigationIcon
@@ -256,6 +261,13 @@ attr buttonStyle
 attr buttonStyleSmall
 attr buttonTint
 attr buttonTintMode
+attr cameraBearing
+attr cameraMaxZoomPreference
+attr cameraMinZoomPreference
+attr cameraTargetLat
+attr cameraTargetLng
+attr cameraTilt
+attr cameraZoom
 attr cardBackgroundColor
 attr cardCornerRadius
 attr cardElevation
@@ -734,6 +746,10 @@ attr labelVisibilityMode
 attr largeFontVerticalOffsetAdjustment
 attr lastBaselineToBottomHeight
 attr lastItemDecorated
+attr latLngBoundsNorthEastLatitude
+attr latLngBoundsNorthEastLongitude
+attr latLngBoundsSouthWestLatitude
+attr latLngBoundsSouthWestLongitude
 attr launchSingleTop
 attr layout
 attr layoutDescription
@@ -830,10 +846,13 @@ attr listPreferredItemPaddingEnd
 attr listPreferredItemPaddingLeft
 attr listPreferredItemPaddingRight
 attr listPreferredItemPaddingStart
+attr liteMode
 attr logo
 attr logoAdjustViewBounds
 attr logoDescription
 attr logoScaleType
+attr mapId
+attr mapType
 attr marginHorizontal
 attr marginLeftSystemWindowInsets
 attr marginRightSystemWindowInsets
@@ -1347,11 +1366,20 @@ attr triggerId
 attr triggerReceiver
 attr triggerSlack
 attr ttcIndex
+attr uiCompass
+attr uiMapToolbar
+attr uiRotateGestures
+attr uiScrollGestures
+attr uiScrollGesturesDuringRotateOrZoom
+attr uiTiltGestures
+attr uiZoomControls
+attr uiZoomGestures
 attr upDuration
 attr uri
 attr useCompatPadding
 attr useDrawerArrowDrawable
 attr useMaterialThemeColors
+attr useViewLifecycle
 attr values
 attr verticalOffset
 attr verticalOffsetWithText
@@ -1386,6 +1414,7 @@ attr windowSplashScreenIconBackgroundColor
 attr yearSelectedStyle
 attr yearStyle
 attr yearTodayStyle
+attr zOrderOnTop
 bool abc_action_bar_embed_tabs
 bool abc_config_actionMenuItemAllCaps
 bool mtrl_btn_textappearance_all_caps
@@ -3642,6 +3671,7 @@ id action_bar_title
 id action_container
 id action_context_bar
 id action_divider
+id action_favoriteFragment_to_rouletteFragment
 id action_image
 id action_loginFragment_to_nav_home
 id action_menu_divider
@@ -3718,8 +3748,14 @@ id btnRegister
 id btnResend
 id btnSave
 id btnSubmit
+id btn_directions
+id btn_get_spins
+id btn_go_to_details
+id btn_manage_tags
 id btn_reset
+id btn_show_map
 id btn_shuffle
+id btn_spin
 id btn_undo
 id buttonPanel
 id by_category_text
@@ -3840,6 +3876,7 @@ id etUsername
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab_spin_wheel
 id fade
 id fav_count_text
 id favorites_content_group
@@ -3892,6 +3929,7 @@ id homeAsUp
 id honorRequest
 id horizontalScrollViewCategory
 id horizontal_only
+id hybrid
 id icon
 id icon_group
 id icon_only
@@ -3911,6 +3949,7 @@ id isPublic_badge
 id italic
 id item_touch_helper_previous_elevation
 id ivRestaurantLogo
+id iv_ad_animation
 id jumpToEnd
 id jumpToStart
 id labeled
@@ -3935,7 +3974,9 @@ id logout_button
 id ltr
 id m3_side_sheet
 id manage_ratings_card
+id map_container
 id map_header
+id map_progress_bar
 id marquee
 id masked
 id match_constraint
@@ -4103,9 +4144,11 @@ id right
 id rightToLeft
 id right_icon
 id right_side
+id rouletteFragment
 id rounded
 id row_index_key
 id rtl
+id satellite
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4158,6 +4201,8 @@ id snapMargins
 id south
 id spacer
 id special_effects_controller_view_tag
+id spin_counter_card
+id spin_wheel_view
 id splashscreen_icon_view
 id spline
 id split_action_bar
@@ -4196,6 +4241,7 @@ id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
 id tags_chip_group
+id terrain
 id text
 id text2
 id textEnd
@@ -4252,6 +4298,13 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv_ad_message
+id tv_fast_forward
+id tv_map_placeholder
+id tv_spins_left
+id tv_winner_category
+id tv_winner_name
+id tv_winner_title
 id txtAltLogin
 id txtBackToLogin
 id txtBeforeGotoRegister
@@ -4409,6 +4462,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_main
 layout activity_main2
+layout bottom_sheet_roulette_winner
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -4429,6 +4483,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_email_verification
 layout dialog_forgot_password
+layout dialog_simulated_ad
 layout fingerprint_dialog_layout
 layout fragment_add_restaurant
 layout fragment_favorite
@@ -4439,6 +4494,7 @@ layout fragment_profile
 layout fragment_register
 layout fragment_restaurant_details
 layout fragment_restaurant_rating
+layout fragment_roulette
 layout fragment_search
 layout fragment_search_filter
 layout fragment_see_all_fav_restaurants
@@ -5996,6 +6052,7 @@ styleable LinearLayoutCompat_Layout android_layout_gravity android_layout_width 
 styleable LinearProgressIndicator indeterminateAnimationType indicatorDirectionLinear
 styleable ListPopupWindow android_dropDownHorizontalOffset android_dropDownVerticalOffset
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
+styleable MapAttrs ambientEnabled backgroundColor cameraBearing cameraMaxZoomPreference cameraMinZoomPreference cameraTargetLat cameraTargetLng cameraTilt cameraZoom latLngBoundsNorthEastLatitude latLngBoundsNorthEastLongitude latLngBoundsSouthWestLatitude latLngBoundsSouthWestLongitude liteMode mapId mapType uiCompass uiMapToolbar uiRotateGestures uiScrollGestures uiScrollGesturesDuringRotateOrZoom uiTiltGestures uiZoomControls uiZoomGestures useViewLifecycle zOrderOnTop
 styleable MaterialAlertDialog backgroundInsetBottom backgroundInsetEnd backgroundInsetStart backgroundInsetTop backgroundTint
 styleable MaterialAlertDialogTheme materialAlertDialogBodyTextStyle materialAlertDialogButtonSpacerVisibility materialAlertDialogTheme materialAlertDialogTitleIconStyle materialAlertDialogTitlePanelStyle materialAlertDialogTitleTextStyle
 styleable MaterialAutoCompleteTextView android_inputType android_popupElevation dropDownBackgroundTint simpleItemLayout simpleItemSelectedColor simpleItemSelectedRippleColor simpleItems

@@ -1,5 +1,11 @@
 package com.jrkg.jrkgbites.domain;
 
+import android.util.Log;
+import com.jrkg.jrkgbites.data.RestaurantRepository;
+import com.jrkg.jrkgbites.data.UserPreferencesManager;
+import com.jrkg.jrkgbites.model.Restaurant;
+import kotlinx.coroutines.flow.*;
+
 /**
  * Defines the possible directions for a swipe action.
  */

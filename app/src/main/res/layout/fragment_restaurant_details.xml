@@ -192,33 +192,67 @@
                     android:padding="8dp"
                     android:background="?attr/selectableItemBackground" />
 
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_manage_tags"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_medium"
+                    android:text="Tags 🏷️"
+                    app:icon="@drawable/ic_edit" />
+
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/map_header"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Location on Map"
-                android:textSize="@dimen/txt_subheading"
-                android:textStyle="bold"
-                android:textColor="?attr/colorOnSurface"
                 android:layout_marginTop="@dimen/spacing_standard"
-                android:layout_marginBottom="@dimen/spacing_medium"/>
+                android:layout_marginBottom="@dimen/spacing_medium">
+
+                <TextView
+                    android:id="@+id/map_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location on Map"
+                    android:textSize="@dimen/txt_subheading"
+                    android:textStyle="bold"
+                    android:textColor="?attr/colorOnSurface"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_show_map"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Show Map 📍"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
 
             <!-- Rating and Comment Input Section -->
             <FrameLayout
+                android:id="@+id/map_container"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:layout_marginBottom="@dimen/spacing_standard"
                 android:background="@color/md_theme_surfaceContainerHigh">
                 <!-- Placeholder for Map View -->
                 <TextView
+                    android:id="@+id/tv_map_placeholder"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="Map Placeholder"
+                    android:text="Map is hidden to save data"
                     android:textColor="?attr/colorOnSurfaceVariant"
-                    android:textSize="@dimen/txt_headline" />
+                    android:textSize="@dimen/txt_body" />
+
+                <ProgressBar
+                    android:id="@+id/map_progress_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" />
             </FrameLayout>
 
             <TextView

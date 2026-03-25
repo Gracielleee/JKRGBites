@@ -1,5 +1,29 @@
 package com.jrkg.jrkgbites.viewmodel;
 
+import android.app.Application;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import com.jrkg.jrkgbites.AppDatabase;
+import com.jrkg.jrkgbites.data.RestaurantRepository;
+import com.jrkg.jrkgbites.data.UserPreferencesManager;
+import com.jrkg.jrkgbites.domain.*;
+import com.jrkg.jrkgbites.domain.service.AuthResult;
+import com.jrkg.jrkgbites.domain.service.AuthService;
+import com.jrkg.jrkgbites.model.Restaurant;
+import com.jrkg.jrkgbites.model.RestaurantRating;
+import com.jrkg.jrkgbites.model.User;
+import kotlinx.coroutines.flow.Flow;
+import kotlinx.coroutines.flow.SharedFlow;
+import kotlinx.coroutines.flow.StateFlow;
+import com.jrkg.jrkgbites.data.RestaurantRatingRepository;
+import com.jrkg.jrkgbites.data.source.FirebaseAuthService;
+import com.jrkg.jrkgbites.services.BiometricService;
+import kotlinx.coroutines.flow.SharingStarted;
+import com.jrkg.jrkgbites.R;
+import com.jrkg.jrkgbites.data.RouletteRepository;
+import com.jrkg.jrkgbites.model.SpinSession;
+import com.jrkg.jrkgbites.model.SubscriptionStatus;
+
 /**
  * Resolved start destination for the navigation graph.
  * Used by the Activity to set the graph programmatically and avoid login flash.

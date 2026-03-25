@@ -1,20 +1,20 @@
 package com.jrkg.jrkgbites.model
 
-/**
- * Represents the user's customizable preferences for restaurant recommendations.
- */
-data class UserPreferences(
-    val cuisineTypes: List<String> = emptyList(),
-    val maxDistance: Int // The maximum distance in meters for recommendations
-)
+import com.google.firebase.Timestamp
+
+enum class SubscriptionStatus {
+    NONE,   // Haven't started trial or subscribed
+    TRIAL,  // Currently using the 15-day free period
+    ACTIVE  // Paid member
+}
 
 /**
- * Represents a logged-in user in the application.
+ * Represents a logged-in user in the application with subscription tracking.
  */
 data class User(
-    val id: String,
-    val email: String,
-    val preferredName: String, // As mentioned in the sign-up function description
-//    val favorites: Set<String> = emptySet(), // A Set is used to ensure no duplicate favorite IDs
-//    val preferences: UserPreferences
+    val id: String = "",
+    val email: String = "",
+    val preferredName: String = "",
+    val subscriptionStatus: SubscriptionStatus = SubscriptionStatus.NONE,
+    val trialStartedAt: Timestamp? = null
 )

@@ -1,8 +1,10 @@
 package com.jrkg.jrkgbites.domain
 
+import com.google.firebase.Timestamp
 import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.domain.service.AuthService
+import com.jrkg.jrkgbites.model.SubscriptionStatus
 import com.jrkg.jrkgbites.model.User
 import kotlinx.coroutines.flow.Flow
 
@@ -44,5 +46,12 @@ class SessionManager(private val authService: AuthService) {
      */
     fun sendPasswordResetEmail(email: String): Flow<Boolean> {
         return authService.sendPasswordResetEmail(email)
+    }
+
+    /**
+     * Updates the user's subscription status in the backend.
+     */
+    suspend fun updateSubscription(userId: String, status: SubscriptionStatus, trialStart: Timestamp?) {
+        authService.updateSubscription(userId, status, trialStart)
     }
 }

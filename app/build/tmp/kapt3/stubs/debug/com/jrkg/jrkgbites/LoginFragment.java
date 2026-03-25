@@ -1,5 +1,22 @@
 package com.jrkg.jrkgbites;
 
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import com.google.android.material.textfield.TextInputEditText;
+import com.jrkg.jrkgbites.utils.ValidationUtils;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.Lifecycle;
+import com.jrkg.jrkgbites.domain.service.AuthResult;
+import com.jrkg.jrkgbites.services.BiometricService;
+import com.jrkg.jrkgbites.viewmodel.MainViewModel;
+import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory;
+
 @kotlin.Metadata(mv = {2, 2, 0}, k = 1, xi = 48, d1 = {"\u0000R\n\u0002\u0018\u0002\n\u0002\u0018\u0002\n\u0002\b\u0003\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b\u0002\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0010\u0002\n\u0000\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u000b\u0018\u00002\u00020\u0001B\u0007\u00a2\u0006\u0004\b\u0002\u0010\u0003J\u001a\u0010\u0016\u001a\u00020\u00172\u0006\u0010\u0018\u001a\u00020\u00192\b\u0010\u001a\u001a\u0004\u0018\u00010\u001bH\u0016J\b\u0010\u001c\u001a\u00020\u0017H\u0002J\b\u0010\u001d\u001a\u00020\u0017H\u0002J\b\u0010\u001e\u001a\u00020\u0017H\u0002J\u0010\u0010\u001f\u001a\u00020\u00172\u0006\u0010 \u001a\u00020\u0010H\u0002J\b\u0010!\u001a\u00020\u0017H\u0002J\b\u0010\"\u001a\u00020\u0017H\u0002J\b\u0010#\u001a\u00020\u0017H\u0002J\b\u0010$\u001a\u00020\u0017H\u0002J\b\u0010%\u001a\u00020\u0017H\u0002R\u000e\u0010\u0004\u001a\u00020\u0005X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0006\u001a\u00020\u0005X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0007\u001a\u00020\bX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\t\u001a\u00020\nX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000b\u001a\u00020\nX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\f\u001a\u00020\rX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000e\u001a\u00020\rX\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u000f\u001a\u00020\u0010X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0011\u001a\u00020\u0010X\u0082\u000e\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0012\u001a\u00020\u0013X\u0082.\u00a2\u0006\u0002\n\u0000R\u000e\u0010\u0014\u001a\u00020\u0015X\u0082.\u00a2\u0006\u0002\n\u0000\u00a8\u0006&"}, d2 = {"Lcom/jrkg/jrkgbites/LoginFragment;", "Landroidx/fragment/app/Fragment;", "<init>", "()V", "etEmail", "Lcom/google/android/material/textfield/TextInputEditText;", "etPassword", "checkBoxKeepMeLoggedIn", "Landroid/widget/CheckBox;", "loginButton", "Landroid/widget/Button;", "bioAuthButton", "goToForgotPassword", "Landroid/widget/TextView;", "gotoRegister", "isValidEmailFormat", "", "isAutoLoginEnabled", "viewModel", "Lcom/jrkg/jrkgbites/viewmodel/MainViewModel;", "biometricService", "Lcom/jrkg/jrkgbites/services/BiometricService;", "onViewCreated", "", "view", "Landroid/view/View;", "savedInstanceState", "Landroid/os/Bundle;", "setupListeners", "onLoginButtonPressed", "onBioAuthButtonPressed", "updateAutoLoginStatus", "isChecked", "onGoToRegisterPressed", "onGoToForgotPasswordPressed", "observeSessionForAutoLogin", "observeNavigateToMainAfterAuth", "navigateToMain", "app_debug"})
 public final class LoginFragment extends androidx.fragment.app.Fragment {
     private com.google.android.material.textfield.TextInputEditText etEmail;

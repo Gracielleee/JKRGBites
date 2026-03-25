@@ -42,6 +42,10 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -78,12 +82,16 @@ dependencies {
     implementation(libs.androidx.palette.ktx)
     implementation(libs.coil.ktx)
 
-//    // Test Dependencies
-//    testImplementation(libs.junit)
-//    testImplementation(libs.mockito.core)
-//    testImplementation(libs.mockito.kotlin)
-//    testImplementation(libs.kotlinx.coroutines.test)
-//    testImplementation(libs.turbine)
+    // Google Maps & Location
+    implementation(libs.play.services.maps)
+    implementation(libs.play.services.location)
+
+    // Test Dependencies
+    testImplementation(libs.junit)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.turbine)
     
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -75,9 +75,27 @@ class HomeFragment : Fragment() {
                     viewModel.allRestaurants,
                     viewModel.neverAgainList
                 ) { allRestaurants, neverAgainList ->
-                    allRestaurants.filter { restaurant ->
+                    var filtered = allRestaurants.filter { restaurant ->
                         !neverAgainList.any { it.id == restaurant.id }
                     }
+
+                    if (viewModel.isProximityEnabled()) {
+                        val (userLat, userLng) = viewModel.getUserLocation()
+                        if (userLat != 0.0 && userLng != 0.0) {
+                            filtered = filtered.filter { restaurant ->
+                                val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
+                                val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
+                                if (resLat != 0.0 && resLng != 0.0) {
+                                    val results = FloatArray(1)
+                                    android.location.Location.distanceBetween(userLat, userLng, resLat, resLng, results)
+                                    results[0] <= 5000 // 5km limit
+                                } else {
+                                    true
+                                }
+                            }
+                        }
+                    }
+                    filtered
                 }.collectLatest { filteredRestaurants ->
                     updateRestaurantList(filteredRestaurants)
                 }
