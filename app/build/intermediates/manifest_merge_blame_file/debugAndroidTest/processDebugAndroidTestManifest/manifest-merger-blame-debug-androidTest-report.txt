@@ -3,24 +3,24 @@
 3    package="com.jrkg.jrkgbites.test" >
 4
 5    <uses-sdk
-5-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:5:5-74
+5-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:5:5-74
 6        android:minSdkVersion="33"
-6-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:5:15-41
+6-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:5:15-41
 7        android:targetSdkVersion="34" />
-7-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:5:42-71
+7-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:5:42-71
 8
 9    <instrumentation
-9-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:7:5-11:68
+9-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:7:5-11:68
 10        android:name="androidx.test.runner.AndroidJUnitRunner"
-10-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:7:22-76
+10-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:7:22-76
 11        android:functionalTest="false"
-11-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:10:22-52
+11-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:10:22-52
 12        android:handleProfiling="false"
-12-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:9:22-53
+12-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:9:22-53
 13        android:label="Tests for com.jrkg.jrkgbites"
-13-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:11:22-66
+13-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:11:22-66
 14        android:targetPackage="com.jrkg.jrkgbites" />
-14-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest774613302096045287.xml:8:22-64
+14-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\build\intermediates\tmp\manifest\androidTest\debug\tempFile1ProcessTestManifest18046004028793731283.xml:8:22-64
 15
 16    <queries>
 16-->[androidx.test:runner:1.5.2] C:\Users\Ralph\.gradle\caches\9.2.1\transforms\119e33b8440a0be22ac4d42c83a6f24e\workspace\transformed\runner-1.5.2\AndroidManifest.xml:24:5-28:15
