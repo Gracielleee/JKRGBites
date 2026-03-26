@@ -22,7 +22,10 @@ class SwipeManager(
     private val userIdFlow: Flow<String>,
     private val restaurantRepository: RestaurantRepository,
     private val restaurantManager: RestaurantManager,
-    private val prefsManager: UserPreferencesManager
+    private val prefsManager: UserPreferencesManager, // Keep for other preferences
+    private val isProximityFilterEnabledFlow: StateFlow<Boolean>,
+    private val lastLatFlow: StateFlow<Double>,
+    private val lastLngFlow: StateFlow<Double>
 ) {
 
     private var currentUserId: String = ""
@@ -33,6 +36,8 @@ class SwipeManager(
 
     private val _displayOrder = MutableStateFlow<List<Restaurant>>(emptyList())
     private val _sessionSwipedRestaurants = MutableStateFlow<Set<String>>(emptySet())
+    val sessionSwipedRestaurantsFlow: StateFlow<Set<String>> = _sessionSwipedRestaurants.asStateFlow()
+
     private val _swipeHistory = mutableListOf<Pair<Restaurant, SwipeDirection>>()
     private val MAX_SWIPE_HISTORY_SIZE = 8
 
@@ -53,34 +58,48 @@ class SwipeManager(
     // The single source of truth for the deck, automatically combining all state
     val deck: StateFlow<List<Restaurant>> by lazy {
         combine(
-            _allRestaurants,
-            favoritesList,
-            neverAgainList,
-            _sessionSwipedRestaurants,
-            _displayOrder
-        ) { all, favorites, neverAgain, swipedIds, order ->
+            listOf(
+                _allRestaurants,
+                favoritesList,
+                neverAgainList,
+                _sessionSwipedRestaurants,
+                _displayOrder,
+                isProximityFilterEnabledFlow,
+                lastLatFlow,
+                lastLngFlow
+            )
+        ) { args ->
+            @Suppress("UNCHECKED_CAST")
+            val all = args[0] as List<Restaurant>
+            @Suppress("UNCHECKED_CAST")
+            val favorites = args[1] as List<Restaurant>
+            @Suppress("UNCHECKED_CAST")
+            val neverAgain = args[2] as List<Restaurant>
+            @Suppress("UNCHECKED_CAST")
+            val swipedIds = args[3] as Set<String>
+            @Suppress("UNCHECKED_CAST")
+            val order = args[4] as List<Restaurant>
+            val isProximityEnabled = args[5] as Boolean
+            val userLat = args[6] as Double
+            val userLng = args[7] as Double
+
             val excludedIds = (favorites.map { it.id } + neverAgain.map { it.id } + swipedIds).toSet()
             val source = if (order.isNotEmpty()) order else all
             
             var filtered = source.filterNot { excludedIds.contains(it.id) }
 
-            // Apply Proximity Filter if enabled
-            if (prefsManager.isProximityFilterEnabled()) {
-                val userLat = prefsManager.getLastLat()
-                val userLng = prefsManager.getLastLng()
-                
-                if (userLat != 0.0 && userLng != 0.0) {
-                    filtered = filtered.filter { restaurant ->
-                        val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
-                        val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
-                        
-                        if (resLat != 0.0 && resLng != 0.0) {
-                            val results = FloatArray(1)
-                            android.location.Location.distanceBetween(userLat, userLng, resLat, resLng, results)
-                            results[0] <= 5000 // 5km radius limit
-                        } else {
-                            true // Keep if no location data available
-                        }
+            // Apply Proximity Filter if enabled and valid location is available
+            if (isProximityEnabled && (userLat != 0.0 && userLng != 0.0)) {
+                filtered = filtered.filter { restaurant ->
+                    val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
+                    val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
+                    
+                    if (resLat != 0.0 && resLng != 0.0) {
+                        val results = FloatArray(1)
+                        android.location.Location.distanceBetween(userLat, userLng, resLat, resLng, results)
+                        results[0] <= 5000 // 5km radius limit
+                    } else {
+                        true // Keep if no location data available for restaurant
                     }
                 }
             }

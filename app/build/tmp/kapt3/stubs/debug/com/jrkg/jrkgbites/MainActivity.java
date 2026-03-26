@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.widget.Toast;
 import com.jrkg.jrkgbites.services.LocationService;
 import com.jrkg.jrkgbites.viewmodel.MainViewModel;
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory;

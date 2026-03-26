@@ -16,6 +16,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import android.widget.Toast
 import com.jrkg.jrkgbites.services.LocationService
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.MainViewModelFactory
@@ -95,6 +96,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             fetchAndSaveLocation()
         }
+
     }
 
     private fun fetchAndSaveLocation() {
@@ -102,8 +104,13 @@ class MainActivity : AppCompatActivity() {
             val location = locationService.getCurrentLocation()
             location?.let {
                 viewModel.updateUserLocation(it.latitude, it.longitude)
-            }
-        }
+                // Add a toast for debugging
+                Toast.makeText(this@MainActivity, "Location saved: ${it.latitude}, ${it.longitude}", Toast.LENGTH_SHORT).show()
+                } ?: run {
+                // Add a toast if location is null
+                Toast.makeText(this@MainActivity, "Failed to get current location. Please ensure GPS is enabled and try again.", Toast.LENGTH_LONG).show()
+                // REMOVED: viewModel.updateUserLocation(0.0, 0.0) // Ensure default is set if location fails
+                }        }
     }
 
     private fun setupObservers() {

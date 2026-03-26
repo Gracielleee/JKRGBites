@@ -11,7 +11,7 @@ class AdManager(private val repository: RouletteRepository) {
      */
     suspend fun watchAd(userId: String): Boolean {
         // Simulate the 5-second ad as requested
-        delay(5000)
+
         repository.logAdCompletion(userId)
         return true
     }

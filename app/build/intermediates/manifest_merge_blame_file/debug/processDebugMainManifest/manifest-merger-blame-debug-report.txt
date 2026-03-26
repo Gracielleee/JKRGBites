@@ -99,11 +99,11 @@
 54
 55        <!-- TODO: Replace 'YOUR_API_KEY' with your actual Google Maps API Key from the Cloud Console -->
 56        <meta-data
-56-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:20:9-22:44
+56-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:20:9-22:71
 57            android:name="com.google.android.geo.API_KEY"
 57-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:21:13-58
-58            android:value="YOUR_API_KEY" />
-58-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:22:13-41
+58            android:value="AIzaSyByvZSFOnnpWdlTGFRtY6FFN5zyvibXPlw" />
+58-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:22:13-68
 59
 60        <activity
 60-->C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:24:9-31:20

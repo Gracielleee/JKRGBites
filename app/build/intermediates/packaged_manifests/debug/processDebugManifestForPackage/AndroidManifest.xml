@@ -55,7 +55,7 @@
         <!-- TODO: Replace 'YOUR_API_KEY' with your actual Google Maps API Key from the Cloud Console -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AIzaSyByvZSFOnnpWdlTGFRtY6FFN5zyvibXPlw" />
 
         <activity
             android:name="com.jrkg.jrkgbites.MainActivity"

@@ -55,7 +55,12 @@
         android:id="@+id/rouletteFragment"
         android:name="com.jrkg.jrkgbites.RouletteFragment"
         android:label="Roulette"
-        tools:layout="@layout/fragment_roulette" />
+        tools:layout="@layout/fragment_roulette" >
+        <argument
+            android:name="shouldSpin"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
 
 
     <fragment

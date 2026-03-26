@@ -2,8 +2,6 @@ package com.jrkg.jrkgbites
 
 import android.graphics.drawable.Animatable
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -21,6 +19,7 @@ import com.jrkg.jrkgbites.databinding.FragmentRouletteBinding
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.viewmodel.MainViewModel
 import com.jrkg.jrkgbites.viewmodel.RouletteViewModel
+import com.jrkg.jrkgbites.viewmodel.RouletteViewModelFactory
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -29,7 +28,10 @@ class RouletteFragment : Fragment() {
     private var _binding: FragmentRouletteBinding? = null
     private val binding get() = _binding!!
     
-    private val rouletteViewModel: RouletteViewModel by viewModels()
+    private val rouletteViewModel: RouletteViewModel by viewModels {
+        val userId = mainViewModel.sessionState.value?.id ?: "" 
+        RouletteViewModelFactory(userId, mainViewModel.rouletteRepository)
+    }
     private lateinit var mainViewModel: MainViewModel
     
     private var displayList: List<Restaurant> = emptyList()
@@ -48,16 +50,33 @@ class RouletteFragment : Fragment() {
         fetchPersistentSession()
         observeViewModel()
         setupListeners()
+
+        // Check if navigation was triggered by a shake and a spin should be initiated
+        arguments?.let { bundle ->
+            val shouldSpin = bundle.getBoolean("shouldSpin", false)
+            if (shouldSpin) {
+                binding.root.post {
+                    if (rouletteViewModel.canSpin() && displayList.isNotEmpty()) {
+                        binding.btnSpin.performClick()
+                    }
+                }
+            }
+        }
     }
 
     private fun setupWheel() {
         viewLifecycleOwner.lifecycleScope.launch {
+            // Updated to use favoritesList instead of deck to ensure only favorited restaurants are spun
             mainViewModel.favoritesList.collectLatest { favorites ->
                 var filtered = favorites
 
                 if (mainViewModel.isProximityEnabled()) {
-                    val (userLat, userLng) = mainViewModel.getUserLocation()
-                    if (userLat != 0.0 && userLng != 0.0) {
+                    val location = mainViewModel.getUserLocation()
+                    val userLat = location.first
+                    val userLng = location.second
+                    val hasValidLocation = userLat != 0.0 || userLng != 0.0
+
+                    if (hasValidLocation) {
                         filtered = favorites.filter { restaurant ->
                             val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
                             val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
@@ -69,15 +88,17 @@ class RouletteFragment : Fragment() {
                                 true
                             }
                         }
+                    } else {
+                        Toast.makeText(context, "Proximity filter enabled, but location not available.", Toast.LENGTH_LONG).show()
+                        filtered = favorites
                     }
                 }
 
                 if (filtered.isNotEmpty()) {
-                    // Shuffle and take up to 12 restaurants to keep the wheel readable
                     displayList = filtered.shuffled().take(12)
                     binding.spinWheelView.setRestaurants(displayList)
                 } else if (favorites.isEmpty()) {
-                    Toast.makeText(context, "No favorites to spin!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, "No favorites to spin! Add some restaurants to your favorites first.", Toast.LENGTH_LONG).show()
                     findNavController().popBackStack()
                 } else {
                     Toast.makeText(context, "No favorites nearby!", Toast.LENGTH_SHORT).show()
@@ -91,9 +112,10 @@ class RouletteFragment : Fragment() {
         viewLifecycleOwner.lifecycleScope.launch {
             val session = mainViewModel.getRouletteSession()
             session?.let {
-                // Calculate remaining: 1 free + ads watched - spins used
+                // Logic: 1 free spin + 1 spin per ad (max 2 ads)
                 val remaining = (1 + it.adsWatchedToday) - it.spinsUsedToday
-                rouletteViewModel.setSpinsLeft(remaining.coerceAtLeast(0))
+                // Cap to [0, maxSpins] to avoid garbage data (e.g. 5/3)
+                rouletteViewModel.setSpinsLeft(remaining.coerceIn(0, rouletteViewModel.maxSpins))
             }
         }
     }
@@ -105,12 +127,19 @@ class RouletteFragment : Fragment() {
                     if (count > 0) {
                         binding.tvSpinsLeft.text = "Spins Left: $count/${rouletteViewModel.maxSpins}"
                         binding.tvSpinsLeft.setTextColor(resources.getColor(R.color.md_theme_onSurface, null))
+                        // Enable color wheel if spins are available
                         binding.spinWheelView.isGrayscale = false
+                        binding.btnGetSpins.visibility = View.GONE
                     } else {
-                        binding.spinWheelView.isGrayscale = true
+                        // When count is 0, check if user can still watch ads (max 3 total spins: 1 free + 2 ads)
+                        val adsWatched = mainViewModel.getRouletteSession()?.adsWatchedToday ?: 0
+                        if (adsWatched < 2) {
+                            binding.btnGetSpins.visibility = View.VISIBLE
+                        } else {
+                            binding.btnGetSpins.visibility = View.GONE
+                        }
                     }
                     
-                    binding.btnGetSpins.visibility = if (count == 0 && rouletteViewModel.maxSpins > 1) View.VISIBLE else View.GONE
                     binding.btnSpin.isEnabled = count > 0
                 }
             }
@@ -118,9 +147,15 @@ class RouletteFragment : Fragment() {
             launch {
                 rouletteViewModel.timeUntilReset.collectLatest { timeStr ->
                     if (rouletteViewModel.spinsLeft.value == 0) {
-                        binding.tvSpinsLeft.text = "Out of spins! Reset in $timeStr"
+                        val adsWatched = mainViewModel.getRouletteSession()?.adsWatchedToday ?: 0
+                        if (adsWatched < 2) {
+                            binding.tvSpinsLeft.text = "Out of spins! Watch an ad for more."
+                        } else {
+                            binding.tvSpinsLeft.text = "Out of spins! Reset in $timeStr"
+                        }
                         binding.tvSpinsLeft.setTextColor(resources.getColor(R.color.md_theme_primary, null))
-                        binding.btnGetSpins.visibility = View.GONE // Hide ad button if truly at limit
+                        // Disable color wheel if no spins are available
+                        binding.spinWheelView.isGrayscale = true
                     }
                 }
             }
@@ -143,13 +178,14 @@ class RouletteFragment : Fragment() {
                 binding.spinWheelView.spinTo(winningIndex) {
                     val winner = displayList[winningIndex]
                     
-                    // Save to Firestore!
                     viewLifecycleOwner.lifecycleScope.launch {
                         mainViewModel.logRouletteSpin(winner.id)
                     }
 
                     rouletteViewModel.onSpinFinished()
                     showWinner(winner)
+                    
+                    // The observeViewModel logic now handles grayscale and ad button visibility
                 }
             }
         }
@@ -161,12 +197,20 @@ class RouletteFragment : Fragment() {
         binding.btnGetSpins.setOnClickListener {
             showAdConfirmation()
         }
+
+        binding.btnResetSpins.setOnClickListener {
+            resetAllSpins()
+        }
+
+        // Show reset button only in debug builds
+        val isDebug = (requireContext().applicationInfo.flags and android.content.pm.ApplicationInfo.FLAG_DEBUGGABLE) != 0
+        binding.btnResetSpins.visibility = if (isDebug) View.VISIBLE else View.GONE
     }
 
     private fun showAdConfirmation() {
         com.google.android.material.dialog.MaterialAlertDialogBuilder(requireContext())
             .setTitle("Get Extra Spin")
-            .setMessage("Watch a short ad to earn +1 spin? (Limit 3 per day)")
+            .setMessage("Watch a short ad to earn +1 spin? (Limit 2 additional spins per day)")
             .setPositiveButton("Watch") { _, _ -> simulateAd() }
             .setNegativeButton("Maybe later", null)
             .show()
@@ -177,7 +221,9 @@ class RouletteFragment : Fragment() {
         val view = layoutInflater.inflate(R.layout.dialog_simulated_ad, null)
         dialog.setContentView(view)
 
-        // Start the custom spinning logo animation
+        val tvAdMessage = view.findViewById<TextView>(R.id.tv_ad_message)
+        tvAdMessage.text = "Watching Ad... (5s)"
+
         val ivAnimation = view.findViewById<ImageView>(R.id.iv_ad_animation)
         val drawable = ivAnimation.drawable
         if (drawable is Animatable) {
@@ -188,6 +234,12 @@ class RouletteFragment : Fragment() {
         dialog.show()
 
         viewLifecycleOwner.lifecycleScope.launch {
+            for (i in 5 downTo 1) {
+                tvAdMessage.text = "Watching Ad... (${i}s)"
+                kotlinx.coroutines.delay(1000L)
+            }
+            tvAdMessage.text = "Ad complete! Awarding spin..."
+
             val success = mainViewModel.watchRouletteAd()
             if (success) {
                 dialog.dismiss()
@@ -221,8 +273,19 @@ class RouletteFragment : Fragment() {
     }
 
     private fun onDirectionsClick(restaurantId: String) {
-        // Placeholder stub for Maps API integration
         Toast.makeText(context, "Directions feature coming soon! (ID: $restaurantId)", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun resetAllSpins() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            rouletteViewModel.resetSpins()
+            val userId = mainViewModel.sessionState.value?.id
+            if (userId != null) {
+                mainViewModel.rouletteRepository.resetSpinSession(userId)
+                Toast.makeText(context, "All spins reset for demo!", Toast.LENGTH_SHORT).show()
+                fetchPersistentSession()
+            }
+        }
     }
 
     override fun onDestroyView() {

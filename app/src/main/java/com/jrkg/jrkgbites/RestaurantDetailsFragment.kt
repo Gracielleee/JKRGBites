@@ -1,5 +1,7 @@
 package com.jrkg.jrkgbites
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -12,10 +14,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import coil.load
-import com.google.android.gms.maps.CameraUpdateFactory
-import com.google.android.gms.maps.SupportMapFragment
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.jrkg.jrkgbites.databinding.FragmentRestaurantDetailsBinding
@@ -207,13 +205,12 @@ class RestaurantDetailsFragment : Fragment() {
             error(android.R.drawable.ic_menu_gallery)
         }
 
-        // Setup Mini-Map
+        // External Map Launch
         binding.btnShowMap.setOnClickListener {
             val lat = restaurant.lat?.toDoubleOrNull()
             val lng = restaurant.lng?.toDoubleOrNull()
             if (lat != null && lng != null) {
-                loadMap(lat, lng, restaurant.name ?: "Restaurant")
-                binding.btnShowMap.visibility = View.GONE
+                openExternalMap(lat, lng, restaurant.name ?: "Restaurant")
             } else {
                 ToastUtils.showCustomToast(
                     requireContext(),
@@ -222,24 +219,33 @@ class RestaurantDetailsFragment : Fragment() {
                 )
             }
         }
+        
+        // Hide the embedded map container since we are using external maps
+        binding.mapContainer.visibility = View.GONE
+        binding.mapHeader.visibility = View.GONE
     }
 
-    private fun loadMap(lat: Double, lng: Double, name: String) {
-        binding.mapProgressBar.visibility = View.VISIBLE
-        binding.tvMapPlaceholder.visibility = View.GONE
-
-        val mapFragment = SupportMapFragment.newInstance()
-        childFragmentManager.beginTransaction()
-            .replace(R.id.map_container, mapFragment)
-            .commit()
-
-        mapFragment.getMapAsync { googleMap ->
-            binding.mapProgressBar.visibility = View.GONE
-            val location = LatLng(lat, lng)
-            googleMap.addMarker(MarkerOptions().position(location).title(name))
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 16f))
-            googleMap.uiSettings.isZoomControlsEnabled = true
-            googleMap.uiSettings.isMapToolbarEnabled = true // Shows the "Open in Google Maps" button
+    private fun openExternalMap(lat: Double, lng: Double, name: String) {
+        val gmmIntentUri = Uri.parse("geo:$lat,$lng?q=" + Uri.encode("$name"))
+        val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+        
+        // Try to use Google Maps app specifically
+        mapIntent.setPackage("com.google.android.apps.maps")
+        
+        try {
+            if (mapIntent.resolveActivity(requireContext().packageManager) != null) {
+                startActivity(mapIntent)
+            } else {
+                // Fallback to browser
+                val webIntent = Intent(Intent.ACTION_VIEW, 
+                    Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lng"))
+                startActivity(webIntent)
+            }
+        } catch (e: Exception) {
+            // Last resort fallback
+            val webIntent = Intent(Intent.ACTION_VIEW, 
+                Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lng"))
+            startActivity(webIntent)
         }
     }
 

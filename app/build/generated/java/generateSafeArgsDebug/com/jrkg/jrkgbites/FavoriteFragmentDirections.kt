@@ -1,14 +1,29 @@
 package com.jrkg.jrkgbites
 
+import android.os.Bundle
 import androidx.`annotation`.CheckResult
-import androidx.navigation.ActionOnlyNavDirections
 import androidx.navigation.NavDirections
+import kotlin.Boolean
+import kotlin.Int
 import kotlin.String
 
 public class FavoriteFragmentDirections private constructor() {
+  private data class ActionFavoriteFragmentToRouletteFragment(
+    public val shouldSpin: Boolean = false,
+  ) : NavDirections {
+    public override val actionId: Int = R.id.action_favoriteFragment_to_rouletteFragment
+
+    public override val arguments: Bundle
+      get() {
+        val result = Bundle()
+        result.putBoolean("shouldSpin", this.shouldSpin)
+        return result
+      }
+  }
+
   public companion object {
     @CheckResult
-    public fun actionFavoriteFragmentToRouletteFragment(): NavDirections = ActionOnlyNavDirections(R.id.action_favoriteFragment_to_rouletteFragment)
+    public fun actionFavoriteFragmentToRouletteFragment(shouldSpin: Boolean = false): NavDirections = ActionFavoriteFragmentToRouletteFragment(shouldSpin)
 
     @CheckResult
     public fun actionLoginFragmentToNavHome(): NavDirections = NavGraphDirections.actionLoginFragmentToNavHome()

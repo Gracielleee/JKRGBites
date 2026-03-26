@@ -261,9 +261,9 @@ MERGED from [com.google.android.play:core-common:2.0.3] C:\Users\Ralph\.gradle\c
 	android:dataExtractionRules
 		ADDED from C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:11:9-65
 meta-data#com.google.android.geo.API_KEY
-ADDED from C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:20:9-22:44
+ADDED from C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:20:9-22:71
 	android:value
-		ADDED from C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:22:13-41
+		ADDED from C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:22:13-68
 	android:name
 		ADDED from C:\MMDC\MDA\Development Phases\Sprint_5\JKRGBites\app\src\main\AndroidManifest.xml:21:13-58
 activity#com.jrkg.jrkgbites.MainActivity

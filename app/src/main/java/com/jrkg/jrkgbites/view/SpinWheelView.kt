@@ -105,7 +105,7 @@ class SpinWheelView @JvmOverloads constructor(
         val angle = startAngle + sweepAngle / 2f
         canvas.rotate(angle, cx, cy)
 
-        textPaint.textSize = radius * 0.12f
+        textPaint.textSize = radius * 0.09f
         val x = cx + radius * 0.55f
         val y = cy + (textPaint.textSize / 3f)
 

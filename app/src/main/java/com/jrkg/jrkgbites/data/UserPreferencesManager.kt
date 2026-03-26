@@ -2,6 +2,9 @@ package com.jrkg.jrkgbites.data
 
 import android.content.Context
 import android.content.SharedPreferences
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 /**
  * Manages saving and retrieving user-specific preferences using SharedPreferences.
@@ -20,12 +23,30 @@ class UserPreferencesManager(context: Context) {
     private val sharedPreferences: SharedPreferences =
         context.getSharedPreferences(PREFERENCES_FILE_NAME, Context.MODE_PRIVATE)
 
+    // Flows for reactive updates
+    private val _isProximityFilterEnabled = MutableStateFlow(
+        sharedPreferences.getBoolean(KEY_PROXIMITY_FILTER_ENABLED, false)
+    )
+    val isProximityFilterEnabledFlow: StateFlow<Boolean> = _isProximityFilterEnabled.asStateFlow()
+
+    private val _lastLat = MutableStateFlow(
+        sharedPreferences.getFloat(KEY_LAST_LAT, 0f).toDouble()
+    )
+    val lastLatFlow: StateFlow<Double> = _lastLat.asStateFlow()
+
+    private val _lastLng = MutableStateFlow(
+        sharedPreferences.getFloat(KEY_LAST_LNG, 0f).toDouble()
+    )
+    val lastLngFlow: StateFlow<Double> = _lastLng.asStateFlow()
+
+
     fun setProximityFilterEnabled(isEnabled: Boolean) {
         sharedPreferences.edit().putBoolean(KEY_PROXIMITY_FILTER_ENABLED, isEnabled).apply()
+        _isProximityFilterEnabled.value = isEnabled // Update the flow
     }
 
     fun isProximityFilterEnabled(): Boolean {
-        return sharedPreferences.getBoolean(KEY_PROXIMITY_FILTER_ENABLED, false)
+        return _isProximityFilterEnabled.value // Return from flow for consistency
     }
 
     fun saveLastLocation(lat: Double, lng: Double) {
@@ -34,14 +55,16 @@ class UserPreferencesManager(context: Context) {
             putFloat(KEY_LAST_LNG, lng.toFloat())
             apply()
         }
+        _lastLat.value = lat // Update the flow
+        _lastLng.value = lng // Update the flow
     }
 
     fun getLastLat(): Double {
-        return sharedPreferences.getFloat(KEY_LAST_LAT, 0f).toDouble()
+        return _lastLat.value // Return from flow for consistency
     }
 
     fun getLastLng(): Double {
-        return sharedPreferences.getFloat(KEY_LAST_LNG, 0f).toDouble()
+        return _lastLng.value // Return from flow for consistency
     }
 
     /**

@@ -430,6 +430,7 @@ id btn_get_spins
 id btn_go_to_details
 id btn_manage_tags
 id btn_reset
+id btn_reset_spins
 id btn_show_map
 id btn_shuffle
 id btn_spin

@@ -34,6 +34,7 @@ import com.jrkg.jrkgbites.R
 import com.jrkg.jrkgbites.data.RouletteRepository
 import com.jrkg.jrkgbites.model.SpinSession
 import com.jrkg.jrkgbites.model.SubscriptionStatus
+import kotlinx.coroutines.flow.combine
 
 /**
  * Resolved start destination for the navigation graph.
@@ -89,8 +90,6 @@ class MainViewModel(
             val currentUser = sessionState.value
             val keepLoggedIn = prefsManager.isKeepLoggedIn()
 
-            // If Firebase has a user but the user did NOT opt into persistence,
-            // immediately clear the Firebase session so the next launch starts clean.
             if (currentUser != null && !keepLoggedIn) {
                 sessionManager.logout()
                 _startDestination.value = StartDestination.LOGIN
@@ -101,20 +100,16 @@ class MainViewModel(
             }
         }
 
-        // Initial data loading for RoomDB; full dataset from JSON when needed, then sync.
+        // Ensure data is present then sync
         viewModelScope.launch {
-//            restaurantRepository.refreshRestaurants(application)
-            // 1. Observe the sessionState Flow
             sessionState.collectLatest { user ->
-                when {
-                    user == null -> {
-                        // Fallback
-                        restaurantRepository.pullFreshFromJSON(application)
-                    }
-                    user.id.isNotEmpty() -> {
-                        // User restored from session OR just logged in
-                        restaurantRepository.syncRestaurants(user.id)
-                        restaurantRatingRepository.syncRatings(user.id)
+                // Always ensure seed data is loaded first if DB is empty
+                restaurantRepository.refreshRestaurants(application)
+                
+                user?.let {
+                    if (it.id.isNotEmpty()) {
+                        restaurantRepository.syncRestaurants(it.id)
+                        restaurantRatingRepository.syncRatings(it.id)
                     }
                 }
             }
@@ -140,8 +135,6 @@ class MainViewModel(
         _toastMessage.value = null
     }
 
-//    -----------------------------------------------------------------------------------------   //
-
     // --- Auth Manager State ---
     private val _requiredAuthMethod = MutableStateFlow(authManager.getRequiredAuthMethod())
     val requiredAuthMethod: StateFlow<AuthMethod> = _requiredAuthMethod.asStateFlow()
@@ -160,12 +153,56 @@ class MainViewModel(
     private val _pickedResult = MutableStateFlow<String?>(null)
     val pickedResult: StateFlow<String?> = _pickedResult.asStateFlow()
 
-    // --- Swipe Manager State ---
-    val deck: StateFlow<List<Restaurant>> by lazy { swipeManager.deck }
+    // --- Global Discovery Flows ---
     val allRestaurants: StateFlow<List<Restaurant>> by lazy { swipeManager.allRestaurants }
     val favoritesList: StateFlow<List<Restaurant>> by lazy { swipeManager.favoritesList }
     val neverAgainList: StateFlow<List<Restaurant>> by lazy { swipeManager.neverAgainList }
     val selectedRestaurant: StateFlow<Restaurant?> by lazy { swipeManager.selectedRestaurant }
+
+    /**
+     * The single source of truth for all nearby restaurants.
+     * Respects proximity settings and real-time location.
+     */
+    val nearbyRestaurants: StateFlow<List<Restaurant>> by lazy {
+        combine(
+            allRestaurants,
+            prefsManager.isProximityFilterEnabledFlow,
+            prefsManager.lastLatFlow,
+            prefsManager.lastLngFlow
+        ) { all, isProximityEnabled, userLat, userLng ->
+            if (!isProximityEnabled || (userLat == 0.0 && userLng == 0.0)) {
+                all
+            } else {
+                all.filter { restaurant ->
+                    val resLat = restaurant.lat?.toDoubleOrNull() ?: 0.0
+                    val resLng = restaurant.lng?.toDoubleOrNull() ?: 0.0
+                    if (resLat != 0.0 && resLng != 0.0) {
+                        val results = FloatArray(1)
+                        android.location.Location.distanceBetween(userLat, userLng, resLat, resLng, results)
+                        results[0] <= 5000 // 5km radius
+                    } else {
+                        true 
+                    }
+                }
+            }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+    }
+
+    /**
+     * The reactive deck for the Picker (Home) view.
+     * Filters nearby restaurants by excluding only "Never Again" and session-swiped items.
+     * Favorites are NOT hidden here anymore.
+     */
+    val deck: StateFlow<List<Restaurant>> by lazy {
+        combine(
+            nearbyRestaurants,
+            neverAgainList,
+            swipeManager.sessionSwipedRestaurantsFlow 
+        ) { nearby: List<Restaurant>, neverAgain: List<Restaurant>, swipedIds: Set<String> ->
+            val excludedIds = neverAgain.map { it.id }.toSet() + swipedIds
+            nearby.filterNot { excludedIds.contains(it.id) }
+        }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), emptyList())
+    }
 
     val allRestaurantRatings: StateFlow<List<RestaurantRating>> = ratingManager.allRatings
         .stateIn(
@@ -173,9 +210,6 @@ class MainViewModel(
             SharingStarted.WhileSubscribed(5000),
             emptyList()
         )
-
-    private val _searchResults = MutableStateFlow<List<Restaurant>>(emptyList())
-    val searchResults: StateFlow<List<Restaurant>> = _searchResults.asStateFlow()
 
     fun login(email: String, pass: String): Flow<AuthResult> {
         return sessionManager.login(email, pass)
@@ -187,7 +221,6 @@ class MainViewModel(
 
     suspend fun logout() {
         restaurantRepository.deleteAllLocal()
-        // When the user explicitly logs out, also clear the keep-logged-in preference.
         prefsManager.setKeepLoggedIn(false)
         _isKeepLoggedInEnabled.value = false
         sessionManager.logout()
@@ -246,7 +279,6 @@ class MainViewModel(
             _toastMessage.value = application.getString(R.string.toast_rating_submitted)
 
             if (isLowRating) {
-                // Emit an event so the UI can decide whether to add to "Never Again".
                 _lowRatingEvent.emit(restaurantId)
             }
         }
@@ -322,14 +354,10 @@ class MainViewModel(
 
     fun setProximityEnabled(enabled: Boolean) {
         prefsManager.setProximityFilterEnabled(enabled)
-        refreshDeck() // Trigger list updates
     }
 
     fun updateUserLocation(lat: Double, lng: Double) {
         prefsManager.saveLastLocation(lat, lng)
-        if (isProximityEnabled()) {
-            refreshDeck()
-        }
     }
 
     fun getUserLocation(): Pair<Double, Double> {
@@ -382,7 +410,15 @@ class MainViewModelFactory(
             val userIdFlow = sessionManager.sessionState.map { it?.id ?: "" }
             val biometricService = BiometricService(application)
             val authManager = AuthManager(biometricService, prefsManager)
-            val swipeManager = SwipeManager(userIdFlow, restaurantRepository, restaurantManager, prefsManager)
+            val swipeManager = SwipeManager(
+                userIdFlow,
+                restaurantRepository,
+                restaurantManager,
+                prefsManager,
+                prefsManager.isProximityFilterEnabledFlow,
+                prefsManager.lastLatFlow,
+                prefsManager.lastLngFlow
+            )
             val ratingManager = RatingManager(restaurantRatingRepository)
             val searchManager = SearchManager(restaurantRepository)
             val restaurantPicker = RestaurantPicker(restaurantRepository)

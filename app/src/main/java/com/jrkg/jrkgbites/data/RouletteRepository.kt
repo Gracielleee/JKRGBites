@@ -66,4 +66,38 @@ class RouletteRepository {
             Log.e(TAG, "Error logging ad completion", e)
         }
     }
+
+    suspend fun resetSpinSession(userId: String) {
+        try {
+            val sessionRef = db.collection(SPIN_SESSIONS).document(userId)
+            val resetData = hashMapOf(
+                "spinsUsedToday" to 0,
+                "adsWatchedToday" to 0
+            )
+            sessionRef.set(resetData, SetOptions.merge()).await()
+            Log.d(TAG, "Successfully reset spin session for user: $userId")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error resetting spin session", e)
+        }
+    }
+
+    suspend fun decrementSpinsUsedToday(userId: String) {
+        try {
+            db.collection(SPIN_SESSIONS).document(userId)
+                .update("spinsUsedToday", FieldValue.increment(-1)).await()
+            Log.d(TAG, "Successfully decremented spinsUsedToday for user: $userId")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error decrementing spinsUsedToday", e)
+        }
+    }
+
+    suspend fun incrementAdsWatchedToday(userId: String) {
+        try {
+            db.collection(SPIN_SESSIONS).document(userId)
+                .update("adsWatchedToday", FieldValue.increment(1)).await()
+            Log.d(TAG, "Successfully incremented adsWatchedToday for user: $userId")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error incrementing adsWatchedToday", e)
+        }
+    }
 }

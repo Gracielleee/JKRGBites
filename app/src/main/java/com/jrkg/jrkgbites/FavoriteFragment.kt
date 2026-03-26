@@ -90,9 +90,11 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun navigateToRoulette() {
-        // Safe navigation to prevent multiple triggers
         if (findNavController().currentDestination?.id == R.id.nav_favorite) {
-            findNavController().navigate(R.id.action_favoriteFragment_to_rouletteFragment)
+            val bundle = Bundle().apply {
+                putBoolean("shouldSpin", true)
+            }
+            findNavController().navigate(R.id.action_favoriteFragment_to_rouletteFragment, bundle)
         }
     }
 

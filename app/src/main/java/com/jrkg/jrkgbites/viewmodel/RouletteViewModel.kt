@@ -2,6 +2,7 @@ package com.jrkg.jrkgbites.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.jrkg.jrkgbites.data.RouletteRepository
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -10,7 +11,10 @@ import kotlinx.coroutines.launch
 import java.util.Calendar
 import java.util.concurrent.TimeUnit
 
-class RouletteViewModel : ViewModel() {
+class RouletteViewModel(
+    private val userId: String,
+    private val rouletteRepository: RouletteRepository
+) : ViewModel() {
 
     private val _spinsLeft = MutableStateFlow(1) // Start with 1 free spin
     val spinsLeft: StateFlow<Int> = _spinsLeft
@@ -66,16 +70,24 @@ class RouletteViewModel : ViewModel() {
         if (_spinsLeft.value > 0) {
             _isSpinning.value = true
             _spinsLeft.value -= 1
+            // Removed: repository.decrementSpinsUsedToday(userId) 
+            // The usage is persisted via logSpin in the Fragment/MainViewModel
         }
     }
 
     fun addSpinFromAd() {
         if (_spinsLeft.value < _maxSpins) {
             _spinsLeft.value += 1
+            // Removed: repository.incrementAdsWatchedToday(userId)
+            // Ad completion is already persisted via AdManager.watchAd()
         }
     }
 
     fun onSpinFinished() {
         _isSpinning.value = false
+    }
+
+    fun resetSpins() {
+        _spinsLeft.value = 1
     }
 }

@@ -37,6 +37,10 @@ class RestaurantRepository(
 
     // --- REMOTE MANAGEMENT (Firestore) ---
 
+    /**
+     * Syncs restaurants from Firestore.
+     * We use insertAll (UPSERT) to merge remote changes without losing local JSON baseline.
+     */
     suspend fun syncRestaurants(userId: String) = coroutineScope {
         val db = FirebaseFirestore.getInstance()
         val collection = db.collection(RESTAURANTS_COLLECTION)
@@ -45,7 +49,7 @@ class RestaurantRepository(
         try {
             Log.d(TAG, "Starting sync for user: $userId")
 
-            // Fetch only restaurants that are public OR added by the current user
+            // Fetch restaurants relevant to the user (Public or User-Added)
             val querySnapshot = collection.where(
                 Filter.or(
                     Filter.equalTo("is_public", true),
@@ -76,9 +80,11 @@ class RestaurantRepository(
                 }
             }
 
-            restaurantDao.clearAndInsert(firebaseData)
-            Log.d(TAG, "Successfully synced ${firebaseData.size} restaurants")
-            Log.d(TAG, "Syncing complete for user: $userId")
+            if (firebaseData.isNotEmpty()) {
+                // UPSERT strategy: replaces duplicates by ID, adds new ones.
+                restaurantDao.insertAll(firebaseData)
+                Log.d(TAG, "Successfully merged ${firebaseData.size} restaurants from Firestore")
+            }
         } catch (e: Exception) {
             Log.e(TAG, "Error syncing restaurants", e)
         }
@@ -90,7 +96,7 @@ class RestaurantRepository(
         val userRef = db.collection(USER_COLLECTION).document(userId)
 
         try {
-            val querySnapshot = collection.whereEqualTo("user_id", userRef).get().await() //Fetch only current user favorites
+            val querySnapshot = collection.whereEqualTo("user_id", userRef).get().await()
 
             val firebaseData = querySnapshot.documents.mapNotNull { doc ->
                 try {
@@ -105,10 +111,7 @@ class RestaurantRepository(
             }
 
             favoriteRestaurantDao.clearAndInsert(firebaseData)
-
             Log.d(TAG, "Successfully synced ${firebaseData.size} favorite restaurants")
-            Log.d(TAG, "Favorites syncing complete for user: $userId")
-
         } catch (e: Exception) {
             Log.e(TAG, "Error syncing favorite restaurants", e)
         }
@@ -135,10 +138,7 @@ class RestaurantRepository(
             }
 
             neverAgainRestaurantDao.clearAndInsert(firebaseData)
-
             Log.d(TAG, "Successfully synced ${firebaseData.size} never again restaurants")
-            Log.d(TAG, "Never Again syncing complete for user: $userId")
-
         } catch (e: Exception) {
             Log.e(TAG, "Error syncing never again restaurants", e)
         }
@@ -153,7 +153,7 @@ class RestaurantRepository(
             "category" to restaurant.category,
             "cuisine" to restaurant.cuisine,
             "level" to restaurant.level,
-            "is_public" to false, //Always false
+            "is_public" to false,
             "added_by" to userRef,
             "location" to restaurant.location,
             "geopoint" to GeoPoint(
@@ -181,11 +181,10 @@ class RestaurantRepository(
         val collection = db.collection(RESTAURANTS_COLLECTION)
 
         if (!isUserOwner(restaurant.addedBy ?: "", userId)) {
-            Log.e(TAG, "Unauthorized. User ${restaurant.addedBy} attempted to update a restaurant added_by: ${restaurant.addedBy}")
+            Log.e(TAG, "Unauthorized update attempt")
             return 401
         }
 
-        // Capture original state for rollback
         val originalRestaurant = restaurantDao.getRestaurantById(restaurant.id).first()
         val userRef = restaurant.addedBy?.let { db.collection(USER_COLLECTION).document(it) }
 
@@ -214,7 +213,7 @@ class RestaurantRepository(
             return 200
         } catch (e: Exception) {
             Log.e(TAG, "Error updating restaurant in Firestore", e)
-            originalRestaurant?.let { updateRestaurant(it) } //Rollback Room data if update fails
+            originalRestaurant?.let { updateRestaurant(it) }
             return 500
         }
     }
@@ -224,14 +223,13 @@ class RestaurantRepository(
         val collection = db.collection(RESTAURANTS_COLLECTION)
 
         if (!isUserOwner(restaurant.addedBy ?: "", userId)) {
-            Log.e(TAG, "Unauthorized. User ${restaurant.addedBy} attempted to delete a restaurant added_by: ${restaurant.addedBy}")
+            Log.e(TAG, "Unauthorized delete attempt")
             return 401
         }
 
         deleteRestaurantLocal(restaurant)
 
         try {
-            // Delete the document
             collection.document(restaurant.id).delete().await()
             Log.d(TAG, "Successfully deleted from restaurants: ${restaurant.id}")
             return 200
@@ -259,9 +257,7 @@ class RestaurantRepository(
             "restaurant_id" to restaurantRef
         )
 
-        //Add to RoomDB first for instant UI updates
         addToFavoritesLocal(restaurantId)
-        Log.d(TAG, "Attempting to add to favorites: $restaurantId")
         try {
             collection.document(compositeKey).set(favoriteRestaurantData).await()
             Log.d(TAG, "Successfully added to favorites: $restaurantId")
@@ -284,7 +280,6 @@ class RestaurantRepository(
         )
 
         addToNeverAgainLocal(restaurantId)
-        Log.d(TAG, "Attempting to add to never again: $restaurantId")
         try {
             collection.document(compositeKey).set(neverAgainRestaurantData).await()
             Log.d(TAG, "Successfully added to never again: $restaurantId")
@@ -301,7 +296,6 @@ class RestaurantRepository(
 
         removeFromFavoritesLocal(restaurantId)
         try {
-            // Delete the document based on the composite key
             collection.document(compositeKey).delete().await()
             Log.d(TAG, "Successfully deleted from favorites: $restaurantId")
         } catch (e: Exception) {
@@ -317,7 +311,6 @@ class RestaurantRepository(
 
         removeFromNeverAgainLocal(restaurantId)
         try {
-            // Delete the document based on the composite key
             collection.document(compositeKey).delete().await()
             Log.d(TAG, "Successfully deleted from never again: $restaurantId")
         } catch (e: Exception) {
@@ -332,15 +325,10 @@ class RestaurantRepository(
         val compositeKey = generateCompositeKey(restaurantId, userId)
 
         return try {
-            // Attempt to get the document with the composite key
             val document = collection.document(compositeKey).get().await()
-            if (document.exists()){
-                true
-            } else {
-                false
-            }
+            document.exists()
         } catch (e: Exception) {
-            Log.e(TAG, "Error checking if restaurant is favorited", e)
+            Log.e(TAG, "Error checking favorited status", e)
             false
         }
     }
@@ -351,40 +339,32 @@ class RestaurantRepository(
         val compositeKey = generateCompositeKey(restaurantId, userId)
 
         return try {
-            // Attempt to get the document with the composite key
             val document = collection.document(compositeKey).get().await()
-            if (document.exists()){
-                true
-            } else {
-                false
-            }
+            document.exists()
         } catch (e: Exception) {
-            Log.e(TAG, "Error checking if restaurant is never again", e)
+            Log.e(TAG, "Error checking never again status", e)
             false
         }
     }
 
 
     //LOCAL MANAGEMENT
-    // Get restaurants from the database
     fun getRestaurantsLocal(): Flow<List<Restaurant>> {
         return restaurantDao.getAllRestaurants()
     }
 
-    suspend fun insertRestaurantLocal(restaurant: Restaurant): Unit {
-        return restaurantDao.insert(restaurant)
+    suspend fun insertRestaurantLocal(restaurant: Restaurant) {
+        restaurantDao.insert(restaurant)
     }
 
-    suspend fun deleteRestaurantLocal(restaurant: Restaurant): Unit {
-        return restaurantDao.delete(restaurant)
+    suspend fun deleteRestaurantLocal(restaurant: Restaurant) {
+        restaurantDao.delete(restaurant)
     }
 
-    suspend fun deleteAllLocal(): Unit {
-        return restaurantDao.deleteAll()
-
+    suspend fun deleteAllLocal() {
+        restaurantDao.deleteAll()
     }
 
-    // Get a specific restaurant by its ID
     fun getRestaurantById(id: String): Flow<Restaurant?> {
         return restaurantDao.getRestaurantById(id)
     }
@@ -397,17 +377,19 @@ class RestaurantRepository(
         return restaurantDao.getNeverAgainRestaurantsFlow()
     }
 
-    // Check if the database has any restaurants
     private suspend fun hasData(): Boolean {
         return restaurantDao.getRestaurantCount() > 0
     }
 
-    // Refresh restaurants from JSON if the database is empty
+    /**
+     * Ensures that the local database always contains the baseline restaurants from JSON.
+     * Unlike previous versions, we don't skip this if data exists, to ensure sync doesn't
+     * permanently remove JSON entries.
+     */
     suspend fun refreshRestaurants(context: Context) {
-        if (!hasData()) {
-            val restaurants = loadRestaurantsFromAsset(context)
-            restaurantDao.insertAll(restaurants)
-        }
+        val restaurants = loadRestaurantsFromAsset(context)
+        restaurantDao.insertAll(restaurants)
+        Log.d(TAG, "Refreshed/Merged ${restaurants.size} restaurants from JSON baseline")
     }
 
     suspend fun pullFreshFromJSON(context: Context) {
@@ -416,16 +398,13 @@ class RestaurantRepository(
         restaurantDao.insertAll(restaurants)
     }
 
-    // Load restaurants from a JSON file in the assets folder
     private fun loadRestaurantsFromAsset(context: Context): List<Restaurant> {
         val inputStream = context.resources.openRawResource(R.raw.restaurants)
         val reader = InputStreamReader(inputStream)
         val restaurantListType = object : TypeToken<List<Restaurant>>() {}.type
-        val restaurants: List<Restaurant> = Gson().fromJson(reader, restaurantListType)
-        return restaurants
+        return Gson().fromJson(reader, restaurantListType)
     }
 
-    // Search restaurants by name
     suspend fun searchRestaurantsByName(query: String): List<Restaurant> {
         return getRestaurantsLocal().first().filter { it.name?.contains(query, ignoreCase = true) == true }
     }
