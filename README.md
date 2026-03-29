@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/rdashnox/JKRGBites/blob/main/app/src/main/res/drawable/Official_JRKGBites_NoBG.png" width="400px" alt="JRKGBites logo"/><br />
+<img src="https://github.com/rdashnox/JKRGBites/blob/main/app/src/main/res/drawable/official_jrkgbites_nobg.png" width="400px" alt="JRKGBites logo"/><br />
 
 **"Just the Right Kind of Grub"**
 
