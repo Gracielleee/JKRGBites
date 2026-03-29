@@ -30,6 +30,9 @@ public final class FragmentLoginBinding implements ViewBinding {
   public final MaterialButton btnBioAuth;
 
   @NonNull
+  public final MaterialButton btnGoogleSignIn;
+
+  @NonNull
   public final MaterialButton btnLogin;
 
   @NonNull
@@ -81,16 +84,18 @@ public final class FragmentLoginBinding implements ViewBinding {
   public final TextView txtWelcomeDisplay;
 
   private FragmentLoginBinding(@NonNull ScrollView rootView, @NonNull MaterialButton btnBioAuth,
-      @NonNull MaterialButton btnLogin, @NonNull MaterialCheckBox checkboxKeepMeLoggedIn,
-      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etPassword,
-      @NonNull Guideline guideEnd, @NonNull Guideline guideStart, @NonNull Guideline guideTop,
-      @NonNull ImageView imgLogo, @NonNull ConstraintLayout login,
-      @NonNull TextInputLayout tilEmail, @NonNull TextInputLayout tilPassword,
-      @NonNull TextView txtAltLogin, @NonNull TextView txtBeforeGotoRegister,
-      @NonNull TextView txtForgotPassword, @NonNull TextView txtGotoRegister,
-      @NonNull TextView txtLoginHeader, @NonNull TextView txtWelcomeDisplay) {
+      @NonNull MaterialButton btnGoogleSignIn, @NonNull MaterialButton btnLogin,
+      @NonNull MaterialCheckBox checkboxKeepMeLoggedIn, @NonNull TextInputEditText etEmail,
+      @NonNull TextInputEditText etPassword, @NonNull Guideline guideEnd,
+      @NonNull Guideline guideStart, @NonNull Guideline guideTop, @NonNull ImageView imgLogo,
+      @NonNull ConstraintLayout login, @NonNull TextInputLayout tilEmail,
+      @NonNull TextInputLayout tilPassword, @NonNull TextView txtAltLogin,
+      @NonNull TextView txtBeforeGotoRegister, @NonNull TextView txtForgotPassword,
+      @NonNull TextView txtGotoRegister, @NonNull TextView txtLoginHeader,
+      @NonNull TextView txtWelcomeDisplay) {
     this.rootView = rootView;
     this.btnBioAuth = btnBioAuth;
+    this.btnGoogleSignIn = btnGoogleSignIn;
     this.btnLogin = btnLogin;
     this.checkboxKeepMeLoggedIn = checkboxKeepMeLoggedIn;
     this.etEmail = etEmail;
@@ -140,6 +145,12 @@ public final class FragmentLoginBinding implements ViewBinding {
       id = R.id.btnBioAuth;
       MaterialButton btnBioAuth = ViewBindings.findChildViewById(rootView, id);
       if (btnBioAuth == null) {
+        break missingId;
+      }
+
+      id = R.id.btnGoogleSignIn;
+      MaterialButton btnGoogleSignIn = ViewBindings.findChildViewById(rootView, id);
+      if (btnGoogleSignIn == null) {
         break missingId;
       }
 
@@ -245,7 +256,7 @@ public final class FragmentLoginBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentLoginBinding((ScrollView) rootView, btnBioAuth, btnLogin,
+      return new FragmentLoginBinding((ScrollView) rootView, btnBioAuth, btnGoogleSignIn, btnLogin,
           checkboxKeepMeLoggedIn, etEmail, etPassword, guideEnd, guideStart, guideTop, imgLogo,
           login, tilEmail, tilPassword, txtAltLogin, txtBeforeGotoRegister, txtForgotPassword,
           txtGotoRegister, txtLoginHeader, txtWelcomeDisplay);

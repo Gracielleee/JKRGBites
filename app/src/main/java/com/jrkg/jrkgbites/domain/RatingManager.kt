@@ -1,6 +1,6 @@
 package com.jrkg.jrkgbites.domain
 
-import com.jrkg.jrkgbites.data.RestaurantRatingRepository
+import com.jrkg.jrkgbites.data.repository.RestaurantRatingRepository
 import com.jrkg.jrkgbites.model.RestaurantRating
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

@@ -8,14 +8,14 @@ app:startDestination="@id/loginFragment" >
 <!-- Authentication Fragments -->
 <fragment
     android:id="@+id/loginFragment"
-    android:name="com.jrkg.jrkgbites.LoginFragment"
+    android:name="com.jrkg.jrkgbites.view.LoginFragment"
     android:label="Login"
     tools:layout="@layout/fragment_login" >
 
 </fragment>
 <fragment
     android:id="@+id/registerFragment"
-    android:name="com.jrkg.jrkgbites.RegisterFragment"
+    android:name="com.jrkg.jrkgbites.view.RegisterFragment"
     android:label="Register"
     tools:layout="@layout/fragment_register" >
 
@@ -28,7 +28,7 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <dialog
     android:id="@+id/forgotPasswordDialog"
-    android:name="com.jrkg.jrkgbites.ForgotPasswordDialog"
+    android:name="com.jrkg.jrkgbites.view.ForgotPasswordDialog"
     android:label="ForgotPasswordDialog"
     tools:layout="@layout/dialog_forgot_password" >
 
@@ -37,12 +37,12 @@ app:startDestination="@id/loginFragment" >
 <!-- Main Application Fragments -->
 <fragment
     android:id="@+id/nav_home"
-    android:name="com.jrkg.jrkgbites.HomeFragment"
+    android:name="com.jrkg.jrkgbites.view.HomeFragment"
     android:label="Home"
     tools:layout="@layout/fragment_home" />
 <fragment
     android:id="@+id/nav_favorite"
-    android:name="com.jrkg.jrkgbites.FavoriteFragment"
+    android:name="com.jrkg.jrkgbites.view.FavoriteFragment"
     android:label="fragment_favorite"
     tools:layout="@layout/fragment_favorite" >
 
@@ -57,7 +57,7 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <fragment
     android:id="@+id/rouletteFragment"
-    android:name="com.jrkg.jrkgbites.RouletteFragment"
+    android:name="com.jrkg.jrkgbites.view.RouletteFragment"
     android:label="Roulette"
     tools:layout="@layout/fragment_roulette" >
 
@@ -69,7 +69,7 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <fragment
     android:id="@+id/nav_search"
-    android:name="com.jrkg.jrkgbites.SearchFragment"
+    android:name="com.jrkg.jrkgbites.view.SearchFragment"
     android:label="Search"
     tools:layout="@layout/fragment_search" >
 
@@ -80,12 +80,12 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <fragment
     android:id="@+id/searchFilterFragment"
-    android:name="com.jrkg.jrkgbites.SearchFilterFragment"
+    android:name="com.jrkg.jrkgbites.view.SearchFilterFragment"
     android:label="Filters"
     tools:layout="@layout/fragment_search_filter" />
 <fragment
     android:id="@+id/nav_picker"
-    android:name="com.jrkg.jrkgbites.PickerFragment"
+    android:name="com.jrkg.jrkgbites.view.PickerFragment"
     android:label="Picker"
     tools:layout="@layout/fragment_picker" >
 
@@ -96,7 +96,7 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <fragment
     android:id="@+id/restaurantDetailsFragment"
-    android:name="com.jrkg.jrkgbites.RestaurantDetailsFragment"
+    android:name="com.jrkg.jrkgbites.view.RestaurantDetailsFragment"
     android:label="Restaurant Details"
     tools:layout="@layout/fragment_restaurant_details" >
 
@@ -111,7 +111,7 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <fragment
     android:id="@+id/nav_profile"
-    android:name="com.jrkg.jrkgbites.ProfileFragment"
+    android:name="com.jrkg.jrkgbites.view.ProfileFragment"
     android:label="Profile"
     tools:layout="@layout/fragment_profile" >
 
@@ -122,27 +122,27 @@ app:startDestination="@id/loginFragment" >
 </fragment>
 <fragment
     android:id="@+id/restaurantRatingFragment"
-    android:name="com.jrkg.jrkgbites.RestaurantRatingFragment"
+    android:name="com.jrkg.jrkgbites.view.RestaurantRatingFragment"
     android:label="Restaurant Ratings"
     tools:layout="@layout/fragment_restaurant_rating" />
 <fragment
     android:id="@+id/see_all_favorites"
-    android:name="com.jrkg.jrkgbites.RecentlyAddedFavoriteFragment"
+    android:name="com.jrkg.jrkgbites.view.RecentlyAddedFavoriteFragment"
     android:label="Recently Added"
     tools:layout="@layout/fragment_see_recently_added" />
 <fragment
     android:id="@+id/see_all_category"
-    android:name="com.jrkg.jrkgbites.SeeAllRestaurantsFragment"
+    android:name="com.jrkg.jrkgbites.view.SeeAllRestaurantsFragment"
     android:label="All Restaurants"
     tools:layout="@layout/fragment_see_all_fav_restaurants" />
 <fragment
     android:id="@+id/fragment_add_restaurant"
-    android:name="com.jrkg.jrkgbites.AddRestaurantFragment"
+    android:name="com.jrkg.jrkgbites.view.AddRestaurantFragment"
     android:label="Add Restaurant"
     tools:layout="@layout/fragment_add_restaurant" />
 <fragment
     android:id="@+id/updateRestaurantFragment"
-    android:name="com.jrkg.jrkgbites.UpdateRestaurantFragment"
+    android:name="com.jrkg.jrkgbites.view.UpdateRestaurantFragment"
     android:label="Update Restaurant"
     tools:layout="@layout/fragment_update_restaurant" >
 

@@ -419,6 +419,7 @@ id back_tags
 id bottom_navigation
 id btnBack
 id btnBioAuth
+id btnGoogleSignIn
 id btnLogin
 id btnPickImage
 id btnRegister
@@ -602,6 +603,7 @@ id txtLoginHeader
 id txtRegisterDisplay
 id txtSubdisplay
 id txtWelcomeDisplay
+id txt_no_results
 id updateRestaurantFragment
 id user_name_text
 layout activity_main
@@ -643,6 +645,7 @@ string btnLabel_Register
 string btnLabel_Submit
 string checkboxLabel_AutoLogin
 string checkboxLabel_TermsAgreement
+string default_web_client_id
 string dialog_never_again_message
 string dialog_never_again_negative
 string dialog_never_again_positive

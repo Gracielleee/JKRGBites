@@ -1,7 +1,7 @@
 package com.jrkg.jrkgbites.domain
 
 import android.util.Log
-import com.jrkg.jrkgbites.data.RestaurantRepository
+import com.jrkg.jrkgbites.data.repository.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.CoroutineScope
@@ -35,6 +35,7 @@ class SwipeManager(
     val allRestaurants: StateFlow<List<Restaurant>> = _allRestaurants.asStateFlow()
 
     private val _displayOrder = MutableStateFlow<List<Restaurant>>(emptyList())
+    val displayOrder: StateFlow<List<Restaurant>> = _displayOrder.asStateFlow()
     private val _sessionSwipedRestaurants = MutableStateFlow<Set<String>>(emptySet())
     val sessionSwipedRestaurantsFlow: StateFlow<Set<String>> = _sessionSwipedRestaurants.asStateFlow()
 

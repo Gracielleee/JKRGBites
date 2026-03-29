@@ -38,16 +38,20 @@ public final class FragmentSearchBinding implements ViewBinding {
   @NonNull
   public final RecyclerView searchResultsRecycler;
 
+  @NonNull
+  public final TextView txtNoResults;
+
   private FragmentSearchBinding(@NonNull ConstraintLayout rootView,
       @NonNull MaterialButton addRestoBtn, @NonNull ImageView filterIcon,
       @NonNull TextView screenTitleDisplay, @NonNull SearchView searchBar,
-      @NonNull RecyclerView searchResultsRecycler) {
+      @NonNull RecyclerView searchResultsRecycler, @NonNull TextView txtNoResults) {
     this.rootView = rootView;
     this.addRestoBtn = addRestoBtn;
     this.filterIcon = filterIcon;
     this.screenTitleDisplay = screenTitleDisplay;
     this.searchBar = searchBar;
     this.searchResultsRecycler = searchResultsRecycler;
+    this.txtNoResults = txtNoResults;
   }
 
   @Override
@@ -107,8 +111,14 @@ public final class FragmentSearchBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.txt_no_results;
+      TextView txtNoResults = ViewBindings.findChildViewById(rootView, id);
+      if (txtNoResults == null) {
+        break missingId;
+      }
+
       return new FragmentSearchBinding((ConstraintLayout) rootView, addRestoBtn, filterIcon,
-          screenTitleDisplay, searchBar, searchResultsRecycler);
+          screenTitleDisplay, searchBar, searchResultsRecycler, txtNoResults);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

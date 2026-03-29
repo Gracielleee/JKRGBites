@@ -1,6 +1,6 @@
 package com.jrkg.jrkgbites.domain
 
-import com.jrkg.jrkgbites.data.RestaurantRepository
+import com.jrkg.jrkgbites.data.repository.RestaurantRepository
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.utils.calculateDistance
 import kotlinx.coroutines.CoroutineScope

@@ -1,9 +1,10 @@
-#Thu Mar 26 18:08:52 CST 2026
+#Sun Mar 29 09:45:36 CST 2026
 base.0=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.10=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
-base.11=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
-base.12=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
+base.10=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.11=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\8\\classes.dex
+base.12=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+base.13=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes3.dex
 base.2=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\11\\classes.dex
 base.3=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\13\\classes.dex
 base.4=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
@@ -14,9 +15,10 @@ base.8=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\inte
 base.9=C\:\\MMDC\\MDA\\Development Phases\\Sprint_5\\JKRGBites\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\6\\classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
-path.10=8/classes.dex
-path.11=classes2.dex
-path.12=classes3.dex
+path.10=7/classes.dex
+path.11=8/classes.dex
+path.12=classes2.dex
+path.13=classes3.dex
 path.2=11/classes.dex
 path.3=13/classes.dex
 path.4=14/classes.dex
@@ -30,6 +32,7 @@ renamed.1=classes2.dex
 renamed.10=classes11.dex
 renamed.11=classes12.dex
 renamed.12=classes13.dex
+renamed.13=classes14.dex
 renamed.2=classes3.dex
 renamed.3=classes4.dex
 renamed.4=classes5.dex

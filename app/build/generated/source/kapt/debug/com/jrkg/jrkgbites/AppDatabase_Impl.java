@@ -9,14 +9,14 @@ import androidx.room.util.DBUtil;
 import androidx.room.util.TableInfo;
 import androidx.sqlite.SQLite;
 import androidx.sqlite.SQLiteConnection;
-import com.jrkg.jrkgbites.data.FavoriteRestaurantDao;
-import com.jrkg.jrkgbites.data.FavoriteRestaurantDao_Impl;
-import com.jrkg.jrkgbites.data.NeverAgainRestaurantDao;
-import com.jrkg.jrkgbites.data.NeverAgainRestaurantDao_Impl;
-import com.jrkg.jrkgbites.data.RestaurantDao;
-import com.jrkg.jrkgbites.data.RestaurantDao_Impl;
-import com.jrkg.jrkgbites.data.RestaurantRatingDao;
-import com.jrkg.jrkgbites.data.RestaurantRatingDao_Impl;
+import com.jrkg.jrkgbites.data.local.FavoriteRestaurantDao;
+import com.jrkg.jrkgbites.data.local.FavoriteRestaurantDao_AppDatabase_0_Impl;
+import com.jrkg.jrkgbites.data.local.NeverAgainRestaurantDao;
+import com.jrkg.jrkgbites.data.local.NeverAgainRestaurantDao_AppDatabase_0_Impl;
+import com.jrkg.jrkgbites.data.local.RestaurantDao;
+import com.jrkg.jrkgbites.data.local.RestaurantDao_AppDatabase_0_Impl;
+import com.jrkg.jrkgbites.data.local.RestaurantRatingDao;
+import com.jrkg.jrkgbites.data.local.RestaurantRatingDao_AppDatabase_0_Impl;
 import java.lang.Class;
 import java.lang.Override;
 import java.lang.String;
@@ -166,10 +166,10 @@ public final class AppDatabase_Impl extends AppDatabase {
   @NonNull
   protected Map<Class<?>, List<Class<?>>> getRequiredTypeConverters() {
     final Map<Class<?>, List<Class<?>>> _typeConvertersMap = new HashMap<Class<?>, List<Class<?>>>();
-    _typeConvertersMap.put(RestaurantDao.class, RestaurantDao_Impl.getRequiredConverters());
-    _typeConvertersMap.put(RestaurantRatingDao.class, RestaurantRatingDao_Impl.getRequiredConverters());
-    _typeConvertersMap.put(FavoriteRestaurantDao.class, FavoriteRestaurantDao_Impl.getRequiredConverters());
-    _typeConvertersMap.put(NeverAgainRestaurantDao.class, NeverAgainRestaurantDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(RestaurantDao.class, RestaurantDao_AppDatabase_0_Impl.getRequiredConverters());
+    _typeConvertersMap.put(RestaurantRatingDao.class, RestaurantRatingDao_AppDatabase_0_Impl.getRequiredConverters());
+    _typeConvertersMap.put(FavoriteRestaurantDao.class, FavoriteRestaurantDao_AppDatabase_0_Impl.getRequiredConverters());
+    _typeConvertersMap.put(NeverAgainRestaurantDao.class, NeverAgainRestaurantDao_AppDatabase_0_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -195,7 +195,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     } else {
       synchronized(this) {
         if(_restaurantDao == null) {
-          _restaurantDao = new RestaurantDao_Impl(this);
+          _restaurantDao = new RestaurantDao_AppDatabase_0_Impl(this);
         }
         return _restaurantDao;
       }
@@ -209,7 +209,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     } else {
       synchronized(this) {
         if(_restaurantRatingDao == null) {
-          _restaurantRatingDao = new RestaurantRatingDao_Impl(this);
+          _restaurantRatingDao = new RestaurantRatingDao_AppDatabase_0_Impl(this);
         }
         return _restaurantRatingDao;
       }
@@ -223,7 +223,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     } else {
       synchronized(this) {
         if(_favoriteRestaurantDao == null) {
-          _favoriteRestaurantDao = new FavoriteRestaurantDao_Impl(this);
+          _favoriteRestaurantDao = new FavoriteRestaurantDao_AppDatabase_0_Impl(this);
         }
         return _favoriteRestaurantDao;
       }
@@ -237,7 +237,7 @@ public final class AppDatabase_Impl extends AppDatabase {
     } else {
       synchronized(this) {
         if(_neverAgainRestaurantDao == null) {
-          _neverAgainRestaurantDao = new NeverAgainRestaurantDao_Impl(this);
+          _neverAgainRestaurantDao = new NeverAgainRestaurantDao_AppDatabase_0_Impl(this);
         }
         return _neverAgainRestaurantDao;
       }

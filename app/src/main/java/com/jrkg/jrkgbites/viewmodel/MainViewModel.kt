@@ -3,8 +3,8 @@ package com.jrkg.jrkgbites.viewmodel
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.jrkg.jrkgbites.AppDatabase
-import com.jrkg.jrkgbites.data.RestaurantRepository
+import com.jrkg.jrkgbites.data.local.AppDatabase
+import com.jrkg.jrkgbites.data.repository.RestaurantRepository
 import com.jrkg.jrkgbites.data.UserPreferencesManager
 import com.jrkg.jrkgbites.domain.*
 import com.jrkg.jrkgbites.domain.service.AuthResult
@@ -21,7 +21,7 @@ import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 import androidx.lifecycle.viewModelScope
-import com.jrkg.jrkgbites.data.RestaurantRatingRepository
+import com.jrkg.jrkgbites.data.repository.RestaurantRatingRepository
 import com.jrkg.jrkgbites.data.source.FirebaseAuthService
 import com.jrkg.jrkgbites.services.BiometricService
 import kotlinx.coroutines.flow.SharingStarted
@@ -31,7 +31,7 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import com.jrkg.jrkgbites.R
-import com.jrkg.jrkgbites.data.RouletteRepository
+import com.jrkg.jrkgbites.data.repository.RouletteRepository
 import com.jrkg.jrkgbites.model.SpinSession
 import com.jrkg.jrkgbites.model.SubscriptionStatus
 import kotlinx.coroutines.flow.combine
@@ -110,6 +110,7 @@ class MainViewModel(
                     if (it.id.isNotEmpty()) {
                         restaurantRepository.syncRestaurants(it.id)
                         restaurantRatingRepository.syncRatings(it.id)
+                        refreshRouletteSession()
                     }
                 }
             }
@@ -155,6 +156,7 @@ class MainViewModel(
 
     // --- Global Discovery Flows ---
     val allRestaurants: StateFlow<List<Restaurant>> by lazy { swipeManager.allRestaurants }
+    val displayOrder: StateFlow<List<Restaurant>> by lazy { swipeManager.displayOrder }
     val favoritesList: StateFlow<List<Restaurant>> by lazy { swipeManager.favoritesList }
     val neverAgainList: StateFlow<List<Restaurant>> by lazy { swipeManager.neverAgainList }
     val selectedRestaurant: StateFlow<Restaurant?> by lazy { swipeManager.selectedRestaurant }
@@ -165,7 +167,7 @@ class MainViewModel(
      */
     val nearbyRestaurants: StateFlow<List<Restaurant>> by lazy {
         combine(
-            allRestaurants,
+            displayOrder,
             prefsManager.isProximityFilterEnabledFlow,
             prefsManager.lastLatFlow,
             prefsManager.lastLngFlow
@@ -219,6 +221,10 @@ class MainViewModel(
         return sessionManager.signUp(email, pass, preferredName)
     }
 
+    fun signInWithGoogle(idToken: String): Flow<AuthResult> {
+        return sessionManager.signInWithGoogle(idToken)
+    }
+
     suspend fun logout() {
         restaurantRepository.deleteAllLocal()
         prefsManager.setKeepLoggedIn(false)
@@ -236,6 +242,14 @@ class MainViewModel(
 
     fun shuffleDeck(){
         swipeManager.shuffleDeck()
+    }
+
+    fun resetRouletteSession() {
+        val userId = sessionState.value?.id ?: return
+        viewModelScope.launch {
+            rouletteRepository.resetSpinSession(userId)
+            refreshRouletteSession()
+        }
     }
 
     fun undoSwipe(){
@@ -333,20 +347,37 @@ class MainViewModel(
         return sessionManager.sendPasswordResetEmail(email)
     }
 
-    // --- Roulette Helpers ---
+    // --- Roulette Manager State ---
+    private val _rouletteSession = MutableStateFlow<SpinSession?>(null)
+    val rouletteSession: StateFlow<SpinSession?> = _rouletteSession.asStateFlow()
+
+    fun refreshRouletteSession() {
+        val userId = sessionState.value?.id ?: return
+        viewModelScope.launch {
+            _rouletteSession.value = rouletteRepository.getSpinSession(userId)
+        }
+    }
+
     suspend fun getRouletteSession(): SpinSession? {
         val userId = sessionState.value?.id ?: return null
-        return rouletteRepository.getSpinSession(userId)
+        val session = rouletteRepository.getSpinSession(userId)
+        _rouletteSession.value = session
+        return session
     }
 
     suspend fun logRouletteSpin(restaurantId: String) {
         val userId = sessionState.value?.id ?: return
         rouletteRepository.logSpin(userId, restaurantId)
+        refreshRouletteSession()
     }
 
     suspend fun watchRouletteAd(): Boolean {
         val userId = sessionState.value?.id ?: return false
-        return adManager.watchAd(userId)
+        val success = adManager.watchAd(userId)
+        if (success) {
+            refreshRouletteSession()
+        }
+        return success
     }
 
     // --- Location & Proximity ---

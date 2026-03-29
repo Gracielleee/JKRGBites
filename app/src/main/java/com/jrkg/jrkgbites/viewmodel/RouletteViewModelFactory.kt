@@ -2,7 +2,7 @@ package com.jrkg.jrkgbites.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.jrkg.jrkgbites.data.RouletteRepository
+import com.jrkg.jrkgbites.data.repository.RouletteRepository
 
 class RouletteViewModelFactory(
     private val userId: String,

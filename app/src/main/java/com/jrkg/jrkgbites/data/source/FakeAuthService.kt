@@ -52,6 +52,20 @@ class FakeAuthService : AuthService {
         emit(AuthResult.Success(newUser))
     }
 
+    override fun signInWithGoogle(idToken: String): Flow<AuthResult> = flow {
+        emit(AuthResult.Loading)
+        delay(1000) // Simulate network delay
+
+        // In a fake implementation, we assume any idToken is valid.
+        val dummyUser = User(
+            id = "google-user-123",
+            email = "google-test@jrkg.com",
+            preferredName = "Google Test User"
+        )
+        sessionState.value = dummyUser
+        emit(AuthResult.Success(dummyUser))
+    }
+
     override fun logout() {
         sessionState.value = null
     }

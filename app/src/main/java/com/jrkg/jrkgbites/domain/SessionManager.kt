@@ -1,7 +1,6 @@
 package com.jrkg.jrkgbites.domain
 
 import com.google.firebase.Timestamp
-import com.jrkg.jrkgbites.data.RestaurantRepository
 import com.jrkg.jrkgbites.domain.service.AuthResult
 import com.jrkg.jrkgbites.domain.service.AuthService
 import com.jrkg.jrkgbites.model.SubscriptionStatus
@@ -32,6 +31,13 @@ class SessionManager(private val authService: AuthService) {
      */
     fun signUp(email: String, password: String, preferredName: String): Flow<AuthResult> {
         return authService.signUp(email, password, preferredName)
+    }
+
+    /**
+     * Delegates the Google sign-in request to the underlying auth service.
+     */
+    fun signInWithGoogle(idToken: String): Flow<AuthResult> {
+        return authService.signInWithGoogle(idToken)
     }
 
     /**

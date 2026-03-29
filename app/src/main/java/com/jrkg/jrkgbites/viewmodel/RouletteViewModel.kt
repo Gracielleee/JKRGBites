@@ -2,7 +2,7 @@ package com.jrkg.jrkgbites.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jrkg.jrkgbites.data.RouletteRepository
+import com.jrkg.jrkgbites.data.repository.RouletteRepository
 import com.jrkg.jrkgbites.model.Restaurant
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow

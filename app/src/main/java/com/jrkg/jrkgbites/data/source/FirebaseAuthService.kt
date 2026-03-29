@@ -2,6 +2,7 @@ package com.jrkg.jrkgbites.data.source
 
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.firestore.FirebaseFirestore
 import com.jrkg.jrkgbites.domain.service.AuthResult
@@ -107,6 +108,28 @@ class FirebaseAuthService(
         }
     }
 
+    override fun signInWithGoogle(idToken: String): Flow<AuthResult> = flow {
+        emit(AuthResult.Loading)
+        try {
+            val credential = GoogleAuthProvider.getCredential(idToken, null)
+            val result = firebaseAuth.signInWithCredential(credential).await()
+            val firebaseUser = result.user
+            if (firebaseUser != null) {
+                val user = User(
+                    id = firebaseUser.uid,
+                    email = firebaseUser.email ?: "",
+                    preferredName = firebaseUser.displayName ?: "User"
+                )
+                _sessionState.value = user
+                emit(AuthResult.Success(user))
+            } else {
+                emit(AuthResult.Error("Google Sign-In failed: User not found"))
+            }
+        } catch (e: Exception) {
+            emit(AuthResult.Error(e.localizedMessage ?: "Unknown Google Sign-In error"))
+        }
+    }
+
     override fun logout() {
         firebaseAuth.signOut()
         _sessionState.value = null
@@ -115,7 +138,6 @@ class FirebaseAuthService(
     override fun getSessionState(): Flow<User?> = _sessionState.asStateFlow()
 
     override fun sendPasswordResetEmail(email: String): Flow<Boolean> = flow {
-        emit(false)
         try {
             firebaseAuth.sendPasswordResetEmail(email).await()
             emit(true)

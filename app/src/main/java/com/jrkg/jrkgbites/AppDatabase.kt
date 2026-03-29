@@ -3,10 +3,10 @@ package com.jrkg.jrkgbites
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.jrkg.jrkgbites.data.RestaurantDao
-import com.jrkg.jrkgbites.data.RestaurantRatingDao
-import com.jrkg.jrkgbites.data.FavoriteRestaurantDao
-import com.jrkg.jrkgbites.data.NeverAgainRestaurantDao
+import com.jrkg.jrkgbites.data.local.RestaurantDao
+import com.jrkg.jrkgbites.data.local.RestaurantRatingDao
+import com.jrkg.jrkgbites.data.local.FavoriteRestaurantDao
+import com.jrkg.jrkgbites.data.local.NeverAgainRestaurantDao
 import com.jrkg.jrkgbites.model.Restaurant
 import com.jrkg.jrkgbites.model.RestaurantRating
 import com.jrkg.jrkgbites.model.FavoriteRestaurantId

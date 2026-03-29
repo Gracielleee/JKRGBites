@@ -1,7 +1,6 @@
 package com.jrkg.jrkgbites.domain
 
-import com.jrkg.jrkgbites.data.RouletteRepository
-import kotlinx.coroutines.delay
+import com.jrkg.jrkgbites.data.repository.RouletteRepository
 
 class AdManager(private val repository: RouletteRepository) {
     

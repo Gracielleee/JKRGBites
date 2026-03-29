@@ -1,0 +1,50 @@
+package com.jrkg.jrkgbites.data.local
+
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
+import androidx.room.Transaction
+import androidx.room.Update
+import com.jrkg.jrkgbites.model.Restaurant
+import kotlinx.coroutines.flow.Flow
+
+@Dao
+interface RestaurantDao {
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insert(restaurant: Restaurant)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertAll(restaurants: List<Restaurant>)
+
+    @Query("SELECT * FROM restaurants")
+    fun getAllRestaurants(): Flow<List<Restaurant>>
+
+    @Query("SELECT * FROM restaurants WHERE id = :id")
+    fun getRestaurantById(id: String): Flow<Restaurant?>
+
+    @Query("SELECT * FROM restaurants WHERE id IN (SELECT favorite_restaurant FROM favorite_restaurants)")
+    fun getFavoriteRestaurantsFlow(): Flow<List<Restaurant>>
+
+    @Query("SELECT * FROM restaurants WHERE id IN (SELECT never_again_restaurant FROM never_again_restaurants)")
+    fun getNeverAgainRestaurantsFlow(): Flow<List<Restaurant>>
+
+    @Update
+    suspend fun update(restaurant: Restaurant)
+
+    @Delete
+    suspend fun delete(restaurant: Restaurant)
+
+    @Query("DELETE FROM restaurants")
+    suspend fun deleteAll()
+
+    @Query("SELECT COUNT(*) FROM restaurants")
+    suspend fun getRestaurantCount(): Int
+
+    @Transaction
+    suspend fun clearAndInsert(restaurants: List<Restaurant>) {
+        deleteAll()
+        insertAll(restaurants)
+    }
+}

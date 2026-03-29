@@ -30,6 +30,9 @@ public final class FragmentRegisterBinding implements ViewBinding {
   public final ImageButton btnBack;
 
   @NonNull
+  public final MaterialButton btnGoogleSignIn;
+
+  @NonNull
   public final MaterialButton btnRegister;
 
   @NonNull
@@ -81,16 +84,18 @@ public final class FragmentRegisterBinding implements ViewBinding {
   public final TextView txtRegisterDisplay;
 
   private FragmentRegisterBinding(@NonNull ScrollView rootView, @NonNull ImageButton btnBack,
-      @NonNull MaterialButton btnRegister, @NonNull MaterialCheckBox checkboxAgreement,
-      @NonNull TextInputEditText etConfirmPassword, @NonNull TextInputEditText etEmail,
-      @NonNull TextInputEditText etPassword, @NonNull TextInputEditText etUsername,
-      @NonNull Guideline guideEnd, @NonNull Guideline guideStart, @NonNull Guideline guideTop,
+      @NonNull MaterialButton btnGoogleSignIn, @NonNull MaterialButton btnRegister,
+      @NonNull MaterialCheckBox checkboxAgreement, @NonNull TextInputEditText etConfirmPassword,
+      @NonNull TextInputEditText etEmail, @NonNull TextInputEditText etPassword,
+      @NonNull TextInputEditText etUsername, @NonNull Guideline guideEnd,
+      @NonNull Guideline guideStart, @NonNull Guideline guideTop,
       @NonNull ConstraintLayout register, @NonNull TextInputLayout tilConfirmPassword,
       @NonNull TextInputLayout tilEmail, @NonNull TextInputLayout tilPassword,
       @NonNull TextInputLayout tilUsername, @NonNull TextView txtBackToLogin,
       @NonNull TextView txtBeforeGotoRegister, @NonNull TextView txtRegisterDisplay) {
     this.rootView = rootView;
     this.btnBack = btnBack;
+    this.btnGoogleSignIn = btnGoogleSignIn;
     this.btnRegister = btnRegister;
     this.checkboxAgreement = checkboxAgreement;
     this.etConfirmPassword = etConfirmPassword;
@@ -140,6 +145,12 @@ public final class FragmentRegisterBinding implements ViewBinding {
       id = R.id.btnBack;
       ImageButton btnBack = ViewBindings.findChildViewById(rootView, id);
       if (btnBack == null) {
+        break missingId;
+      }
+
+      id = R.id.btnGoogleSignIn;
+      MaterialButton btnGoogleSignIn = ViewBindings.findChildViewById(rootView, id);
+      if (btnGoogleSignIn == null) {
         break missingId;
       }
 
@@ -245,10 +256,10 @@ public final class FragmentRegisterBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentRegisterBinding((ScrollView) rootView, btnBack, btnRegister,
-          checkboxAgreement, etConfirmPassword, etEmail, etPassword, etUsername, guideEnd,
-          guideStart, guideTop, register, tilConfirmPassword, tilEmail, tilPassword, tilUsername,
-          txtBackToLogin, txtBeforeGotoRegister, txtRegisterDisplay);
+      return new FragmentRegisterBinding((ScrollView) rootView, btnBack, btnGoogleSignIn,
+          btnRegister, checkboxAgreement, etConfirmPassword, etEmail, etPassword, etUsername,
+          guideEnd, guideStart, guideTop, register, tilConfirmPassword, tilEmail, tilPassword,
+          tilUsername, txtBackToLogin, txtBeforeGotoRegister, txtRegisterDisplay);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

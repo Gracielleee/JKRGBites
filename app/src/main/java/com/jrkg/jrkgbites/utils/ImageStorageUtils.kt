@@ -75,7 +75,22 @@ object ImageStorageUtils {
             "yellowcabpizzaco" to "yellowcab",
             "cocofreshteajuice" to "coco",
             "buffaloswingsnthings" to "buffalowingsthings",
-            "pineapplehillcuisine" to "pineapplehillskitchen"
+            "pineapplehillcuisine" to "pineapplehillskitchen",
+            "frankiesnybuffalowings" to "frankies",
+            "peripericharcoalchicken" to "peri_peri",
+            "peripericharcoalchickenandgrill" to "peri_peri",
+            "marugameudon" to "marugame",
+            "dintaifung" to "dintaifung",
+            "timhowan" to "timhowan",
+            "pandaexpress" to "pandaexpress",
+            "genkisushi" to "genkisushi",
+            "classicsavory" to "savory",
+            "maxsrestaurant" to "maxs",
+            "phohoa" to "phohoa",
+            "hapchan" to "hapchan",
+            "mannhann" to "mannhann",
+            "fatfook" to "fatfook",
+            "pepperlunch" to "pepperlunch"
         )
 
         val mappedName = manualMap[fullyStripped]

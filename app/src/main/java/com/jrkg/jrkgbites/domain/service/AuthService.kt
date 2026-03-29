@@ -33,6 +33,12 @@ interface AuthService {
     fun signUp(email: String, password: String, preferredName: String): Flow<AuthResult>
 
     /**
+     * Attempts to log in or sign up a user using a Google ID token.
+     * @return A Flow that emits the result of the operation.
+     */
+    fun signInWithGoogle(idToken: String): Flow<AuthResult>
+
+    /**
      * Logs out the current user.
      */
     fun logout()

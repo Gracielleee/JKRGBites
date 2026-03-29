@@ -168,6 +168,17 @@
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleSignIn"
+        style="@style/ButtonOutlined"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="@dimen/spacing_standard"
+        android:text="Sign up with Google"
+        app:layout_constraintTop_toBottomOf="@+id/btnRegister"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end" />
+
     <TextView
         android:id="@+id/txtBeforeGotoRegister"
         android:layout_width="0dp"
@@ -183,7 +194,7 @@
         android:id="@+id/txtBackToLogin"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/touchtarget_min"
-        app:layout_constraintTop_toBottomOf="@id/btnRegister"
+        app:layout_constraintTop_toBottomOf="@id/btnGoogleSignIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:text="@string/lbl_GoToLogin"
