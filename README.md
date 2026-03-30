@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://github.com/rdashnox/JKRGBites/blob/main/app/src/main/res/drawable/Official_JRKGBites_NoBG.png" width="400px" alt="JRKGBites logo"/><br />
+<img src="https://github.com/rdashnox/JKRGBites/blob/main/app/src/main/res/drawable/official_jrkgbites_nobg.png" width="400px" alt="JRKGBites logo"/><br />
 
 **"Just the Right Kind of Grub"**
 
@@ -27,7 +27,7 @@ The project is built using Kotlin and follows a modern MVVM-like architecture (V
 ## Features
 JRKGBites provides the following features:
 
-- **🛡️ Authentication:** Secure sign-up and login with email/password and biometric (fingerprint) options.  
+- **🛡️ Authentication:** Secure sign-up and login with email/password and google one-tap sign-in options.  
 
 - **🫳 Gesture-Based Interface:** An intuitive Tinder-style swipe system to manage your restaurant choices:  
 &emsp;&emsp;&emsp;  ⬆️ Swipe Up: Save a restaurant to your Favorites.  
