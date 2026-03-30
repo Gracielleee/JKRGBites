@@ -27,7 +27,9 @@ The project is built using Kotlin and follows a modern MVVM-like architecture (V
 ## Features
 JRKGBites provides the following features:
 
-- **🛡️ Authentication:** Secure sign-up and login with email/password and google one-tap sign-in options.  
+- **🛡️ Authentication:** Secure sign-up and login using email/password with Google one-tap sign-in options.  
+
+- **❤️ Personalised Interactions:** Save your favourite restaurants for easy access, mark a restaurant as "Never Again" to remove it from your recommendations, and rate restaurants based on your experience.
 
 - **🫳 Gesture-Based Interface:** An intuitive Tinder-style swipe system to manage your restaurant choices:  
 &emsp;&emsp;&emsp;  ⬆️ Swipe Up: Save a restaurant to your Favorites.  
@@ -35,13 +37,17 @@ JRKGBites provides the following features:
 &emsp;&emsp;&emsp;  ⬅️ Swipe Left: Discard for now.  
 &emsp;&emsp;&emsp;  ➡️ Swipe Right: View restaurant details.  
 
-- **🔀 Shake to Decide:** A "roulette" feature that randomly picks a restaurant for you when you shake your device.  
+- **🔀 Shake to Decide:** A "roulette" feature that randomly picks a restaurant for you when you shake your device in the "Favorites" screen.  
 
 - **📍 Location-Aware:** Filters restaurants based on your proximity, with options to see details and get directions via Google Maps.  
 
-- **🔍 Comprehensive Search:** Easily search the entire restaurant database, including those you've previously dismissed.  
+- **🔍 Comprehensive Search:** Easily search the entire restaurant database, including those you've previously dismissed.
 
-- **👤 User Profile:** View your stats, manage preferences, and access app settings.  
+- **🏪 Restaurant Management:** Add missing restaurants to the app, edit details of added restaurants, and have the option to permanently delete them.
+
+- **👤 User Profile:** View your stats, manage preferences, and access your restaurant ratings.
+
+- **☁️ Firebase Integration:** Your data is securely stored in the cloud. Therefore, your progress will be saved across devices and sessions.
 
 - **📂 Offline Capability:** Works with a local `JRKGBites.json` file, ensuring the app is functional even without an internet connection.  
 
@@ -50,10 +56,12 @@ JRKGBites provides the following features:
 ## Built With
 
 [![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)](https://kotlinlang.org/)
-[![Android Jetpack](https://img.shields.io/badge/Android_Jetpack-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/jetpack)
-[![Google Maps API](https://img.shields.io/badge/Google_Maps_API-007396?style=for-the-badge&logo=java&logoColor=white)](https://developers.google.com/maps)
+[![Google Maps API](https://img.shields.io/badge/Google_Maps_API-4285F4?style=for-the-badge&logo=googlemaps&logoColor=white)](https://developers.google.com/maps)
+[![Firebase](https://img.shields.io/badge/firebase-a08021?style=for-the-badge&logo=firebase&logoColor=ffcd34)](https://firebase.google.com/)
 [![Gson](https://img.shields.io/badge/Gson-007396?style=for-the-badge&logo=java&logoColor=white)](https://github.com/google/gson)
+[![Android Room](https://img.shields.io/badge/Android_Room-3DDC84?style=for-the-badge&logo=android&logoColor=white)](https://developer.android.com/jetpack/androidx/releases/room)
 [![Gradle](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white)](https://gradle.org/)
+[![Android Studio](https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=androidStudio&logoColor=white)](https://developer.android.com/studio)
 
 </br>
 
@@ -73,22 +81,42 @@ To get a local copy up and running, follow these simple steps.
 2.  Open the project in Android Studio.
 3.  Let Gradle sync and download the required dependencies.
 4.  Run the app on your selected device or emulator.
-5.  Input the following credentials on the login screen:
-   - **Email:**  
-     `test@jrkg.com`
-   - **Password:**  
-     `password123`
+
+### Usage
+See the [user guide](https://docs.google.com/document/d/1AuRWftqRayyZFCBpKWpeFXAIevOi5WXvDDU1MWiCeUM/edit?usp=sharing) for step-by-step instructions on how to use the app, as well as more details about its features.
 
 </br>
 
 ## Project Structure
 
-The project is organized into four main layers, promoting a separation of concerns:
+This project uses a clear Model–View–ViewModel (MVVM) structure to separate presentation from business and data concerns, making the codebase easier to read, test, and maintain.
 
--   `view`: The UI layer, primarily handled in `MainActivity.kt`.
+```
+                            View
+                              |
+                              v
+                           ViewModel
+                              |
+                              v
+                          Repository
+                          /       \
+                         v         v
+                    Local DB      Remote DB
+                     (Room)       (Firestore)
+                       |
+                       v
+                     SQLite
+```
+
+</br>
+
+The project is organized into four main layers, promoting a separation of concerns:
+-   `view`: The UI layer containing the fragment classes.
 -   `viewmodel`: The `MainViewModel.kt` acts as the brain of the UI, managing state and handling user interactions.
--   `domain`: Contains the core business logic in manager classes like `SwipeManager`, `RestaurantPicker`, and `AuthManager`.
+-   `domain`: Contains the core business and use-case logic in manager classes like `SwipeManager`, `RestaurantPicker`, and `AuthManager`.
 -   `data`: Manages all data sources, including the `RestaurantRepository` (for `JRKGBites.json`) and `UserPreferencesManager`.
+
+</br>
 
 ## Team
 
