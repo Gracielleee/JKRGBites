@@ -37,7 +37,7 @@ JRKGBites provides the following features:
 &emsp;&emsp;&emsp;  ⬅️ Swipe Left: Discard for now.  
 &emsp;&emsp;&emsp;  ➡️ Swipe Right: View restaurant details.  
 
-- **🔀 Shake to Decide:** A "roulette" feature that randomly picks a restaurant for you when you shake your device in the "Favorites" screen.  
+- **🔀 Shake to Decide:** A "roulette" feature that randomly picks a restaurant for you when you shake your device in the "Favorites" screen. Each user gets 3 spins per day (1 free + 2 via ads). Watch a short ad to earn more spins when you run out. (Test only: "Reset Spins (DEV)" button made available now for testing).
 
 - **📍 Location-Aware:** Filters restaurants based on your proximity, with options to see details and get directions via Google Maps.  
 
