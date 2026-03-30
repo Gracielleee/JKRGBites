@@ -92,20 +92,20 @@ See the [user guide](https://docs.google.com/document/d/1AuRWftqRayyZFCBpKWpeFXA
 This project uses a clear **Model–View–ViewModel (MVVM)** structure to separate presentation from business and data concerns, making the codebase easier to navigate, test, and maintain.
 
 ```
-                            View
-                              |
-                              v
-                           ViewModel
-                              |
-                              v
-                          Repository
-                          /       \
-                         v         v
-                    Local DB      Remote DB
-                     (Room)       (Firestore)
-                       |
-                       v
-                     SQLite
+                                 View
+                                   |
+                                   v
+                                ViewModel
+                                /       \
+                               v         v
+                          Domain -----> Repository
+                                        /       \
+                                       v         v
+                                 Local DB      Remote DB
+                                  (Room)      (Firestore)
+                                    |
+                                    v
+                                 SQLite
 ```
 
 </br>
