@@ -89,7 +89,7 @@ See the [user guide](https://docs.google.com/document/d/1AuRWftqRayyZFCBpKWpeFXA
 
 ## Project Structure
 
-This project uses a clear **Model–View–ViewModel (MVVM)** structure to separate presentation from business and data concerns, making the codebase easier to read, test, and maintain.
+This project uses a clear **Model–View–ViewModel (MVVM)** structure to separate presentation from business and data concerns, making the codebase easier to navigate, test, and maintain.
 
 ```
                             View
