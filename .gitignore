@@ -1,6 +1,10 @@
 # Gradle files
 .gradle/
 build/
+app/build/
+
+# Gradle wrapper binary (auto-downloaded, no need to commit)
+gradle/wrapper/gradle-wrapper.jar
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -23,9 +27,9 @@ misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
 
-# Keystore files
+# Keystore files - keep debug.keystore for shared team use
 *.jks
-*.keystore
+# *.keystore   ← commented out so debug.keystore can be committed
 
 ## Google Services (e.g. APIs or Firebase)
 #google-services.json
