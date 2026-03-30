@@ -1,3 +1,0 @@
-com.jrkg.jrkgbites.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

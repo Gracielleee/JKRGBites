@@ -27,7 +27,7 @@ The project is built using Kotlin and follows a modern MVVM-like architecture (V
 ## Features
 JRKGBites provides the following features:
 
-- **🛡️ Authentication:** Secure sign-up and login with email/password and biometric (fingerprint) options.  
+- **🛡️ Authentication:** Secure sign-up and login with email/password and google one-tap sign-in options.  
 
 - **🫳 Gesture-Based Interface:** An intuitive Tinder-style swipe system to manage your restaurant choices:  
 &emsp;&emsp;&emsp;  ⬆️ Swipe Up: Save a restaurant to your Favorites.  
